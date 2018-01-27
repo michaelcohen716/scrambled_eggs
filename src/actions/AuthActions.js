@@ -29,7 +29,6 @@ export const passwordChanged = (text) => {
 export const signupUser = ({ email, password }) => {
   return (dispatch) => {
     dispatch({ type: SIGNUP_USER });
-    console.log("inside signup");
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => signupUserSuccess(dispatch, user))
       // .catch needed for email-already-taken error
@@ -42,9 +41,8 @@ const signupUserSuccess = (dispatch, user) => {
     payload: user
   });
 
-  Actions.main();
+  Actions.home({ type: 'reset'});
 };
-
 
 // on login button press
 export const loginUser = ({ email, password }) => {
@@ -53,14 +51,7 @@ export const loginUser = ({ email, password }) => {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => loginUserSuccess(dispatch, user))
-      // .catch( () => {
-      //   firebase.auth().createUserWithEmailAndPassword(email, password)
-      //     .then(user => {
-      //       loginUserSuccess(dispatch, user);
-      //       debugger
-      //     })
       .catch(() => loginUserFail(dispatch));
-
   };
 };
 
@@ -74,5 +65,5 @@ const loginUserSuccess = (dispatch, user) => {
     payload: user
   });
 
-  Actions.main();
+  Actions.home({ type: 'reset'});
 };

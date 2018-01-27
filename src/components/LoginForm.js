@@ -25,27 +25,20 @@ class LoginForm extends React.Component {
     this.props.signupUser({ email, password });
   }
 
-  renderLoginButton() {
+  renderAuthButtons() {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
 
     return (
-      <Button onPress={this.onLoginPress.bind(this)}>
-        Login
-      </Button>
-    );
-  }
-
-  renderSignupButton(){
-    if (this.props.loading) {
-      return <Spinner size="large" />;
-    }
-
-    return (
-      <Button onPress={this.onSignupPress.bind(this)}>
-        Sign Up
-      </Button>
+      <CardSection>
+        <Button onPress={this.onLoginPress.bind(this)}>
+          Login
+        </Button>
+        <Button onPress={this.onSignupPress.bind(this)}>
+          Sign Up
+        </Button>
+      </CardSection>
     );
   }
 
@@ -76,10 +69,8 @@ class LoginForm extends React.Component {
           {this.props.error}
         </Text>
 
-        <CardSection>
-          {this.renderLoginButton()}
-          {this.renderSignupButton()}
-        </CardSection>
+        {this.renderAuthButtons()}
+
       </Card>
     );
   }
@@ -98,6 +89,7 @@ const mapStateToProps = ({ auth }) => {
 
   return { email, password, error, loading };
 };
+
 
 export default connect(mapStateToProps, {
   emailChanged, passwordChanged, loginUser, signupUser

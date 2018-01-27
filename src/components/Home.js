@@ -1,15 +1,14 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { Card } from './common';
+import { Text, View } from 'react-native';
+import { Card, Header } from './common';
+
 
 class Home extends React.Component {
   render(){
     return (
-      <Card>
-        <Text>
-          Home Page
-        </Text>
-      </Card>
+      <View style={{ flex: 1 }}>
+        <Text>Hello</Text>
+      </View>
     );
   }
 }
