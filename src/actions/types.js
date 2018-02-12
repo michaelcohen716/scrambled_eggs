@@ -6,4 +6,4 @@ export const LOGIN_USER = 'login_user';
 export const SIGNUP_USER_SUCCESS = 'login_user';
 export const SIGNUP_USER = 'login_user';
 
-export const BEGIN_GAME = 'begin_game';
+// export const IMPORT_NEW_WORD = 'import_new_word';

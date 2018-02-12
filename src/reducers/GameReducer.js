@@ -1,14 +1,13 @@
-import { BEGIN_GAME } from '../actions/types';
+import { IMPORT_NEW_WORD } from '../actions/types';
 
 const INITIAL_STATE = {
-  player: '',
-
+  word: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
-    case BEGIN_GAME:
-      return { ...state, ...INITIAL_STATE, player: action.payload };
+    // case IMPORT_NEW_WORD:
+    //   return { ...state, ...INITIAL_STATE, word: action.payload };
     default:
       return state;
   }
