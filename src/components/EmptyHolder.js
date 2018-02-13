@@ -10,8 +10,10 @@ class EmptyHolder extends React.Component {
   }
 
   render(){
-    // console.log(this.props.scramble);
+    // word level
     const firstIndex = this.index;
+
+    // idx == letter level
     const tiles = this.props.letters.map((letter, idx) => {
       letter = "";
       if(this.props.scrambles[firstIndex][idx]){

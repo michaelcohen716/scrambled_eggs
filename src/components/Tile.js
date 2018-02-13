@@ -5,13 +5,22 @@ import { tapLetter } from '../actions';
 
 class Tile extends React.Component {
   press(){
-    const { letter, activeIndex } = this.props;
-    this.props.tapLetter(letter, activeIndex);
+    const { letter, wordIndex, letterIndex } = this.props;
+    this.props.tapLetter(letter, wordIndex, letterIndex);
   }
 
 
   render(){
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
+
+    if(this.props.usedLetters[this.props.letterIndex]){
+      return (
+        <TouchableHighlight style={styles.container2}>
+          <Text style={styles.text}>{letter}</Text>
+        </TouchableHighlight>
+      );
+    }
+
     return (
       <TouchableHighlight style={styles.container} onPress={()=>this.press()}>
         <Text style={styles.text}>{letter}</Text>
@@ -34,6 +43,19 @@ const styles = {
     justifyContent: 'center',
     minHeight: 50
   },
+  container2: {
+    borderWidth: 3,
+    backgroundColor: 'gray',
+    flexDirection: 'row',
+    borderColor: '#ddd',
+    position: 'relative',
+    width: 50,
+    padding: 4,
+    margin: 5,
+    borderRadius: 10,
+    justifyContent: 'center',
+    minHeight: 50
+  },
   text: {
     fontSize: 30,
   }
@@ -41,7 +63,8 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    activeIndex: state.game.activeIndex
+    wordIndex: state.game.wordIndex, // ^ on word level
+    usedLetters: state.game.usedLetters
   };
 };
 

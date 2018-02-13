@@ -15,9 +15,15 @@ class Game extends React.Component {
 
   breakDown(){
     this.activeWord = this.queue[0];
-    this.letters = this.scrambleLetters(this.activeWord);
     this.scrambles = Words[this.activeWord];
-    this.props.startNewWord(this.scrambles.length);
+
+    const startWordObject = {
+      activeLetters: this.scrambleLetters(this.activeWord),
+      numWords: this.scrambles.length,
+    };
+
+
+    this.props.startNewWord(startWordObject);
   }
 
   scrambleLetters(word){
@@ -40,7 +46,7 @@ class Game extends React.Component {
 
     const empties = this.scrambles.map((scramble, idx) => {
       return (
-        <EmptyHolder letters={this.letters} idx={idx} key={idx}/>
+        <EmptyHolder letters={this.props.activeLetters} idx={idx} key={idx}/>
       );
     });
 
@@ -61,11 +67,10 @@ const styles = {
   }
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     activeWord: state.game.activeWord
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    activeLetters: state.game.activeLetters
+  };
+};
 
-// export default Game;
-export default connect(null, { startNewWord })(Game);
+export default connect(mapStateToProps, { startNewWord })(Game);

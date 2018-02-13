@@ -15,9 +15,9 @@ class WordHolder extends React.Component {
   }
 
   render(){
-    const tiles = this.props.active.letters.map((letter, idx) => {
+    const tiles = this.props.activeLetters.map((letter, idx) => {
       return (
-        <Tile letter={letter} key={idx}/>
+        <Tile letter={letter} key={idx} letterIndex={idx}/>
       );
     });
 
@@ -41,4 +41,10 @@ const styles = {
   }
 };
 
-export default connect(null, { tapLetter })(WordHolder);
+const mapStateToProps = state => {
+  return {
+    activeLetters: state.game.activeLetters
+  };
+};
+
+export default connect(mapStateToProps, { tapLetter })(WordHolder);
