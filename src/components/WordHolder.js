@@ -16,6 +16,7 @@ class WordHolder extends React.Component {
 
   render(){
     const tiles = this.props.activeLetters.map((letter, idx) => {
+      console.log(idx);
       return (
         <Tile letter={letter} key={idx} letterIndex={idx}/>
       );

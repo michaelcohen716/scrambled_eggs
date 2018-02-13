@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 import { tapLetter } from '../actions';
 
 class Tile extends React.Component {
+  constructor(props){
+    super(props);
+    this.letterIndex = this.props.letterIndex;
+  }
+
   press(){
-    const { letter, wordIndex, letterIndex } = this.props;
-    this.props.tapLetter(letter, wordIndex, letterIndex);
+    const { letter, letterIndex } = this.props;
+    this.props.tapLetter(letter, letterIndex);
   }
 
 
@@ -15,22 +20,22 @@ class Tile extends React.Component {
 
     if(this.props.usedLetters[this.props.letterIndex]){
       return (
-        <TouchableHighlight style={styles.container2}>
-          <Text style={styles.text}>{letter}</Text>
+        <TouchableHighlight style={styles.usedHolder}>
+          <Text style={styles.usedText}>{letter}</Text>
         </TouchableHighlight>
       );
     }
 
     return (
-      <TouchableHighlight style={styles.container} onPress={()=>this.press()}>
-        <Text style={styles.text}>{letter}</Text>
+      <TouchableHighlight style={styles.unusedHolder} onPress={()=>this.press()}>
+        <Text style={styles.unusedText}>{letter}</Text>
       </TouchableHighlight>
     );
   }
 }
 
 const styles = {
-  container: {
+  unusedHolder: {
     borderWidth: 3,
     backgroundColor: 'orange',
     flexDirection: 'row',
@@ -43,7 +48,7 @@ const styles = {
     justifyContent: 'center',
     minHeight: 50
   },
-  container2: {
+  usedHolder: {
     borderWidth: 3,
     backgroundColor: 'gray',
     flexDirection: 'row',
@@ -56,8 +61,12 @@ const styles = {
     justifyContent: 'center',
     minHeight: 50
   },
-  text: {
+  unusedText: {
     fontSize: 30,
+  },
+  usedText: {
+    fontSize: 30,
+    color: 'white'
   }
 };
 
