@@ -1,13 +1,15 @@
-import { IMPORT_NEW_WORD } from '../actions/types';
+import { TAP_LETTER } from '../actions/types';
+import merge from 'lodash/merge';
+// const INITIAL_STATE = {
+//   scramble: []
+// };
 
-const INITIAL_STATE = {
-  word: ''
-};
-
-export default (state = INITIAL_STATE, action) => {
+export default (state = {scramble: []}, action) => {
   switch(action.type) {
-    // case IMPORT_NEW_WORD:
-    //   return { ...state, ...INITIAL_STATE, word: action.payload };
+    case TAP_LETTER:
+      const newState = merge({}, state);
+      newState.scramble.push(action.letter);
+      return newState;
     default:
       return state;
   }

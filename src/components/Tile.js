@@ -1,34 +1,41 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
+import { connect } from 'react-redux';
+import { tapLetter } from '../actions';
 
 class Tile extends React.Component {
+  press(){
+    this.props.tapLetter(this.props.letter);
+  }
+
+
   render(){
-    const letter = this.props.letter.toUpperCase();
+    const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
     return (
-      <View style={styles.view}>
+      <TouchableHighlight style={styles.container} onPress={()=>this.press()}>
         <Text style={styles.text}>{letter}</Text>
-      </View>
+      </TouchableHighlight>
     );
   }
 }
 
 const styles = {
-  view: {
+  container: {
     borderWidth: 3,
     backgroundColor: 'orange',
-    justifyContent: 'flex-start',
     flexDirection: 'row',
     borderColor: '#ddd',
     position: 'relative',
     width: 50,
     padding: 4,
     margin: 5,
-    borderRadius: 10
+    borderRadius: 10,
+    justifyContent: 'center',
+    minHeight: 50
   },
   text: {
     fontSize: 30,
-    alignSelf: 'center'
   }
 };
 
-export default Tile;
+export default connect(null, { tapLetter })(Tile);

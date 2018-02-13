@@ -1,21 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 import Tile from './Tile';
-import { tapLetter } from '../actions';
 import { connect } from 'react-redux';
 
-
-class WordHolder extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-
-    };
-
-  }
-
+class EmptyHolder extends React.Component {
   render(){
-    const tiles = this.props.active.letters.map((letter, idx) => {
+    const tiles = this.props.letters.map((letter, idx) => {
+      letter = "";
+      if(this.props.scramble[idx]){
+        letter = this.props.scramble[idx];
+      }
       return (
         <Tile letter={letter} key={idx}/>
       );
@@ -37,8 +31,18 @@ const styles = {
    justifyContent: 'center',
    flexDirection: 'row',
    borderColor: '#ddd',
-   position: 'relative'
+   position: 'relative',
+   marginBottom: 15
   }
 };
 
-export default connect(null, { tapLetter })(WordHolder);
+const mapStateToProps = state => {
+  const scramble = state.game.scramble;
+  console.log("mapstate");
+  console.log(state);
+  return {
+    scramble
+  };
+};
+
+export default connect(mapStateToProps, null)(EmptyHolder);

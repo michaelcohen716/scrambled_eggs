@@ -7,6 +7,7 @@ import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import Router from './Router';
 import { Header } from './components/common';
+import logger from 'redux-logger';
 
 class App extends Component {
   componentWillMount() {
@@ -23,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk, logger));
 
     return (
       <Provider store={store} style={styles.container}>
