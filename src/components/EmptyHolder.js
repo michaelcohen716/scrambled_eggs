@@ -4,11 +4,18 @@ import Tile from './Tile';
 import { connect } from 'react-redux';
 
 class EmptyHolder extends React.Component {
+  constructor(props){
+    super(props);
+    this.index = this.props.idx;
+  }
+
   render(){
+    // console.log(this.props.scramble);
+    const firstIndex = this.index;
     const tiles = this.props.letters.map((letter, idx) => {
       letter = "";
-      if(this.props.scramble[idx]){
-        letter = this.props.scramble[idx];
+      if(this.props.scrambles[firstIndex][idx]){
+        letter = this.props.scrambles[firstIndex][idx];
       }
       return (
         <Tile letter={letter} key={idx}/>
@@ -37,11 +44,9 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  const scramble = state.game.scramble;
-  console.log("mapstate");
-  console.log(state);
+  const scrambles = state.game.scrambles;
   return {
-    scramble
+    scrambles
   };
 };
 

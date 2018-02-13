@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import WordHolder from './WordHolder';
 import EmptyHolder from './EmptyHolder';
 import { connect } from 'react-redux';
+import { startNewWord } from '../actions';
 
 class Game extends React.Component {
   constructor(props){
@@ -16,6 +17,7 @@ class Game extends React.Component {
     this.activeWord = this.queue[0];
     this.letters = this.scrambleLetters(this.activeWord);
     this.scrambles = Words[this.activeWord];
+    this.props.startNewWord(this.scrambles.length);
   }
 
   scrambleLetters(word){
@@ -38,7 +40,7 @@ class Game extends React.Component {
 
     const empties = this.scrambles.map((scramble, idx) => {
       return (
-        <EmptyHolder letters={this.letters} key={idx}/>
+        <EmptyHolder letters={this.letters} idx={idx} key={idx}/>
       );
     });
 
@@ -66,4 +68,4 @@ const styles = {
 // };
 
 // export default Game;
-export default connect(null, null)(Game);
+export default connect(null, { startNewWord })(Game);

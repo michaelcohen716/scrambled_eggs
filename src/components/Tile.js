@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { Text, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { tapLetter } from '../actions';
 
 class Tile extends React.Component {
   press(){
-    this.props.tapLetter(this.props.letter);
+    const { letter, activeIndex } = this.props;
+    this.props.tapLetter(letter, activeIndex);
   }
 
 
@@ -38,4 +39,10 @@ const styles = {
   }
 };
 
-export default connect(null, { tapLetter })(Tile);
+const mapStateToProps = state => {
+  return {
+    activeIndex: state.game.activeIndex
+  };
+};
+
+export default connect(mapStateToProps, { tapLetter })(Tile);

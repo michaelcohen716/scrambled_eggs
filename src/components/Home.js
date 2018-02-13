@@ -2,12 +2,12 @@ import React from 'react';
 import { View } from 'react-native';
 import { Button } from './common';
 import { connect } from 'react-redux';
-import { beginGame } from '../actions';
-// import Game from './Game';
+import { Actions } from 'react-native-router-flux';
+
 
 class Home extends React.Component {
   beginGame(){
-    this.props.beginGame();
+    Actions.game({type: 'reset'});
   }
 
   render(){
@@ -24,4 +24,4 @@ class Home extends React.Component {
   }
 }
 
-export default connect(null, { beginGame })(Home);
+export default connect(null, null)(Home);

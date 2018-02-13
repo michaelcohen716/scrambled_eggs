@@ -6,4 +6,5 @@ export const LOGIN_USER = 'login_user';
 export const SIGNUP_USER_SUCCESS = 'login_user';
 export const SIGNUP_USER = 'login_user';
 
+export const START_NEW_WORD = 'start_new_word';
 export const TAP_LETTER = 'tap_letter';
