@@ -1,35 +1,41 @@
 import React from 'react';
-import { Text, TouchableHighlight } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { tapLetter } from '../actions';
+import { tapLetter, verifyWord } from '../actions';
 
 class Tile extends React.Component {
   constructor(props){
     super(props);
     this.letterIndex = this.props.letterIndex;
+    this.press = this.press.bind(this)
   }
 
   press(){
     const { letter, letterIndex } = this.props;
-    this.props.tapLetter(letter, letterIndex);
+    const { wordLength, attemptLength } = this.props;
+
+    if(wordLength - 1 === attemptLength){
+      this.props.verifyWord(letter, letterIndex);
+    } else {
+      this.props.tapLetter(letter, letterIndex);
+    }
   }
 
 
   render(){
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
-
-    if(this.props.usedLetters[this.props.letterIndex]){
+    if(this.props.topHolder && this.props.usedLetters[this.props.letterIndex]){
       return (
-        <TouchableHighlight style={styles.usedHolder}>
+        <TouchableOpacity style={styles.usedHolder}>
           <Text style={styles.usedText}>{letter}</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       );
     }
 
     return (
-      <TouchableHighlight style={styles.unusedHolder} onPress={()=>this.press()}>
+      <TouchableOpacity style={styles.unusedHolder} onPress={this.press}>
         <Text style={styles.unusedText}>{letter}</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }
@@ -73,8 +79,12 @@ const styles = {
 const mapStateToProps = state => {
   return {
     wordIndex: state.game.wordIndex, // ^ on word level
-    usedLetters: state.game.usedLetters
+    usedLetters: state.game.usedLetters,
+    attemptLength: state.game.attemptLength, //how many letters in are we
+    wordLength: state.game.activeLetters.length,
+    answers: state.game.answers,
+    attempts: state.game.attempts
   };
 };
 
-export default connect(mapStateToProps, { tapLetter })(Tile);
+export default connect(mapStateToProps, { tapLetter, verifyWord })(Tile);

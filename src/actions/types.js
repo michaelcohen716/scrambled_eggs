@@ -8,3 +8,4 @@ export const SIGNUP_USER = 'login_user';
 
 export const START_NEW_WORD = 'start_new_word';
 export const TAP_LETTER = 'tap_letter';
+export const VERIFY_WORD = 'verify_word';

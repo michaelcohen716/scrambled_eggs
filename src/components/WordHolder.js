@@ -8,19 +8,15 @@ import { connect } from 'react-redux';
 class WordHolder extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-
-    };
-
   }
 
   render(){
     const tiles = this.props.activeLetters.map((letter, idx) => {
-      console.log(idx);
       return (
-        <Tile letter={letter} key={idx} letterIndex={idx}/>
+        <Tile letter={letter} key={idx} letterIndex={idx} topHolder={true}/>
       );
     });
+
 
     return (
       <View style={styles.container}>
@@ -44,7 +40,7 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    activeLetters: state.game.activeLetters
+    activeLetters: state.game.activeLetters,
   };
 };
 

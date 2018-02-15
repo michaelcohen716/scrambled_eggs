@@ -6,26 +6,42 @@ import { connect } from 'react-redux';
 class EmptyHolder extends React.Component {
   constructor(props){
     super(props);
-    this.index = this.props.idx;
+    this.state = {
+      answered: false
+    };
+    this.fullWord = false;
   }
 
   render(){
     // word level
-    const firstIndex = this.index;
+    const firstIndex = this.props.answerIndex;
 
     // idx == letter level
     const tiles = this.props.letters.map((letter, idx) => {
-      letter = "";
-      if(this.props.scrambles[firstIndex][idx]){
-        letter = this.props.scrambles[firstIndex][idx];
+      // base condition
+      this.fullWord = true;
+
+      if(this.props.attempts[firstIndex][idx]){
+        letter = this.props.attempts[firstIndex][idx];
+      } else {
+        letter = "";
+        this.fullWord = false;
       }
       return (
-        <Tile letter={letter} key={idx}/>
+        <Tile letter={letter} key={idx} letterIndex={idx} answerIndex={firstIndex}/>
       );
     });
 
+    if(this.props.wordIndex === this.props.answerIndex){
+      return (
+        <View style={styles.active}>
+          {tiles}
+        </View>
+      );
+    }
+
     return (
-      <View style={styles.container}>
+      <View style={styles.inactive}>
         {tiles}
       </View>
     );
@@ -33,7 +49,7 @@ class EmptyHolder extends React.Component {
 }
 
 const styles = {
-  container: {
+  active: {
    borderBottomWidth: 1,
    padding: 5,
    backgroundColor: 'blue',
@@ -42,13 +58,25 @@ const styles = {
    borderColor: '#ddd',
    position: 'relative',
    marginBottom: 15
-  }
+ },
+ inactive: {
+   borderBottomWidth: 1,
+   padding: 5,
+   backgroundColor: 'transparent',
+   justifyContent: 'center',
+   flexDirection: 'row',
+   borderColor: '#ddd',
+   position: 'relative',
+   marginBottom: 15
+ }
 };
 
 const mapStateToProps = state => {
-  const scrambles = state.game.scrambles;
   return {
-    scrambles
+    attempts: state.game.attempts,
+    answers: state.game.answers,
+    usedLetters: state.game.usedLetters,
+    wordIndex: state.game.wordIndex
   };
 };
 

@@ -15,13 +15,13 @@ class Game extends React.Component {
 
   breakDown(){
     this.activeWord = this.queue[0];
-    this.scrambles = Words[this.activeWord];
+    this.answers = Words[this.activeWord];
 
     const startWordObject = {
       activeLetters: this.scrambleLetters(this.activeWord),
-      numWords: this.scrambles.length,
+      numWords: this.answers.length,
+      answers: this.answers
     };
-
 
     this.props.startNewWord(startWordObject);
   }
@@ -37,22 +37,21 @@ class Game extends React.Component {
   }
 
   render(){
-
     const currentWord = {
       word: this.activeWord,
       letters: this.letters,
       scrambles: this.scrambles
     };
 
-    const empties = this.scrambles.map((scramble, idx) => {
+    const empties = this.answers.map((scramble, idx) => {
       return (
-        <EmptyHolder letters={this.props.activeLetters} idx={idx} key={idx}/>
+        <EmptyHolder letters={this.props.activeLetters} answerIndex={idx} key={idx}/>
       );
     });
 
     return (
       <View>
-        <WordHolder active={currentWord}/>
+        <WordHolder active={currentWord} />
         <View style={styles.container}>
           {empties}
         </View>
