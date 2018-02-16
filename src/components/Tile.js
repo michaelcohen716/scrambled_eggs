@@ -7,7 +7,7 @@ class Tile extends React.Component {
   constructor(props){
     super(props);
     this.letterIndex = this.props.letterIndex;
-    this.press = this.press.bind(this)
+    this.press = this.press.bind(this);
   }
 
   press(){
@@ -20,7 +20,6 @@ class Tile extends React.Component {
       this.props.tapLetter(letter, letterIndex);
     }
   }
-
 
   render(){
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';

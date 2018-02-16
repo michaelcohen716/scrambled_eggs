@@ -1,8 +1,9 @@
 import React from 'react';
 import Words from '../games/scrambled.json';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import WordHolder from './WordHolder';
 import EmptyHolder from './EmptyHolder';
+import Timer from './Timer';
 import { connect } from 'react-redux';
 import { startNewWord } from '../actions';
 
@@ -52,6 +53,12 @@ class Game extends React.Component {
     return (
       <View>
         <WordHolder active={currentWord} />
+        <Timer seconds={60}/>
+
+        <View style={styles.messageContainer}>
+          <Text style={styles.message}>{this.props.message}</Text>
+        </View>
+
         <View style={styles.container}>
           {empties}
         </View>
@@ -62,13 +69,24 @@ class Game extends React.Component {
 
 const styles = {
   container: {
-    marginTop: 60
+    marginTop: 30
+  },
+  message: {
+    fontSize: 22,
+    marginTop: 7
+  },
+  messageContainer: {
+    minHeight: 32,
+    position: 'relative',
+    flexDirection: 'row',
+    justifyContent: 'center',
   }
 };
 
 const mapStateToProps = state => {
   return {
-    activeLetters: state.game.activeLetters
+    activeLetters: state.game.activeLetters,
+    message: state.game.message
   };
 };
 

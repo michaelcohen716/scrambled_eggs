@@ -1,4 +1,7 @@
-import { TAP_LETTER, START_NEW_WORD, VERIFY_WORD } from '../actions/types';
+import {
+  TAP_LETTER, START_NEW_WORD,
+  VERIFY_WORD }
+from '../actions/types';
 import merge from 'lodash/merge';
 
 const INITIAL_STATE = {
@@ -22,7 +25,7 @@ export default (state = INITIAL_STATE, action) => {
       }
       newState.attempts = attemptsArray;
 
-      const usedLetters = new Array(action.activeLetters.length);
+      var usedLetters = new Array(action.activeLetters.length);
       for (var j = 0; j < usedLetters.length; j++) {
         usedLetters[j] = false;
       }
@@ -34,6 +37,10 @@ export default (state = INITIAL_STATE, action) => {
 
     case TAP_LETTER:
       const updatedState = merge({}, state);
+      if(updatedState.message){
+        updatedState.message = "";
+      }
+
       updatedState.attempts[state.wordIndex].push(action.letter);
       updatedState.usedLetters[action.letterIndex] = true;
       updatedState.attemptLength +=1;
@@ -44,22 +51,29 @@ export default (state = INITIAL_STATE, action) => {
       futureState.attempts[state.wordIndex].push(action.letter);
       const wordAttempt = futureState.attempts[state.wordIndex].join("");
 
-      state.answers.forEach(answer => {
-        if(wordAttempt === answer){
-          const usedLetters = new Array(state.activeLetters.length);
-          for (var j = 0; j < usedLetters.length; j++) {
-            usedLetters[j] = false;
-          }
-          futureState.usedLetters = usedLetters;
+      const usedLetters1 = new Array(state.activeLetters.length);
+      for (var k = 0; k < usedLetters1.length; k++) {
+        usedLetters1[k] = false;
+      }
 
-          const activeLetters = state.activeLetters;
-          futureState.activeLetters = activeLetters;
+      if(futureState.answers.includes(wordAttempt)){
+        futureState.wordIndex +=1;
+        futureState.message = "Nice!";
 
-          futureState.wordIndex +=1;
-          futureState.attemptLength = 0;
-        }
-      });
+        const found = futureState.answers.indexOf(wordAttempt);
+        futureState.answers[found] = true;
+      } else {
+        futureState.message = "Not a word. Try again.";
+        futureState.attempts[state.wordIndex] = [];
+      }
+
+      const activeLetters = state.activeLetters;
+      futureState.activeLetters = activeLetters;
+
+      futureState.attemptLength = 0;
+      futureState.usedLetters = usedLetters1;
       return futureState;
+
     default:
       return state;
   }

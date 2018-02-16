@@ -19,8 +19,11 @@ class WordHolder extends React.Component {
 
 
     return (
-      <View style={styles.container}>
-        {tiles}
+      <View>
+        <View style={styles.container}>
+          {tiles}
+        </View>
+        
       </View>
     );
   }

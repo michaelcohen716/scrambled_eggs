@@ -1,6 +1,9 @@
 // import firebase from 'firebase';
 // import { Actions } from 'react-native-router-flux';
-import { TAP_LETTER, START_NEW_WORD, VERIFY_WORD } from './types';
+import {
+  TAP_LETTER, START_NEW_WORD,
+  VERIFY_WORD }
+from './types';
 
 export const startNewWord = ({ numWords, activeLetters, answers }) => {
   return {
@@ -26,7 +29,3 @@ export const verifyWord = (letter, letterIndex) => {
     letterIndex
   }
 }
-
-// export const checkWord = (letter, letterIndex) => dispatch => {
-//
-// }
