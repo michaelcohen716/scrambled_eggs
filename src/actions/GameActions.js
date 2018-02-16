@@ -1,8 +1,8 @@
 // import firebase from 'firebase';
-// import { Actions } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import {
   TAP_LETTER, START_NEW_WORD,
-  VERIFY_WORD }
+  VERIFY_WORD, END_ROUND }
 from './types';
 
 export const startNewWord = ({ numWords, activeLetters, answers }) => {
@@ -27,5 +27,13 @@ export const verifyWord = (letter, letterIndex) => {
     type: VERIFY_WORD,
     letter,
     letterIndex
+  }
+}
+
+export const endRound = () => {
+  Actions.levels();
+
+  return {
+    type: END_ROUND
   }
 }

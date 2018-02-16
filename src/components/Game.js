@@ -53,7 +53,7 @@ class Game extends React.Component {
     return (
       <View>
         <WordHolder active={currentWord} />
-        <Timer seconds={60}/>
+        <Timer seconds={10}/>
 
         <View style={styles.messageContainer}>
           <Text style={styles.message}>{this.props.message}</Text>
@@ -86,7 +86,7 @@ const styles = {
 const mapStateToProps = state => {
   return {
     activeLetters: state.game.activeLetters,
-    message: state.game.message
+    message: state.game.message,
   };
 };
 

@@ -1,6 +1,6 @@
 import {
   TAP_LETTER, START_NEW_WORD,
-  VERIFY_WORD }
+  VERIFY_WORD, END_ROUND }
 from '../actions/types';
 import merge from 'lodash/merge';
 
@@ -73,6 +73,11 @@ export default (state = INITIAL_STATE, action) => {
       futureState.attemptLength = 0;
       futureState.usedLetters = usedLetters1;
       return futureState;
+
+      case END_ROUND:
+        let endState = merge({}, state);
+        endState = INITIAL_STATE;
+        return endState;
 
     default:
       return state;
