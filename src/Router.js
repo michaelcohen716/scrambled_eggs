@@ -11,8 +11,8 @@ const RouterComponent = () => {
       <Scene key="root">
         <Scene key="login" component={LoginForm} title="Please Login" />
         <Scene key="home" component={Home} title="Home Page" />
-        <Scene key="levels" component={LevelsPage} title="Levels" />
-        <Scene initial key="game" component={Game} title="Game On" />
+        <Scene initial key="levels" component={LevelsPage} title="Levels" />
+        <Scene key="game" component={Game} title="Game On" />
       </Scene>
     </Router>
   );

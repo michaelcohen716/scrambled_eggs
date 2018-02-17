@@ -1,5 +1,6 @@
 import React from 'react';
 import Words from '../games/scrambled.json';
+import Levels from '../games/levels.json';
 import { View, Text } from 'react-native';
 import WordHolder from './WordHolder';
 import EmptyHolder from './EmptyHolder';
@@ -10,12 +11,11 @@ import { startNewWord } from '../actions';
 class Game extends React.Component {
   constructor(props){
     super(props);
-    this.queue = Object.keys(Words);
     this.breakDown();
   }
 
   breakDown(){
-    this.activeWord = this.queue[0];
+    this.activeWord = Levels[this.props.activeLevel];
     this.answers = Words[this.activeWord];
 
     const startWordObject = {
@@ -53,7 +53,7 @@ class Game extends React.Component {
     return (
       <View>
         <WordHolder active={currentWord} />
-        <Timer seconds={10}/>
+        <Timer seconds={30}/>
 
         <View style={styles.messageContainer}>
           <Text style={styles.message}>{this.props.message}</Text>
@@ -87,6 +87,7 @@ const mapStateToProps = state => {
   return {
     activeLetters: state.game.activeLetters,
     message: state.game.message,
+    activeLevel: state.levels.activeLevel
   };
 };
 

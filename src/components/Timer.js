@@ -20,7 +20,7 @@ class Timer extends React.Component {
   }
 
   tick(){
-    if(this.props.wordIndex > this.props.attempts.length){
+    if(this.props.wordIndex === this.props.attempts.length){
       this.props.endRound();
     }
 
