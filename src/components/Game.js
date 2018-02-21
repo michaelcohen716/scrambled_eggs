@@ -5,6 +5,7 @@ import { View, Text } from 'react-native';
 import WordHolder from './WordHolder';
 import EmptyHolder from './EmptyHolder';
 import Timer from './Timer';
+import InfoBar from './InfoBar';
 import { connect } from 'react-redux';
 import { startNewWord } from '../actions';
 
@@ -52,8 +53,9 @@ class Game extends React.Component {
 
     return (
       <View>
+        <InfoBar />
         <WordHolder active={currentWord} />
-        <Timer seconds={30}/>
+        <Timer seconds={100}/>
 
         <View style={styles.messageContainer}>
           <Text style={styles.message}>{this.props.message}</Text>

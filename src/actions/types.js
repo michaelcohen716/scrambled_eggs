@@ -12,3 +12,5 @@ export const TAP_LETTER = 'tap_letter';
 export const VERIFY_WORD = 'verify_word';
 export const SEND_MESSAGE = 'send_message';
 export const END_ROUND = 'end_round';
+
+export const AWARD_WORD_COMPLETION = 'award_word_completion';

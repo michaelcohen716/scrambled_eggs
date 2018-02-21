@@ -30,6 +30,7 @@ export const verifyWord = (letter, letterIndex) => {
   }
 }
 
+
 export const endRound = () => {
   Actions.levels();
 

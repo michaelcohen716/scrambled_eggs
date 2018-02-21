@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { assignLevel } from '../actions';
 
@@ -37,6 +37,7 @@ const styles = {
   text: {
     fontSize: 20,
     color: 'white',
+    fontWeight: 'bold'
   }
 };
 
