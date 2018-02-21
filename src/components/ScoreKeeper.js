@@ -3,27 +3,58 @@ import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { awardWordCompletion } from '../actions';
 import eggImage from '../assets/egg.png';
-import CoinSpin from '../assets/Coin_spin.gif';
+import coinSpin from '../assets/coin_spin.gif';
+var baseScore = 50;
 
 class ScoreKeeper extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      animateTimeline: 0
+    };
+    this.animateEggCoin = this.animateEggCoin.bind(this);
+  }
+
   componentWillReceiveProps(nextProps){
+    const scoreIncrement = baseScore * this.props.scoreMultiplier;
+
     if(this.props.wordIndex < nextProps.wordIndex){
-      this.props.awardWordCompletion();
+      this.props.awardWordCompletion(scoreIncrement);
+      this.animateEggCoin();
     }
   }
 
+  animateEggCoin(){
+    this.setState({animateTimeline: 1});
+
+    setTimeout(() => {
+      this.setState({animateTimeline: 0});
+    }, 500);
+  }
+
   render(){
-    const roundScore = this.props.roundScore;
-    const egg = (key) => <Image source={eggImage} style={styles.egg} key={key}/>;
+    const egg = (key) => {
+      if(this.state.animateTimeline === 1){
+        return (
+          <Image source={coinSpin} style={styles.egg} key={key} idx={key}/>
+        );
+      } else {
+        return (
+          <Image source={eggImage} style={styles.egg} key={key} idx={key}/>
+        );
+      }
+    };
+
     const eggs = [];
-    for (var i = 0; i < roundScore; i++) {
+    const wordIndex = this.props.wordIndex;
+    for (var i = 0; i < wordIndex; i++) {
       eggs.push(egg(i));
     }
+
 
     return (
       <View style={styles.container}>
         {eggs}
-        <Image source={CoinSpin} style={styles.egg} />
       </View>
     );
   }
@@ -48,7 +79,8 @@ const styles = {
 const mapStateToProps = state => {
   return {
     roundScore: state.score.roundScore,
-    wordIndex: state.game.wordIndex
+    wordIndex: state.game.wordIndex,
+    scoreMultiplier: state.score.scoreMultiplier
   };
 };
 

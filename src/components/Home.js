@@ -1,9 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
-import { Button } from './common';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Card, CardSection } from './common';
 
 class Home extends React.Component {
   beginGame(){
@@ -12,7 +10,6 @@ class Home extends React.Component {
 
   render(){
     return (
-
       <View style={styles.container}>
         <TouchableHighlight onPress={this.beginGame.bind(this)} style={styles.beginButton}>
           <Text style={styles.text}>

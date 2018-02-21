@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   answers: [], //solutions
   attemptLength: 0, // if ["a", "", ""] => 1
   usedLetters: [], // ^ has letter been tapped for this scramble yet?
-  message: ''
+  message: '' // "Nice!" or "Not word"
 };
 
 export default (state = INITIAL_STATE, action) => {
