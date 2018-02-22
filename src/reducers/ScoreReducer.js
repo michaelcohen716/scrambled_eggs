@@ -1,10 +1,13 @@
 import merge from 'lodash/merge';
+import firebase from 'firebase';
 import {
   AWARD_WORD_COMPLETION, END_ROUND,
-  REDUCE_SCORE_MULTIPLIER
+  REDUCE_SCORE_MULTIPLIER,
+  LOGIN_USER_SUCCESS, SIGNUP_USER_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
+  userEggcoin: 0,
   roundScore: 0,
   scoreMultiplier: 100
 };
@@ -13,6 +16,8 @@ export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case AWARD_WORD_COMPLETION:
       const newState = merge({}, state);
+
+      newState.userEggcoin += action.scoreIncrement;
       newState.roundScore += action.scoreIncrement;
       return newState;
 
@@ -25,6 +30,17 @@ export default (state = INITIAL_STATE, action) => {
       const futureState = merge({}, state);
       futureState.scoreMultiplier -= action.decrement;
       return futureState;
+
+    case SIGNUP_USER_SUCCESS:
+    case LOGIN_USER_SUCCESS:
+      const eggState = merge({}, state);
+
+      const { currentUser } = firebase.auth();
+      firebase.database().ref(`/users/${currentUser.uid}/eggcoin/eggcoin`)
+        .once('value', (data) => {
+          eggState.userEggcoin = data.node_.value_;
+        });
+      return eggState;
     default:
       return state;
   }

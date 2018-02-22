@@ -5,7 +5,6 @@ import { assignLevel } from '../actions';
 
 class LevelButton extends React.Component {
   onPress(num){
-    console.log(this.props);
     this.props.assignLevel(num);
   }
 
@@ -29,6 +28,7 @@ const styles = {
     height: 40,
     backgroundColor: 'blue',
     borderColor: 'white',
+    borderWidth: 2.5,
     margin: 10,
     borderRadius: 5,
     justifyContent: 'center',
@@ -38,7 +38,7 @@ const styles = {
     fontSize: 20,
     color: 'white',
     fontWeight: 'bold'
-  }
+  },
 };
 
 export default connect(null, { assignLevel })(LevelButton);

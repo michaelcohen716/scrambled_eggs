@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { awardWordCompletion } from '../actions';
 import eggImage from '../assets/egg.png';
 import coinSpin from '../assets/coin_spin.gif';
-var baseScore = 50;
+var baseScore = 5; // figure out cleaner way to do this
 
 class ScoreKeeper extends React.Component {
   constructor(){

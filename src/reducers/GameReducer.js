@@ -11,7 +11,8 @@ const INITIAL_STATE = {
   answers: [], //solutions
   attemptLength: 0, // if ["a", "", ""] => 1
   usedLetters: [], // ^ has letter been tapped for this scramble yet?
-  message: '' // "Nice!" or "Not word"
+  message: '', // "Nice!" or "Not word"
+  roundCompleted: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -76,7 +77,7 @@ export default (state = INITIAL_STATE, action) => {
 
       case END_ROUND:
         let endState = merge({}, state);
-        endState = INITIAL_STATE;
+        endState.roundCompleted = action.boolean;
         return endState;
 
     default:

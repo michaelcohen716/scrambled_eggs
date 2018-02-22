@@ -12,7 +12,6 @@ class Timer extends React.Component {
     };
     this.initialTime = this.props.seconds;
     this.tick = this.tick.bind(this);
-    this.stopTimer = this.stopTimer.bind(this);
     this.decrement = this.initialTime / 100;
   }
 
@@ -21,25 +20,22 @@ class Timer extends React.Component {
     this.setState({ timer });
   }
 
-  stopTimer(){
-  }
-
   tick(){
     if(this.props.wordIndex === this.props.attempts.length){
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
 
-      const roundScore = this.props.roundScore;
-      this.props.recordScore(roundScore);
-      this.props.endRound();
+      const { roundScore, eggcoin, activeLevel } = this.props;
+      this.props.recordScore(roundScore, eggcoin);
+      this.props.endRound(true, activeLevel);
     }
-    
+
     this.props.reduceScoreMultiplier(this.decrement);
     this.setState({ seconds: this.state.seconds - 1});
 
     const timeElapsed = this.initialTime - this.state.seconds;
     if(timeElapsed + 1 === this.initialTime){
-      this.props.endRound();
+      this.props.endRound(false);
     }
   }
 
@@ -85,7 +81,9 @@ const mapStateToProps = state => {
   return {
     wordIndex: state.game.wordIndex,
     attempts: state.game.attempts,
-    roundScore: state.score.roundScore
+    roundScore: state.score.roundScore,
+    eggcoin: state.score.userEggcoin,
+    activeLevel: state.levels.activeLevel
   };
 };
 

@@ -11,15 +11,17 @@ export const awardWordCompletion = (scoreIncrement) => {
   };
 };
 
-export const recordScore = (score) => {
+export const recordScore = (score, eggcoin) => {
   const { currentUser } = firebase.auth();
 
   return(dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/scores`)
-    .push({ score })
+    .push({ roundScore: score })
     .then(() => {
+      firebase.database().ref(`/users/${currentUser.uid}/eggcoin`)
+        .set({ eggcoin });
       dispatch({
-        type: RECORD_SCORE,
+        type: RECORD_SCORE, //right now, this is non-op
         score
       });
     });

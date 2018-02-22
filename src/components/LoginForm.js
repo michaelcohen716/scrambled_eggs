@@ -15,13 +15,11 @@ class LoginForm extends React.Component {
 
   onLoginPress() {
     const { email, password } = this.props;
-
     this.props.loginUser({ email, password });
   }
 
   onSignupPress() {
     const { email, password } = this.props;
-
     this.props.signupUser({ email, password });
   }
 
