@@ -1,8 +1,9 @@
 import merge from 'lodash/merge';
-import { ASSIGN_LEVEL } from '../actions/types';
+import { ASSIGN_LEVEL, END_ROUND } from '../actions/types';
 
 const INITIAL_STATE = {
-  activeLevel: null
+  activeLevel: null,
+  nextUnsolvedLevel: 1
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -11,6 +12,12 @@ export default (state = INITIAL_STATE, action) => {
       const newState = merge({}, state);
       newState.activeLevel = action.nextLevel;
       return newState;
+    case END_ROUND:
+      const updatedState = merge({}, state);
+      if(action.boolean){
+        updatedState.nextUnsolvedLevel = action.activeLevel + 1;
+      }
+      return updatedState;
     default:
       return state;
   }

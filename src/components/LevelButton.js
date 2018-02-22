@@ -41,4 +41,10 @@ const styles = {
   },
 };
 
-export default connect(null, { assignLevel })(LevelButton);
+const mapStateToProps = state => {
+  return {
+    nextUnsolvedLevel: state.levels.activeLevel
+  };
+};
+
+export default connect(mapStateToProps, { assignLevel })(LevelButton);

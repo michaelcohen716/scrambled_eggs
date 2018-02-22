@@ -2,11 +2,12 @@ import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import LevelButton from './LevelButton';
+import Levels from '../games/levels.json';
 
 class LevelsPage extends React.Component {
   constructor(props){
     super(props);
-    this.levels = 2; //total levels in game
+    this.levels = Object.keys(Levels).length; //total levels in game
     this.state = {
       activeLevel: null
     };

@@ -18,7 +18,7 @@ export const recordScore = (score, eggcoin) => {
     firebase.database().ref(`/users/${currentUser.uid}/scores`)
     .push({ roundScore: score })
     .then(() => {
-      firebase.database().ref(`/users/${currentUser.uid}/eggcoin`)
+      firebase.database().ref(`/users/${currentUser.uid}`)
         .set({ eggcoin });
       dispatch({
         type: RECORD_SCORE, //right now, this is non-op

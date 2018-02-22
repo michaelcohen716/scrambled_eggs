@@ -37,8 +37,8 @@ export const signupUser = ({ email, password }) => {
 
 const signupUserSuccess = (dispatch, user) => {
   const { currentUser } = firebase.auth();
-  firebase.database().ref(`/users/${currentUser.uid}/eggcoin`)
-    .set({ eggcoin: 1000 })
+  firebase.database().ref(`/users/${currentUser.uid}`)
+    .set({ eggcoin: 1000, activeLevel: 1 })
     .then(() => {
       dispatch({
         type: SIGNUP_USER_SUCCESS,
