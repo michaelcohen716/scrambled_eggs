@@ -35,7 +35,6 @@ class InfoBar extends React.Component {
   }
 
   render(){
-    console.log(this.props);
     let eggcoin = this.props.eggcoin;
     const eggcoinDelta = eggcoin - this.state.prevScore;
 

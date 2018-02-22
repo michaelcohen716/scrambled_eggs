@@ -38,7 +38,6 @@ export default (state = INITIAL_STATE, action) => {
       const { currentUser } = firebase.auth();
       firebase.database().ref(`/users/${currentUser.uid}/eggcoin`)
         .once('value', (data) => {
-          console.log(data);
           eggState.userEggcoin = data.node_.value_;
         });
       return eggState;

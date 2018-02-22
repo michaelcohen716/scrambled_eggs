@@ -30,7 +30,6 @@ export const verifyWord = (letter, letterIndex) => {
   }
 }
 
-
 export const endRound = (boolean, activeLevel) => {
   if(boolean){
     const { currentUser } = firebase.auth();
