@@ -34,8 +34,8 @@ export const endRound = (boolean, activeLevel) => {
   const newLevel = activeLevel+1;
   if(boolean){
     const { currentUser } = firebase.auth();
-    firebase.database().ref(`/users/${currentUser.uid}`)
-      .set({ activeLevel: newLevel });
+    firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+      .update({ activeLevel: newLevel });
   }
 
   Actions.roundReview({ type: 'reset' });

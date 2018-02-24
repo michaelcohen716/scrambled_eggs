@@ -12,23 +12,10 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
-    // case SIGNUP_USER_SUCCESS:
-    //   const newUser = firebase.auth().currentUser;
-    //   firebase.database().ref(`/users/${newUser.uid}`)
-    //     .set({ activeLevel: 1, eggcoin: 1000});
-    //   return state;
-
     case LOGIN_USER_SUCCESS:
       const unsolvedState = merge({}, state);
-      // const { currentUser } = firebase.auth();
-      // firebase.database().ref(`/users/${currentUser.uid}`)
-      // .once('value', (data) => {
-      //   console.log("levels reducer loginUserSuccess");
-      //   console.log(data);
-      //   // unsolvedState.nextUnsolvedLevel = data.node_.value_;
-      // });
-      console.log(action);
-      // unsolvedState.activeLevel
+      unsolvedState.activeLevel = action.activeLevel;
+      unsolvedState.nextUnsolvedLevel = action.activeLevel;
       return unsolvedState;
 
     case ASSIGN_LEVEL:

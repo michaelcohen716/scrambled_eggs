@@ -48,7 +48,7 @@ const styles = {
     flexDirection: 'row',
     height: 40,
     borderColor: 'black',
-    borderWidth: 1
+    borderWidth: 0.3
   },
   levels: {
     padding: 5,
@@ -57,7 +57,9 @@ const styles = {
   },
   eggcoin: {
     marginLeft: 8,
-    marginTop: 8
+    marginTop: 8,
+    fontSize: 15,
+    fontWeight: 'bold'
   },
   goldEgg: {
     height: 15,

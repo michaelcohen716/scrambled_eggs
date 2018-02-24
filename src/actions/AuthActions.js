@@ -54,7 +54,7 @@ const createUser = (dispatch) => {
 
   const { currentUser } = firebase.auth();
   firebase.database().ref(`/users/${currentUser.uid}`)
-    .push({ phone: '323-323-3232'});
+    .set({ phone: '323-323-3232'});
 
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
     .set({ eggcoin: 1000, activeLevel: 1})
@@ -82,13 +82,15 @@ const loginUserSuccess = (dispatch, user) => {
     const { currentUser } = firebase.auth();
     firebase.database().ref(`/gameInfo/${currentUser.uid}`)
       .once('value', (snapshot) => {
-      // console.log(snapshot.val());
+      console.log(snapshot.val());
       const eggcoin = snapshot.val().eggcoin;
+      const activeLevel = snapshot.val().activeLevel;
       Actions.levels({ type: 'reset'});
       dispatch({
         type: LOGIN_USER_SUCCESS,
         user,
-        eggcoin
+        eggcoin,
+        activeLevel
       })
   })
 
