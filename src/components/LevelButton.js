@@ -1,15 +1,13 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, Animated, Easing } from 'react-native';
+import { Text, View, TouchableOpacity, Animated, Easing, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { assignLevel } from '../actions';
+import lockImage from '../assets/lock.png';
 
 class LevelButton extends React.Component {
   constructor(){
     super();
   }
-
-
-
   onPress(num){
     this.props.assignLevel(num);
   }
@@ -21,12 +19,15 @@ class LevelButton extends React.Component {
     if(num > this.props.nextUnsolvedLevel){
       return (
         <TouchableOpacity style={styles.lockedLevel} key={num} >
-          <Text style={styles.lockedText}>
-            {num}
-          </Text>
+            <Image source={lockImage} style={styles.lock} />
+            <Text style={styles.lockedText}>
+              {num}
+            </Text>
         </TouchableOpacity>
       );
     }
+    // <View style={{flex: 1}}>
+    // </View>
 
     return (
         <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
@@ -70,7 +71,17 @@ const styles = {
   lockedText: {
     fontSize: 20,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    position: 'absolute',
+    textAlign: 'center',
+    top: 5,
+    opacity: 0.7
+  },
+  lock: {
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    opacity: 0.3
   }
 };
 

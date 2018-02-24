@@ -35,7 +35,7 @@ export const endRound = (boolean, activeLevel) => {
   if(boolean){
     const { currentUser } = firebase.auth();
     firebase.database().ref(`/users/${currentUser.uid}`)
-      .update({ activeLevel: newLevel });
+      .set({ activeLevel: newLevel });
   }
 
   Actions.roundReview({ type: 'reset' });

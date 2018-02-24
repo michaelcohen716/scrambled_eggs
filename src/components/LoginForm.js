@@ -1,8 +1,13 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser, signupUser } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
+import {
+  emailChanged, passwordChanged,
+  loginUser,
+  signupUser
+}
+from '../actions';
 
 class LoginForm extends React.Component {
   onEmailChange(text) {
@@ -21,6 +26,7 @@ class LoginForm extends React.Component {
   onSignupPress() {
     const { email, password } = this.props;
     this.props.signupUser({ email, password });
+  
   }
 
   renderAuthButtons() {
@@ -89,5 +95,7 @@ const mapStateToProps = ({ auth }) => {
 
 
 export default connect(mapStateToProps, {
-  emailChanged, passwordChanged, loginUser, signupUser
+  emailChanged, passwordChanged,
+  loginUser,
+  signupUser
 })(LoginForm);

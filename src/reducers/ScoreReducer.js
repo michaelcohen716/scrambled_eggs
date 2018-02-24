@@ -31,21 +31,11 @@ export default (state = INITIAL_STATE, action) => {
       futureState.scoreMultiplier -= action.decrement;
       return futureState;
 
-    case SIGNUP_USER_SUCCESS:
-      const newUser = firebase.auth().currentUser;
-      firebase.database().ref(`/users/${newUser.uid}`)
-        .set({ eggcoin: 1000, activeLevel: 1});
-      return state;
-
     case LOGIN_USER_SUCCESS:
       const eggState = merge({}, state);
-
-      const { currentUser } = firebase.auth();
-      firebase.database().ref(`/users/${currentUser.uid}/eggcoin`)
-        .on('value', (data) => {
-          eggState.userEggcoin = data.node_.value_;
-        });
+      eggState.userEggcoin = action.eggcoin;
       return eggState;
+
     default:
       return state;
   }

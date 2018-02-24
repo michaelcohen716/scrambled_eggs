@@ -7,7 +7,8 @@ import {
   LOGIN_USER_FAIL,
   LOGIN_USER,
   SIGNUP_USER,
-  SIGNUP_USER_SUCCESS
+  SIGNUP_USER_SUCCESS,
+  CREATE_USER
 } from './types';
 
 // user input state change
@@ -31,23 +32,34 @@ export const signupUser = ({ email, password }) => {
     dispatch({ type: SIGNUP_USER });
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => signupUserSuccess(dispatch, user))
+      .catch((error) => console.log(error));
       // .catch needed for email-already-taken error
   }
 }
 
 const signupUserSuccess = (dispatch, user) => {
-  const { currentUser } = firebase.auth();
-   firebase.database().ref(`/users/${currentUser.uid}`)
-     .set({ eggcoin: 1000, activeLevel: 1 })
-     .then(() => {
-       dispatch({
-         type: SIGNUP_USER_SUCCESS,
-         payload: user
-       });
+    Actions.levels({ type: 'reset'});
 
-     })
-  Actions.levels({ type: 'reset'});
+    dispatch({
+      type: SIGNUP_USER_SUCCESS,
+      payload: user
+    });
+    createUser(dispatch);
+
 };
+
+const createUser = (dispatch) => {
+  dispatch({ type: CREATE_USER })
+  console.log("createUser");
+
+  const { currentUser } = firebase.auth();
+  firebase.database().ref(`/users/${currentUser.uid}`)
+    .push({ phone: '323-323-3232'});
+
+  firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .set({ eggcoin: 1000, activeLevel: 1})
+
+}
 
 // on login button press
 export const loginUser = ({ email, password }) => {
@@ -56,8 +68,8 @@ export const loginUser = ({ email, password }) => {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => loginUserSuccess(dispatch, user))
-      .catch(() => loginUserFail(dispatch));
-  };
+      .catch(() => loginUserFail(dispatch))
+  }
 };
 
 const loginUserFail = (dispatch) => {
@@ -65,10 +77,20 @@ const loginUserFail = (dispatch) => {
 };
 
 const loginUserSuccess = (dispatch, user) => {
-  dispatch({
-    type: LOGIN_USER_SUCCESS,
-    payload: user
-  });
+  // return (dispatch) => {
 
-  Actions.levels({ type: 'reset'});
-};
+    const { currentUser } = firebase.auth();
+    firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+      .once('value', (snapshot) => {
+      // console.log(snapshot.val());
+      const eggcoin = snapshot.val().eggcoin;
+      Actions.levels({ type: 'reset'});
+      dispatch({
+        type: LOGIN_USER_SUCCESS,
+        user,
+        eggcoin
+      })
+  })
+
+  // }
+}

@@ -15,11 +15,9 @@ export const recordScore = (score, eggcoin) => {
   const { currentUser } = firebase.auth();
 
   return(dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/scores`)
-    .push({ roundScore: score })
+    firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .set({ eggcoin })
     .then(() => {
-      firebase.database().ref(`/users/${currentUser.uid}`)
-        .update({ eggcoin });
       dispatch({
         type: RECORD_SCORE, //right now, this is non-op
         score
