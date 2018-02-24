@@ -37,16 +37,16 @@ export const signupUser = ({ email, password }) => {
 
 const signupUserSuccess = (dispatch, user) => {
   const { currentUser } = firebase.auth();
-  firebase.database().ref(`/users/${currentUser.uid}`)
-    .set({ eggcoin: 1000, activeLevel: 1 })
-    .then(() => {
-      dispatch({
-        type: SIGNUP_USER_SUCCESS,
-        payload: user
-      });
+   firebase.database().ref(`/users/${currentUser.uid}`)
+     .set({ eggcoin: 1000, activeLevel: 1 })
+     .then(() => {
+       dispatch({
+         type: SIGNUP_USER_SUCCESS,
+         payload: user
+       });
 
-    })
-    Actions.levels({ type: 'reset'});
+     })
+  Actions.levels({ type: 'reset'});
 };
 
 // on login button press

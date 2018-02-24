@@ -31,16 +31,18 @@ export const verifyWord = (letter, letterIndex) => {
 }
 
 export const endRound = (boolean, activeLevel) => {
+  const newLevel = activeLevel+1;
   if(boolean){
     const { currentUser } = firebase.auth();
     firebase.database().ref(`/users/${currentUser.uid}`)
-      .set({ activeLevel: activeLevel + 1 });
+      .update({ activeLevel: newLevel });
   }
 
   Actions.roundReview({ type: 'reset' });
 
   return {
     type: END_ROUND,
-    boolean
+    boolean,
+    activeLevel
   }
 }

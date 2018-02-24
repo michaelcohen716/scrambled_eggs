@@ -80,7 +80,7 @@ const mapStateToProps = state => {
   return {
     roundCompleted: state.game.roundCompleted,
     potentialWords: state.game.attempts.length,
-    completedWords: state.game.wordIndex + 1
+    completedWords: state.game.wordIndex
   };
 };
 

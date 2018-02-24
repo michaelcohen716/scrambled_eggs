@@ -1,8 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import LevelButton from './LevelButton';
 import Levels from '../games/levels.json';
+import goldCoin from '../assets/goldCoin.png';
 
 class LevelsPage extends React.Component {
   constructor(props){
@@ -21,8 +22,16 @@ class LevelsPage extends React.Component {
     }
 
     return (
-      <View style={styles.parent}>
-        {levels}
+      <View style={styles.parent} animationOut={'fadeOut'}>
+        <View style={styles.info}>
+          <Text style={styles.eggcoin}>
+            {this.props.eggcoin}
+            <Image source={goldCoin} style={styles.goldEgg} />
+          </Text>
+        </View>
+        <View style={styles.levels}>
+          {levels}
+        </View>
       </View>
     );
   }
@@ -31,10 +40,35 @@ class LevelsPage extends React.Component {
 const styles = {
   parent: {
     flex: 1,
+    flexDirection: 'column'
+  },
+  info: {
+    flexDirection: 'row',
+    height: 40,
+    borderColor: 'black',
+    borderWidth: 1
+  },
+  levels: {
     padding: 5,
     flexDirection: 'row',
     flexWrap: 'wrap'
   },
+  eggcoin: {
+    marginLeft: 8,
+    marginTop: 8
+  },
+  goldEgg: {
+    height: 15,
+    width: 15,
+    marginLeft: 3,
+    marginTop: 3
+  }
 };
 
-export default connect(null, null)(LevelsPage);
+const mapStateToProps = state => {
+  return {
+    eggcoin: state.score.userEggcoin
+  };
+};
+
+export default connect(mapStateToProps, null)(LevelsPage);

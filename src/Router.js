@@ -8,11 +8,11 @@ import RoundReview from './components/RoundReview';
 const RouterComponent = () => {
   return (
     <Router>
-      <Scene key="root">
+      <Scene key="root" tabs={false}>
         <Scene initial key="login" component={LoginForm} title="Please Login" />
         <Scene key="levels" component={LevelsPage} title="Levels" />
         <Scene key="game" component={Game} title="Game On" />
-        <Scene key="roundReview" component={RoundReview} title="Round Review" />
+        <Scene key="roundReview" hideNavBar component={RoundReview} title="Round Review" />
       </Scene>
     </Router>
   );

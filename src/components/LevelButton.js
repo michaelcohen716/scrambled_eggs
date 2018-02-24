@@ -1,27 +1,26 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Animated, Easing } from 'react-native';
 import { connect } from 'react-redux';
 import { assignLevel } from '../actions';
 
 class LevelButton extends React.Component {
+  constructor(){
+    super();
+  }
+
+
+
   onPress(num){
     this.props.assignLevel(num);
   }
 
-  onFakePress(num){
-    console.log(num);
-    console.log(this.props);
-  }
-
   render(){
-    console.log(this.props);
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
-    const onFakePress = this.onFakePress.bind(this, num);
 
     if(num > this.props.nextUnsolvedLevel){
       return (
-        <TouchableOpacity style={styles.lockedLevel} key={num} onPress={onFakePress}>
+        <TouchableOpacity style={styles.lockedLevel} key={num} >
           <Text style={styles.lockedText}>
             {num}
           </Text>
@@ -30,11 +29,12 @@ class LevelButton extends React.Component {
     }
 
     return (
-      <TouchableOpacity style={styles.level} key={num} onPress={onPress}>
-        <Text style={styles.text}>
-          {num}
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
+          <Text style={styles.text}>
+            {num}
+          </Text>
+        </TouchableOpacity>
+
     );
   }
 }

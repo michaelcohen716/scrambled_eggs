@@ -6,21 +6,26 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  activeLevel: null,
+  activeLevel: 1,
   nextUnsolvedLevel: 1
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
-    case LOGIN_USER_SUCCESS:
     case SIGNUP_USER_SUCCESS:
+      const newUser = firebase.auth().currentUser;
+      firebase.database().ref(`/users/${newUser.uid}`)
+        .set({ activeLevel: 1});
+      return state;
+
+    case LOGIN_USER_SUCCESS:
       const unsolvedState = merge({}, state);
       const { currentUser } = firebase.auth();
       firebase.database().ref(`/users/${currentUser.uid}/activeLevel`)
-        .once('value', (data) => {
-          console.log(data);
-          unsolvedState.nextUnsolvedLevel = data.node_.value_;
-        });
+      .once('value', (data) => {
+        console.log(data);
+        unsolvedState.nextUnsolvedLevel = data.node_.value_;
+      });
       return unsolvedState;
 
     case ASSIGN_LEVEL:

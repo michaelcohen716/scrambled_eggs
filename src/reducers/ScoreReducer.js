@@ -7,7 +7,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  userEggcoin: 0,
+  userEggcoin: 1000,
   roundScore: 0,
   scoreMultiplier: 100
 };
@@ -32,12 +32,17 @@ export default (state = INITIAL_STATE, action) => {
       return futureState;
 
     case SIGNUP_USER_SUCCESS:
+      const newUser = firebase.auth().currentUser;
+      firebase.database().ref(`/users/${newUser.uid}`)
+        .set({ eggcoin: 1000, activeLevel: 1});
+      return state;
+
     case LOGIN_USER_SUCCESS:
       const eggState = merge({}, state);
 
       const { currentUser } = firebase.auth();
       firebase.database().ref(`/users/${currentUser.uid}/eggcoin`)
-        .once('value', (data) => {
+        .on('value', (data) => {
           eggState.userEggcoin = data.node_.value_;
         });
       return eggState;
