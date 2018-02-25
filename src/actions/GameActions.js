@@ -32,7 +32,9 @@ export const verifyWord = (letter, letterIndex) => {
 
 export const endRound = (boolean, activeLevel) => {
   const newLevel = activeLevel+1;
+  let activeLevelAttempted = true;
   if(boolean){
+    activeLevelAttempted = false; //if completed bool = true, activeLevelAttempted for nextLevel will be false
     const { currentUser } = firebase.auth();
     firebase.database().ref(`/gameInfo/${currentUser.uid}`)
       .update({ activeLevel: newLevel });
@@ -43,6 +45,7 @@ export const endRound = (boolean, activeLevel) => {
   return {
     type: END_ROUND,
     boolean,
-    activeLevel
+    activeLevel,
+    activeLevelAttempted
   }
 }

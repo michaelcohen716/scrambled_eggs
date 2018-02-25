@@ -15,8 +15,6 @@ class LevelsPage extends React.Component {
   }
 
   render(){
-    console.log("this.props.eggcoin");
-    console.log(this.props.eggcoin);
     let levels = [];
     for (var i = 0; i < this.levels; i++) {
       const thisLevel = <LevelButton num={i+1} key={i}/>;
@@ -57,7 +55,7 @@ const styles = {
   },
   eggcoin: {
     marginLeft: 8,
-    marginTop: 8,
+    marginTop: 9,
     fontSize: 15,
     fontWeight: 'bold'
   },

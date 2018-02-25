@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { awardWordCompletion } from '../actions';
 import eggImage from '../assets/egg.png';
 import coinSpin from '../assets/coin_spin.gif';
-var baseScore = 5; // figure out cleaner way to do this
 
 class ScoreKeeper extends React.Component {
   constructor(){
@@ -16,9 +15,17 @@ class ScoreKeeper extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    const scoreIncrement = baseScore * this.props.scoreMultiplier;
+    const { activeLevelAttempted, unattemptedBaseScore, attemptedBaseScore } = this.props;
 
     if(this.props.wordIndex < nextProps.wordIndex){
+      let scoreIncrement = 0;
+
+      if(activeLevelAttempted){
+        scoreIncrement = Math.floor(attemptedBaseScore * this.props.scoreMultiplier);
+      } else {
+        scoreIncrement = Math.floor(unattemptedBaseScore * this.props.scoreMultiplier);
+      }
+
       this.props.awardWordCompletion(scoreIncrement);
       this.animateEggCoin();
     }
@@ -51,7 +58,6 @@ class ScoreKeeper extends React.Component {
       eggs.push(egg(i));
     }
 
-
     return (
       <View style={styles.container}>
         {eggs}
@@ -80,7 +86,10 @@ const mapStateToProps = state => {
   return {
     roundScore: state.score.roundScore,
     wordIndex: state.game.wordIndex,
-    scoreMultiplier: state.score.scoreMultiplier
+    scoreMultiplier: state.score.scoreMultiplier,
+    activeLevelAttempted: state.score.activeLevelAttempted,
+    attemptedBaseScore: state.score.attemptedBaseScore,
+    unattemptedBaseScore: state.score.unattemptedBaseScore
   };
 };
 

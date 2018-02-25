@@ -19,6 +19,3 @@ const RouterComponent = () => {
 };
 
 export default RouterComponent;
-
-
-// <Scene key="home" component={Home} title="Home Page" />

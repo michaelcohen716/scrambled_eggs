@@ -55,7 +55,7 @@ class Game extends React.Component {
       <View>
         <InfoBar />
         <WordHolder active={currentWord} />
-        <Timer seconds={100}/>
+        <Timer seconds={20}/>
 
         <View style={styles.messageContainer}>
           <Text style={styles.message}>{this.props.message}</Text>

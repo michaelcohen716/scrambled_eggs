@@ -7,12 +7,12 @@ class Timer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      seconds: this.props.seconds,
+      seconds: this.props.seconds, //10
       timer: null
     };
-    this.initialTime = this.props.seconds;
+    this.initialTime = this.props.seconds; //10
     this.tick = this.tick.bind(this);
-    this.decrement = this.initialTime / 100;
+    this.decrement = 100 / this.initialTime; // 100/10 = 10
   }
 
   componentDidMount(){
@@ -21,25 +21,30 @@ class Timer extends React.Component {
   }
 
   tick(){
+    const { roundScore, activeLevel, eggcoin } = this.props;
+
     if(this.props.wordIndex === this.props.attempts.length){
+      // setTimeout(() => {
+        const provisionalEggcoin = eggcoin + roundScore;
+        this.props.recordScore(roundScore, provisionalEggcoin);
+        this.props.endRound(true, activeLevel);
+      // }, 800);
+
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
+      return;
+    }
 
-      const { roundScore, eggcoin, activeLevel } = this.props;
-      console.log(this.props);
-      this.props.recordScore(roundScore, eggcoin);
-      this.props.endRound(true, activeLevel);
+    const timeElapsed = this.initialTime - this.state.seconds;
+    if(timeElapsed + 1 == this.initialTime){
+      // debugger
+      this.props.endRound(false, activeLevel);
+      const timer = this.state.timer;
+      this.setState({ timer: clearInterval(timer) });
     }
 
     this.props.reduceScoreMultiplier(this.decrement);
     this.setState({ seconds: this.state.seconds - 1});
-
-    const timeElapsed = this.initialTime - this.state.seconds;
-    if(timeElapsed + 1 === this.initialTime){
-      const timer = this.state.timer;
-      this.setState({ timer: clearInterval(timer) });
-      this.props.endRound(false);
-    }
   }
 
   render(){

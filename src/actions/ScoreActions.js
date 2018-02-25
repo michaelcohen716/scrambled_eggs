@@ -19,8 +19,9 @@ export const recordScore = (score, eggcoin) => {
     .set({ eggcoin })
     .then(() => {
       dispatch({
-        type: RECORD_SCORE, //right now, this is non-op
-        score
+        type: RECORD_SCORE, 
+        score,
+        eggcoin
       });
     });
   };

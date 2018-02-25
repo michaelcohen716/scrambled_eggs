@@ -17,8 +17,8 @@ class InfoBar extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    const prevScore = this.props.eggcoin;
-    const nextScore = nextProps.eggcoin;
+    const prevScore = this.props.provisionalEggcoin;
+    const nextScore = nextProps.provisionalEggcoin;
     this.setState({ prevScore });
     const millisecondIncrement = 1000 / (nextScore - prevScore); // 1000 / (1500 - 1000) = 2ms
 
@@ -31,11 +31,18 @@ class InfoBar extends React.Component {
       const animation = this.state.animation;
       this.setState({ animation });
     }
-    this.setState({ animateChange: this.state.animateChange - 7 }); // control speed of score change animation
+    let animateDecrement = 0;
+    if(this.props.activeLevelAttempted){
+      animateDecrement = 1;
+    } else {
+      animateDecrement = 7;
+    }
+
+    this.setState({ animateChange: this.state.animateChange - animateDecrement }); // control speed of score change animation
   }
 
   render(){
-    let eggcoin = this.props.eggcoin;
+    let eggcoin = this.props.provisionalEggcoin;
     const eggcoinDelta = eggcoin - this.state.prevScore;
 
     if(this.state.animateChange > 0){
@@ -81,7 +88,10 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    eggcoin: state.score.userEggcoin
+    eggcoin: state.score.userEggcoin,
+    roundScore: state.score.roundScore,
+    provisionalEggcoin: state.score.userEggcoin + state.score.roundScore,
+    activeLevelAttempted: state.score.activeLevelAttempted
   };
 };
 

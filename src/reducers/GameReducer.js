@@ -35,6 +35,7 @@ export default (state = INITIAL_STATE, action) => {
       newState.wordIndex = 0;
       newState.activeLetters = action.activeLetters;
       newState.answers = action.answers;
+      newState.roundCompleted = false;
       return newState;
 
     case TAP_LETTER:

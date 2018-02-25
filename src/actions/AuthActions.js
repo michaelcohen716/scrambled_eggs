@@ -50,15 +50,18 @@ const signupUserSuccess = (dispatch, user) => {
 
 const createUser = (dispatch) => {
   dispatch({ type: CREATE_USER })
-  console.log("createUser");
 
   const { currentUser } = firebase.auth();
   firebase.database().ref(`/users/${currentUser.uid}`)
     .set({ phone: '323-323-3232'});
 
+  // default user game info
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
-    .set({ eggcoin: 1000, activeLevel: 1})
-
+    .set({
+      eggcoin: 1000,
+      activeLevel: 1,
+      activeLevelAttempted: false
+    })
 }
 
 // on login button press
@@ -72,27 +75,31 @@ export const loginUser = ({ email, password }) => {
   }
 };
 
+
+const loginUserSuccess = (dispatch, user) => {
+  const { currentUser } = firebase.auth();
+  firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .once('value', (snapshot) => {
+
+    const eggcoin = snapshot.val().eggcoin;
+    const activeLevel = snapshot.val().activeLevel;
+    let activeLevelAttempted = snapshot.val().activeLevelAttempted;
+
+    if(!activeLevelAttempted){
+      activeLevelAttempted = true;
+    }
+    Actions.levels({ type: 'reset'});
+
+    dispatch({
+      type: LOGIN_USER_SUCCESS,
+      user,
+      eggcoin,
+      activeLevel,
+      activeLevelAttempted
+    })
+  })
+}
+
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
 };
-
-const loginUserSuccess = (dispatch, user) => {
-  // return (dispatch) => {
-
-    const { currentUser } = firebase.auth();
-    firebase.database().ref(`/gameInfo/${currentUser.uid}`)
-      .once('value', (snapshot) => {
-      console.log(snapshot.val());
-      const eggcoin = snapshot.val().eggcoin;
-      const activeLevel = snapshot.val().activeLevel;
-      Actions.levels({ type: 'reset'});
-      dispatch({
-        type: LOGIN_USER_SUCCESS,
-        user,
-        eggcoin,
-        activeLevel
-      })
-  })
-
-  // }
-}
