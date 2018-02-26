@@ -20,9 +20,13 @@ class ScoreKeeper extends React.Component {
     if(this.props.wordIndex < nextProps.wordIndex){
       let scoreIncrement = 0;
 
-      if(activeLevelAttempted){
+      if(this.props.activeLevel < this.props.nextUnsolvedLevel){
+        scoreIncrement = 0; // reiterated to be explicit...no points for solved level
+      }
+      else if(activeLevelAttempted){
         scoreIncrement = Math.floor(attemptedBaseScore * this.props.scoreMultiplier);
-      } else {
+      }
+      else {
         scoreIncrement = Math.floor(unattemptedBaseScore * this.props.scoreMultiplier);
       }
 
@@ -71,9 +75,9 @@ const styles = {
     alignItems: 'flex-end',
     flexDirection: 'row'
   },
-  score: {
-    fontSize: 18
-  },
+  // score: {
+  //   fontSize: 18
+  // },
   egg: {
     width: 15,
     height: 20,
@@ -89,7 +93,9 @@ const mapStateToProps = state => {
     scoreMultiplier: state.score.scoreMultiplier,
     activeLevelAttempted: state.score.activeLevelAttempted,
     attemptedBaseScore: state.score.attemptedBaseScore,
-    unattemptedBaseScore: state.score.unattemptedBaseScore
+    unattemptedBaseScore: state.score.unattemptedBaseScore,
+    activeLevel: state.levels.activeLevel,
+    nextUnsolvedLevel: state.levels.nextUnsolvedLevel
   };
 };
 

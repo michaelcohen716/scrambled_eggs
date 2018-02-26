@@ -80,6 +80,7 @@ const styles = {
   },
   messageContainer: {
     minHeight: 32,
+    maxHeight: 32,
     position: 'relative',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -90,7 +91,8 @@ const mapStateToProps = state => {
   return {
     activeLetters: state.game.activeLetters,
     message: state.game.message,
-    activeLevel: state.levels.activeLevel
+    activeLevel: state.levels.activeLevel,
+    activeLevelAttempted: state.score.activeLevelAttempted
   };
 };
 

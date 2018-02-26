@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import ScoreKeeper from './ScoreKeeper';
 import goldCoin from '../assets/goldCoin.png';
+import undoButton from '../assets/undo.png';
+import { undoWord } from '../actions';
 
 class InfoBar extends React.Component {
   constructor(){
@@ -14,16 +16,19 @@ class InfoBar extends React.Component {
       prevScore: null,
     };
     this.animate = this.animate.bind(this);
+    this.undoWord = this.undoWord.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
-    const prevScore = this.props.provisionalEggcoin;
-    const nextScore = nextProps.provisionalEggcoin;
-    this.setState({ prevScore });
-    const millisecondIncrement = 1000 / (nextScore - prevScore); // 1000 / (1500 - 1000) = 2ms
+    if(nextProps.provisionalEggcoin !== this.props.provisionalEggcoin){
+      const prevScore = this.props.provisionalEggcoin;
+      const nextScore = nextProps.provisionalEggcoin;
+      this.setState({ prevScore });
+      const millisecondIncrement = 1000 / (nextScore - prevScore); // 1000 / (1500 - 1000) = 2ms
 
-    let animation = setInterval(this.animate, millisecondIncrement);
-    this.setState({ animation, animateChange: nextScore - prevScore, millisecondIncrement });
+      let animation = setInterval(this.animate, millisecondIncrement);
+      this.setState({ animation, animateChange: nextScore - prevScore, millisecondIncrement });
+    }
   }
 
   animate(){
@@ -41,6 +46,10 @@ class InfoBar extends React.Component {
     this.setState({ animateChange: this.state.animateChange - animateDecrement }); // control speed of score change animation
   }
 
+  undoWord(){
+    this.props.undoWord();
+  }
+
   render(){
     let eggcoin = this.props.provisionalEggcoin;
     const eggcoinDelta = eggcoin - this.state.prevScore;
@@ -53,11 +62,20 @@ class InfoBar extends React.Component {
     return (
       <View style={styles.container}>
 
-        <Text style={styles.eggcoin}>
-          {eggcoin}
-        </Text>
-        <Image source={goldCoin} style={styles.goldEgg} />
-        <ScoreKeeper />
+        <View style={styles.coinInfo}>
+          <Text style={styles.eggcoin}>
+            {eggcoin}
+          </Text>
+          <Image source={goldCoin} style={styles.goldEgg} />
+        </View>
+
+        <TouchableOpacity style={styles.undoContainer} onPress={this.undoWord}>
+          <Image source={undoButton} style={styles.undo}/>
+        </TouchableOpacity>
+
+        <View style={styles.score}>
+          <ScoreKeeper />
+        </View>
       </View>
     );
   }
@@ -68,12 +86,13 @@ const styles = {
     flexDirection: 'row',
     borderColor: 'blue',
     borderWidth: 0.5,
-    justifyContent: 'space-between',
-    height: 35
+    alignItems: 'center',
   },
-  username: {
-    marginLeft: 8,
-    marginTop: 8
+  coinInfo: {
+    flexDirection: 'row',
+    flex: 0.33,
+    height: 35,
+    justifyContent: 'flex-start',
   },
   eggcoin: {
     marginLeft: 8,
@@ -84,7 +103,26 @@ const styles = {
     height: 15,
     width: 15,
     marginLeft: 3,
+    marginTop: 12
+  },
+  undo: {
+    height: 30,
+    width: 30,
+    // borderWidth: 0.5,
+    // borderColor: 'black',
     marginTop: 3
+  },
+  undoContainer: {
+    height: 35,
+    flex: 0.3333,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  score: {
+    height: 35,
+    flex: 0.33,
+    justifyContent: 'flex-end',
+    flexDirection: 'row'
   }
 };
 
@@ -93,8 +131,9 @@ const mapStateToProps = state => {
     eggcoin: state.score.userEggcoin,
     roundScore: state.score.roundScore,
     provisionalEggcoin: state.score.userEggcoin + state.score.roundScore,
-    activeLevelAttempted: state.score.activeLevelAttempted
+    activeLevelAttempted: state.score.activeLevelAttempted,
+    wordIndex: state.game.wordIndex
   };
 };
 
-export default connect(mapStateToProps, null)(InfoBar);
+export default connect(mapStateToProps, { undoWord })(InfoBar);

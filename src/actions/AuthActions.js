@@ -83,11 +83,8 @@ const loginUserSuccess = (dispatch, user) => {
 
     const eggcoin = snapshot.val().eggcoin;
     const activeLevel = snapshot.val().activeLevel;
-    let activeLevelAttempted = snapshot.val().activeLevelAttempted;
+    const activeLevelAttempted = snapshot.val().activeLevelAttempted;
 
-    if(!activeLevelAttempted){
-      activeLevelAttempted = true;
-    }
     Actions.levels({ type: 'reset'});
 
     dispatch({

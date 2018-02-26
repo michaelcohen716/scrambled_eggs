@@ -1,6 +1,7 @@
 import {
   TAP_LETTER, START_NEW_WORD,
-  VERIFY_WORD, END_ROUND }
+  VERIFY_WORD, END_ROUND,
+  UNDO_WORD }
 from '../actions/types';
 import merge from 'lodash/merge';
 
@@ -10,7 +11,7 @@ const INITIAL_STATE = {
   wordIndex: 0, //index into attempts
   answers: [], //solutions
   attemptLength: 0, // if ["a", "", ""] => 1
-  usedLetters: [], // ^ has letter been tapped for this scramble yet?
+  usedLetters: [], // ^ has letter been tapped for this scramble yet? t/f
   message: '', // "Nice!" or "Not word"
   roundCompleted: false
 };
@@ -36,6 +37,7 @@ export default (state = INITIAL_STATE, action) => {
       newState.activeLetters = action.activeLetters;
       newState.answers = action.answers;
       newState.roundCompleted = false;
+      newState.message = '';
       return newState;
 
     case TAP_LETTER:
@@ -81,6 +83,20 @@ export default (state = INITIAL_STATE, action) => {
         let endState = merge({}, state);
         endState.roundCompleted = action.boolean;
         return endState;
+
+      case UNDO_WORD:
+        const undoState = merge({}, state);
+        const currentWordIndex = state.wordIndex;
+        undoState.attempts[currentWordIndex] = [];
+        undoState.attemptLength = 0;
+
+        const usedLetters2 = new Array(state.activeLetters.length);
+        for (var m = 0; m < usedLetters2.length; m++) {
+          usedLetters2[m] = false;
+        }
+        undoState.usedLetters = usedLetters2; //from START_NEW_WORD
+
+        return undoState;
 
     default:
       return state;

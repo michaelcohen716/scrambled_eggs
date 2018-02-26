@@ -2,7 +2,8 @@ import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
   TAP_LETTER, START_NEW_WORD,
-  VERIFY_WORD, END_ROUND }
+  VERIFY_WORD, END_ROUND,
+  UNDO_WORD }
 from './types';
 
 export const startNewWord = ({ numWords, activeLetters, answers }) => {
@@ -10,7 +11,7 @@ export const startNewWord = ({ numWords, activeLetters, answers }) => {
     type: START_NEW_WORD,
     numWords,
     activeLetters,
-    answers
+    answers,
   };
 };
 
@@ -30,14 +31,21 @@ export const verifyWord = (letter, letterIndex) => {
   }
 }
 
+export const undoWord = () => {
+  return {
+    type: UNDO_WORD
+  }
+}
+
 export const endRound = (boolean, activeLevel) => {
   const newLevel = activeLevel+1;
-  let activeLevelAttempted = true;
+  const { currentUser } = firebase.auth();
   if(boolean){
-    activeLevelAttempted = false; //if completed bool = true, activeLevelAttempted for nextLevel will be false
-    const { currentUser } = firebase.auth();
     firebase.database().ref(`/gameInfo/${currentUser.uid}`)
-      .update({ activeLevel: newLevel });
+      .update({ activeLevel: newLevel, activeLevelAttempted: false });
+  } else {
+    firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+      .update({ activeLevelAttempted: true});
   }
 
   Actions.roundReview({ type: 'reset' });
@@ -45,7 +53,6 @@ export const endRound = (boolean, activeLevel) => {
   return {
     type: END_ROUND,
     boolean,
-    activeLevel,
-    activeLevelAttempted
+    activeLevel
   }
 }

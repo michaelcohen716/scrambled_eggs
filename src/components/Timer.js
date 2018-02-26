@@ -37,7 +37,6 @@ class Timer extends React.Component {
 
     const timeElapsed = this.initialTime - this.state.seconds;
     if(timeElapsed + 1 == this.initialTime){
-      // debugger
       this.props.endRound(false, activeLevel);
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
