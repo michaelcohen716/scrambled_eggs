@@ -28,7 +28,7 @@ class InfoBar extends React.Component {
 
   animate(){
     if(this.state.animateChange - this.state.millisecondIncrement === 0){
-      const animation = this.state.animation;
+      const animation = clearInterval(this.state.animation);
       this.setState({ animation });
     }
     let animateDecrement = 0;
@@ -52,10 +52,11 @@ class InfoBar extends React.Component {
 
     return (
       <View style={styles.container}>
+
         <Text style={styles.eggcoin}>
           {eggcoin}
-          <Image source={goldCoin} style={styles.goldEgg} />
         </Text>
+        <Image source={goldCoin} style={styles.goldEgg} />
         <ScoreKeeper />
       </View>
     );
@@ -76,7 +77,8 @@ const styles = {
   },
   eggcoin: {
     marginLeft: 8,
-    marginTop: 8
+    marginTop: 8,
+    fontFamily: 'blockbrokers'
   },
   goldEgg: {
     height: 15,

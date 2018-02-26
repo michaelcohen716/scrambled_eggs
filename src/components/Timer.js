@@ -24,11 +24,11 @@ class Timer extends React.Component {
     const { roundScore, activeLevel, eggcoin } = this.props;
 
     if(this.props.wordIndex === this.props.attempts.length){
-      // setTimeout(() => {
+      setTimeout(() => {
         const provisionalEggcoin = eggcoin + roundScore;
         this.props.recordScore(roundScore, provisionalEggcoin);
         this.props.endRound(true, activeLevel);
-      // }, 800);
+      }, 800);
 
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });

@@ -13,10 +13,11 @@ class Game extends React.Component {
   constructor(props){
     super(props);
     this.breakDown();
+    this.seconds = Levels[this.props.activeLevel].time;
   }
 
   breakDown(){
-    this.activeWord = Levels[this.props.activeLevel];
+    this.activeWord = Levels[this.props.activeLevel].letters;
     this.answers = Words[this.activeWord];
 
     const startWordObject = {
@@ -55,7 +56,7 @@ class Game extends React.Component {
       <View>
         <InfoBar />
         <WordHolder active={currentWord} />
-        <Timer seconds={20}/>
+        <Timer seconds={this.seconds}/>
 
         <View style={styles.messageContainer}>
           <Text style={styles.message}>{this.props.message}</Text>

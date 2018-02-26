@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity, Animated, Easing, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { assignLevel } from '../actions';
+import Levels from '../games/levels.json';
 import lockImage from '../assets/lock.png';
 
 class LevelButton extends React.Component {
@@ -15,8 +16,17 @@ class LevelButton extends React.Component {
   render(){
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
+    // console.log(this.props.stage);
+    // console.log(Levels[num].stage);
+    if(this.props.stage !== Levels[num].stage){ //not this stage
+      return (
+        <TouchableOpacity style={styles.lockedLevel}>
+          <Image source={lockImage} style={styles.lock} />
+        </TouchableOpacity>
+      );
+    }
 
-    if(num > this.props.nextUnsolvedLevel){
+    if(num > this.props.nextUnsolvedLevel){ //unsolved level
       return (
         <TouchableOpacity style={styles.lockedLevel} key={num} >
             <Image source={lockImage} style={styles.lock} />
@@ -26,10 +36,19 @@ class LevelButton extends React.Component {
         </TouchableOpacity>
       );
     }
-    // <View style={{flex: 1}}>
-    // </View>
 
-    return (
+    if(num < this.props.nextUnsolvedLevel){ //solved level
+      return (
+        <TouchableOpacity onPress={onPress} style={styles.solvedLevel} >
+          <Text style={styles.solvedText}>
+            {num}
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+
+
+    return ( //nextUnsolvedLevel
         <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
           <Text style={styles.text}>
             {num}
@@ -42,44 +61,63 @@ class LevelButton extends React.Component {
 
 const styles = {
   level: {
-    width: 40,
-    height: 40,
+    width: 75,
+    height: 75,
     backgroundColor: 'blue',
     borderColor: 'white',
     borderWidth: 2.5,
-    margin: 10,
+    margin: 8,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center'
   },
   lockedLevel: {
-    width: 40,
-    height: 40,
+    width: 75,
+    height: 75,
     backgroundColor: 'red',
     borderColor: 'white',
     borderWidth: 2.5,
-    margin: 10,
+    margin: 8,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  solvedLevel: {
+    width: 75,
+    height: 75,
+    backgroundColor: 'white',
+    borderColor: 'blue',
+    borderWidth: 2.5,
+    margin: 8,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold'
-  },
-  lockedText: {
-    fontSize: 20,
+    fontSize: 28,
     color: 'white',
     fontWeight: 'bold',
+    fontFamily: 'blockbrokers'
+  },
+  lockedText: {
+    fontSize: 28,
+    color: 'white',
+    fontWeight: 'bold',
+    fontFamily: 'blockbrokers',
     position: 'absolute',
     textAlign: 'center',
-    top: 5,
+    top: 11,
     opacity: 0.7
   },
+  solvedText: {
+    fontSize: 28,
+    color: 'blue',
+    fontWeight: 'bold',
+    fontFamily: 'blockbrokers'
+  },
   lock: {
-    width: 50,
-    height: 50,
+    width: 90,
+    height: 90,
     position: 'absolute',
     opacity: 0.3
   }
@@ -87,7 +125,8 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    nextUnsolvedLevel: state.levels.nextUnsolvedLevel
+    nextUnsolvedLevel: state.levels.nextUnsolvedLevel,
+    stage: state.levels.stage
   };
 };
 

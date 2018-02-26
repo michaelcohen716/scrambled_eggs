@@ -1,17 +1,17 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
-import LevelButton from './LevelButton';
 import Levels from '../games/levels.json';
+import LevelButton from './LevelButton';
 import goldCoin from '../assets/goldCoin.png';
 
 class LevelsPage extends React.Component {
   constructor(props){
     super(props);
-    this.levels = Object.keys(Levels).length; //total levels in game
     this.state = {
       activeLevel: null
     };
+    this.levels = Object.keys(Levels).length; //total levels in game
   }
 
   render(){
@@ -24,6 +24,9 @@ class LevelsPage extends React.Component {
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
         <View style={styles.info}>
+          <Text style={styles.stage}>
+            {this.props.stage}
+          </Text>
           <Text style={styles.eggcoin}>
             {this.props.eggcoin}
             <Image source={goldCoin} style={styles.goldEgg} />
@@ -44,6 +47,7 @@ const styles = {
   },
   info: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     height: 40,
     borderColor: 'black',
     borderWidth: 0.3
@@ -51,25 +55,35 @@ const styles = {
   levels: {
     padding: 5,
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    backgroundColor: 'black'
   },
   eggcoin: {
-    marginLeft: 8,
+    marginRight: 8,
     marginTop: 9,
     fontSize: 15,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'blockbrokers'
   },
   goldEgg: {
     height: 15,
     width: 15,
+    marginRight: 5,
     marginLeft: 3,
-    marginTop: 3
+  },
+  stage: {
+    fontSize: 15,
+    // fontWeight: 'bold',
+    fontFamily: 'blockbrokers',
+    marginLeft: 13,
+    marginTop: 9
   }
 };
 
 const mapStateToProps = state => {
   return {
-    eggcoin: state.score.userEggcoin
+    eggcoin: state.score.userEggcoin,
+    stage: state.levels.stage
   };
 };
 
