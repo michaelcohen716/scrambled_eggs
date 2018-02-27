@@ -96,6 +96,7 @@ const styles = {
     flex: 0.33,
     height: 50,
     justifyContent: 'flex-start',
+    marginTop: 9,
   },
   eggcoin: {
     marginLeft: 8,
@@ -125,7 +126,8 @@ const styles = {
     height: 50,
     flex: 0.33,
     justifyContent: 'flex-end',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginRight: 2
   }
 };
 

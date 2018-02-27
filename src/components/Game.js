@@ -4,7 +4,6 @@ import Levels from '../games/levels.json';
 import { View, Text } from 'react-native';
 import WordHolder from './WordHolder';
 import EmptyHolder from './EmptyHolder';
-// import Timer from './Timer';
 import InfoBar from './InfoBar';
 import { connect } from 'react-redux';
 import { startNewWord } from '../actions';
