@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { awardWordCompletion } from '../actions';
+import Timer from './Timer';
 import eggImage from '../assets/egg.png';
 import coinSpin from '../assets/coin_spin.gif';
 
@@ -44,32 +45,33 @@ class ScoreKeeper extends React.Component {
   }
 
   render(){
-    const egg = (key) => {
-      if(this.state.animateTimeline === 1){
-        return (
-          <Image source={coinSpin} style={styles.egg} key={key} idx={key}/>
-        );
-      } else {
-        return (
-          <Image source={eggImage} style={styles.egg} key={key} idx={key}/>
-        );
-      }
-    };
-
-    const eggs = [];
-    const wordIndex = this.props.wordIndex;
-    for (var i = 0; i < wordIndex; i++) {
-      eggs.push(egg(i));
-    }
+    // const egg = (key) => {
+    //   if(this.state.animateTimeline === 1){
+    //     return (
+    //       <Image source={coinSpin} style={styles.egg} key={key} idx={key}/>
+    //     );
+    //   } else {
+    //     return (
+    //       <Image source={eggImage} style={styles.egg} key={key} idx={key}/>
+    //     );
+    //   }
+    // };
+    //
+    // const eggs = [];
+    // const wordIndex = this.props.wordIndex;
+    // for (var i = 0; i < wordIndex; i++) {
+    //   eggs.push(egg(i));
+    // }
 
     return (
-      <View style={styles.container}>
-        {eggs}
-      </View>
+      <Timer />
     );
   }
 }
 
+// <View style={styles.container}>
+//   {eggs}
+// </View>
 const styles = {
   container: {
     alignItems: 'flex-end',

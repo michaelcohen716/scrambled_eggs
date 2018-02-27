@@ -13,7 +13,8 @@ const INITIAL_STATE = {
   attemptLength: 0, // if ["a", "", ""] => 1
   usedLetters: [], // ^ has letter been tapped for this scramble yet? t/f
   message: '', // "Nice!" or "Not word"
-  roundCompleted: false
+  roundCompleted: false,
+  roundTime: 0 //time allotted for round
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -38,6 +39,7 @@ export default (state = INITIAL_STATE, action) => {
       newState.answers = action.answers;
       newState.roundCompleted = false;
       newState.message = '';
+      newState.roundTime = action.roundTime;
       return newState;
 
     case TAP_LETTER:

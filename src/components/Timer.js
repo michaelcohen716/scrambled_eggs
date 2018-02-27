@@ -47,42 +47,32 @@ class Timer extends React.Component {
   }
 
   render(){
-    var fillerUnit = 1 / this.initialTime; // 1/30 = 1 / 30
-    var styles = {
-      filler: {
-        backgroundColor: 'black',
-        height: 5,
-        flex: fillerUnit
-      },
-      holder: {
-        borderColor: 'black',
-        borderWidth: 1,
-        height: 6,
-        backgroundColor: 'white',
-        flexDirection: 'row',
-      }
-    };
-
-    const filler = (id) => (
-      <View style={styles.filler} key={id}>
-      </View>
-    );
-
-    const timeElapsed = this.initialTime - this.state.seconds; // 20 = 30 - 10
-
-    let fillers = [];
-    for (var i = 0; i < timeElapsed; i++) {
-      const nextFiller = filler(i);
-      fillers.push(nextFiller);
-    }
-
     return (
-      <View style={styles.holder}>
-        {fillers}
+      <View style={styles.timeCircle}>
+        <Text style={styles.seconds}>
+          {this.state.seconds}
+        </Text>
       </View>
     );
   }
 }
+
+const styles = {
+  timeCircle: {
+    height: 46,
+    width: 46,
+    borderRadius: 50,
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 2,
+    marginBottom: 2
+  },
+  seconds: {
+    fontSize: 22,
+    color: 'white',
+  }
+};
 
 const mapStateToProps = state => {
   return {
@@ -90,7 +80,8 @@ const mapStateToProps = state => {
     attempts: state.game.attempts,
     roundScore: state.score.roundScore,
     eggcoin: state.score.userEggcoin,
-    activeLevel: state.levels.activeLevel
+    activeLevel: state.levels.activeLevel,
+    seconds: state.game.roundTime
   };
 };
 

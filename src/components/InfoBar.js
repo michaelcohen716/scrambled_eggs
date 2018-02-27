@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import ScoreKeeper from './ScoreKeeper';
+import Timer from './Timer';
 import goldCoin from '../assets/goldCoin.png';
 import undoButton from '../assets/undo.png';
 import { undoWord } from '../actions';
@@ -73,6 +74,7 @@ class InfoBar extends React.Component {
           <Image source={undoButton} style={styles.undo}/>
         </TouchableOpacity>
 
+
         <View style={styles.score}>
           <ScoreKeeper />
         </View>
@@ -81,6 +83,7 @@ class InfoBar extends React.Component {
   }
 }
 
+// <Timer seconds={this.state.seconds}/>
 const styles = {
   container: {
     flexDirection: 'row',
@@ -91,7 +94,7 @@ const styles = {
   coinInfo: {
     flexDirection: 'row',
     flex: 0.33,
-    height: 35,
+    height: 50,
     justifyContent: 'flex-start',
   },
   eggcoin: {
@@ -106,20 +109,20 @@ const styles = {
     marginTop: 12
   },
   undo: {
-    height: 30,
-    width: 30,
+    height: 45,
+    width: 45,
     // borderWidth: 0.5,
     // borderColor: 'black',
     marginTop: 3
   },
   undoContainer: {
-    height: 35,
+    height: 50,
     flex: 0.3333,
     flexDirection: 'row',
     justifyContent: 'center',
   },
   score: {
-    height: 35,
+    height: 50,
     flex: 0.33,
     justifyContent: 'flex-end',
     flexDirection: 'row'

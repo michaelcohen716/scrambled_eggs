@@ -23,10 +23,12 @@ class LevelsPage extends React.Component {
 
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
+
         <View style={styles.info}>
           <Text style={styles.stage}>
             {this.props.stage}
           </Text>
+
           <Text style={styles.eggcoin}>
             {this.props.eggcoin}
             <Image source={goldCoin} style={styles.goldEgg} />
@@ -62,7 +64,7 @@ const styles = {
     marginRight: 8,
     marginTop: 9,
     fontSize: 15,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontFamily: 'blockbrokers'
   },
   goldEgg: {

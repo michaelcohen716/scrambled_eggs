@@ -4,7 +4,7 @@ import Levels from '../games/levels.json';
 import { View, Text } from 'react-native';
 import WordHolder from './WordHolder';
 import EmptyHolder from './EmptyHolder';
-import Timer from './Timer';
+// import Timer from './Timer';
 import InfoBar from './InfoBar';
 import { connect } from 'react-redux';
 import { startNewWord } from '../actions';
@@ -12,8 +12,8 @@ import { startNewWord } from '../actions';
 class Game extends React.Component {
   constructor(props){
     super(props);
-    this.breakDown();
     this.seconds = Levels[this.props.activeLevel].time;
+    this.breakDown();
   }
 
   breakDown(){
@@ -23,7 +23,8 @@ class Game extends React.Component {
     const startWordObject = {
       activeLetters: this.scrambleLetters(this.activeWord),
       numWords: this.answers.length,
-      answers: this.answers
+      answers: this.answers,
+      roundTime: this.seconds
     };
 
     this.props.startNewWord(startWordObject);
@@ -56,7 +57,6 @@ class Game extends React.Component {
       <View>
         <InfoBar />
         <WordHolder active={currentWord} />
-        <Timer seconds={this.seconds}/>
 
         <View style={styles.messageContainer}>
           <Text style={styles.message}>{this.props.message}</Text>
@@ -70,6 +70,7 @@ class Game extends React.Component {
   }
 }
 
+// <Timer seconds={this.seconds}/>
 const styles = {
   container: {
     marginTop: 30
