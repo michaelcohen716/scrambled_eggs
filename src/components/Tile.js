@@ -77,12 +77,12 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    wordIndex: state.game.wordIndex, // ^ on word level
-    usedLetters: state.game.usedLetters,
-    attemptLength: state.game.attemptLength, //how many letters in are we
-    wordLength: state.game.activeLetters.length,
-    answers: state.game.answers,
-    attempts: state.game.attempts
+    wordIndex: state.jumble.wordIndex, // ^ on word level
+    usedLetters: state.jumble.usedLetters,
+    attemptLength: state.jumble.attemptLength, //how many letters in are we
+    wordLength: state.jumble.activeLetters.length,
+    answers: state.jumble.answers,
+    attempts: state.jumble.attempts
   };
 };
 

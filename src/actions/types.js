@@ -8,7 +8,7 @@ export const SIGNUP_USER_SUCCESS = 'signup_user_success';
 export const SIGNUP_USER = 'signup_user';
 export const CREATE_USER = 'create_user';
 
-// game
+// game (jumble)
 export const ASSIGN_LEVEL = 'assign_level';
 export const START_NEW_WORD = 'start_new_word';
 export const TAP_LETTER = 'tap_letter';

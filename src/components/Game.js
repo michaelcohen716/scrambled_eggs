@@ -45,7 +45,7 @@ class Game extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    activeLetters: state.game.activeLetters,
+    activeLetters: state.jumble.activeLetters,
     activeLevel: state.levels.activeLevel,
   };
 };

@@ -136,7 +136,7 @@ const mapStateToProps = state => {
     roundScore: state.score.roundScore,
     provisionalEggcoin: state.score.userEggcoin + state.score.roundScore,
     activeLevelAttempted: state.score.activeLevelAttempted,
-    wordIndex: state.game.wordIndex
+    wordIndex: state.jumble.wordIndex
   };
 };
 

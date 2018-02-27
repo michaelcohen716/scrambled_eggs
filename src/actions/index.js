@@ -1,4 +1,4 @@
 export * from './AuthActions';
-export * from './GameActions';
+export * from './JumbleActions';
 export * from './LevelActions';
 export * from './ScoreActions';

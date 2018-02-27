@@ -73,10 +73,10 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    attempts: state.game.attempts,
-    answers: state.game.answers,
-    usedLetters: state.game.usedLetters,
-    wordIndex: state.game.wordIndex
+    attempts: state.jumble.attempts,
+    answers: state.jumble.answers,
+    usedLetters: state.jumble.usedLetters,
+    wordIndex: state.jumble.wordIndex
   };
 };
 

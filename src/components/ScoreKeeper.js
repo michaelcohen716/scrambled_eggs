@@ -91,7 +91,7 @@ const styles = {
 const mapStateToProps = state => {
   return {
     roundScore: state.score.roundScore,
-    wordIndex: state.game.wordIndex,
+    wordIndex: state.jumble.wordIndex,
     scoreMultiplier: state.score.scoreMultiplier,
     activeLevelAttempted: state.score.activeLevelAttempted,
     attemptedBaseScore: state.score.attemptedBaseScore,

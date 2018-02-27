@@ -76,12 +76,12 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    wordIndex: state.game.wordIndex,
-    attempts: state.game.attempts,
+    wordIndex: state.jumble.wordIndex,
+    attempts: state.jumble.attempts,
     roundScore: state.score.roundScore,
     eggcoin: state.score.userEggcoin,
     activeLevel: state.levels.activeLevel,
-    seconds: state.game.roundTime
+    seconds: state.jumble.roundTime
   };
 };
 

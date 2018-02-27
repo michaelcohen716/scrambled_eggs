@@ -54,9 +54,9 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    activeLetters: state.game.activeLetters,
-    message: state.game.message,
-    answers: state.game.answers
+    activeLetters: state.jumble.activeLetters,
+    message: state.jumble.message,
+    answers: state.jumble.answers
   };
 };
 

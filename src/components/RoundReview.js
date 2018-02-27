@@ -78,9 +78,9 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    roundCompleted: state.game.roundCompleted,
-    potentialWords: state.game.attempts.length,
-    completedWords: state.game.wordIndex
+    roundCompleted: state.jumble.roundCompleted,
+    potentialWords: state.jumble.attempts.length,
+    completedWords: state.jumble.wordIndex
   };
 };
 
