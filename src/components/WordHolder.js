@@ -1,15 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 import Tile from './Tile';
-import { tapLetter } from '../actions';
 import { connect } from 'react-redux';
 
-
 class WordHolder extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
   render(){
     const tiles = this.props.activeLetters.map((letter, idx) => {
       return (
@@ -22,7 +16,6 @@ class WordHolder extends React.Component {
         <View style={styles.container}>
           {tiles}
         </View>
-
       </View>
     );
   }
@@ -42,8 +35,8 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    activeLetters: state.jumble.activeLetters,
+    activeLetters: state.jumble.activeLetters
   };
 };
 
-export default connect(mapStateToProps, { tapLetter })(WordHolder);
+export default connect(mapStateToProps, null)(WordHolder);

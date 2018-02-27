@@ -1,0 +1,20 @@
+{
+  "boat": {
+    "1": {
+      "clue": "A nautical vehicle",
+      "letters": "abomtw",
+      "answer": "boat"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "s"
+    },
+    "3": {
+      "clue": "To brag about something",
+      "letters": "abost",
+      "answer": "boast"
+    }
+  },
+
+}

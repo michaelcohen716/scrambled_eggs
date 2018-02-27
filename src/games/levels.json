@@ -1,110 +1,116 @@
 {
   "1": {
+    "type": "jumble",
     "letters": "adil",
     "time": 45,
-    "type": "useAll",
     "stage": "Breaking the Shell"
   },
+  "1": {
+    "type": "scramble",
+    "firstAnswer": "boat",
+    "time": 45,
+    "stage": "Breaking the Shell",
+  },
   "2": {
+    "type": "jumble",
     "letters": "eimt",
     "time": 45,
-    "type": "useAll",
     "stage": "Breaking the Shell"
   },
   "3": {
+    "type": "jumble",
     "letters": "eilv",
     "time": 45,
-    "type": "useAll",
     "stage": "Breaking the Shell"
   },
   "4": {
+    "type": "jumble",
     "letters": "aeglr",
     "time": 75,
-    "type": "useAll",
     "stage": "Breaking the Shell"
   },
   "5": {
+    "type": "jumble",
     "letters": "acert",
     "time": 75,
-    "type": "useAll",
     "stage": "Breaking the Shell"
   },
   "6": {
+    "type": "jumble",
     "letters": "cdeirt",
     "time": 70,
-    "type": "useAll",
     "stage": "Breaking the Shell"
   },
   "7": {
+    "type": "jumble",
     "letters": "acelst",
     "time": 60,
-    "type": "useAll",
     "stage": "Breaking the Shell"
   },
   "8": {
+    "type": "jumble",
     "letters": "belstu",
     "time": 75,
-    "type": "useAll",
     "stage": "Breaking the Shell"
   },
   "9": {
+    "type": "jumble",
     "letters": "acenrt",
     "time": 75,
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "10": {
+    "type": "jumble",
     "letters": "adegnr",
     "time": 75,
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "11": {
+    "type": "jumble",
     "letters": "aelnrt",
     "time": 55,
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "12": {
+    "type": "jumble",
     "letters": "aceprs",
     "time": 85,
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "13": {
+    "type": "jumble",
     "letters": "adehrt",
     "time": "75",
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "14": {
+    "type": "jumble",
     "letters": "ceilnst",
     "time": 75,
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "15": {
+    "type": "jumble",
     "letters": "eghilns",
     "time": 55,
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "16": {
+    "type": "jumble",
     "letters": "efghirt",
     "time": 60,
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "17": {
+    "type": "jumble",
     "letters": "aeilnst",
     "time": 85,
-    "type": "useAll",
     "stage": "Add Seasoning"
   },
   "18": {
+    "type": "jumble",
     "letters": "cemprstu",
     "time": 75,
-    "type": "useAll",
     "stage": "Add Seasoning"
   }
 

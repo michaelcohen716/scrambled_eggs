@@ -12,6 +12,7 @@ class Timer extends React.Component {
     };
     this.initialTime = this.props.seconds; //10
     this.tick = this.tick.bind(this);
+    this.tickJumble = this.tickJumble.bind(this);
     this.decrement = 100 / this.initialTime; // 100/10 = 10
   }
 
@@ -21,6 +22,35 @@ class Timer extends React.Component {
   }
 
   tick(){
+    // const { roundScore, activeLevel, eggcoin } = this.props;
+    //
+    // if(this.props.wordIndex === this.props.attempts.length){
+    //   setTimeout(() => {
+    //     const provisionalEggcoin = eggcoin + roundScore;
+    //     this.props.recordScore(roundScore, provisionalEggcoin);
+    //     this.props.endRound(true, activeLevel);
+    //   }, 800);
+    //
+    //   const timer = this.state.timer;
+    //   this.setState({ timer: clearInterval(timer) });
+    //   return;
+    // }
+    //
+    // const timeElapsed = this.initialTime - this.state.seconds;
+    // if(timeElapsed + 1 == this.initialTime){
+    //   this.props.endRound(false, activeLevel);
+    //   const timer = this.state.timer;
+    //   this.setState({ timer: clearInterval(timer) });
+    // }
+    if(this.props.levelType === "jumble"){
+      this.tickJumble();
+    }
+
+    this.props.reduceScoreMultiplier(this.decrement);
+    this.setState({ seconds: this.state.seconds - 1});
+  }
+
+  tickJumble(){
     const { roundScore, activeLevel, eggcoin } = this.props;
 
     if(this.props.wordIndex === this.props.attempts.length){
@@ -41,9 +71,6 @@ class Timer extends React.Component {
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
     }
-
-    this.props.reduceScoreMultiplier(this.decrement);
-    this.setState({ seconds: this.state.seconds - 1});
   }
 
   render(){
@@ -75,14 +102,25 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  return {
-    wordIndex: state.jumble.wordIndex,
-    attempts: state.jumble.attempts,
-    roundScore: state.score.roundScore,
-    eggcoin: state.score.userEggcoin,
-    activeLevel: state.levels.activeLevel,
-    seconds: state.jumble.roundTime
-  };
+  let levelType = state.levels.levelType;
+
+  if(levelType === "jumble"){
+    return {
+      wordIndex: state.jumble.wordIndex,
+      attempts: state.jumble.attempts,
+      roundScore: state.score.roundScore,
+      eggcoin: state.score.userEggcoin,
+      activeLevel: state.levels.activeLevel,
+      seconds: state.jumble.roundTime,
+      levelType
+    };
+  } else {
+    return {
+      seconds: state.scramble.roundTime,
+      levelType
+    };
+  }
+
 };
 
 export default connect(mapStateToProps, {

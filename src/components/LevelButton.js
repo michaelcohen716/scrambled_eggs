@@ -10,14 +10,14 @@ class LevelButton extends React.Component {
     super();
   }
   onPress(num){
-    this.props.assignLevel(num);
+    const levelType = Levels[num].type;
+    this.props.assignLevel(num, levelType);
   }
 
   render(){
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
-    // console.log(this.props.stage);
-    // console.log(Levels[num].stage);
+
     if(this.props.stage !== Levels[num].stage){ //not this stage
       return (
         <TouchableOpacity style={styles.lockedLevel}>

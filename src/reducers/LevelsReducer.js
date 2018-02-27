@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import {
   ASSIGN_LEVEL, END_ROUND,
-  LOGIN_USER_SUCCESS
+  LOGIN_USER_SUCCESS, START_NEW_WORD
 } from '../actions/types';
 
 import Levels from '../games/levels.json';
@@ -14,6 +14,7 @@ var STAGES = {
 const INITIAL_STATE = {
   activeLevel: 1,
   nextUnsolvedLevel: 1,
+  levelType: null,
   stage: "Breaking the Shell",
   stageNum: 1,
   stages: STAGES
@@ -32,6 +33,7 @@ export default (state = INITIAL_STATE, action) => {
     case ASSIGN_LEVEL:
       const newState = merge({}, state);
       newState.activeLevel = action.nextLevel;
+      newState.levelType = action.levelType;
       return newState;
 
     case END_ROUND:

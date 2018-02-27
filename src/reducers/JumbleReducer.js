@@ -45,7 +45,7 @@ export default (state = INITIAL_STATE, action) => {
     case TAP_LETTER:
       const updatedState = merge({}, state);
       if(updatedState.message){
-        updatedState.message = "";
+        updatedState.message = '';
       }
 
       updatedState.attempts[state.wordIndex].push(action.letter);

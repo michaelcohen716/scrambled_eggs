@@ -6,13 +6,14 @@ import {
   UNDO_WORD }
 from './types';
 
-export const startNewWord = ({ numWords, activeLetters, answers, roundTime }) => {
+export const startNewWord = ({ numWords, activeLetters, answers, roundTime, levelType }) => {
   return {
     type: START_NEW_WORD,
     numWords,
     activeLetters,
     answers,
-    roundTime
+    roundTime,
+    levelType
   };
 };
 

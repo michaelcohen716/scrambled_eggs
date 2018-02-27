@@ -21,3 +21,7 @@ export const UNDO_WORD = 'undo_word';
 export const RECORD_SCORE = 'record_score';
 export const AWARD_WORD_COMPLETION = 'award_word_completion';
 export const REDUCE_SCORE_MULTIPLIER = 'reduce_score_multiplier';
+
+//scramble
+export const START_NEW_SCRAMBLE = 'start_new_scramble';
+export const TAP_SCRAMBLE_LETTER = 'tap_scramble_letter';
