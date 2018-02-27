@@ -25,3 +25,4 @@ export const REDUCE_SCORE_MULTIPLIER = 'reduce_score_multiplier';
 //scramble
 export const START_NEW_SCRAMBLE = 'start_new_scramble';
 export const TAP_SCRAMBLE_LETTER = 'tap_scramble_letter';
+export const VERIFY_SCRAMBLE = 'verify_scramble';

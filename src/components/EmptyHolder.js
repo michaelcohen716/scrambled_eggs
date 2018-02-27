@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 class EmptyHolder extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      answered: false
-    };
+    // this.state = {
+    //   answered: false
+    // };
     this.fullWord = false;
   }
 

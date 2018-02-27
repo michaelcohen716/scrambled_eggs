@@ -1,7 +1,8 @@
 // import firebase from 'firebase';
 // import { Actions } from 'react-native-router-flux';
 import {
-  START_NEW_SCRAMBLE, TAP_SCRAMBLE_LETTER
+  START_NEW_SCRAMBLE, TAP_SCRAMBLE_LETTER,
+  VERIFY_SCRAMBLE
 } from './types';
 
 export const startNewScramble = ({ firstAnswer, roundTime, steps }) => {
@@ -13,8 +14,18 @@ export const startNewScramble = ({ firstAnswer, roundTime, steps }) => {
   };
 };
 
-export const tapScrambleLetter = () => {
+export const tapScrambleLetter = (letter, letterIndex) => {
   return {
-    type: TAP_SCRAMBLE_LETTER
+    type: TAP_SCRAMBLE_LETTER,
+    letter,
+    letterIndex
+  }
+}
+
+export const verifyScramble = (letter, letterIndex) => {
+  return {
+    type: VERIFY_SCRAMBLE,
+    letter,
+    letterIndex
   }
 }

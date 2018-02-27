@@ -22,7 +22,6 @@ class ScrambleWordHolder extends React.Component {
   render(){
     const { activeLetters } = this.props;
     const letters = this.scrambleLetters(activeLetters);
-    // debugger
 
     const tiles = letters.map((letter, idx) => {
       return (
@@ -52,10 +51,10 @@ const styles = {
   }
 };
 
-const mapStateToProps = state => {
-  return {
-    activeLetters: state.scramble.activeLetters
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     activeLetters: state.scramble.activeLetters
+//   };
+// };
 
-export default connect(mapStateToProps, null)(ScrambleWordHolder);
+export default connect(null, null)(ScrambleWordHolder);

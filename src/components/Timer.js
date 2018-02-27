@@ -93,7 +93,9 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 2,
-    marginBottom: 2
+    marginBottom: 2,
+    borderColor: 'orange',
+    borderWidth: 0.4
   },
   seconds: {
     fontSize: 22,
