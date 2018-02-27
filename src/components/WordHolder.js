@@ -17,13 +17,12 @@ class WordHolder extends React.Component {
       );
     });
 
-
     return (
       <View>
         <View style={styles.container}>
           {tiles}
         </View>
-        
+
       </View>
     );
   }

@@ -1,12 +1,9 @@
 import React from 'react';
-import Words from '../games/scrambled.json';
-import Levels from '../games/levels.json';
-import { View, Text } from 'react-native';
-import WordHolder from './WordHolder';
-import EmptyHolder from './EmptyHolder';
-import InfoBar from './InfoBar';
 import { connect } from 'react-redux';
 import { startNewWord } from '../actions';
+import Words from '../games/scrambled.json';
+import Levels from '../games/levels.json';
+import JumbleGame from './JumbleGame';
 
 class Game extends React.Component {
   constructor(props){
@@ -40,59 +37,16 @@ class Game extends React.Component {
   }
 
   render(){
-    const currentWord = {
-      word: this.activeWord,
-      letters: this.letters,
-      scrambles: this.scrambles
-    };
-
-    const empties = this.answers.map((scramble, idx) => {
-      return (
-        <EmptyHolder letters={this.props.activeLetters} answerIndex={idx} key={idx}/>
-      );
-    });
-
     return (
-      <View>
-        <InfoBar />
-        <WordHolder active={currentWord} />
-
-        <View style={styles.messageContainer}>
-          <Text style={styles.message}>{this.props.message}</Text>
-        </View>
-
-        <View style={styles.container}>
-          {empties}
-        </View>
-      </View>
+      <JumbleGame />
     );
   }
 }
 
-// <Timer seconds={this.seconds}/>
-const styles = {
-  container: {
-    marginTop: 30
-  },
-  message: {
-    fontSize: 22,
-    marginTop: 7
-  },
-  messageContainer: {
-    minHeight: 32,
-    maxHeight: 32,
-    position: 'relative',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  }
-};
-
 const mapStateToProps = state => {
   return {
     activeLetters: state.game.activeLetters,
-    message: state.game.message,
     activeLevel: state.levels.activeLevel,
-    activeLevelAttempted: state.score.activeLevelAttempted
   };
 };
 

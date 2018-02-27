@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import ScoreKeeper from './ScoreKeeper';
-import Timer from './Timer';
 import goldCoin from '../assets/goldCoin.png';
 import undoButton from '../assets/undo.png';
 import { undoWord } from '../actions';
