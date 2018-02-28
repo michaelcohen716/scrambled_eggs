@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   attemptLength: 0,
   answers: [],
   answerLength: null,
-  clueIndex: 0,
+  wordIndex: 0,
   inputWords: [],
   inputChanges: []
 };
@@ -55,8 +55,9 @@ export default (state = INITIAL_STATE, action) => {
       newState.inputChanges = inputChanges;
       newState.answers = answers;
       newState.attempts = attempts;
+      newState.wordIndex = 0;
 
-      var usedLetters = new Array(action.steps[state.clueIndex + 1].letters.length);
+      var usedLetters = new Array(action.steps[newState.wordIndex + 1].letters.length);
       for (var j = 0; j < usedLetters.length; j++) {
         usedLetters[j] = false;
       }
@@ -66,7 +67,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case TAP_SCRAMBLE_LETTER:
       const tapState = merge({}, state);
-      tapState.attempts[state.clueIndex].push(action.letter);
+      tapState.attempts[state.wordIndex].push(action.letter);
       tapState.attemptLength += 1;
       tapState.usedLetters[action.letterIndex] = true;
 
@@ -74,15 +75,15 @@ export default (state = INITIAL_STATE, action) => {
 
     case VERIFY_SCRAMBLE:
       const verifyState = merge({}, state);
-      const clueIndex = state.clueIndex;
+      const wordIndex = state.wordIndex;
 
-      verifyState.attempts[clueIndex].push(action.letter);
-      const wordAttempt = verifyState.attempts[clueIndex].join("");
+      verifyState.attempts[wordIndex].push(action.letter);
+      const wordAttempt = verifyState.attempts[wordIndex].join("");
 
-      if(verifyState.answers[clueIndex] === wordAttempt){
-        verifyState.clueIndex += 1;
+      if(verifyState.answers[wordIndex] === wordAttempt){
+        verifyState.wordIndex += 1;
       } else {
-        verifyState.attempts[clueIndex] = [];
+        verifyState.attempts[wordIndex] = [];
       }
 
       const usedLetters1 = new Array(state.activeLetters.length);
@@ -91,6 +92,7 @@ export default (state = INITIAL_STATE, action) => {
       }
 
       verifyState.usedLetters = usedLetters1;
+      verifyState.attemptLength = 0;
 
       return verifyState;
     default:

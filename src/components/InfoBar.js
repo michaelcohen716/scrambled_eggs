@@ -82,7 +82,6 @@ class InfoBar extends React.Component {
   }
 }
 
-// <Timer seconds={this.state.seconds}/>
 const styles = {
   container: {
     flexDirection: 'row',
@@ -93,36 +92,38 @@ const styles = {
   coinInfo: {
     flexDirection: 'row',
     flex: 0.33,
-    height: 50,
+    height: 40,
     justifyContent: 'flex-start',
-    marginTop: 9,
+    marginTop: 5,
   },
   eggcoin: {
     marginLeft: 8,
-    marginTop: 8,
-    fontFamily: 'blockbrokers'
+    marginTop: 3,
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 24,
+    fontWeight: 'bold'
   },
   goldEgg: {
-    height: 15,
-    width: 15,
+    height: 21,
+    width: 21,
     marginLeft: 3,
-    marginTop: 12
+    marginTop: 8
   },
   undo: {
-    height: 45,
-    width: 45,
+    height: 35,
+    width: 35,
     // borderWidth: 0.5,
     // borderColor: 'black',
-    marginTop: 3
+    marginTop: 2.5
   },
   undoContainer: {
-    height: 50,
+    height: 40,
     flex: 0.3333,
     flexDirection: 'row',
     justifyContent: 'center',
   },
   score: {
-    height: 50,
+    height: 40,
     flex: 0.33,
     justifyContent: 'flex-end',
     flexDirection: 'row',

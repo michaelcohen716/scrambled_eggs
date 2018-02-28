@@ -49,8 +49,6 @@ class Game extends React.Component {
 
       this.props.startNewScramble(startScrambleObject);
     }
-
-
   }
 
   scrambleLetters(word){

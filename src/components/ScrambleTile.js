@@ -11,7 +11,7 @@ class ScrambleTile extends React.Component {
 
   press(){
     const { letter, letterIndex, attemptLength } = this.props;
-    const answerLength = this.props.answers[this.props.clueIndex].length;
+    const answerLength = this.props.answers[this.props.wordIndex].length;
 
     if(attemptLength + 1 === answerLength){
       this.props.verifyScramble(letter, letterIndex);
@@ -24,6 +24,7 @@ class ScrambleTile extends React.Component {
 
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
 
+    // ADD different cases here
     return (
       <TouchableOpacity style={styles.unusedHolder} onPress={this.press}>
         <Text style={styles.unusedText}>{letter}</Text>
@@ -56,7 +57,7 @@ const mapStateToProps = state => {
     usedLetters: state.scramble.usedLetters,
     attemptLength: state.scramble.attemptLength,
     answers: state.scramble.answers,
-    clueIndex: state.scramble.clueIndex
+    wordIndex: state.scramble.wordIndex
   };
 };
 

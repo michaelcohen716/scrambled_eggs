@@ -4,7 +4,8 @@ import {
   AWARD_WORD_COMPLETION, END_ROUND,
   REDUCE_SCORE_MULTIPLIER,
   LOGIN_USER_SUCCESS,
-  START_NEW_WORD, RECORD_SCORE
+  START_NEW_WORD, RECORD_SCORE,
+  START_NEW_SCRAMBLE
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -25,6 +26,7 @@ export default (state = INITIAL_STATE, action) => {
       return newState;
 
     case START_NEW_WORD:
+    case START_NEW_SCRAMBLE:
       const wordState = merge({}, state);
       wordState.scoreMultiplier = 100;
       return wordState;

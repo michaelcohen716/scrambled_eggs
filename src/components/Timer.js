@@ -7,12 +7,11 @@ class Timer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      seconds: this.props.seconds, //10
+      seconds: this.props.seconds,
       timer: null
     };
     this.initialTime = this.props.seconds; //10
     this.tick = this.tick.bind(this);
-    this.tickJumble = this.tickJumble.bind(this);
     this.decrement = 100 / this.initialTime; // 100/10 = 10
   }
 
@@ -22,43 +21,14 @@ class Timer extends React.Component {
   }
 
   tick(){
-    // const { roundScore, activeLevel, eggcoin } = this.props;
-    //
-    // if(this.props.wordIndex === this.props.attempts.length){
-    //   setTimeout(() => {
-    //     const provisionalEggcoin = eggcoin + roundScore;
-    //     this.props.recordScore(roundScore, provisionalEggcoin);
-    //     this.props.endRound(true, activeLevel);
-    //   }, 800);
-    //
-    //   const timer = this.state.timer;
-    //   this.setState({ timer: clearInterval(timer) });
-    //   return;
-    // }
-    //
-    // const timeElapsed = this.initialTime - this.state.seconds;
-    // if(timeElapsed + 1 == this.initialTime){
-    //   this.props.endRound(false, activeLevel);
-    //   const timer = this.state.timer;
-    //   this.setState({ timer: clearInterval(timer) });
-    // }
-    if(this.props.levelType === "jumble"){
-      this.tickJumble();
-    }
-
-    this.props.reduceScoreMultiplier(this.decrement);
-    this.setState({ seconds: this.state.seconds - 1});
-  }
-
-  tickJumble(){
     const { roundScore, activeLevel, eggcoin } = this.props;
 
     if(this.props.wordIndex === this.props.attempts.length){
       setTimeout(() => {
-        const provisionalEggcoin = eggcoin + roundScore;
-        this.props.recordScore(roundScore, provisionalEggcoin);
-        this.props.endRound(true, activeLevel);
-      }, 800);
+       const provisionalEggcoin = eggcoin + roundScore;
+       this.props.recordScore(roundScore, provisionalEggcoin);
+       this.props.endRound(true, activeLevel);
+    }, 800);
 
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
@@ -71,6 +41,9 @@ class Timer extends React.Component {
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
     }
+
+    this.props.reduceScoreMultiplier(this.decrement);
+    this.setState({ seconds: this.state.seconds - 1});
   }
 
   render(){
@@ -86,43 +59,37 @@ class Timer extends React.Component {
 
 const styles = {
   timeCircle: {
-    height: 46,
-    width: 46,
+    height: 42,
+    width: 42,
     borderRadius: 50,
     backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 2,
-    marginBottom: 2,
+    // marginTop: 2,
+    marginBottom: 2.5,
     borderColor: 'orange',
-    borderWidth: 0.4
+    borderWidth: 2,
   },
   seconds: {
     fontSize: 22,
+    fontFamily: 'RobotoCondensed-Regular',
     color: 'white',
+    marginBottom: 2
   }
 };
 
 const mapStateToProps = state => {
   let levelType = state.levels.levelType;
 
-  if(levelType === "jumble"){
-    return {
-      wordIndex: state.jumble.wordIndex,
-      attempts: state.jumble.attempts,
-      roundScore: state.score.roundScore,
-      eggcoin: state.score.userEggcoin,
-      activeLevel: state.levels.activeLevel,
-      seconds: state.jumble.roundTime,
-      levelType
-    };
-  } else {
-    return {
-      seconds: state.scramble.roundTime,
-      levelType
-    };
-  }
-
+  return {
+    wordIndex: state[levelType].wordIndex,
+    attempts: state[levelType].attempts,
+    roundScore: state.score.roundScore,
+    eggcoin: state.score.userEggcoin,
+    activeLevel: state.levels.activeLevel,
+    seconds: state[levelType].roundTime,
+    levelType
+  };
 };
 
 export default connect(mapStateToProps, {

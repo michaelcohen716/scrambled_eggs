@@ -32,7 +32,7 @@ class ScoreKeeper extends React.Component {
       }
 
       this.props.awardWordCompletion(scoreIncrement);
-      this.animateEggCoin();
+      // this.animateEggCoin();
     }
   }
 
@@ -69,17 +69,13 @@ class ScoreKeeper extends React.Component {
   }
 }
 
-// <View style={styles.container}>
-//   {eggs}
-// </View>
+
 const styles = {
   container: {
     alignItems: 'flex-end',
     flexDirection: 'row'
   },
-  // score: {
-  //   fontSize: 18
-  // },
+
   egg: {
     width: 15,
     height: 20,
@@ -89,9 +85,11 @@ const styles = {
 };
 
 const mapStateToProps = state => {
+  const levelType = state.levels.levelType;
+
   return {
     roundScore: state.score.roundScore,
-    wordIndex: state.jumble.wordIndex,
+    wordIndex: state[levelType].wordIndex,
     scoreMultiplier: state.score.scoreMultiplier,
     activeLevelAttempted: state.score.activeLevelAttempted,
     attemptedBaseScore: state.score.attemptedBaseScore,

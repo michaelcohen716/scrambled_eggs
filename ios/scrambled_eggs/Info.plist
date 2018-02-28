@@ -54,6 +54,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Blockbrokers.otf</string>
+		<string>roboto.ttf</string>
 	</array>
 </dict>
 </plist>

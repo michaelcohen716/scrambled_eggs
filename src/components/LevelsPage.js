@@ -26,7 +26,7 @@ class LevelsPage extends React.Component {
 
         <View style={styles.info}>
           <Text style={styles.stage}>
-            {this.props.stage}
+            Stage: <Text style={styles.stageBlue}>{this.props.stage}</Text>
           </Text>
 
           <Text style={styles.eggcoin}>
@@ -51,8 +51,9 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: 40,
-    borderColor: 'black',
-    borderWidth: 0.3
+    borderColor: 'white',
+    borderWidth: 2,
+    backgroundColor: 'black'
   },
   levels: {
     padding: 5,
@@ -61,24 +62,30 @@ const styles = {
     backgroundColor: 'black'
   },
   eggcoin: {
-    marginRight: 8,
-    marginTop: 9,
-    fontSize: 15,
-    // fontWeight: 'bold',
-    fontFamily: 'blockbrokers'
+    marginRight: 12,
+    marginTop: 2,
+    fontSize: 22,
+    fontWeight: 'bold',
+    fontFamily: 'RobotoCondensed-Regular',
+    color: 'white'
   },
   goldEgg: {
-    height: 15,
-    width: 15,
+    height: 20,
+    width: 20,
     marginRight: 5,
     marginLeft: 3,
+    marginTop: 2
   },
   stage: {
-    fontSize: 15,
-    // fontWeight: 'bold',
-    fontFamily: 'blockbrokers',
+    fontSize: 25,
+    fontFamily: 'RobotoCondensed-Regular',
     marginLeft: 13,
-    marginTop: 9
+    marginBottom: 4,
+    // marginTop: 4,
+    color: 'white'
+  },
+  stageBlue: {
+    color: 'blue'
   }
 };
 

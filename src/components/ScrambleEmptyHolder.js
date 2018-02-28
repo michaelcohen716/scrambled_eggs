@@ -20,7 +20,7 @@ class ScrambleEmptyHolder extends React.Component {
         letter = this.props.attempts[answerIndex][i];
       }
 
-      const tile = <ScrambleTile letter={letter} />;
+      const tile = <ScrambleTile letter={letter} key={i}/>;
       tiles.push(tile);
     }
 

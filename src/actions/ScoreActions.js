@@ -19,7 +19,7 @@ export const recordScore = (score, eggcoin) => {
     .set({ eggcoin })
     .then(() => {
       dispatch({
-        type: RECORD_SCORE, 
+        type: RECORD_SCORE,
         score,
         eggcoin
       });
