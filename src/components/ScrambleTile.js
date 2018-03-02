@@ -21,13 +21,11 @@ class ScrambleTile extends React.Component {
   }
 
   render(){
-    const { letterIndex, usedLetters } = this.props;
+    const { letterIndex, usedLetters, answerIndex, wordIndex, pastUsedLetters } = this.props;
 
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
 
-    if(this.props.usedLetters[letterIndex] && this.props.wordIndex === this.props.answerIndex){ //used letter, active word
-      console.log("used, active");
-      console.log(this.props);
+    if(usedLetters[letterIndex] && wordIndex === answerIndex){ //used letter, active word
       return (
         <TouchableOpacity style={styles.pressedActive}>
           <Text style={styles.pressedActiveText}>{letter}</Text>
@@ -35,7 +33,7 @@ class ScrambleTile extends React.Component {
       );
     }
 
-    if(this.props.answerIndex === 1 && !this.props.press){
+    if(answerIndex === 1 && !this.props.press){
       return (
         <TouchableOpacity style={styles.unpressed} >
           <Text style={styles.unpressedText}>{letter}</Text>
@@ -43,9 +41,7 @@ class ScrambleTile extends React.Component {
       );
     }
 
-    if(this.props.answerIndex !== this.props.wordIndex && this.props.pastUsedLetters[letterIndex]){ //inactive word, used letter
-      console.log("inactive, used");
-      console.log(this.props);
+    if(answerIndex !== wordIndex && pastUsedLetters[letterIndex]){ //inactive word, used letter
       return (
         <TouchableOpacity style={styles.unpressed}>
           <Text style={styles.unpressedText}>{letter}</Text>
@@ -53,9 +49,7 @@ class ScrambleTile extends React.Component {
       );
     }
 
-    if(this.props.answerIndex !== this.props.wordIndex && this.props.pastUsedLetters[letterIndex] === false){ //inactive word, unused letter
-      console.log("inactive, unused");
-      console.log(this.props);
+    if(answerIndex !== wordIndex && pastUsedLetters[letterIndex] === false){ //inactive word, unused letter
       return (
         <TouchableOpacity style={styles.inactive}>
           <Text style={styles.inactiveText}>{letter}</Text>
@@ -63,8 +57,13 @@ class ScrambleTile extends React.Component {
       );
     }
 
-    console.log("unpressed, active");
-    console.log(this.props);
+    if(answerIndex !== wordIndex){
+      return (
+        <TouchableOpacity style={styles.unpressed} >
+          <Text style={styles.unpressedText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
 
     return ( //unpressed active
       <TouchableOpacity style={styles.unpressed} onPress={this.press}>

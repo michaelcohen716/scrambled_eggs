@@ -85,7 +85,9 @@ export default (state = INITIAL_STATE, action) => {
       if(verifyState.answers[wordIndex] === wordAttempt){
         verifyState.wordIndex += 1;
         verifyState.pastUsedLetters = state.usedLetters;
-        verifyState.pastUsedLetters[action.letterIndex] = true;
+        if(state.wordIndex === 0){
+          verifyState.pastUsedLetters[action.letterIndex] = true;
+        }
       } else {
         verifyState.attempts[wordIndex] = [];
       }
