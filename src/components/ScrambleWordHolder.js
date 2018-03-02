@@ -25,16 +25,15 @@ class ScrambleWordHolder extends React.Component {
 
     const tiles = letters.map((letter, idx) => {
       return (
-        <ScrambleTile letter={letter} letterIndex={idx} key={idx} />
+        <ScrambleTile letter={letter} letterIndex={idx} key={idx}
+                      lettersHolder={true}  />
       );
     });
 
     return (
-      <View>
         <View style={styles.container}>
           {tiles}
         </View>
-      </View>
     );
   }
 }
@@ -45,16 +44,24 @@ const styles = {
    padding: 5,
    backgroundColor: 'blue',
    justifyContent: 'center',
-   flexDirection: 'row',
+   flexDirection: 'column',
+   flexWrap: 'wrap',
    borderColor: '#ddd',
-   position: 'relative'
+   position: 'relative',
+   maxHeight: 80
   }
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     activeLetters: state.scramble.activeLetters
-//   };
+// const styles = {
+//   container: {
+//    borderBottomWidth: 1,
+//    padding: 5,
+//    backgroundColor: 'blue',
+//    justifyContent: 'center',
+//    flexDirection: 'row',
+//    borderColor: '#ddd',
+//    position: 'relative'
+//   }
 // };
 
 export default connect(null, null)(ScrambleWordHolder);

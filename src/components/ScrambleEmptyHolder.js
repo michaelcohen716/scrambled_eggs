@@ -24,37 +24,39 @@ class ScrambleEmptyHolder extends React.Component {
       tiles.push(tile);
     }
 
-    if(this.props.clueIndex > answerIndex){
-      return (
-        <View style={styles.inactive}>
-          {tiles}
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.active}>
-          {tiles}
-        </View>
-      );
-    }
+    // if(this.props.clueIndex > answerIndex){
+    //   return (
+    //     <View style={styles.inactive}>
+    //       {tiles}
+    //     </View>
+    //   );
+    // } else {
+    return (
+      <View style={styles.active}>
+        {tiles}
+      </View>
+    );
+    // }
   }
 }
 
 const styles = {
   active: {
-   borderBottomWidth: 1,
-   padding: 5,
-   backgroundColor: 'blue',
-   justifyContent: 'center',
+   // borderBottomWidth: 1,
+   // padding: 5,
+   // backgroundColor: 'orange',
+   // justifyContent: 'center',
    flexDirection: 'row',
-   borderColor: '#ddd',
+   // borderColor: '#ddd',
    position: 'relative',
-   marginTop: 5
+   marginTop: 5,
+   minHeight: 50,
+   maxHeight: 50
  },
  inactive: {
    borderBottomWidth: 1,
    padding: 5,
-   backgroundColor: 'transparent',
+   // backgroundColor: 'transparent',
    justifyContent: 'center',
    flexDirection: 'row',
    borderColor: '#ddd',

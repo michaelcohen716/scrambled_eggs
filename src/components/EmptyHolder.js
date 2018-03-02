@@ -6,9 +6,6 @@ import { connect } from 'react-redux';
 class EmptyHolder extends React.Component {
   constructor(props){
     super(props);
-    // this.state = {
-    //   answered: false
-    // };
     this.fullWord = false;
   }
 
@@ -28,7 +25,8 @@ class EmptyHolder extends React.Component {
         this.fullWord = false;
       }
       return (
-        <Tile letter={letter} key={idx} letterIndex={idx} answerIndex={firstIndex}/>
+        <Tile letter={letter} key={idx} letterIndex={idx}
+              answerIndex={firstIndex} untappable={true}/>
       );
     });
 
@@ -51,7 +49,7 @@ class EmptyHolder extends React.Component {
 const styles = {
   active: {
    borderBottomWidth: 1,
-   padding: 5,
+   padding: 2,
    backgroundColor: 'blue',
    justifyContent: 'center',
    flexDirection: 'row',
@@ -61,7 +59,7 @@ const styles = {
  },
  inactive: {
    borderBottomWidth: 1,
-   padding: 5,
+   padding: 2,
    backgroundColor: 'transparent',
    justifyContent: 'center',
    flexDirection: 'row',

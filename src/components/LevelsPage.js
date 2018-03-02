@@ -92,7 +92,7 @@ const styles = {
 const mapStateToProps = state => {
   return {
     eggcoin: state.score.userEggcoin,
-    stage: state.levels.stage
+    stage: state.levels.stage,
   };
 };
 

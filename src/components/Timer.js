@@ -59,13 +59,12 @@ class Timer extends React.Component {
 
 const styles = {
   timeCircle: {
-    height: 42,
-    width: 42,
+    height: 44,
+    width: 44,
     borderRadius: 50,
     backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    // marginTop: 2,
     marginBottom: 2.5,
     borderColor: 'orange',
     borderWidth: 2,

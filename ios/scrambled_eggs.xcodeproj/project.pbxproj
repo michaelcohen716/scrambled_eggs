@@ -38,6 +38,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		7797EAB4E804475181794957 /* Blockbrokers.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08BD05219FFD4E3FB385A106 /* Blockbrokers.otf */; };
 		ED8BB7E082CF4A8685951DDF /* roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5D2FEEA77074BDC8B6BC8EE /* roboto.ttf */; };
+		34D79688FFD74D228A8A5B7E /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED134629D4594042AB0EF975 /* RobotoCondensed-Italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +290,7 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		08BD05219FFD4E3FB385A106 /* Blockbrokers.otf */ = {isa = PBXFileReference; name = "Blockbrokers.otf"; path = "../fonts/Blockbrokers.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E5D2FEEA77074BDC8B6BC8EE /* roboto.ttf */ = {isa = PBXFileReference; name = "roboto.ttf"; path = "../fonts/roboto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ED134629D4594042AB0EF975 /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Italic.ttf"; path = "../fonts/RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -547,6 +549,7 @@
 			children = (
 				08BD05219FFD4E3FB385A106 /* Blockbrokers.otf */,
 				E5D2FEEA77074BDC8B6BC8EE /* roboto.ttf */,
+				ED134629D4594042AB0EF975 /* RobotoCondensed-Italic.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -944,6 +947,7 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				7797EAB4E804475181794957 /* Blockbrokers.otf in Resources */,
 				ED8BB7E082CF4A8685951DDF /* roboto.ttf in Resources */,
+				34D79688FFD74D228A8A5B7E /* RobotoCondensed-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

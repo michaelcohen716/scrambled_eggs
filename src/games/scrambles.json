@@ -2,7 +2,7 @@
   "boat": {
     "1": {
       "clue": "A nautical vehicle",
-      "letters": "abomtw",
+      "letters": "abomtwrr",
       "answer": "boat"
     },
     "2": {
@@ -12,7 +12,7 @@
     },
     "3": {
       "clue": "To brag about something",
-      "letters": "abost",
+      "letters": "boats",
       "answer": "boast"
     }
   },

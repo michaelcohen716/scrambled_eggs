@@ -85,7 +85,7 @@ class InfoBar extends React.Component {
 const styles = {
   container: {
     flexDirection: 'row',
-    borderColor: 'blue',
+    borderColor: 'white',
     borderWidth: 0.5,
     alignItems: 'center',
   },
@@ -101,7 +101,8 @@ const styles = {
     marginTop: 3,
     fontFamily: 'RobotoCondensed-Regular',
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
   goldEgg: {
     height: 21,
@@ -123,11 +124,12 @@ const styles = {
     justifyContent: 'center',
   },
   score: {
-    height: 40,
+    height: 44,
     flex: 0.33,
     justifyContent: 'flex-end',
     flexDirection: 'row',
-    marginRight: 2
+    marginRight: 2,
+    marginBottom: 1
   }
 };
 

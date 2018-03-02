@@ -37,7 +37,7 @@ class JumbleGame extends React.Component {
 
 const styles = {
   container: {
-    marginTop: 30
+    paddingTop: 12
   },
   message: {
     fontSize: 22,

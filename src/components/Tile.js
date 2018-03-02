@@ -23,6 +23,15 @@ class Tile extends React.Component {
 
   render(){
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
+
+    if(this.props.untappable){
+      return(
+        <TouchableOpacity style={styles.unusedHolder}>
+          <Text style={styles.unusedText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
+
     if(this.props.topHolder && this.props.usedLetters[this.props.letterIndex]){
       return (
         <TouchableOpacity style={styles.usedHolder}>
