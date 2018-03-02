@@ -88,6 +88,7 @@ const styles = {
     borderColor: 'white',
     borderWidth: 0.5,
     alignItems: 'center',
+    backgroundColor: 'white'
   },
   coinInfo: {
     flexDirection: 'row',
@@ -102,7 +103,7 @@ const styles = {
     fontFamily: 'RobotoCondensed-Regular',
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white'
+    color: 'black'
   },
   goldEgg: {
     height: 21,
@@ -113,8 +114,6 @@ const styles = {
   undo: {
     height: 35,
     width: 35,
-    // borderWidth: 0.5,
-    // borderColor: 'black',
     marginTop: 2.5
   },
   undoContainer: {

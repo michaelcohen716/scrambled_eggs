@@ -18,6 +18,20 @@ class LevelButton extends React.Component {
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
 
+    // if(num === this.props.nextUnsolvedLevel){
+    //   return ( //nextUnsolvedLevel
+    //     <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
+    //       <View style={styles.innerLevel}>
+    //         <View style={styles.innerInnerLevel}>
+    //           <Text style={styles.levelText}>
+    //             {num}
+    //           </Text>
+    //         </View>
+    //       </View>
+    //     </TouchableOpacity>
+    //   );
+    // }
+
     if(this.props.stage !== Levels[num].stage){ //not this stage
       // console.log("not stage");
       // console.log(this.props);
@@ -135,12 +149,13 @@ const styles = {
     borderWidth: 2,
     justifyContent: 'center',
     alignItems: 'center',
+    opacity: 0.5
   },
   unsolvedLevel: {
 
   },
   lockedLevel: {
-    opacity: 0.5,
+    // opacity: 0.5,
     width: 75,
     height: 75,
     backgroundColor: 'red',
@@ -159,7 +174,6 @@ const styles = {
     fontFamily: 'RobotoCondensed-Regular',
     position: 'absolute',
     textAlign: 'center',
-    // opacity: 0.7
   },
   // solved
   solvedLevel: {

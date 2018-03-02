@@ -3,6 +3,8 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import ScrambleTile from './ScrambleTile';
 
+// unused component right now
+
 class ScrambleWordHolder extends React.Component {
   constructor(){
     super();
@@ -52,16 +54,5 @@ const styles = {
   }
 };
 
-// const styles = {
-//   container: {
-//    borderBottomWidth: 1,
-//    padding: 5,
-//    backgroundColor: 'blue',
-//    justifyContent: 'center',
-//    flexDirection: 'row',
-//    borderColor: '#ddd',
-//    position: 'relative'
-//   }
-// };
 
 export default connect(null, null)(ScrambleWordHolder);

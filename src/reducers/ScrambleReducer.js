@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import {
   START_NEW_SCRAMBLE, TAP_SCRAMBLE_LETTER,
-  VERIFY_SCRAMBLE
+  VERIFY_SCRAMBLE, UNDO_WORD
 } from '../actions/types';
 // import Scrambles from '../games/scrambles.json';
 
@@ -101,6 +101,21 @@ export default (state = INITIAL_STATE, action) => {
       verifyState.attemptLength = 0;
 
       return verifyState;
+
+    case UNDO_WORD:
+      const undoState = merge({}, state);
+      undoState.attempts[state.wordIndex] = [];
+      undoState.attemptLength = 0;
+
+      const usedLetters2 = new Array(state.activeLetters.length);
+      for (var z = 0; z < usedLetters2.length; z++) {
+        usedLetters2[z] = false;
+      }
+
+      undoState.usedLetters = usedLetters2;
+
+      return undoState;
+
     default:
       return state;
   }

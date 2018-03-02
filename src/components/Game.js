@@ -21,8 +21,6 @@ class Game extends React.Component {
   breakDown(){
     const levelType = Levels[this.props.activeLevel].type;
     if(levelType === "jumble"){
-      this.setState({ levelType });
-
       this.activeWord = Levels[this.props.activeLevel].letters;
       this.answers = Jumbles[this.activeWord];
 
@@ -31,13 +29,10 @@ class Game extends React.Component {
         numWords: this.answers.length,
         answers: this.answers,
         roundTime: this.seconds,
-
       };
 
       this.props.startNewWord(startWordObject);
     } else if(levelType === "scramble"){
-      this.setState({ levelType });
-
       this.firstAnswer = Levels[this.props.activeLevel].firstAnswer;
       this.scrambleSteps = Scrambles[this.firstAnswer];
 

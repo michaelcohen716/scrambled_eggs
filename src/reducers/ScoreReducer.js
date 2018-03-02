@@ -28,12 +28,12 @@ export default (state = INITIAL_STATE, action) => {
     case START_NEW_WORD:
     case START_NEW_SCRAMBLE:
       const wordState = merge({}, state);
+      wordState.roundScore = 0;
       wordState.scoreMultiplier = 100;
       return wordState;
 
     case END_ROUND:
       const updatedState = merge({}, state);
-      updatedState.roundScore = 0;
       if(action.boolean){
         updatedState.activeLevelAttempted = false;
       } else {

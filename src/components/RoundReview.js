@@ -9,15 +9,20 @@ class RoundReview extends React.Component {
   }
 
   render(){
-    const { completedWords, potentialWords } = this.props;
-
-    let text = "Better luck next time!";
+    const { completedWords, potentialWords, roundScore } = this.props;
     let summary = `You found ${completedWords} of ${potentialWords} words`;
+    let text = "Better luck next time!";
     let buttonText = "Try again!";
 
-    if(this.props.roundCompleted){
-      text = "Congrats on completing the puzzle!";
-      summary = `You found all ${potentialWords} words.`;
+    if(this.props.roundCompleted && this.props.levelType === "jumble"){
+      summary = `You found all ${potentialWords} words. Congrats`;
+      text = `You earned ${roundScore} eggcoin!`;
+      buttonText = "Solve the next puzzle";
+    }
+
+    if(this.props.roundCompleted && this.props.levelType === "scramble"){
+      summary = "You cracked the shell. Well done.";
+      text = `You earned ${roundScore} eggcoin!`;
       buttonText = "Solve the next puzzle";
     }
 
@@ -80,7 +85,9 @@ const mapStateToProps = state => {
   return {
     roundCompleted: state.jumble.roundCompleted,
     potentialWords: state.jumble.attempts.length,
-    completedWords: state.jumble.wordIndex
+    completedWords: state.jumble.wordIndex,
+    levelType: state.levels.levelType,
+    roundScore: state.score.roundScore
   };
 };
 
