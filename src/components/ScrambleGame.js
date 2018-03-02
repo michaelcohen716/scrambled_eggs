@@ -23,14 +23,14 @@ class ScrambleGame extends React.Component {
     const firstSet = firstClue.letters.slice(0, 4).split("");
     const firstSetLetters = firstSet.map((letter, idx) => {
       return (
-        <ScrambleTile letter={letter} letterIndex={idx} key={idx} />
+        <ScrambleTile letter={letter} letterIndex={idx} key={idx} answerIndex={0}/>
       );
     });
 
     const secondSet = firstClue.letters.slice(4).split("");
     const secondSetLetters = secondSet.map((letter, idx) => {
       return (
-        <ScrambleTile letter={letter} letterIndex={idx + 4} key={idx} />
+        <ScrambleTile letter={letter} letterIndex={idx + 4} key={idx} answerIndex={0}/>
       );
     });
 

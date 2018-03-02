@@ -25,41 +25,33 @@ class ScrambleTile extends React.Component {
 
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
 
-    return (
-      <TouchableOpacity style={styles.newType} onPress={this.press}>
-        <Text style={styles.newText}>{letter}</Text>
+    if(this.props.usedLetters[letterIndex]){ //used letter, active word
+      return (
+        <TouchableOpacity style={styles.pressedActive}>
+          <Text style={styles.pressedActiveText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
+
+    if(this.props.answerIndex !== this.props.wordIndex){ //inactive word
+      return (
+        <TouchableOpacity style={styles.pressedActive}>
+          <Text style={styles.pressedActiveText}>{letter}</Text>
+        </TouchableOpacity>
+      )
+    }
+
+    return ( //unpressed active
+      <TouchableOpacity style={styles.unpressed} onPress={this.press}>
+        <Text style={styles.unpressedText}>{letter}</Text>
       </TouchableOpacity>
     );
-
-
-    // test different cases here
-    // if(this.props.lettersHolder && !usedLetters[letterIndex]){ //untapped scrambled letters
-    //   return (
-    //     <TouchableOpacity style={styles.unusedHolder} onPress={this.press}>
-    //       <Text style={styles.unusedText}>{letter}</Text>
-    //     </TouchableOpacity>
-    //   );
-    // }
-    //
-    // if(this.props.lettersHolder){ //tapped scrambled letter
-    //   return (
-    //     <TouchableOpacity style={styles.usedHolder} >
-    //       <Text style={styles.unusedText}>{letter}</Text>
-    //     </TouchableOpacity>
-    //   );
-    // }
-    //
-    // return (
-    //   <TouchableOpacity style={styles.attemptLetterHolder}>
-    //     <Text style={styles.unusedText}>{letter}</Text>
-    //   </TouchableOpacity>
-    // );
 
   }
 }
 
 const styles = {
-  newType: {
+  unpressed: {
     height: 45,
     width: 45,
     padding: 2,
@@ -71,60 +63,30 @@ const styles = {
     alignItems: 'center',
     borderRadius: 10
   },
-  newText: {
+  unpressedText: {
     fontSize: 20,
-    fontFamily: 'RobotoCondensed-Regular'
+    fontFamily: 'RobotoCondensed-Regular',
+    color: 'black'
+  },
+  pressedActive: {
+    height: 45,
+    width: 45,
+    padding: 2,
+    margin: 4,
+    backgroundColor: 'blue',
+    borderColor: 'white',
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10
+  },
+  pressedActiveText: {
+    fontSize: 20,
+    fontFamily: 'RobotoCondensed-Regular',
+    color: 'white'
   }
 };
 
-// const styles = {
-//   unusedHolder: {
-//     borderWidth: 3,
-//     backgroundColor: 'orange',
-//     flexDirection: 'row',
-//     borderColor: 'white',
-//     position: 'relative',
-//     width: 50,
-//     padding: 4,
-//     margin: 5,
-//     borderRadius: 10,
-//     justifyContent: 'center',
-//     minHeight: 50
-//   },
-//   unusedText: {
-//     fontSize: 30,
-//     fontFamily: 'RobotoCondensed-Regular',
-//   },
-//   usedHolder: {
-//     borderWidth: 3,
-//     backgroundColor: 'orange',
-//     flexDirection: 'row',
-//     borderColor: 'white',
-//     position: 'relative',
-//     width: 50,
-//     padding: 4,
-//     margin: 5,
-//     borderRadius: 10,
-//     justifyContent: 'center',
-//     minHeight: 50,
-//     opacity: 0.5
-//   },
-//   attemptLetterHolder: {
-//     borderWidth: 3,
-//     backgroundColor: 'orange',
-//     flexDirection: 'row',
-//     borderColor: 'white',
-//     position: 'relative',
-//     width: 50,
-//     padding: 4,
-//     margin: 5,
-//     borderRadius: 10,
-//     justifyContent: 'center',
-//     minHeight: 50,
-//     opacity: 0.5
-//   }
-// };
-//
 const mapStateToProps = state => {
   return {
     usedLetters: state.scramble.usedLetters,
