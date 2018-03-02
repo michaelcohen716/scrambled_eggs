@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   activeLetters: [],
   roundTime: null,
   usedLetters: [],
+  pastUsedLetters: [],
   attempts: [[]],
   attemptLength: 0,
   answers: [],
@@ -56,6 +57,7 @@ export default (state = INITIAL_STATE, action) => {
       newState.answers = answers;
       newState.attempts = attempts;
       newState.wordIndex = 0;
+      newState.pastUsedLetters = [];
 
       var usedLetters = new Array(action.steps[newState.wordIndex + 1].letters.length);
       for (var j = 0; j < usedLetters.length; j++) {
@@ -82,6 +84,8 @@ export default (state = INITIAL_STATE, action) => {
 
       if(verifyState.answers[wordIndex] === wordAttempt){
         verifyState.wordIndex += 1;
+        verifyState.pastUsedLetters = state.usedLetters;
+        verifyState.pastUsedLetters[action.letterIndex] = true;
       } else {
         verifyState.attempts[wordIndex] = [];
       }

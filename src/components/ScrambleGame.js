@@ -50,7 +50,7 @@ class ScrambleGame extends React.Component {
     ) : (
       secondClue.letters.split("").map((letter, idx) => {
         return (
-          <ScrambleTile letter={letter} letterIndex={idx} key={idx} />
+          <ScrambleTile letter={letter} letterIndex={idx} key={idx} answerIndex={1} press={true}/>
         );
       })
     );

@@ -25,7 +25,9 @@ class ScrambleTile extends React.Component {
 
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
 
-    if(this.props.usedLetters[letterIndex]){ //used letter, active word
+    if(this.props.usedLetters[letterIndex] && this.props.wordIndex === this.props.answerIndex){ //used letter, active word
+      console.log("used, active");
+      console.log(this.props);
       return (
         <TouchableOpacity style={styles.pressedActive}>
           <Text style={styles.pressedActiveText}>{letter}</Text>
@@ -33,13 +35,36 @@ class ScrambleTile extends React.Component {
       );
     }
 
-    if(this.props.answerIndex !== this.props.wordIndex){ //inactive word
+    if(this.props.answerIndex === 1 && !this.props.press){
       return (
-        <TouchableOpacity style={styles.pressedActive}>
-          <Text style={styles.pressedActiveText}>{letter}</Text>
+        <TouchableOpacity style={styles.unpressed} >
+          <Text style={styles.unpressedText}>{letter}</Text>
         </TouchableOpacity>
-      )
+      );
     }
+
+    if(this.props.answerIndex !== this.props.wordIndex && this.props.pastUsedLetters[letterIndex]){ //inactive word, used letter
+      console.log("inactive, used");
+      console.log(this.props);
+      return (
+        <TouchableOpacity style={styles.unpressed}>
+          <Text style={styles.unpressedText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
+
+    if(this.props.answerIndex !== this.props.wordIndex && this.props.pastUsedLetters[letterIndex] === false){ //inactive word, unused letter
+      console.log("inactive, unused");
+      console.log(this.props);
+      return (
+        <TouchableOpacity style={styles.inactive}>
+          <Text style={styles.inactiveText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
+
+    console.log("unpressed, active");
+    console.log(this.props);
 
     return ( //unpressed active
       <TouchableOpacity style={styles.unpressed} onPress={this.press}>
@@ -84,6 +109,23 @@ const styles = {
     fontSize: 20,
     fontFamily: 'RobotoCondensed-Regular',
     color: 'white'
+  },
+  inactive: {
+    height: 45,
+    width: 45,
+    padding: 2,
+    margin: 4,
+    backgroundColor: 'darkgrey',
+    borderColor: 'white',
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10
+  },
+  inactiveText: {
+    fontSize: 20,
+    fontFamily: 'RobotoCondensed-Regular',
+    color: 'white'
   }
 };
 
@@ -92,7 +134,8 @@ const mapStateToProps = state => {
     usedLetters: state.scramble.usedLetters,
     attemptLength: state.scramble.attemptLength,
     answers: state.scramble.answers,
-    wordIndex: state.scramble.wordIndex
+    wordIndex: state.scramble.wordIndex,
+    pastUsedLetters: state.scramble.pastUsedLetters
   };
 };
 
