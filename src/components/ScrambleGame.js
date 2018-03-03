@@ -9,9 +9,6 @@ import ScrambleTile from './ScrambleTile';
 class ScrambleGame extends React.Component {
   constructor(){
     super();
-    this.state = {
-      firstWordSolved: false
-    };
   }
 
   render(){
@@ -19,17 +16,17 @@ class ScrambleGame extends React.Component {
 
     const firstClue = inputWords[0];
 
-    const firstSet = firstClue.letters.slice(0, 4).split("");
+    const firstSet = firstClue.letters.slice(0, 5).split("");
     const firstSetLetters = firstSet.map((letter, idx) => {
       return (
         <ScrambleTile letter={letter} letterIndex={idx} key={idx} answerIndex={0}/>
       );
     });
 
-    const secondSet = firstClue.letters.slice(4).split("");
+    const secondSet = firstClue.letters.slice(5).split("");
     const secondSetLetters = secondSet.map((letter, idx) => {
       return (
-        <ScrambleTile letter={letter} letterIndex={idx + 4} key={idx} answerIndex={0}/>
+        <ScrambleTile letter={letter} letterIndex={idx + 5} key={idx} answerIndex={0}/>
       );
     });
 

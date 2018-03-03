@@ -7,20 +7,18 @@ import {
 import Levels from '../games/levels.json';
 
 var STAGES = {
-  "Breaking the Shell": 1,
-  "Add Seasoning": 2
+  "Sunny Side Up": 1,
+  "Hard Boiled": 2,
+  "Over Easy": 3
 };
 
 const INITIAL_STATE = {
   activeLevel: 1,
   nextUnsolvedLevel: 1,
   levelType: null,
-  stage: "Breaking the Shell",
+  stage: "Sunny Side Up",
   stageNum: 1,
-  // stages: {
-  //   "Breaking the Shell": 1,
-  //   "Add Seasoning": 2
-  // }
+  stages: STAGES
 };
 
 export default (state = INITIAL_STATE, action) => {

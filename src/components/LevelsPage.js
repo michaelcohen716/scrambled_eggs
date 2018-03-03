@@ -81,7 +81,6 @@ const styles = {
     fontFamily: 'RobotoCondensed-Regular',
     marginLeft: 13,
     marginBottom: 4,
-    // marginTop: 4,
     color: 'white'
   },
   stageBlue: {

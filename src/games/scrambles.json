@@ -16,6 +16,7 @@
       "answer": "boast"
     }
   },
+
   "green": {
     "1": {
       "clue": "Between blue and yellow",
@@ -33,6 +34,7 @@
       "answer": "renege"
     }
   },
+
   "harden": {
     "1": {
       "clue": "To make less soft",
@@ -48,6 +50,24 @@
       "clue": "Discovered with your ears",
       "letters": "harde",
       "answer": "heard"
+    }
+  },
+
+  "friends": {
+    "1": {
+      "clue": "Multiple companions",
+      "letters": "demfinmasr",
+      "answer": "friends"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "s"
+    },
+    "3": {
+      "clue": "Keeper, not weeper",
+      "letters": "friend",
+      "answer": "finder"
     }
   }
 

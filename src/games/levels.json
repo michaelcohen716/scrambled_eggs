@@ -14,12 +14,12 @@
   "3": {
     "type": "jumble",
     "letters": "eimt",
-    "time": 45,
+    "time": 55,
     "stage": "Sunny Side Up"
   },
   "4": {
     "type": "scramble",
-    "letters": "green",
+    "firstAnswer": "green",
     "time": 45,
     "stage": "Sunny Side Up"
   },
@@ -31,7 +31,7 @@
   },
   "6": {
     "type": "scramble",
-    "letters": "harden",
+    "firstAnswer": "harden",
     "time": 50,
     "stage": "Sunny Side Up"
   },
@@ -39,91 +39,99 @@
     "type": "jumble",
     "letters": "aeglr",
     "time": 75,
-    "stage": "Breaking the Shell"
+    "stage": "Sunny Side Up"
   },
-  "5": {
+  "8": {
+    "type": "scramble",
+    "firstAnswer": "friends",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
+
+  "9": {
     "type": "jumble",
     "letters": "acert",
     "time": 75,
-    "stage": "Breaking the Shell"
-  },
-  "6": {
-    "type": "jumble",
-    "letters": "cdeirt",
-    "time": 70,
-    "stage": "Breaking the Shell"
-  },
-  "7": {
-    "type": "jumble",
-    "letters": "acelst",
-    "time": 60,
-    "stage": "Breaking the Shell"
-  },
-  "8": {
-    "type": "jumble",
-    "letters": "belstu",
-    "time": 75,
-    "stage": "Breaking the Shell"
-  },
-  "9": {
-    "type": "jumble",
-    "letters": "acenrt",
-    "time": 75,
-    "stage": "Add Seasoning"
+    "stage": "Hard Boiled"
   },
   "10": {
     "type": "jumble",
-    "letters": "adegnr",
-    "time": 75,
-    "stage": "Add Seasoning"
+    "letters": "cdeirt",
+    "time": 70,
+    "stage": "Hard Boiled"
   },
   "11": {
     "type": "jumble",
-    "letters": "aelnrt",
-    "time": 55,
-    "stage": "Add Seasoning"
+    "letters": "acelst",
+    "time": 60,
+    "stage": "Hard Boiled"
   },
   "12": {
     "type": "jumble",
-    "letters": "aceprs",
-    "time": 85,
-    "stage": "Add Seasoning"
+    "letters": "belstu",
+    "time": 75,
+    "stage": "Hard Boiled"
   },
   "13": {
     "type": "jumble",
-    "letters": "adehrt",
-    "time": "75",
-    "stage": "Add Seasoning"
+    "letters": "acenrt",
+    "time": 75,
+    "stage": "Hard Boiled"
   },
   "14": {
     "type": "jumble",
-    "letters": "ceilnst",
+    "letters": "adegnr",
     "time": 75,
-    "stage": "Add Seasoning"
+    "stage": "Hard Boiled"
   },
   "15": {
     "type": "jumble",
-    "letters": "eghilns",
+    "letters": "aelnrt",
     "time": 55,
-    "stage": "Add Seasoning"
+    "stage": "Hard Boiled"
   },
   "16": {
     "type": "jumble",
-    "letters": "efghirt",
-    "time": 60,
-    "stage": "Add Seasoning"
+    "letters": "aceprs",
+    "time": 85,
+    "stage": "Hard Boiled"
   },
+
   "17": {
     "type": "jumble",
-    "letters": "aeilnst",
-    "time": 85,
-    "stage": "Add Seasoning"
+    "letters": "adehrt",
+    "time": "75",
+    "stage": "Over Easy"
   },
   "18": {
     "type": "jumble",
+    "letters": "ceilnst",
+    "time": 75,
+    "stage": "Over Easy"
+  },
+  "19": {
+    "type": "jumble",
+    "letters": "eghilns",
+    "time": 55,
+    "stage": "Over Easy"
+  },
+  "20": {
+    "type": "jumble",
+    "letters": "efghirt",
+    "time": 60,
+    "stage": "Over Easy"
+  },
+  "21": {
+    "type": "jumble",
+    "letters": "aeilnst",
+    "time": 85,
+    "stage": "Over Easy"
+  },
+  "22": {
+    "type": "jumble",
     "letters": "cemprstu",
     "time": 75,
-    "stage": "Add Seasoning"
+    "stage": "Over Easy"
   }
 
 

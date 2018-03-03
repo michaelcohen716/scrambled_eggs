@@ -28,11 +28,12 @@ class Timer extends React.Component {
        const provisionalEggcoin = eggcoin + roundScore;
        this.props.recordScore(roundScore, provisionalEggcoin);
        this.props.endRound(true, activeLevel);
+       
+       const timer = this.state.timer;
+       this.setState({ timer: clearInterval(timer) });
+       return;
     }, 800);
 
-      const timer = this.state.timer;
-      this.setState({ timer: clearInterval(timer) });
-      return;
     }
 
     const timeElapsed = this.initialTime - this.state.seconds;
@@ -40,6 +41,7 @@ class Timer extends React.Component {
       this.props.endRound(false, activeLevel);
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
+      return;
     }
 
     this.props.reduceScoreMultiplier(this.decrement);

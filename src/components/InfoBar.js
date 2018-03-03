@@ -59,6 +59,14 @@ class InfoBar extends React.Component {
       eggcoin = eggcoin.toFixed(0);
     }
 
+    const undoButtonElement = this.props.advanceStagePage ? (
+      <View></View>
+    ) : (
+      <TouchableOpacity style={styles.undoContainer} onPress={this.undoWord}>
+        <Image source={undoButton} style={styles.undo}/>
+      </TouchableOpacity>
+    );
+
     return (
       <View style={styles.container}>
 
@@ -69,10 +77,7 @@ class InfoBar extends React.Component {
           <Image source={goldCoin} style={styles.goldEgg} />
         </View>
 
-        <TouchableOpacity style={styles.undoContainer} onPress={this.undoWord}>
-          <Image source={undoButton} style={styles.undo}/>
-        </TouchableOpacity>
-
+        {undoButtonElement}
 
         <View style={styles.score}>
           <ScoreKeeper />
@@ -88,6 +93,7 @@ const styles = {
     borderColor: 'white',
     borderWidth: 0.5,
     alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: 'white'
   },
   coinInfo: {

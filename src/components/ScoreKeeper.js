@@ -3,8 +3,8 @@ import { View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { awardWordCompletion } from '../actions';
 import Timer from './Timer';
-import eggImage from '../assets/egg.png';
-import coinSpin from '../assets/coin_spin.gif';
+// import eggImage from '../assets/egg.png';
+// import coinSpin from '../assets/coin_spin.gif';
 
 class ScoreKeeper extends React.Component {
   constructor(){

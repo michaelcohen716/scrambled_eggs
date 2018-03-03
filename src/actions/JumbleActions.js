@@ -5,6 +5,7 @@ import {
   VERIFY_WORD, END_ROUND,
   UNDO_WORD }
 from './types';
+import Levels from '../games/levels.json';
 
 export const startNewWord = ({ numWords, activeLetters, answers, roundTime, levelType }) => {
   return {
@@ -39,6 +40,7 @@ export const undoWord = () => {
   }
 }
 
+// this action does this for both types of game
 export const endRound = (boolean, activeLevel) => {
   const newLevel = activeLevel+1;
   const { currentUser } = firebase.auth();
@@ -50,7 +52,12 @@ export const endRound = (boolean, activeLevel) => {
       .update({ activeLevelAttempted: true});
   }
 
-  Actions.roundReview({ type: 'reset' });
+  if(Levels[newLevel].stage !== Levels[activeLevel].stage){ //advance stage
+    Actions.advanceStage({ type: 'reset' });
+  } else {
+    Actions.roundReview({ type: 'reset' });
+  }
+
 
   return {
     type: END_ROUND,

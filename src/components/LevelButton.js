@@ -34,6 +34,8 @@ class LevelButton extends React.Component {
       );
     }
 
+    // add type for locked level + locked stage
+
     if(num > this.props.nextUnsolvedLevel){ //locked level
       return (
         <TouchableOpacity style={styles.lockedLevel} key={num} >

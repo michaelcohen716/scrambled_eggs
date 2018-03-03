@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import Game from './components/Game';
 import LevelsPage from './components/LevelsPage';
 import RoundReview from './components/RoundReview';
+import AdvanceStage from './components/AdvanceStage';
 
 const RouterComponent = () => {
   return (
@@ -12,7 +13,8 @@ const RouterComponent = () => {
         <Scene initial key="login" component={LoginForm} title="Please Login" />
         <Scene key="levels" component={LevelsPage} title="Levels" />
         <Scene key="game" component={Game} title="Game On" />
-        <Scene key="roundReview" hideNavBar component={RoundReview} title="Round Review" />
+        <Scene key="roundReview" component={RoundReview} title="Round Review" />
+        <Scene key="advanceStage" component={AdvanceStage} title="Advance Stage" />
       </Scene>
     </Router>
   );
