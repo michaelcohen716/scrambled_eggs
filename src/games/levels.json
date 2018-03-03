@@ -3,27 +3,39 @@
     "type": "jumble",
     "letters": "adil",
     "time": 45,
-    "stage": "Breaking the Shell"
+    "stage": "Sunny Side Up"
   },
-  "1": {
+  "2": {
     "type": "scramble",
     "firstAnswer": "boat",
     "time": 45,
-    "stage": "Breaking the Shell",
-  },
-  "2": {
-    "type": "jumble",
-    "letters": "eimt",
-    "time": 45,
-    "stage": "Breaking the Shell"
+    "stage": "Sunny Side Up"
   },
   "3": {
     "type": "jumble",
-    "letters": "eilv",
+    "letters": "eimt",
     "time": 45,
-    "stage": "Breaking the Shell"
+    "stage": "Sunny Side Up"
   },
   "4": {
+    "type": "scramble",
+    "letters": "green",
+    "time": 45,
+    "stage": "Sunny Side Up"
+  },
+  "5": {
+    "type": "jumble",
+    "letters": "eilv",
+    "time": 45,
+    "stage": "Sunny Side Up"
+  },
+  "6": {
+    "type": "scramble",
+    "letters": "harden",
+    "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "7": {
     "type": "jumble",
     "letters": "aeglr",
     "time": 75,

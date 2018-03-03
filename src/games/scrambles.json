@@ -16,5 +16,39 @@
       "answer": "boast"
     }
   },
+  "green": {
+    "1": {
+      "clue": "Between blue and yellow",
+      "letters": "eublpegnr",
+      "answer": "green"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "e"
+    },
+    "3": {
+      "clue": "To renounce or abandon",
+      "letters": "greene",
+      "answer": "renege"
+    }
+  },
+  "harden": {
+    "1": {
+      "clue": "To make less soft",
+      "letters": "raeqhumnd",
+      "answer": "harden"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "n"
+    },
+    "3": {
+      "clue": "Discovered with your ears",
+      "letters": "harde",
+      "answer": "heard"
+    }
+  }
 
 }

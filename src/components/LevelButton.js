@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { assignLevel } from '../actions';
 import Levels from '../games/levels.json';
 import lockImage from '../assets/lock.png';
+
 var STAGES = {
-  "Breaking the Shell": 1,
+  "Sunny Side Up": 1,
   "Add Seasoning": 2
 };
 
@@ -26,10 +27,6 @@ class LevelButton extends React.Component {
     const { stage } = this.props;
 
     if(STAGES[stage] < STAGES[Levels[num].stage]){ //not this stage
-      console.log("not this stage");
-      console.log(this.props);
-      console.log(STAGES[stage]);
-      console.log(STAGES[Levels[num].stage]);
       return (
         <TouchableOpacity style={styles.lockedLevel}>
           <Image source={lockImage} style={styles.lock} />
