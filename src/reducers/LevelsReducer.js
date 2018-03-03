@@ -18,7 +18,8 @@ const INITIAL_STATE = {
   levelType: null,
   stage: "Sunny Side Up",
   stageNum: 1,
-  stages: STAGES
+  stages: STAGES,
+  advanceStagePage: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -49,6 +50,8 @@ export default (state = INITIAL_STATE, action) => {
           updatedState.stageNum += 1;
         }
       }
+      updatedState.advanceStagePage = action.advanceStagePage;
+
       return updatedState;
 
     default:

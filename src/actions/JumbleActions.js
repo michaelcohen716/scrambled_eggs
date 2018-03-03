@@ -52,8 +52,10 @@ export const endRound = (boolean, activeLevel) => {
       .update({ activeLevelAttempted: true});
   }
 
+  let advanceStagePage = false;
   if(Levels[newLevel].stage !== Levels[activeLevel].stage){ //advance stage
     Actions.advanceStage({ type: 'reset' });
+    advanceStagePage = true;
   } else {
     Actions.roundReview({ type: 'reset' });
   }
@@ -62,6 +64,7 @@ export const endRound = (boolean, activeLevel) => {
   return {
     type: END_ROUND,
     boolean,
-    activeLevel
+    activeLevel,
+    advanceStagePage
   }
 }

@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import {
   AWARD_WORD_COMPLETION, RECORD_SCORE,
-  REDUCE_SCORE_MULTIPLIER
+  REDUCE_SCORE_MULTIPLIER, SPEND_EGGCOIN
 } from './types';
 
 export const awardWordCompletion = (scoreIncrement) => {
@@ -31,5 +31,12 @@ export const reduceScoreMultiplier = (decrement) => {
   return {
     type: REDUCE_SCORE_MULTIPLIER,
     decrement
+  };
+};
+
+export const spendEggcoin = (cost) => {
+  return {
+    type: SPEND_EGGCOIN,
+    cost
   };
 };

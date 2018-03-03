@@ -23,21 +23,24 @@ class Timer extends React.Component {
   tick(){
     const { roundScore, activeLevel, eggcoin } = this.props;
 
+    // executing 'recordScore' twice for some reason
     if(this.props.wordIndex === this.props.attempts.length){
+      const timer = this.state.timer;
+      this.setState({ timer: clearInterval(timer) });
+
       setTimeout(() => {
        const provisionalEggcoin = eggcoin + roundScore;
+
        this.props.recordScore(roundScore, provisionalEggcoin);
        this.props.endRound(true, activeLevel);
-       
-       const timer = this.state.timer;
-       this.setState({ timer: clearInterval(timer) });
+
        return;
     }, 800);
 
     }
 
     const timeElapsed = this.initialTime - this.state.seconds;
-    if(timeElapsed + 1 == this.initialTime){
+    if(timeElapsed + 1 === this.initialTime){
       this.props.endRound(false, activeLevel);
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });

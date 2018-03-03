@@ -29,6 +29,16 @@ class InfoBar extends React.Component {
       let animation = setInterval(this.animate, millisecondIncrement);
       this.setState({ animation, animateChange: nextScore - prevScore, millisecondIncrement });
     }
+
+    if(nextProps.eggcoinCost !== this.props.eggcoinCost){
+      const prevScore = this.props.eggcoin;
+      const nextScore = this.props.eggcoin - nextProps.eggcoinCost;
+      this.setState({ prevScore });
+      const millisecondIncrement = 1000 / (nextScore - prevScore);
+
+      let animation = setInterval(this.animate, millisecondIncrement);
+      this.setState({ animation, animateChange: nextScore - prevScore, millisecondIncrement });
+    }
   }
 
   animate(){
@@ -43,6 +53,10 @@ class InfoBar extends React.Component {
       animateDecrement = 7;
     }
 
+    if(this.props.advanceStagePage){
+      animateDecrement = 7;
+    }
+
     this.setState({ animateChange: this.state.animateChange - animateDecrement }); // control speed of score change animation
   }
 
@@ -52,6 +66,9 @@ class InfoBar extends React.Component {
 
   render(){
     let eggcoin = this.props.provisionalEggcoin;
+    if(this.props.advanceStagePage){
+      eggcoin = this.props.eggcoin;
+    }
     const eggcoinDelta = eggcoin - this.state.prevScore;
 
     if(this.state.animateChange > 0){
@@ -67,6 +84,14 @@ class InfoBar extends React.Component {
       </TouchableOpacity>
     );
 
+    const scoreKeeperElement = this.props.advanceStagePage ? (
+      <View></View>
+    ) : (
+      <View style={styles.score}>
+        <ScoreKeeper />
+      </View>
+    );
+
     return (
       <View style={styles.container}>
 
@@ -79,9 +104,8 @@ class InfoBar extends React.Component {
 
         {undoButtonElement}
 
-        <View style={styles.score}>
-          <ScoreKeeper />
-        </View>
+        {scoreKeeperElement}
+
       </View>
     );
   }
@@ -139,12 +163,21 @@ const styles = {
 };
 
 const mapStateToProps = state => {
+  let provisionalEggcoin = 0;
+  if(!state.levels.advanceStagePage){
+    provisionalEggcoin = state.score.userEggcoin + state.score.roundScore;
+  } else {
+    provisionalEggcoin = state.score.userEggcoin - state.score.eggcoinCost;
+  }
+
   return {
     eggcoin: state.score.userEggcoin,
     roundScore: state.score.roundScore,
-    provisionalEggcoin: state.score.userEggcoin + state.score.roundScore,
+    provisionalEggcoin: provisionalEggcoin,
     activeLevelAttempted: state.score.activeLevelAttempted,
-    wordIndex: state.jumble.wordIndex
+    wordIndex: state.jumble.wordIndex,
+    eggcoinCost: state.score.eggcoinCost,
+    advanceStagePage: state.levels.advanceStagePage
   };
 };
 

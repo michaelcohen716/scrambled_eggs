@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import InfoBar from './InfoBar';
+import { spendEggcoin } from '../actions';
 
 class AdvanceStage extends React.Component {
   constructor(props){
@@ -14,9 +15,11 @@ class AdvanceStage extends React.Component {
   }
 
   proceed(){
-    if(this.state.initialTap === false){
+    if(!this.state.initialTap){
       this.setState({ initialTap: true});
     } else {
+      this.props.spendEggcoin(2000); //advance stage
+
       setTimeout(() => {
         Actions.levels({ type:'reset' });
 
@@ -102,4 +105,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(AdvanceStage);
+export default connect(mapStateToProps, { spendEggcoin })(AdvanceStage);

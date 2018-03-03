@@ -9,7 +9,7 @@ class ScrambleTile extends React.Component {
     this.press = this.press.bind(this);
   }
 
-  // still a bug at end of round (usedLetters render incorrectly)
+  // still a bug sometimes at end of round (usedLetters render incorrectly)
 
   press(){
     const { letter, letterIndex, attemptLength } = this.props;

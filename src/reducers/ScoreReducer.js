@@ -5,12 +5,13 @@ import {
   REDUCE_SCORE_MULTIPLIER,
   LOGIN_USER_SUCCESS,
   START_NEW_WORD, RECORD_SCORE,
-  START_NEW_SCRAMBLE
+  START_NEW_SCRAMBLE, SPEND_EGGCOIN
 } from '../actions/types';
 
 const INITIAL_STATE = {
   userEggcoin: 1000,
   roundScore: 0,
+  eggcoinCost: 0,
   scoreMultiplier: 100,
   activeLevelAttempted: false,
   unattemptedBaseScore: 5, //actions/reducers don't change these
@@ -56,6 +57,12 @@ export default (state = INITIAL_STATE, action) => {
       eggState.userEggcoin = action.eggcoin;
       eggState.activeLevelAttempted = action.activeLevelAttempted;
       return eggState;
+
+    case SPEND_EGGCOIN:
+      const spendState = merge({}, state);
+      spendState.eggcoinCost = action.cost;
+      spendState.userEggcoin -= action.cost;
+      return spendState;
 
     default:
       return state;
