@@ -4,11 +4,16 @@ import { connect } from 'react-redux';
 import { assignLevel } from '../actions';
 import Levels from '../games/levels.json';
 import lockImage from '../assets/lock.png';
+var STAGES = {
+  "Breaking the Shell": 1,
+  "Add Seasoning": 2
+};
 
 class LevelButton extends React.Component {
   constructor(props){
     super(props);
   }
+
   onPress(num){
     const levelType = Levels[num].type;
     this.props.assignLevel(num, levelType);
@@ -18,15 +23,19 @@ class LevelButton extends React.Component {
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
 
-    const { stage, STAGES } = this.props;
-    if(STAGES[stage] <= STAGES[Levels[num].stage]){ //not this stage
+    const { stage } = this.props;
+
+    if(STAGES[stage] < STAGES[Levels[num].stage]){ //not this stage
+      console.log("not this stage");
+      console.log(this.props);
+      console.log(STAGES[stage]);
+      console.log(STAGES[Levels[num].stage]);
       return (
         <TouchableOpacity style={styles.lockedLevel}>
           <Image source={lockImage} style={styles.lock} />
         </TouchableOpacity>
       );
     }
-
 
     if(num > this.props.nextUnsolvedLevel){ //locked level
       return (
@@ -57,7 +66,7 @@ class LevelButton extends React.Component {
       );
     }
 
-      // check if there's an error here...rendering with opacity somehow
+    // check if there's an error here...rendering with opacity somehow
     return ( //nextUnsolvedLevel
       <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
         <View style={styles.innerLevel}>
@@ -196,7 +205,6 @@ const styles = {
     width: 90,
     height: 90,
     position: 'absolute',
-    // opacity: 0.3
   }
 };
 
@@ -204,7 +212,7 @@ const mapStateToProps = state => {
   return {
     nextUnsolvedLevel: state.levels.nextUnsolvedLevel,
     stage: state.levels.stage,
-    stages: state.levels.stages
+    stageNum: state.levels.stageNum
   };
 };
 

@@ -15,7 +15,7 @@ class RoundReview extends React.Component {
     let buttonText = "Try again!";
 
     if(this.props.roundCompleted && this.props.levelType === "jumble"){
-      summary = `You found all ${potentialWords} words. Congrats`;
+      summary = `Congrats, you found all ${potentialWords} words.`;
       text = `You earned ${roundScore} eggcoin!`;
       buttonText = "Solve the next puzzle";
     }

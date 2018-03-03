@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import {
   ASSIGN_LEVEL, END_ROUND,
-  LOGIN_USER_SUCCESS, 
+  LOGIN_USER_SUCCESS,
 } from '../actions/types';
 
 import Levels from '../games/levels.json';
@@ -17,7 +17,10 @@ const INITIAL_STATE = {
   levelType: null,
   stage: "Breaking the Shell",
   stageNum: 1,
-  stages: STAGES
+  // stages: {
+  //   "Breaking the Shell": 1,
+  //   "Add Seasoning": 2
+  // }
 };
 
 export default (state = INITIAL_STATE, action) => {
