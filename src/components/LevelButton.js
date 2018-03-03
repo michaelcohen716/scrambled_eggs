@@ -18,23 +18,8 @@ class LevelButton extends React.Component {
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
 
-    // if(num === this.props.nextUnsolvedLevel){
-    //   return ( //nextUnsolvedLevel
-    //     <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
-    //       <View style={styles.innerLevel}>
-    //         <View style={styles.innerInnerLevel}>
-    //           <Text style={styles.levelText}>
-    //             {num}
-    //           </Text>
-    //         </View>
-    //       </View>
-    //     </TouchableOpacity>
-    //   );
-    // }
-
-    if(this.props.stage !== Levels[num].stage){ //not this stage
-      // console.log("not stage");
-      // console.log(this.props);
+    const { stage, STAGES } = this.props;
+    if(STAGES[stage] <= STAGES[Levels[num].stage]){ //not this stage
       return (
         <TouchableOpacity style={styles.lockedLevel}>
           <Image source={lockImage} style={styles.lock} />
@@ -44,8 +29,6 @@ class LevelButton extends React.Component {
 
 
     if(num > this.props.nextUnsolvedLevel){ //locked level
-      // console.log("lockedLevel");
-      // console.log(this.props);
       return (
         <TouchableOpacity style={styles.lockedLevel} key={num} >
           <View style={styles.innerLocked}>
@@ -61,8 +44,6 @@ class LevelButton extends React.Component {
     }
 
     if(num < this.props.nextUnsolvedLevel){ //solved level
-      // console.log("solvedLevel");
-      // console.log(this.props);
       return (
         <TouchableOpacity onPress={onPress} style={styles.solvedLevel} >
           <View style={styles.innerSolved}>
@@ -76,8 +57,7 @@ class LevelButton extends React.Component {
       );
     }
 
-      // console.log("nextUnsolvedLevel");
-      // there's an error here...rendering with opacity somehow
+      // check if there's an error here...rendering with opacity somehow
     return ( //nextUnsolvedLevel
       <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
         <View style={styles.innerLevel}>
@@ -223,7 +203,8 @@ const styles = {
 const mapStateToProps = state => {
   return {
     nextUnsolvedLevel: state.levels.nextUnsolvedLevel,
-    stage: state.levels.stage
+    stage: state.levels.stage,
+    stages: state.levels.stages
   };
 };
 

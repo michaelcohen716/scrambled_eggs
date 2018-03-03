@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import {
   ASSIGN_LEVEL, END_ROUND,
-  LOGIN_USER_SUCCESS, START_NEW_WORD
+  LOGIN_USER_SUCCESS, 
 } from '../actions/types';
 
 import Levels from '../games/levels.json';
