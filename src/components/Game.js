@@ -42,7 +42,6 @@ class Game extends React.Component {
         steps: this.scrambleSteps,
       };
 
-      debugger
       this.props.startNewScramble(startScrambleObject);
     }
   }
