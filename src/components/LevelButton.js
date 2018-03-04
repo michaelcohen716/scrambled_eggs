@@ -8,29 +8,11 @@ import lockImage from '../assets/lock.png';
 class LevelButton extends React.Component {
   constructor(props){
     super(props);
-    this.checkStage = this.checkStage.bind(this);
   }
 
   onPress(num){
     const levelType = Levels[num].type;
     this.props.assignLevel(num, levelType);
-  }
-
-  checkStage(level){
-    if(level < 9){
-      return 1;
-        // name: "Sunny Side Up",
-    }
-
-    if(level < 17){
-      return 2;
-        // name: "Hard Boiled",
-    }
-
-    if(level < 25){
-      return 3;
-        // name: "Over Easy",
-    }
   }
 
   render(){
@@ -42,6 +24,7 @@ class LevelButton extends React.Component {
 
     const thisLevelsStage = stages[Levels[num].stage];
     // numeric value of stage
+
     if(this.props.stageNum < thisLevelsStage){
       return (
         <TouchableOpacity style={styles.lockedLevel}>
@@ -50,30 +33,7 @@ class LevelButton extends React.Component {
       );
     }
 
-
-
-    // debugger
-    // const currentStage = this.checkStage(num).value;
-    // console.log(currentStage);
-    // // console.log(Levels);
-    // const thisLevelStage = this.checkStage(this.STAGES[Levels[num].stage]);
-    // console.log(thisLevelStage);
-
-    // if(currentStage < thisLevelStage){ //not this stage
-    //   console.log("not this stage");
-    //   console.log(this.props);
-    //   return (
-    //     <TouchableOpacity style={styles.lockedLevel}>
-    //       <Image source={lockImage} style={styles.lock} />
-    //     </TouchableOpacity>
-    //   );
-    // }
-
-    // add type for locked level + locked stage
-
     if(num > this.props.nextUnsolvedLevel){ //locked level
-      console.log("lockedLevel");
-      console.log(this.props);
       return (
         <TouchableOpacity style={styles.lockedLevel} key={num} >
           <View style={styles.innerLocked}>
@@ -102,7 +62,6 @@ class LevelButton extends React.Component {
       );
     }
 
-    // check if there's an error here...rendering with opacity somehow
     return ( //nextUnsolvedLevel
       <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
         <View style={styles.innerLevel}>

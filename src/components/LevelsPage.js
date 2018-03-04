@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, ScrollView, Text, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import Levels from '../games/levels.json';
 import LevelButton from './LevelButton';
-import IntroOverlay from './IntroOverlay';
 import goldCoin from '../assets/goldCoin.png';
 import CommaNumber from 'comma-number';
 
@@ -13,15 +12,16 @@ class LevelsPage extends React.Component {
     this.state = {
       activeLevel: null
     };
-    this.levels = Object.keys(Levels).length; //total levels in game
+    this.levels = Object.keys(Levels); //all levels in game
+    this.numLevels = this.levels.length;
   }
 
   render(){
-    let levels = [];
-    for (var i = 0; i < this.levels; i++) {
-      const thisLevel = <LevelButton num={i+1} key={i}/>;
-      levels.push(thisLevel);
-    }
+    const levels = this.levels.map((level, idx) => {
+      return (
+        <LevelButton num={idx+1} key={idx} />
+      );
+    });
 
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
@@ -37,23 +37,51 @@ class LevelsPage extends React.Component {
           </Text>
         </View>
 
+          <View style={styles.levels}>
+            <ScrollView horizontal={false} contentContainerStyle={styles.contentContainerStyle} >
+              {levels}
+            </ScrollView>
+          </View>
 
-        <View style={styles.levels}>
-          {levels}
+        <View style={styles.treasureChest}>
+          <Text style={styles.treasureText}>Treasure Chest</Text>
         </View>
       </View>
     );
   }
 }
 
+var { height, width } = Dimensions.get('window');
+
 const styles = {
   parent: {
     flex: 1,
     flexDirection: 'column',
-    position: 'relative',
-    zIndex: 1
   },
+  contentContainerStyle: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    flex: 1,
+    alignItems: 'flex-start',
+  },
+  content: {
 
+  },
+  treasureText: {
+    color: 'white',
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 22
+  },
+  treasureChest: {
+    height: 100,
+    position: 'absolute',
+    bottom: 0,
+    width: width,
+    alignSelf: 'stretch',
+    backgroundColor: 'black',
+    borderColor: 'white',
+    borderWidth: 2
+  },
   info: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -64,9 +92,12 @@ const styles = {
   },
   levels: {
     padding: 5,
-    flexDirection: 'row',
     flexWrap: 'wrap',
-    backgroundColor: 'black'
+    flexDirection: 'row',
+    backgroundColor: 'black',
+    alignItems: 'flex-start',
+    flex: 1,
+    height: 300
   },
   eggcoin: {
     marginRight: 12,
