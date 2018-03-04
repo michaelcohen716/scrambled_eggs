@@ -43,10 +43,7 @@ export default (state = INITIAL_STATE, action) => {
       const updatedState = merge({}, state);
       if(action.boolean){
         const nextUpdated = Math.max(updatedState.nextUnsolvedLevel, action.activeLevel + 1);
-
-        // this isn't always right ....maybe fixed
         updatedState.nextUnsolvedLevel = nextUpdated;
-
 
         // advance stage
         const stage = Levels[updatedState.nextUnsolvedLevel].stage;

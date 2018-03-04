@@ -5,14 +5,10 @@ import { assignLevel } from '../actions';
 import Levels from '../games/levels.json';
 import lockImage from '../assets/lock.png';
 
-var STAGES = {
-  "Sunny Side Up": 1,
-  "Add Seasoning": 2
-};
-
 class LevelButton extends React.Component {
   constructor(props){
     super(props);
+    this.checkStage = this.checkStage.bind(this);
   }
 
   onPress(num){
@@ -20,13 +16,33 @@ class LevelButton extends React.Component {
     this.props.assignLevel(num, levelType);
   }
 
+  checkStage(level){
+    if(level < 9){
+      return 1;
+        // name: "Sunny Side Up",
+    }
+
+    if(level < 17){
+      return 2;
+        // name: "Hard Boiled",
+    }
+
+    if(level < 25){
+      return 3;
+        // name: "Over Easy",
+    }
+  }
+
   render(){
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
 
-    const { stage } = this.props;
+    const { stages } = this.props;
+    // STAGES
 
-    if(STAGES[stage] < STAGES[Levels[num].stage]){ //not this stage
+    const thisLevelsStage = stages[Levels[num].stage];
+    // numeric value of stage
+    if(this.props.stageNum < thisLevelsStage){
       return (
         <TouchableOpacity style={styles.lockedLevel}>
           <Image source={lockImage} style={styles.lock} />
@@ -34,9 +50,30 @@ class LevelButton extends React.Component {
       );
     }
 
+
+
+    // debugger
+    // const currentStage = this.checkStage(num).value;
+    // console.log(currentStage);
+    // // console.log(Levels);
+    // const thisLevelStage = this.checkStage(this.STAGES[Levels[num].stage]);
+    // console.log(thisLevelStage);
+
+    // if(currentStage < thisLevelStage){ //not this stage
+    //   console.log("not this stage");
+    //   console.log(this.props);
+    //   return (
+    //     <TouchableOpacity style={styles.lockedLevel}>
+    //       <Image source={lockImage} style={styles.lock} />
+    //     </TouchableOpacity>
+    //   );
+    // }
+
     // add type for locked level + locked stage
 
     if(num > this.props.nextUnsolvedLevel){ //locked level
+      console.log("lockedLevel");
+      console.log(this.props);
       return (
         <TouchableOpacity style={styles.lockedLevel} key={num} >
           <View style={styles.innerLocked}>
@@ -208,9 +245,13 @@ const styles = {
 };
 
 const mapStateToProps = state => {
+  // const STAGES = state.levels.STAGES;
+  // const stageNum = STAGES[Levels[]]
+
   return {
     nextUnsolvedLevel: state.levels.nextUnsolvedLevel,
-    stage: state.levels.stage,
+    stages: state.levels.stages,
+    // stage: state.levels.stage,
     stageNum: state.levels.stageNum
   };
 };

@@ -3,6 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import Levels from '../games/levels.json';
 import LevelButton from './LevelButton';
+import IntroOverlay from './IntroOverlay';
 import goldCoin from '../assets/goldCoin.png';
 import CommaNumber from 'comma-number';
 
@@ -35,6 +36,8 @@ class LevelsPage extends React.Component {
             <Image source={goldCoin} style={styles.goldEgg} />
           </Text>
         </View>
+
+
         <View style={styles.levels}>
           {levels}
         </View>
@@ -46,8 +49,11 @@ class LevelsPage extends React.Component {
 const styles = {
   parent: {
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    position: 'relative',
+    zIndex: 1
   },
+
   info: {
     flexDirection: 'row',
     justifyContent: 'space-between',

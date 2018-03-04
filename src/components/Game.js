@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startNewWord, startNewScramble } from '../actions';
 import { View } from 'react-native';
+import { startNewWord, startNewScramble } from '../actions';
 import Jumbles from '../games/jumbles.json';
 import Scrambles from '../games/scrambles.json';
 import Levels from '../games/levels.json';
