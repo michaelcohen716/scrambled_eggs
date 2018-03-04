@@ -82,7 +82,7 @@ export default (state = INITIAL_STATE, action) => {
       return futureState;
 
       case END_ROUND:
-        let endState = merge({}, state);
+        const endState = merge({}, state);
         endState.roundCompleted = action.boolean;
         return endState;
 

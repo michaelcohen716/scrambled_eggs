@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Levels from '../games/levels.json';
 import LevelButton from './LevelButton';
 import goldCoin from '../assets/goldCoin.png';
+import CommaNumber from 'comma-number';
 
 class LevelsPage extends React.Component {
   constructor(props){
@@ -30,7 +31,7 @@ class LevelsPage extends React.Component {
           </Text>
 
           <Text style={styles.eggcoin}>
-            {this.props.eggcoin}
+            {CommaNumber(this.props.eggcoin)}
             <Image source={goldCoin} style={styles.goldEgg} />
           </Text>
         </View>
@@ -81,10 +82,10 @@ const styles = {
     fontFamily: 'RobotoCondensed-Regular',
     marginLeft: 13,
     marginBottom: 4,
-    color: 'white'
+    color: 'blue'
   },
   stageBlue: {
-    color: 'blue'
+    color: 'white'
   }
 };
 

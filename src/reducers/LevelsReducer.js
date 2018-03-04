@@ -19,7 +19,7 @@ const INITIAL_STATE = {
   stage: "Sunny Side Up",
   stageNum: 1,
   stages: STAGES,
-  advanceStagePage: false
+  advanceStagePage: false //whether next round is next stage (different RoundReview component)
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -36,6 +36,7 @@ export default (state = INITIAL_STATE, action) => {
       const newState = merge({}, state);
       newState.activeLevel = action.nextLevel;
       newState.levelType = action.levelType;
+      newState.advanceStagePage = false;
       return newState;
 
     case END_ROUND:

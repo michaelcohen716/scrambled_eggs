@@ -43,6 +43,14 @@ class ScrambleTile extends React.Component {
       );
     }
 
+    if(answerIndex === 1 && this.props.press){ //second word letters holder
+      return (
+        <TouchableOpacity style={styles.lastLetters} onPress={this.press}>
+          <Text style={styles.lastLettersText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
+
     if(answerIndex !== wordIndex && pastUsedLetters[letterIndex]){ //inactive word, used letter
       return (
         <TouchableOpacity style={styles.unpressed}>
@@ -67,6 +75,7 @@ class ScrambleTile extends React.Component {
       );
     }
 
+
     return ( //unpressed active
       <TouchableOpacity style={styles.unpressed} onPress={this.press}>
         <Text style={styles.unpressedText}>{letter}</Text>
@@ -77,6 +86,23 @@ class ScrambleTile extends React.Component {
 }
 
 const styles = {
+  lastLetters: {
+    height: 45,
+    width: 45,
+    padding: 2,
+    margin: 4,
+    backgroundColor: 'blue',
+    borderColor: 'white',
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10
+  },
+  lastLettersText: {
+    fontSize: 20,
+    fontFamily: 'RobotoCondensed-Regular',
+    color: 'white'
+  },
   unpressed: {
     height: 45,
     width: 45,

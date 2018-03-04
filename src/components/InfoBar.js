@@ -5,6 +5,8 @@ import ScoreKeeper from './ScoreKeeper';
 import goldCoin from '../assets/goldCoin.png';
 import undoButton from '../assets/undo.png';
 import { undoWord } from '../actions';
+import coinSpin from '../assets/coin_spin.gif';
+import CommaNumber from 'comma-number';
 
 class InfoBar extends React.Component {
   constructor(){
@@ -14,9 +16,11 @@ class InfoBar extends React.Component {
       animation: null,
       millisecondIncrement: 0,
       prevScore: null,
+      purchaseTimeline: 0
     };
     this.animate = this.animate.bind(this);
     this.undoWord = this.undoWord.bind(this);
+    this.animatePurchase = this.animatePurchase.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -31,14 +35,23 @@ class InfoBar extends React.Component {
     }
 
     if(nextProps.eggcoinCost !== this.props.eggcoinCost){
-      const prevScore = this.props.eggcoin;
-      const nextScore = this.props.eggcoin - nextProps.eggcoinCost;
-      this.setState({ prevScore });
-      const millisecondIncrement = 1000 / (nextScore - prevScore);
-
-      let animation = setInterval(this.animate, millisecondIncrement);
-      this.setState({ animation, animateChange: nextScore - prevScore, millisecondIncrement });
+      this.animatePurchase();
+      // debugger
+      // const prevScore = this.props.eggcoin;
+      // const nextScore = this.props.eggcoin - nextProps.eggcoinCost;
+      // this.setState({ prevScore });
+      // const millisecondIncrement = 1000 / (nextScore - prevScore);
+      //
+      // let animation = setInterval(this.animate, millisecondIncrement);
+      // this.setState({ animation, animateChange: nextScore - prevScore, millisecondIncrement });
     }
+  }
+
+  animatePurchase(){
+    this.setState({ purchaseTimeline: 1});
+    setTimeout(() => {
+      this.setState({ purchaseTimeline: 0});
+    }, 800);
   }
 
   animate(){
@@ -69,11 +82,29 @@ class InfoBar extends React.Component {
     if(this.props.advanceStagePage){
       eggcoin = this.props.eggcoin;
     }
+    
     const eggcoinDelta = eggcoin - this.state.prevScore;
 
     if(this.state.animateChange > 0){
       eggcoin = this.state.prevScore + (eggcoinDelta * ((eggcoinDelta - this.state.animateChange)) / eggcoinDelta); // 1000 + (500 * (( 500 - 500))
       eggcoin = eggcoin.toFixed(0);
+    }
+
+    if(this.state.purchaseTimeline === 1){
+      eggcoin = (
+        <View style={styles.coinInfo}>
+          <Image source={coinSpin} style={styles.egg} />
+        </View>
+      );
+    } else {
+      eggcoin = (
+        <View style={styles.coinInfo}>
+          <Text style={styles.eggcoin}>
+            {CommaNumber(eggcoin)}
+          </Text>
+          <Image source={goldCoin} style={styles.goldEgg} />
+        </View>
+      );
     }
 
     const undoButtonElement = this.props.advanceStagePage ? (
@@ -95,12 +126,7 @@ class InfoBar extends React.Component {
     return (
       <View style={styles.container}>
 
-        <View style={styles.coinInfo}>
-          <Text style={styles.eggcoin}>
-            {eggcoin}
-          </Text>
-          <Image source={goldCoin} style={styles.goldEgg} />
-        </View>
+        {eggcoin}
 
         {undoButtonElement}
 
@@ -119,6 +145,11 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'white'
+  },
+  egg: {
+    height: 30,
+    width: 30,
+    marginLeft: 8
   },
   coinInfo: {
     flexDirection: 'row',

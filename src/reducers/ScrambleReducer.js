@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import {
   START_NEW_SCRAMBLE, TAP_SCRAMBLE_LETTER,
-  VERIFY_SCRAMBLE, UNDO_WORD
+  VERIFY_SCRAMBLE, UNDO_WORD, END_ROUND
 } from '../actions/types';
 // import Scrambles from '../games/scrambles.json';
 
@@ -16,7 +16,8 @@ const INITIAL_STATE = {
   answerLength: null,
   wordIndex: 0,
   inputWords: [],
-  inputChanges: []
+  inputChanges: [],
+  roundCompleted: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,6 +26,7 @@ export default (state = INITIAL_STATE, action) => {
       const newState = merge({}, state);
       newState.roundTime = action.roundTime;
       newState.answerLength = action.firstAnswer.length;
+      newState.roundCompleted = false;
 
       let inputWords = [];
       let inputChanges = [];
@@ -66,6 +68,11 @@ export default (state = INITIAL_STATE, action) => {
       newState.usedLetters = usedLetters;
 
       return newState;
+
+    case END_ROUND:
+      const endState = merge({}, state);
+      endState.roundCompleted = action.boolean;
+      return endState;
 
     case TAP_SCRAMBLE_LETTER:
       const tapState = merge({}, state);

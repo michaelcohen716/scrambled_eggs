@@ -23,7 +23,7 @@ class AdvanceStage extends React.Component {
       setTimeout(() => {
         Actions.levels({ type:'reset' });
 
-      }, 800);
+      }, 1400);
     }
   }
 

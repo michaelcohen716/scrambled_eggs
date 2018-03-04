@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import CommaNumber from 'comma-number';
 
 class RoundReview extends React.Component {
   proceed(){
@@ -9,10 +10,12 @@ class RoundReview extends React.Component {
   }
 
   render(){
-    const { completedWords, potentialWords, roundScore } = this.props;
+    let { completedWords, potentialWords, roundScore } = this.props;
     let summary = `You found ${completedWords} of ${potentialWords} words`;
     let text = "Better luck next time!";
     let buttonText = "Try again!";
+
+    roundScore = CommaNumber(roundScore);
 
     if(this.props.roundCompleted && this.props.levelType === "jumble"){
       summary = `Congrats, you found all ${potentialWords} words.`;
@@ -82,6 +85,8 @@ const styles = {
 };
 
 const mapStateToProps = state => {
+  const levelType = state.levels.levelType;
+
   return {
     roundCompleted: state.jumble.roundCompleted,
     potentialWords: state.jumble.attempts.length,

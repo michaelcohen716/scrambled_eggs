@@ -45,44 +45,12 @@ class ScoreKeeper extends React.Component {
   }
 
   render(){
-    // const egg = (key) => {
-    //   if(this.state.animateTimeline === 1){
-    //     return (
-    //       <Image source={coinSpin} style={styles.egg} key={key} idx={key}/>
-    //     );
-    //   } else {
-    //     return (
-    //       <Image source={eggImage} style={styles.egg} key={key} idx={key}/>
-    //     );
-    //   }
-    // };
-    //
-    // const eggs = [];
-    // const wordIndex = this.props.wordIndex;
-    // for (var i = 0; i < wordIndex; i++) {
-    //   eggs.push(egg(i));
-    // }
-
     return (
       <Timer />
     );
   }
 }
 
-
-const styles = {
-  container: {
-    alignItems: 'flex-end',
-    flexDirection: 'row'
-  },
-
-  egg: {
-    width: 15,
-    height: 20,
-    marginBottom: 6.5,
-    marginRight: 3
-  }
-};
 
 const mapStateToProps = state => {
   const levelType = state.levels.levelType;
