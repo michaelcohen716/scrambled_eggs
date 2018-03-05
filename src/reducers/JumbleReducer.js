@@ -46,10 +46,10 @@ export default (state = INITIAL_STATE, action) => {
       const shakeState = merge({}, state);
       let newActiveLetters = "";
       const oldActiveLetters = state.activeLetters;
-      let oldActiveWord = oldActiveLetters.join("");
-      debugger
-      while(oldActiveWord.length > 0){
-        newActiveLetters += oldActiveWord.splice(oldActiveWord.length * Math.random() << 0, 1);
+      // let oldActiveWord = oldActiveLetters.join("");
+      // debugger
+      while(oldActiveLetters.length > 0){
+        newActiveLetters += oldActiveLetters.splice(oldActiveLetters.length * Math.random() << 0, 1);
       }
 
       newActiveLetters = newActiveLetters.split("");
