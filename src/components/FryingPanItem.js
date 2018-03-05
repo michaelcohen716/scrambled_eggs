@@ -45,7 +45,7 @@ class FryingPanItem extends React. Component {
   }
 
   onPress(){
-    if(this.state.touch === 0){
+    if(this.state.touch === 0 && !this.props.inGame){
       this.setState({ touch: 1});
       this.unmarkOtherItems();
       this.showDescription();
@@ -56,16 +56,19 @@ class FryingPanItem extends React. Component {
       this.setState({ touch: 2});
 
     } else { //touch == 2
-
-      if(this.item === "shakeItUp"){
-        this.props.shakeItUp({
-          itemsToggle: this.props.itemsToggle,
-          levelType: this.props.levelType
-        });
-      }
-
-      this.setState({ touch: 0});
+      // debugger
+      this.setState({ touch: 0}, () => {
+        if(this.item === "shakeItUp"){
+          this.props.shakeItUp({
+            itemsToggle: this.props.itemsToggle,
+            levelType: this.props.levelType,
+            item: this.item
+          });
+        }
+      });
     }
+
+
   }
 
   showDescription(){
@@ -79,6 +82,7 @@ class FryingPanItem extends React. Component {
       cost: this.cost,
       itemsToggle: this.props.itemsToggle
     };
+
     this.props.makePurchase(object);
   }
 

@@ -116,8 +116,9 @@ const styles = {
   },
   itemMessage: {
     color: 'white',
-    fontSize: 16,
-    marginTop: 14
+    fontSize: 18,
+    marginTop: 14,
+    fontFamily: 'RobotoCondensed-Regular',
   },
   fryingItems: {
     flex: 2,

@@ -30,5 +30,6 @@ export const VERIFY_SCRAMBLE = 'verify_scramble';
 
 //items
 export const MAKE_PURCHASE = 'make_purchase';
-export const SHAKE_IT_UP = 'shake_it_up';
 export const SHOW_ITEM_DESCRIPTION = 'show_item_description';
+export const SHAKE_IT_UP = 'shake_it_up';
+export const SEE_A_LETTER = 'see_a_letter';

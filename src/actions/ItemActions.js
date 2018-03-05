@@ -1,8 +1,9 @@
 import firebase from 'firebase';
 import {
   MAKE_PURCHASE, SHAKE_IT_UP,
-  SHOW_ITEM_DESCRIPTION
+  SHOW_ITEM_DESCRIPTION, SEE_A_LETTER
 } from './types';
+import merge from 'lodash/merge';
 
 export const makePurchase = ({ item, cost, itemsToggle }) => {
   const { currentUser } = firebase.auth();
@@ -27,16 +28,25 @@ export const showItemDescription = (message) => {
   }
 }
 
-export const shakeItUp = ({ itemsToggle, levelType }) => {
+export const shakeItUp = ({ itemsToggle, levelType, item }) => {
   const { currentUser } = firebase.auth();
-  itemsToggle["shakeItUp"] = false;
+  const newToggle = merge({}, itemsToggle);
+  newToggle[item] = false;
 
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
-    .update({  itemsToggle })
+    .update({  itemsToggle: newToggle })
 
   return {
     type: SHAKE_IT_UP,
     itemsToggle,
-    levelType
+    levelType,
+    item
+  }
+}
+
+export const seeALetter = () => {
+
+  return {
+    type: SEE_A_LETTER
   }
 }
