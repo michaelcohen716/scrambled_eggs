@@ -4,8 +4,8 @@ import { View, Text } from 'react-native';
 import ScrambleTile from './ScrambleTile';
 
 class ScrambleEmptyHolder extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
   }
 
@@ -37,7 +37,7 @@ const styles = {
   active: {
    flexDirection: 'row',
    position: 'relative',
-   marginTop: 5,
+   marginTop: 1,
    minHeight: 50,
    maxHeight: 50
  },

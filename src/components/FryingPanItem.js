@@ -59,17 +59,17 @@ class FryingPanItem extends React. Component {
 
   render(){
     // debugger
-    const { name, firstImage, secondImage, cost } = this.props.info;
+    const { item, firstImage, secondImage, cost } = this.props.info;
 
     let firstStyle = styles.icon;
-    if(name === "fireUp"){
+    if(item === "fireUp"){
       firstStyle = styles.fireUpIcon;
-    } else if(name === "shakeItUp"){
+    } else if(item === "shakeItUp"){
       firstStyle = styles.blenderIcon;
     }
 
     let secondStyle = styles.icon;
-    if(name === "shakeItUp"){
+    if(item === "shakeItUp"){
       secondStyle = styles.secondBlendIcon;
     }
 
@@ -87,7 +87,7 @@ class FryingPanItem extends React. Component {
           <Image source={firstImage} style={firstStyle} />
         </TouchableOpacity>
       );
-    }  
+    }
 
     if (this.state.touch === 1) { //levels page about to buy
       return (
@@ -168,7 +168,7 @@ const styles = {
     resizeMode: 'cover'
   },
   blenderIcon: {
-    marginTop: 2,
+    marginBottom: 0.5,
     flex: 1,
     height: undefined,
     width: undefined,

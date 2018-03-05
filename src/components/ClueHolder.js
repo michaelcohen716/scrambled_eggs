@@ -17,7 +17,7 @@ class ClueHolder extends React.Component {
 const styles = {
   containerLeft: {
     paddingTop: 3,
-    paddingBottom: 5,
+    paddingBottom: 2,
     paddingRight: 6,
     width: 280,
     marginTop: 10,

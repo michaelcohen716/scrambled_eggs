@@ -5,10 +5,11 @@ import InfoBar from './InfoBar';
 import ClueHolder from './ClueHolder';
 import ScrambleEmptyHolder from './ScrambleEmptyHolder';
 import ScrambleTile from './ScrambleTile';
+import FryingPan from './FryingPan';
 
 class ScrambleGame extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
 
   render(){
@@ -88,6 +89,8 @@ class ScrambleGame extends React.Component {
             <ScrambleEmptyHolder answerIndex={1} />
           </View>
         </View>
+
+        <FryingPan inGame={true} />
 
       </View>
     );

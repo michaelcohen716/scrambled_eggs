@@ -1,7 +1,8 @@
 import merge from 'lodash/merge';
 import {
   START_NEW_SCRAMBLE, TAP_SCRAMBLE_LETTER,
-  VERIFY_SCRAMBLE, UNDO_WORD, END_ROUND
+  VERIFY_SCRAMBLE, UNDO_WORD, END_ROUND,
+  SHAKE_IT_UP
 } from '../actions/types';
 // import Scrambles from '../games/scrambles.json';
 
@@ -73,6 +74,33 @@ export default (state = INITIAL_STATE, action) => {
       const endState = merge({}, state);
       endState.roundCompleted = action.boolean;
       return endState;
+
+    case SHAKE_IT_UP:
+      const shakeState = merge({}, state);
+      let newActiveLetters = "";
+      const oldActiveLetters = state.activeLetters.split("");
+
+      //shuffle
+      while(oldActiveLetters.length > 0){
+        newActiveLetters += oldActiveLetters.splice(oldActiveLetters.length * Math.random() << 0, 1);
+      }
+
+      // newActiveLetters = newActiveLetters.split("");
+      shakeState.activeLetters = newActiveLetters;
+      const inputWordsNew = state.inputWords;
+      inputWordsNew[state.wordIndex].letters = newActiveLetters;
+      shakeState.inputWords = inputWordsNew;
+
+      shakeState.attemptLength = 0;
+      shakeState.attempts[state.wordIndex] = [];
+
+      const usedLettersShake = new Array(state.activeLetters.length);
+      for (var a = 0; a < usedLettersShake.length; a++) {
+        usedLettersShake[a] = false;
+      }
+      shakeState.usedLetters = usedLettersShake;
+
+      return shakeState;
 
     case TAP_SCRAMBLE_LETTER:
       const tapState = merge({}, state);
