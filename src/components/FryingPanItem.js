@@ -34,11 +34,14 @@ class FryingPanItem extends React. Component {
   onPress(){
     if(this.state.touch === 0){
       this.setState({ touch: 1});
+
     } else if(this.state.touch === 1) {
       this.makePurchase();
       this.setState({ touch: 2});
+
     } else { //touch == 2
-      this.props.shakeItUp();
+      this.props.shakeItUp(this.props.itemsToggle);
+      this.setState({ touch: 0});
     }
   }
 
@@ -56,7 +59,7 @@ class FryingPanItem extends React. Component {
 
   render(){
     // debugger
-    const { name, firstImage, secondImage } = this.props.info;
+    const { name, firstImage, secondImage, cost } = this.props.info;
 
     let firstStyle = styles.icon;
     if(name === "fireUp"){
@@ -70,29 +73,38 @@ class FryingPanItem extends React. Component {
       secondStyle = styles.secondBlendIcon;
     }
 
-    if(this.state.touch === 0){
+    if(this.state.touch === 0 && this.props.inGame){ //inGame, unbought
+      return (
+        <TouchableOpacity style={styles.itemCard}>
+          <Image source={firstImage} style={firstStyle} />
+        </TouchableOpacity>
+      );
+    }
+
+    if(this.state.touch === 0){ //levels page unbought
       return (
         <TouchableOpacity style={styles.itemCard} onPress={this.onPress}>
           <Image source={firstImage} style={firstStyle} />
         </TouchableOpacity>
       );
-    } else if (this.state.touch === 1) {
+    }  
+
+    if (this.state.touch === 1) { //levels page about to buy
       return (
         <TouchableOpacity style={styles.itemCardCost} onPress={this.onPress}>
           <View style={styles.outerCost}>
-            <Text style={styles.itemCost}>450</Text>
+            <Text style={styles.itemCost}>{cost}</Text>
             <Image source={goldCoin} style={styles.coin} />
           </View>
         </TouchableOpacity>
       );
     }
-    else {
-      return (
-        <TouchableOpacity style={styles.itemCardBought} onPress={this.onPress}>
-          <Image source={secondImage} style={secondStyle} />
-        </TouchableOpacity>
-      );
-    }
+
+    return ( // game page bought, unspent
+      <TouchableOpacity style={styles.itemCardBought} onPress={this.onPress}>
+        <Image source={secondImage} style={secondStyle} />
+      </TouchableOpacity>
+    );
   }
 }
 

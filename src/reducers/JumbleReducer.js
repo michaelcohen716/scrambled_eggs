@@ -46,14 +46,23 @@ export default (state = INITIAL_STATE, action) => {
       const shakeState = merge({}, state);
       let newActiveLetters = "";
       const oldActiveLetters = state.activeLetters;
-      // let oldActiveWord = oldActiveLetters.join("");
-      // debugger
+
+      //shuffle
       while(oldActiveLetters.length > 0){
         newActiveLetters += oldActiveLetters.splice(oldActiveLetters.length * Math.random() << 0, 1);
       }
 
       newActiveLetters = newActiveLetters.split("");
       shakeState.activeLetters = newActiveLetters;
+      shakeState.attemptLength = 0;
+      shakeState.attempts[state.wordIndex] = [];
+      shakeState.message = 'Shake it up!';
+
+      const usedLettersShake = new Array(state.activeLetters.length);
+      for (var a = 0; a < usedLettersShake.length; a++) {
+        usedLettersShake[a] = false;
+      }
+      shakeState.usedLetters = usedLettersShake;
 
       return shakeState;
 

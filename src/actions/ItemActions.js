@@ -6,7 +6,7 @@ import {
 export const makePurchase = ({ item, cost, itemsToggle }) => {
   const { currentUser } = firebase.auth();
   itemsToggle[item] = true;
-  
+
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
     .update({
       itemsToggle
@@ -19,8 +19,15 @@ export const makePurchase = ({ item, cost, itemsToggle }) => {
   }
 }
 
-export const shakeItUp = () => {
+export const shakeItUp = (itemsToggle) => {
+  const { currentUser } = firebase.auth();
+  itemsToggle["shakeItUp"] = false;
+
+  firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .update({  itemsToggle })
+
   return {
-    type: SHAKE_IT_UP
+    type: SHAKE_IT_UP,
+    itemsToggle
   }
 }

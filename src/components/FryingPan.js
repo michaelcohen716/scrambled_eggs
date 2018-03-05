@@ -12,7 +12,6 @@ import flameBlack from '../assets/flame_black.png';
 import blenderWhite from '../assets/blender_white.png';
 import blenderBlack from '../assets/blender_black.png';
 
-
 var fryingItems = [
   { "item": "seeALetter",
     "firstImage": binocularsWhite,
@@ -35,19 +34,26 @@ class FryingPan extends React.Component {
   render(){
     const items = fryingItems.map((item, idx) => {
       return (
-        <FryingPanItem info={item} itemsToggle={this.props.itemsToggle} key={idx} />
+        <FryingPanItem info={item} itemsToggle={this.props.itemsToggle}
+                       key={idx} inGame={this.props.inGame} />
       )
     })
+
+    const eggcoinCounter = this.props.inGame ? (
+      <View style={styles.fryingEggcoin}></View>
+    ) : (
+      <View style={styles.fryingEggcoin}>
+        <Text style={styles.fryingPanText}>{CommaNumber(this.props.eggcoin)}</Text>
+        <Image source={goldCoin} style={styles.goldEgg2} />
+      </View>
+    )
 
     return (
       <View style={styles.fryingPan}>
 
         <View style={styles.fryingTopBar}>
           <Text style={styles.fryingPanText}>The Frying Pan</Text>
-          <View style={styles.fryingEggcoin}>
-            <Text style={styles.fryingPanText}>{CommaNumber(this.props.eggcoin)}</Text>
-            <Image source={goldCoin} style={styles.goldEgg2} />
-          </View>
+          {eggcoinCounter}
         </View>
 
         <View style={styles.fryingGallery}>
@@ -81,8 +87,8 @@ const styles = {
   },
   fryingGallery: {
     flex: 2,
-    borderColor: 'yellow',
-    borderWidth: 1,
+    // borderColor: 'yellow',
+    // borderWidth: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
