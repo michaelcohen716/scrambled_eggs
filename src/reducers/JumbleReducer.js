@@ -47,6 +47,7 @@ export default (state = INITIAL_STATE, action) => {
       let newActiveLetters = "";
       const oldActiveLetters = state.activeLetters;
       let oldActiveWord = oldActiveLetters.join("");
+      debugger
       while(oldActiveWord.length > 0){
         newActiveLetters += oldActiveWord.splice(oldActiveWord.length * Math.random() << 0, 1);
       }

@@ -25,6 +25,12 @@ class FryingPanItem extends React. Component {
     }
   }
 
+  componentDidMount(){
+    if(this.props.itemsToggle[this.item] === true){
+      this.setState({ touch: 2});
+    }
+  }
+
   onPress(){
     if(this.state.touch === 0){
       this.setState({ touch: 1});
@@ -49,6 +55,7 @@ class FryingPanItem extends React. Component {
   // need to make different return types for games page
 
   render(){
+    // debugger
     const { name, firstImage, secondImage } = this.props.info;
 
     let firstStyle = styles.icon;

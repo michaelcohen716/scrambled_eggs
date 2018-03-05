@@ -34,7 +34,7 @@ class JumbleGame extends React.Component {
           {empties}
         </View>
 
-        <FryingPan /> 
+        <FryingPan inGame={true} /> 
 
       </View>
     );
