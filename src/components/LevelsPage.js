@@ -43,8 +43,19 @@ class LevelsPage extends React.Component {
             </ScrollView>
           </View>
 
-        <View style={styles.treasureChest}>
-          <Text style={styles.treasureText}>Treasure Chest</Text>
+        <View style={styles.fryingPan}>
+
+          <View style={styles.fryingTopBar}>
+            <Text style={styles.fryingPanText}>The Frying Pan</Text>
+            <View style={styles.fryingEggcoin}>
+              <Text style={styles.fryingPanText}>{CommaNumber(this.props.eggcoin)}</Text>
+              <Image source={goldCoin} style={styles.goldEgg2} />
+            </View>
+          </View>
+
+          <View style={styles.fryingGallery}>
+
+          </View>
         </View>
       </View>
     );
@@ -58,21 +69,37 @@ const styles = {
     flex: 1,
     flexDirection: 'column',
   },
+  fryingGallery: {
+    flex: 2,
+    borderColor: 'yellow',
+    borderWidth: 1
+  },
   contentContainerStyle: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     flex: 1,
     alignItems: 'flex-start',
   },
-  content: {
-
+  fryingTopBar: {
+    flex: 1,
+    // height: 30,
+    alignSelf: 'stretch',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
-  treasureText: {
+  fryingPanText: {
     color: 'white',
     fontFamily: 'RobotoCondensed-Regular',
-    fontSize: 22
+    fontSize: 22,
+    marginTop: 1,
+    marginLeft: 12
   },
-  treasureChest: {
+  fryingEggcoin: {
+    flexDirection: 'row',
+    marginTop: 1,
+    marginRight: 9
+  },
+  fryingPan: {
     height: 100,
     position: 'absolute',
     bottom: 0,
@@ -100,7 +127,7 @@ const styles = {
     height: 300
   },
   eggcoin: {
-    marginRight: 12,
+    marginRight: 17,
     marginTop: 2,
     fontSize: 22,
     fontWeight: 'bold',
@@ -113,6 +140,13 @@ const styles = {
     marginRight: 5,
     marginLeft: 3,
     marginTop: 2
+  },
+  goldEgg2: {
+    height: 20,
+    width: 20,
+    marginRight: 5,
+    marginLeft: 3,
+    marginTop: 6
   },
   stage: {
     fontSize: 25,

@@ -6,8 +6,11 @@ import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import Router from './Router';
-import { Header } from './components/common';
 import logger from 'redux-logger';
+
+// The Noun Project
+// Credit to Md Saiful Alam Saif for 'binoculars.png
+// Credit to Creative Mania for 'blender.png`'
 
 class App extends Component {
   componentWillMount() {
