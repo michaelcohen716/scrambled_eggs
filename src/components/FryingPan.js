@@ -3,10 +3,41 @@ import { View, Text, Image, Dimensions, } from 'react-native';
 import { connect } from 'react-redux';
 import goldCoin from '../assets/goldCoin.png';
 import CommaNumber from 'comma-number';
+
 import FryingPanItem from './FryingPanItem';
+import binocularsWhite from '../assets/binoculars_white.png';
+import binocularsBlack from '../assets/binoculars_black.png';
+import flameWhite from '../assets/flame_white.png';
+import flameBlack from '../assets/flame_black.png';
+import blenderWhite from '../assets/blender_white.png';
+import blenderBlack from '../assets/blender_black.png';
+
+
+var fryingItems = [
+  { "name": "seeALetter",
+    "firstImage": binocularsWhite,
+    "secondImage": binocularsBlack,
+    "cost": 450
+  },
+  { "name": "fireUp",
+    "firstImage": flameWhite,
+    "secondImage": flameBlack,
+    "cost": 650
+  },
+  { "name": "shakeItUp",
+    "firstImage": blenderWhite,
+    "secondImage": blenderBlack,
+    "cost": 75
+  }
+]
 
 class FryingPan extends React.Component {
   render(){
+    const items = fryingItems.map((item, idx) => {
+      return (
+        <FryingPanItem info={item} key={idx} />
+      )
+    })
 
     return (
       <View style={styles.fryingPan}>
@@ -21,7 +52,7 @@ class FryingPan extends React.Component {
 
         <View style={styles.fryingGallery}>
           <View style={styles.fryingItems}>
-            <FryingPanItem />
+            {items}
           </View>
           <View style={styles.fryingStore}>
             <Text>store</Text>
@@ -40,12 +71,13 @@ const styles = {
     flexDirection: 'row'
   },
   fryingItems: {
-    flex: 1,
+    flex: 2,
     backgroundColor: 'black',
     flexDirection: 'row',
     paddingLeft: 14,
     paddingTop: 8,
-    paddingBottom: 8
+    paddingBottom: 8,
+    justifyContent: 'flex-start'
   },
   fryingGallery: {
     flex: 2,

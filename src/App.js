@@ -9,8 +9,10 @@ import Router from './Router';
 import logger from 'redux-logger';
 
 // The Noun Project
-// Credit to mikicon
-
+// Credits to:
+  // mikicon
+  // Alexander Skowalsky
+  // Deemak Daksina S
 class App extends Component {
   componentWillMount() {
     const config = {

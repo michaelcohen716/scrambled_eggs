@@ -27,3 +27,6 @@ export const SPEND_EGGCOIN = 'spend_eggcoin';
 export const START_NEW_SCRAMBLE = 'start_new_scramble';
 export const TAP_SCRAMBLE_LETTER = 'tap_scramble_letter';
 export const VERIFY_SCRAMBLE = 'verify_scramble';
+
+//items
+export const MAKE_PURCHASE = 'make_purchase';

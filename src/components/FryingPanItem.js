@@ -1,13 +1,13 @@
 import React from 'react';
 import { TouchableOpacity, Text, Image, View } from 'react-native';
 import { connect } from 'react-redux';
-import binocularsWhite from '../assets/binoculars_white.png';
-import binocularsBlack from '../assets/binoculars_black.png';
+
 import goldCoin from '../assets/goldCoin.png';
+import { makePurchase } from '../actions';
 
 class FryingPanItem extends React. Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       touch: 0
     };
@@ -24,10 +24,24 @@ class FryingPanItem extends React. Component {
   }
 
   render(){
+    const { name, firstImage, secondImage } = this.props.info;
+
+    let firstStyle = styles.icon;
+    if(name === "fireUp"){
+      firstStyle = styles.fireUpIcon;
+    } else if(name === "shakeItUp"){
+      firstStyle = styles.blenderIcon;
+    }
+
+    let secondStyle = styles.icon;
+    if(name === "shakeItUp"){
+      secondStyle = styles.secondBlendIcon;
+    }
+
     if(this.state.touch === 0){
       return (
         <TouchableOpacity style={styles.itemCard} onPress={this.onPress}>
-          <Image source={binocularsWhite} style={styles.icon} />
+          <Image source={firstImage} style={firstStyle} />
         </TouchableOpacity>
       );
     } else if (this.state.touch === 1) {
@@ -43,7 +57,7 @@ class FryingPanItem extends React. Component {
     else {
       return (
         <TouchableOpacity style={styles.itemCardBought} onPress={this.onPress}>
-          <Image source={binocularsWhite} style={styles.icon} />
+          <Image source={secondImage} style={secondStyle} />
         </TouchableOpacity>
       );
     }
@@ -58,6 +72,7 @@ const styles = {
     borderColor: 'black',
     borderRadius: 5,
     backgroundColor: 'silver',
+    marginRight: 5
   },
   itemCardCost: {
     width: 50,
@@ -66,6 +81,7 @@ const styles = {
     borderColor: 'white',
     borderRadius: 5,
     backgroundColor: 'black',
+    marginRight: 5
   },
   itemCardBought: {
     width: 50,
@@ -74,12 +90,12 @@ const styles = {
     borderColor: 'white',
     borderRadius: 5,
     backgroundColor: 'blue',
+    marginRight: 5
   },
   outerCost: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 3,
-    // alignItems: 'center'
   },
   itemCost: {
     fontFamily: 'RobotoCondensed-Regular',
@@ -94,7 +110,28 @@ const styles = {
     marginLeft: 2
   },
   icon: {
-    marginTop: 5,
+    marginTop: 7,
+    flex: 1,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'cover'
+  },
+  fireUpIcon: {
+    marginTop: 2.5,
+    flex: 1,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'cover'
+  },
+  blenderIcon: {
+    marginTop: 2,
+    flex: 1,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'cover'
+  },
+  secondBlendIcon: {
+    marginBottom: 2,
     flex: 1,
     height: undefined,
     width: undefined,
