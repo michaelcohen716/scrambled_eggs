@@ -14,6 +14,8 @@ class FryingPanItem extends React. Component {
     this.onPress = this.onPress.bind(this);
     this.makePurchase = this.makePurchase.bind(this);
     this.unmarkOtherItems = this.unmarkOtherItems.bind(this);
+    this.showDescription = this.showDescription.bind(this);
+
     this.item = this.props.info.item;
     this.cost = this.props.info.cost;
   }
@@ -46,7 +48,8 @@ class FryingPanItem extends React. Component {
     if(this.state.touch === 0){
       this.setState({ touch: 1});
       this.unmarkOtherItems();
-      this.props.showItemDescription(this.props.info.description);
+      this.showDescription();
+
 
     } else if(this.state.touch === 1) {
       this.makePurchase();
@@ -63,6 +66,11 @@ class FryingPanItem extends React. Component {
 
       this.setState({ touch: 0});
     }
+  }
+
+  showDescription(){
+    this.props.showItemDescription(this.props.info.description);
+    this.unmarkOtherItems();
   }
 
   makePurchase(){
@@ -87,6 +95,14 @@ class FryingPanItem extends React. Component {
     let secondStyle = styles.icon;
     if(item === "shakeItUp"){
       secondStyle = styles.secondBlendIcon;
+    }
+
+    if(this.state.touch === 2 && !this.props.inGame){ //level page bought
+      return (
+        <TouchableOpacity style={styles.itemCardBought} onPress={this.showDescription}>
+          <Image source={secondImage} style={secondStyle} />
+        </TouchableOpacity>
+      );
     }
 
     if(this.state.touch === 0 && this.props.inGame){ //inGame, unbought
