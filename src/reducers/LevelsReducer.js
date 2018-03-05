@@ -41,7 +41,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case END_ROUND:
       const updatedState = merge({}, state);
-      if(action.boolean){
+      if(action.roundCompleted){
         const nextUpdated = Math.max(updatedState.nextUnsolvedLevel, action.activeLevel + 1);
         updatedState.nextUnsolvedLevel = nextUpdated;
 

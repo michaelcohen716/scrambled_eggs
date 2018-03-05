@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Dimensions, } from 'react-native';
+import { View, Text, Image, Dimensions, ScrollView, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import goldCoin from '../assets/goldCoin.png';
 import CommaNumber from 'comma-number';
@@ -27,17 +27,39 @@ var fryingItems = [
     "firstImage": blenderWhite,
     "secondImage": blenderBlack,
     "cost": 75
+  },
+  { "item": "shakeItUp",
+    "firstImage": blenderWhite,
+    "secondImage": blenderBlack,
+    "cost": 75
+  },
+  { "item": "shakeItUp",
+    "firstImage": blenderWhite,
+    "secondImage": blenderBlack,
+    "cost": 75
   }
 ]
 
 class FryingPan extends React.Component {
+  constructor(props){
+    super(props);
+    this.markedItem = null;
+    this.unmarkOtherItems = this.unmarkOtherItems.bind(this);
+  }
+
+  unmarkOtherItems(idx){
+    this.markedItem = idx;
+  }
+
+
   render(){
     const items = fryingItems.map((item, idx) => {
       return (
-        <FryingPanItem info={item} itemsToggle={this.props.itemsToggle}
-                       key={idx} inGame={this.props.inGame} />
-      )
-    })
+        <FryingPanItem info={item} itemsToggle={this.props.itemsToggle} idx={idx}
+                       key={idx} inGame={this.props.inGame} marked={this.markedItem}
+                       unmarkOtherItems={this.unmarkOtherItems.bind(this, idx)} />
+              );
+    });
 
     const eggcoinCounter = this.props.inGame ? (
       <View style={styles.fryingEggcoin}></View>
@@ -46,7 +68,14 @@ class FryingPan extends React.Component {
         <Text style={styles.fryingPanText}>{CommaNumber(this.props.eggcoin)}</Text>
         <Image source={goldCoin} style={styles.goldEgg2} />
       </View>
-    )
+    );
+
+    const flatList = (
+      <FlatList
+          data={items} renderItem= { ({item}) => (item) } horizontal={true}
+          style={styles.fryingItems}
+      />
+    );
 
     return (
       <View style={styles.fryingPan}>
@@ -57,45 +86,57 @@ class FryingPan extends React.Component {
         </View>
 
         <View style={styles.fryingGallery}>
-          <View style={styles.fryingItems}>
-            {items}
-          </View>
-          <View style={styles.fryingStore}>
-            <Text>store</Text>
-          </View>
+            {flatList}
+            <View>
+              <Text style={styles.itemMessage}>See A Letter</Text>
+            </View>
         </View>
+
       </View>
     );
   }
 }
+
 var { width } = Dimensions.get('window');
 
 const styles = {
   fryingStore: {
     flex: 1,
     backgroundColor: 'black',
-    flexDirection: 'row'
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 4,
+    paddingBottom: 4
+  },
+  scrolling: {
+    height: 50,
+    width: 235,
+  },
+  itemMessage: {
+    color: 'white',
   },
   fryingItems: {
     flex: 2,
     backgroundColor: 'black',
     flexDirection: 'row',
-    paddingLeft: 14,
+    marginLeft: 13,
     paddingTop: 8,
     paddingBottom: 8,
-    justifyContent: 'flex-start'
+    // justifyContent: 'flex-start',
+    overflow: 'hidden',
+    borderColor: 'silver',
+    borderWidth: 1,
+    maxWidth: 250
   },
   fryingGallery: {
     flex: 2,
-    // borderColor: 'yellow',
-    // borderWidth: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    // justifyContent: 'center',
+    alignItems: 'flex-start'
   },
   fryingTopBar: {
     flex: 1,
-    // height: 30,
     alignSelf: 'stretch',
     flexDirection: 'row',
     justifyContent: 'space-between'

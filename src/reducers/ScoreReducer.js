@@ -36,7 +36,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case END_ROUND:
       const updatedState = merge({}, state);
-      if(action.boolean){
+      if(action.roundCompleted){
         updatedState.activeLevelAttempted = false;
       } else {
         updatedState.activeLevelAttempted = true;
@@ -69,7 +69,7 @@ export default (state = INITIAL_STATE, action) => {
       const purchState = merge({}, state);
       purchState.userEggcoin -= action.cost;
       return purchState;
-      
+
     default:
       return state;
   }
