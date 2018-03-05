@@ -52,15 +52,20 @@ const createUser = (dispatch) => {
   dispatch({ type: CREATE_USER })
 
   const { currentUser } = firebase.auth();
+  // default user game info
   firebase.database().ref(`/users/${currentUser.uid}`)
     .set({ phone: '323-323-3232'});
 
-  // default user game info
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
     .set({
       eggcoin: 1000,
       activeLevel: 1,
-      activeLevelAttempted: false
+      activeLevelAttempted: false,
+      itemsToggle: {
+        seeALetter: false,
+        fireUp: false,
+        shakeItUp: false
+      }
     })
 }
 
@@ -84,6 +89,7 @@ const loginUserSuccess = (dispatch, user) => {
     const eggcoin = snapshot.val().eggcoin;
     const activeLevel = snapshot.val().activeLevel;
     const activeLevelAttempted = snapshot.val().activeLevelAttempted;
+    const itemsToggle = snapshot.val().itemsToggle;
 
     Actions.levels({ type: 'reset'});
 
@@ -92,7 +98,8 @@ const loginUserSuccess = (dispatch, user) => {
       user,
       eggcoin,
       activeLevel,
-      activeLevelAttempted
+      activeLevelAttempted,
+      itemsToggle
     })
   })
 }

@@ -3,7 +3,7 @@ import { TouchableOpacity, Text, Image, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import goldCoin from '../assets/goldCoin.png';
-import { makePurchase } from '../actions';
+import { makePurchase, shakeItUp } from '../actions';
 
 class FryingPanItem extends React. Component {
   constructor(props){
@@ -15,6 +15,14 @@ class FryingPanItem extends React. Component {
     this.makePurchase = this.makePurchase.bind(this);
     this.item = this.props.info.item;
     this.cost = this.props.info.cost;
+    this.initiate();
+  }
+
+  initiate(){
+    const { itemsToggle } = this.props;
+    if(itemsToggle[this.item]){
+      this.setState({ touch: 2 }); //this resource is already purchased (max 1)
+    }
   }
 
   onPress(){
@@ -22,6 +30,7 @@ class FryingPanItem extends React. Component {
       this.setState({ touch: 1});
     } else if(this.state.touch === 1) {
       this.makePurchase();
+      this.props.shakeItUp();
       this.setState({ touch: 2});
     }
 
@@ -30,7 +39,8 @@ class FryingPanItem extends React. Component {
   makePurchase(){
     const object = {
       item: this.item,
-      cost: this.cost
+      cost: this.cost,
+      itemsToggle: this.props.itemsToggle
     };
     this.props.makePurchase(object);
   }
@@ -151,4 +161,12 @@ const styles = {
   }
 };
 
-export default connect(null, { makePurchase })(FryingPanItem);
+const mapStateToProps = state => {
+  return {
+    itemsToggle: state.items.itemsToggle
+  };
+};
+
+export default connect(mapStateToProps, {
+  makePurchase, shakeItUp
+})(FryingPanItem);

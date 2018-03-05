@@ -1,13 +1,15 @@
 import {
-  MAKE_PURCHASE
+  MAKE_PURCHASE, LOGIN_USER_SUCCESS
 }
 from '../actions/types';
 import merge from 'lodash/merge';
 
 const INITIAL_STATE = {
-  seeALetter: false,
-  fireUp: false,
-  shakeItUp: false
+  itemsToggle: {
+    seeALetter: false,
+    fireUp: false,
+    shakeItUp: false
+  }
 };
 
 export default(state = INITIAL_STATE, action) => {
@@ -15,9 +17,15 @@ export default(state = INITIAL_STATE, action) => {
     case MAKE_PURCHASE:
       const purchaseState = merge({}, state);
       const item = action.item;
-      purchaseState[item] = true;
+      purchaseState.itemsToggle[item] = true;
 
       return purchaseState;
+
+    case LOGIN_USER_SUCCESS:
+      const loginState = merge({}, state);
+      loginState.itemsToggle = action.itemsToggle;
+
+      return loginState;
 
     default:
       return state;

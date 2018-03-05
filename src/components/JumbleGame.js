@@ -4,93 +4,13 @@ import { connect } from 'react-redux';
 import InfoBar from './InfoBar';
 import WordHolder from './WordHolder';
 import EmptyHolder from './EmptyHolder';
-// import IntroOverlay from './IntroOverlay';
-import ModalWrapper from 'react-native-modal-wrapper';
+import FryingPan from './FryingPan';
 
 class JumbleGame extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      introOneVisible: false
-    };
-    this.advance = this.advance.bind(this);
-    this.introOne = this.introOne.bind(this);
+  constructor(props){
+    super(props);
   }
 
-  advance(){
-    this.setState({ introOneVisible: false});
-  }
-
-  introOne(){
-
-    const styles = {
-      modalStyle: {
-        backgroundColor: 'transparent'
-      },
-      container: {
-        // backgroundColor: 'grey',
-        opacity: 0.1,
-        // flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start'
-        // width: 100,
-        // height: 100
-      },
-      topBar: {
-        height: 45,
-        backgroundColor: 'transparent',
-        alignSelf: 'stretch',
-        // position: 'absolute',
-        // top: 0
-      },
-      notTopBar: {
-        height: 100,
-        alignSelf: 'stretch',
-        opacity: 0.5
-      },
-      below: {
-        height: 300,
-        alignSelf: 'stretch',
-        opacity: 0.5
-
-      }
-    };
-
-    return (
-        <ModalWrapper
-          isNative={false}
-          onRequestClose={this.onRequestClose}
-          position='left'
-          shouldAnimateOnRequestClose={true}
-          showOverlay={true}
-          transparent={true}
-          style={[styles.modalStyle, (() => {
-            const { height, width } = Dimensions.get('window');
-            const modalHeight = 100;
-            const modalWidth = 280;
-            return {
-              alignSelf: 'stretch',
-              top: 0,
-              left: 0,
-              height,
-            };
-          })()]}
-          visible={this.state.introOneVisible}>
-          <View style={styles.container}>
-            <View style={styles.topBar}>
-              <Text style={styles.modalText}>Modal without overlay</Text>
-            </View>
-            <View style={styles.notTopBar}>
-              <Text>Not topbar</Text>
-            </View>
-            <View style={styles.below}>
-              <Text>Below</Text>
-            </View>
-          </View>
-        </ModalWrapper>
-
-    );
-  }
 
   render(){
     const empties = this.props.answers.map((scramble, idx) => {
@@ -104,7 +24,6 @@ class JumbleGame extends React.Component {
 
         <InfoBar />
 
-
         <WordHolder />
 
         <View style={styles.messageContainer}>
@@ -114,8 +33,8 @@ class JumbleGame extends React.Component {
         <View style={styles.container}>
           {empties}
         </View>
-        {this.state.introOneVisible ? this.introOne() : null}
 
+        <FryingPan /> 
 
       </View>
     );

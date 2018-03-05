@@ -1,7 +1,7 @@
 import {
   TAP_LETTER, START_NEW_WORD,
   VERIFY_WORD, END_ROUND,
-  UNDO_WORD }
+  UNDO_WORD, SHAKE_IT_UP }
 from '../actions/types';
 import merge from 'lodash/merge';
 
@@ -41,6 +41,20 @@ export default (state = INITIAL_STATE, action) => {
       newState.message = '';
       newState.roundTime = action.roundTime;
       return newState;
+
+    case SHAKE_IT_UP:
+      const shakeState = merge({}, state);
+      let newActiveLetters = "";
+      const oldActiveLetters = state.activeLetters;
+      let oldActiveWord = oldActiveLetters.join("");
+      while(oldActiveWord.length > 0){
+        newActiveLetters += oldActiveWord.splice(oldActiveWord.length * Math.random() << 0, 1);
+      }
+
+      newActiveLetters = newActiveLetters.split("");
+      shakeState.activeLetters = newActiveLetters;
+
+      return shakeState;
 
     case TAP_LETTER:
       const updatedState = merge({}, state);
