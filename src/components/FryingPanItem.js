@@ -40,7 +40,11 @@ class FryingPanItem extends React. Component {
       this.setState({ touch: 2});
 
     } else { //touch == 2
-      this.props.shakeItUp(this.props.itemsToggle);
+      this.props.shakeItUp({
+        itemsToggle: this.props.itemsToggle,
+        levelType: this.props.levelType
+      });
+      
       this.setState({ touch: 0});
     }
   }
@@ -54,11 +58,7 @@ class FryingPanItem extends React. Component {
     this.props.makePurchase(object);
   }
 
-  // renders correctly on login on LevelsPage
-  // need to make different return types for games page
-
   render(){
-    // debugger
     const { item, firstImage, secondImage, cost } = this.props.info;
 
     let firstStyle = styles.icon;
@@ -185,7 +185,8 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    itemsToggle: state.items.itemsToggle
+    itemsToggle: state.items.itemsToggle,
+    levelType: state.levels.levelType
   };
 };
 

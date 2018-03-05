@@ -77,28 +77,31 @@ export default (state = INITIAL_STATE, action) => {
 
     case SHAKE_IT_UP:
       const shakeState = merge({}, state);
-      let newActiveLetters = "";
-      const oldActiveLetters = state.activeLetters.split("");
 
-      //shuffle
-      while(oldActiveLetters.length > 0){
-        newActiveLetters += oldActiveLetters.splice(oldActiveLetters.length * Math.random() << 0, 1);
+      if(action.levelType === "scramble"){
+        let newActiveLetters = "";
+        const oldActiveLetters = state.activeLetters.split("");
+
+        //shuffle
+        while(oldActiveLetters.length > 0){
+          newActiveLetters += oldActiveLetters.splice(oldActiveLetters.length * Math.random() << 0, 1);
+        }
+
+        // newActiveLetters = newActiveLetters.split("");
+        shakeState.activeLetters = newActiveLetters;
+        const inputWordsNew = state.inputWords;
+        inputWordsNew[state.wordIndex].letters = newActiveLetters;
+        shakeState.inputWords = inputWordsNew;
+
+        shakeState.attemptLength = 0;
+        shakeState.attempts[state.wordIndex] = [];
+
+        const usedLettersShake = new Array(state.activeLetters.length);
+        for (var a = 0; a < usedLettersShake.length; a++) {
+          usedLettersShake[a] = false;
+        }
+        shakeState.usedLetters = usedLettersShake;
       }
-
-      // newActiveLetters = newActiveLetters.split("");
-      shakeState.activeLetters = newActiveLetters;
-      const inputWordsNew = state.inputWords;
-      inputWordsNew[state.wordIndex].letters = newActiveLetters;
-      shakeState.inputWords = inputWordsNew;
-
-      shakeState.attemptLength = 0;
-      shakeState.attempts[state.wordIndex] = [];
-
-      const usedLettersShake = new Array(state.activeLetters.length);
-      for (var a = 0; a < usedLettersShake.length; a++) {
-        usedLettersShake[a] = false;
-      }
-      shakeState.usedLetters = usedLettersShake;
 
       return shakeState;
 
@@ -119,9 +122,12 @@ export default (state = INITIAL_STATE, action) => {
 
       if(verifyState.answers[wordIndex] === wordAttempt){
         verifyState.wordIndex += 1;
+
         verifyState.pastUsedLetters = state.usedLetters;
+
         if(state.wordIndex === 0){
           verifyState.pastUsedLetters[action.letterIndex] = true;
+          verifyState.activeLetters = state.inputWords[verifyState.wordIndex].letters;
         }
       } else {
         verifyState.attempts[wordIndex] = [];

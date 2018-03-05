@@ -19,7 +19,7 @@ export const makePurchase = ({ item, cost, itemsToggle }) => {
   }
 }
 
-export const shakeItUp = (itemsToggle) => {
+export const shakeItUp = ({ itemsToggle, levelType }) => {
   const { currentUser } = firebase.auth();
   itemsToggle["shakeItUp"] = false;
 
@@ -28,6 +28,7 @@ export const shakeItUp = (itemsToggle) => {
 
   return {
     type: SHAKE_IT_UP,
-    itemsToggle
+    itemsToggle,
+    levelType
   }
 }

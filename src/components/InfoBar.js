@@ -36,14 +36,6 @@ class InfoBar extends React.Component {
 
     if(nextProps.eggcoinCost !== this.props.eggcoinCost){
       this.animatePurchase();
-      // debugger
-      // const prevScore = this.props.eggcoin;
-      // const nextScore = this.props.eggcoin - nextProps.eggcoinCost;
-      // this.setState({ prevScore });
-      // const millisecondIncrement = 1000 / (nextScore - prevScore);
-      //
-      // let animation = setInterval(this.animate, millisecondIncrement);
-      // this.setState({ animation, animateChange: nextScore - prevScore, millisecondIncrement });
     }
   }
 
@@ -82,7 +74,7 @@ class InfoBar extends React.Component {
     if(this.props.advanceStagePage){
       eggcoin = this.props.eggcoin;
     }
-    
+
     const eggcoinDelta = eggcoin - this.state.prevScore;
 
     if(this.state.animateChange > 0){

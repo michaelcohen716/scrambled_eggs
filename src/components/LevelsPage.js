@@ -29,13 +29,9 @@ class LevelsPage extends React.Component {
 
         <View style={styles.info}>
           <Text style={styles.stage}>
-            Stage: <Text style={styles.stageBlue}>{this.props.stage}</Text>
+            {this.props.stage}
           </Text>
 
-          <Text style={styles.eggcoin}>
-            {CommaNumber(this.props.eggcoin)}
-            <Image source={goldCoin} style={styles.goldEgg} />
-          </Text>
         </View>
 
         <View style={styles.levels}>
@@ -51,13 +47,11 @@ class LevelsPage extends React.Component {
   }
 }
 
-var { height, width } = Dimensions.get('window');
-
 const styles = {
   parent: {
     flex: 1,
     flexDirection: 'column',
-  },  
+  },
 
   contentContainerStyle: {
     flexDirection: 'row',
@@ -103,11 +97,9 @@ const styles = {
     fontFamily: 'RobotoCondensed-Regular',
     marginLeft: 13,
     marginBottom: 4,
-    color: 'blue'
-  },
-  stageBlue: {
     color: 'white'
-  }
+  },
+
 };
 
 const mapStateToProps = state => {

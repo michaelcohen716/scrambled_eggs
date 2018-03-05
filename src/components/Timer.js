@@ -21,7 +21,7 @@ class Timer extends React.Component {
   }
 
   tick(){
-    const { roundScore, activeLevel, eggcoin } = this.props;
+    const { roundScore, activeLevel, eggcoin, itemsToggle } = this.props;
 
     // executing 'recordScore' twice for some reason
     if(this.props.wordIndex === this.props.attempts.length){
@@ -32,7 +32,14 @@ class Timer extends React.Component {
        const provisionalEggcoin = eggcoin + roundScore;
 
        this.props.recordScore(roundScore, provisionalEggcoin);
-       this.props.endRound(true, activeLevel);
+
+
+       const endRoundObject = {
+         roundCompleted: true,
+         activeLevel,
+         itemsToggle
+       };
+       this.props.endRound(endRoundObject);
 
        return;
     }, 800);
@@ -41,7 +48,13 @@ class Timer extends React.Component {
 
     const timeElapsed = this.initialTime - this.state.seconds;
     if(timeElapsed + 1 === this.initialTime){
-      this.props.endRound(false, activeLevel);
+      const endRoundObject = {
+        roundCompleted: false,
+        activeLevel,
+        itemsToggle
+      };
+
+      this.props.endRound(endRoundObject);
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
       return;
@@ -92,6 +105,7 @@ const mapStateToProps = state => {
     eggcoin: state.score.userEggcoin,
     activeLevel: state.levels.activeLevel,
     seconds: state[levelType].roundTime,
+    itemsToggle: state.items.itemsToggle,
     levelType
   };
 };

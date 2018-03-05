@@ -41,15 +41,19 @@ export const undoWord = () => {
 }
 
 // this action does this for both types of game
-export const endRound = (boolean, activeLevel) => {
-  const newLevel = activeLevel+1;
+export const endRound = ({ roundCompleted, activeLevel, itemsToggle}) => {
+  const newLevel = activeLevel + 1;
   const { currentUser } = firebase.auth();
-  if(boolean){
+
+  if(roundCompleted){
     firebase.database().ref(`/gameInfo/${currentUser.uid}`)
-      .update({ activeLevel: newLevel, activeLevelAttempted: false });
+      .update({ activeLevel: newLevel,
+                activeLevelAttempted: false,
+                itemsToggle
+      });
   } else {
     firebase.database().ref(`/gameInfo/${currentUser.uid}`)
-      .update({ activeLevelAttempted: true});
+      .update({ activeLevelAttempted: true, itemsToggle });
   }
 
   let advanceStagePage = false;
@@ -63,7 +67,7 @@ export const endRound = (boolean, activeLevel) => {
 
   return {
     type: END_ROUND,
-    boolean,
+    roundCompleted,
     activeLevel,
     advanceStagePage
   }

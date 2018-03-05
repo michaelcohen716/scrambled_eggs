@@ -107,7 +107,7 @@ export default (state = INITIAL_STATE, action) => {
 
       case END_ROUND:
         const endState = merge({}, state);
-        endState.roundCompleted = action.boolean;
+        endState.roundCompleted = action.roundCompleted;
         return endState;
 
       case UNDO_WORD:
