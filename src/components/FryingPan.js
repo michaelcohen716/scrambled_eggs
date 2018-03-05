@@ -16,47 +16,51 @@ var fryingItems = [
   { "item": "seeALetter",
     "firstImage": binocularsWhite,
     "secondImage": binocularsBlack,
-    "cost": 450
+    "cost": 450,
+    "description": "See a letter"
   },
   { "item": "fireUp",
     "firstImage": flameWhite,
     "secondImage": flameBlack,
-    "cost": 650
+    "cost": 650,
+    "description": "2x eggcoin earnings"
   },
   { "item": "shakeItUp",
     "firstImage": blenderWhite,
     "secondImage": blenderBlack,
-    "cost": 75
+    "cost": 75,
+    "description": "Shake up letters"
   },
-  { "item": "shakeItUp",
-    "firstImage": blenderWhite,
-    "secondImage": blenderBlack,
-    "cost": 75
-  },
-  { "item": "shakeItUp",
-    "firstImage": blenderWhite,
-    "secondImage": blenderBlack,
-    "cost": 75
-  }
-]
+  // { "item": "shakeItUp",
+  //   "firstImage": blenderWhite,
+  //   "secondImage": blenderBlack,
+  //   "cost": 75
+  // },
+  // { "item": "shakeItUp",
+  //   "firstImage": blenderWhite,
+  //   "secondImage": blenderBlack,
+  //   "cost": 75
+  // }
+];
 
 class FryingPan extends React.Component {
   constructor(props){
     super(props);
-    this.markedItem = null;
+    this.state = {
+      marked: null
+    };
     this.unmarkOtherItems = this.unmarkOtherItems.bind(this);
   }
 
   unmarkOtherItems(idx){
-    this.markedItem = idx;
+    this.setState({ marked: idx});
   }
-
 
   render(){
     const items = fryingItems.map((item, idx) => {
       return (
         <FryingPanItem info={item} itemsToggle={this.props.itemsToggle} idx={idx}
-                       key={idx} inGame={this.props.inGame} marked={this.markedItem}
+                       key={idx} inGame={this.props.inGame} marked={this.state.marked}
                        unmarkOtherItems={this.unmarkOtherItems.bind(this, idx)} />
               );
     });
@@ -86,12 +90,14 @@ class FryingPan extends React.Component {
         </View>
 
         <View style={styles.fryingGallery}>
-            {flatList}
-            <View>
-              <Text style={styles.itemMessage}>See A Letter</Text>
+            <View style={styles.scrolling}>
+              {flatList}
+            </View>
+
+            <View style={styles.fryingMessage}>
+              <Text style={styles.itemMessage}>{this.props.itemMessage}</Text>
             </View>
         </View>
-
       </View>
     );
   }
@@ -100,21 +106,18 @@ class FryingPan extends React.Component {
 var { width } = Dimensions.get('window');
 
 const styles = {
-  fryingStore: {
-    flex: 1,
-    backgroundColor: 'black',
-    flexDirection: 'column',
+  fryingMessage: {
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingRight: 4,
-    paddingBottom: 4
   },
   scrolling: {
-    height: 50,
-    width: 235,
+    flex: 4
   },
   itemMessage: {
     color: 'white',
+    fontSize: 16,
+    marginTop: 14
   },
   fryingItems: {
     flex: 2,
@@ -123,23 +126,23 @@ const styles = {
     marginLeft: 13,
     paddingTop: 8,
     paddingBottom: 8,
-    // justifyContent: 'flex-start',
     overflow: 'hidden',
-    borderColor: 'silver',
-    borderWidth: 1,
-    maxWidth: 250
   },
   fryingGallery: {
     flex: 2,
     flexDirection: 'row',
-    // justifyContent: 'center',
-    alignItems: 'flex-start'
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    borderColor: 'red',
+    borderWidth:1
   },
   fryingTopBar: {
     flex: 1,
     alignSelf: 'stretch',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderColor: 'yellow',
+    borderWidth: 1
   },
   fryingPanText: {
     color: 'white',
@@ -161,7 +164,8 @@ const styles = {
     alignSelf: 'stretch',
     backgroundColor: 'black',
     borderColor: 'white',
-    borderWidth: 2
+    borderWidth: 2,
+    flexDirection: 'column'
   },
   goldEgg2: {
     height: 20,
@@ -175,7 +179,8 @@ const styles = {
 const mapStateToProps = state => {
   return {
     eggcoin: state.score.userEggcoin,
-    itemsToggle: state.items.itemsToggle
+    itemsToggle: state.items.itemsToggle,
+    itemMessage: state.items.message
   };
 };
 

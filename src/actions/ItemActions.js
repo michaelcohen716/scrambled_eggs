@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import {
-  MAKE_PURCHASE, SHAKE_IT_UP
+  MAKE_PURCHASE, SHAKE_IT_UP,
+  SHOW_ITEM_DESCRIPTION
 } from './types';
 
 export const makePurchase = ({ item, cost, itemsToggle }) => {
@@ -16,6 +17,13 @@ export const makePurchase = ({ item, cost, itemsToggle }) => {
     type: MAKE_PURCHASE,
     item,
     cost
+  }
+}
+
+export const showItemDescription = (message) => {
+  return {
+    type: SHOW_ITEM_DESCRIPTION,
+    message
   }
 }
 

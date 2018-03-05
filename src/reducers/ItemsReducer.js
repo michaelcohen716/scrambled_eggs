@@ -1,5 +1,6 @@
 import {
-  MAKE_PURCHASE, LOGIN_USER_SUCCESS
+  MAKE_PURCHASE, LOGIN_USER_SUCCESS,
+  SHOW_ITEM_DESCRIPTION
 }
 from '../actions/types';
 import merge from 'lodash/merge';
@@ -10,7 +11,7 @@ const INITIAL_STATE = {
     fireUp: false,
     shakeItUp: false
   },
-  loginToggle: false
+  message: ''
 };
 
 export default(state = INITIAL_STATE, action) => {
@@ -25,9 +26,12 @@ export default(state = INITIAL_STATE, action) => {
     case LOGIN_USER_SUCCESS:
       const loginState = merge({}, state);
       loginState.itemsToggle = action.itemsToggle;
-      loginState.loginToggle = !state.loginToggle;
-
       return loginState;
+
+    case SHOW_ITEM_DESCRIPTION:
+      const descriptionState = merge({}, state);
+      descriptionState.message = action.message;
+      return descriptionState;
 
     default:
       return state;

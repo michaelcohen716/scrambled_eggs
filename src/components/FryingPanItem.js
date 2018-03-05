@@ -3,7 +3,7 @@ import { TouchableOpacity, Text, Image, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import goldCoin from '../assets/goldCoin.png';
-import { makePurchase, shakeItUp } from '../actions';
+import { makePurchase, shakeItUp, showItemDescription } from '../actions';
 
 class FryingPanItem extends React. Component {
   constructor(props){
@@ -46,19 +46,20 @@ class FryingPanItem extends React. Component {
     if(this.state.touch === 0){
       this.setState({ touch: 1});
       this.unmarkOtherItems();
+      this.props.showItemDescription(this.props.info.description);
 
     } else if(this.state.touch === 1) {
       this.makePurchase();
       this.setState({ touch: 2});
 
     } else { //touch == 2
+
       if(this.item === "shakeItUp"){
         this.props.shakeItUp({
           itemsToggle: this.props.itemsToggle,
           levelType: this.props.levelType
         });
       }
-
 
       this.setState({ touch: 0});
     }
@@ -131,7 +132,7 @@ const styles = {
     borderColor: 'black',
     borderRadius: 5,
     backgroundColor: 'silver',
-    marginRight: 5
+    marginRight: 7
   },
   itemCardCost: {
     width: 50,
@@ -140,7 +141,7 @@ const styles = {
     borderColor: 'white',
     borderRadius: 5,
     backgroundColor: 'black',
-    marginRight: 5
+    marginRight: 7
   },
   itemCardBought: {
     width: 50,
@@ -149,7 +150,7 @@ const styles = {
     borderColor: 'white',
     borderRadius: 5,
     backgroundColor: 'blue',
-    marginRight: 5
+    marginRight: 7
   },
   outerCost: {
     flexDirection: 'row',
@@ -206,5 +207,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-  makePurchase, shakeItUp
+  makePurchase, shakeItUp, showItemDescription
 })(FryingPanItem);
