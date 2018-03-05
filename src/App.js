@@ -9,9 +9,7 @@ import Router from './Router';
 import logger from 'redux-logger';
 
 // The Noun Project
-// Credit to Md Saiful Alam Saif for 'binoculars.png
-// Credit to Creative Mania for 'blender.png`'
-// Credit to Hayashi Fumihiro, JP for 'flame.png'
+// Credit to mikicon
 
 class App extends Component {
   componentWillMount() {

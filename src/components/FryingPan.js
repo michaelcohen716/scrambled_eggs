@@ -1,18 +1,12 @@
 import React from 'react';
-import { View, Text, Image, Dimensions } from 'react-native';
+import { View, Text, Image, Dimensions, } from 'react-native';
 import { connect } from 'react-redux';
 import goldCoin from '../assets/goldCoin.png';
 import CommaNumber from 'comma-number';
-
+import FryingPanItem from './FryingPanItem';
 
 class FryingPan extends React.Component {
   render(){
-
-    const panItem = (
-      <View style={styles.itemCard}>
-
-      </View>
-    );
 
     return (
       <View style={styles.fryingPan}>
@@ -27,7 +21,7 @@ class FryingPan extends React.Component {
 
         <View style={styles.fryingGallery}>
           <View style={styles.fryingItems}>
-            <Text>items</Text>
+            <FryingPanItem />
           </View>
           <View style={styles.fryingStore}>
             <Text>store</Text>
@@ -42,25 +36,24 @@ var { width } = Dimensions.get('window');
 const styles = {
   fryingStore: {
     flex: 1,
-    backgroundColor: 'grey',
+    backgroundColor: 'black',
     flexDirection: 'row'
-  },
-  itemCard: {
-    width: 40,
-    height: 40,
-    borderWidth: 1,
-    borderColor: 'black'
   },
   fryingItems: {
     flex: 1,
-    backgroundColor: 'grey',
-    flexDirection: 'row'
+    backgroundColor: 'black',
+    flexDirection: 'row',
+    paddingLeft: 14,
+    paddingTop: 8,
+    paddingBottom: 8
   },
   fryingGallery: {
     flex: 2,
     borderColor: 'yellow',
     borderWidth: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   fryingTopBar: {
     flex: 1,
