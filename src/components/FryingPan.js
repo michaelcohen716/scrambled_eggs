@@ -14,17 +14,17 @@ import blenderBlack from '../assets/blender_black.png';
 
 
 var fryingItems = [
-  { "name": "seeALetter",
+  { "item": "seeALetter",
     "firstImage": binocularsWhite,
     "secondImage": binocularsBlack,
     "cost": 450
   },
-  { "name": "fireUp",
+  { "item": "fireUp",
     "firstImage": flameWhite,
     "secondImage": flameBlack,
     "cost": 650
   },
-  { "name": "shakeItUp",
+  { "item": "shakeItUp",
     "firstImage": blenderWhite,
     "secondImage": blenderBlack,
     "cost": 75

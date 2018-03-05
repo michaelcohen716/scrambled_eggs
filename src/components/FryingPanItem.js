@@ -12,15 +12,27 @@ class FryingPanItem extends React. Component {
       touch: 0
     };
     this.onPress = this.onPress.bind(this);
+    this.makePurchase = this.makePurchase.bind(this);
+    this.item = this.props.info.item;
+    this.cost = this.props.info.cost;
   }
 
   onPress(){
     if(this.state.touch === 0){
       this.setState({ touch: 1});
     } else if(this.state.touch === 1) {
+      this.makePurchase();
       this.setState({ touch: 2});
     }
 
+  }
+
+  makePurchase(){
+    const object = {
+      item: this.item,
+      cost: this.cost
+    };
+    this.props.makePurchase(object);
   }
 
   render(){
@@ -139,4 +151,4 @@ const styles = {
   }
 };
 
-export default connect(null, null)(FryingPanItem);
+export default connect(null, { makePurchase })(FryingPanItem);

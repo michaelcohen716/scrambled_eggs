@@ -4,12 +4,13 @@ import JumbleReducer from './JumbleReducer';
 import ScrambleReducer from './ScrambleReducer';
 import LevelsReducer from './LevelsReducer';
 import ScoreReducer from './ScoreReducer';
-
+import ItemsReducer from './ItemsReducer';
 
 export default combineReducers({
   auth: AuthReducer,
   jumble: JumbleReducer,
   scramble: ScrambleReducer,
   levels: LevelsReducer,
-  score: ScoreReducer
+  score: ScoreReducer,
+  items: ItemsReducer
 });
