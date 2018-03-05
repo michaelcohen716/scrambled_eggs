@@ -5,7 +5,8 @@ import {
   REDUCE_SCORE_MULTIPLIER,
   LOGIN_USER_SUCCESS,
   START_NEW_WORD, RECORD_SCORE,
-  START_NEW_SCRAMBLE, SPEND_EGGCOIN
+  START_NEW_SCRAMBLE, SPEND_EGGCOIN,
+  MAKE_PURCHASE
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -64,6 +65,11 @@ export default (state = INITIAL_STATE, action) => {
       spendState.userEggcoin -= action.cost;
       return spendState;
 
+    case MAKE_PURCHASE:
+      const purchState = merge({}, state);
+      purchState.userEggcoin -= action.cost;
+      return purchState;
+      
     default:
       return state;
   }

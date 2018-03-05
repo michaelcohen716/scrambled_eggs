@@ -6,7 +6,7 @@ import {
 export const makePurchase = ({ item, cost, itemsToggle }) => {
   const { currentUser } = firebase.auth();
   itemsToggle[item] = true;
-  // debugger
+  
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
     .update({
       itemsToggle

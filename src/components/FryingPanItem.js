@@ -15,13 +15,13 @@ class FryingPanItem extends React. Component {
     this.makePurchase = this.makePurchase.bind(this);
     this.item = this.props.info.item;
     this.cost = this.props.info.cost;
-    this.initiate();
   }
 
-  initiate(){
-    const { itemsToggle } = this.props;
-    if(itemsToggle[this.item]){
-      this.setState({ touch: 2 }); //this resource is already purchased (max 1)
+  componentWillReceiveProps(nextProps){
+    if(nextProps.itemsToggle !== this.props.itemsToggle){
+      if(nextProps.itemsToggle[this.item] === true){
+        this.setState({ touch: 2});
+      }
     }
   }
 
@@ -30,10 +30,10 @@ class FryingPanItem extends React. Component {
       this.setState({ touch: 1});
     } else if(this.state.touch === 1) {
       this.makePurchase();
-      this.props.shakeItUp();
       this.setState({ touch: 2});
+    } else { //touch == 2
+      this.props.shakeItUp();
     }
-
   }
 
   makePurchase(){
@@ -44,6 +44,9 @@ class FryingPanItem extends React. Component {
     };
     this.props.makePurchase(object);
   }
+
+  // renders correctly on login on LevelsPage
+  // need to make different return types for games page
 
   render(){
     const { name, firstImage, secondImage } = this.props.info;

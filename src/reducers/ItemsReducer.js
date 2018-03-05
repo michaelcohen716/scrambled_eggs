@@ -9,7 +9,8 @@ const INITIAL_STATE = {
     seeALetter: false,
     fireUp: false,
     shakeItUp: false
-  }
+  },
+  loginToggle: false
 };
 
 export default(state = INITIAL_STATE, action) => {
@@ -24,6 +25,7 @@ export default(state = INITIAL_STATE, action) => {
     case LOGIN_USER_SUCCESS:
       const loginState = merge({}, state);
       loginState.itemsToggle = action.itemsToggle;
+      loginState.loginToggle = !state.loginToggle;
 
       return loginState;
 

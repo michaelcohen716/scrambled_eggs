@@ -35,7 +35,7 @@ class FryingPan extends React.Component {
   render(){
     const items = fryingItems.map((item, idx) => {
       return (
-        <FryingPanItem info={item} key={idx} />
+        <FryingPanItem info={item} itemsToggle={this.props.itemsToggle} key={idx} />
       )
     })
 
@@ -128,6 +128,7 @@ const styles = {
 const mapStateToProps = state => {
   return {
     eggcoin: state.score.userEggcoin,
+    itemsToggle: state.items.itemsToggle
   };
 };
 
