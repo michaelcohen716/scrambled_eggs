@@ -13,11 +13,22 @@ class LevelsPage extends React.Component {
     super(props);
     this.state = {
       activeLevel: null,
-      stage: this.props.stage
+      stage: this.props.stage,
+      stageDropdown: 0
     };
     this.levels = Object.keys(Levels); //all levels in game
     this.stages = Object.keys(this.props.stages);
     this.numLevels = this.levels.length;
+  }
+
+  dropdownSelect(stageIdx){
+    this.setState({ stageDropdown: stageIdx})
+  }
+
+  adjustFrame(style){
+    style.top -= 25;
+    style.left -= 122;
+    return style;
   }
 
   render(){
@@ -41,13 +52,19 @@ class LevelsPage extends React.Component {
             <TouchableWithoutFeedback style={styles.dropdownLever}>
               <View>
                 <Text style={styles.stage}>
-                  {this.props.stage}
+                  {this.stages[this.state.stageDropdown]}
                 </Text>
               </View>
             </TouchableWithoutFeedback>
 
-            <ModalDropdown options={["Sunny Side Up", "Hard Boiled", "Over Easy"]} style={styles.triangle}>
-            </ModalDropdown>
+            <View>
+              <ModalDropdown options={["Sunny Side Up", "Hard Boiled", "Over Easy"]} defaultIndex={0}
+                onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
+                adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
+                dropdownTextHighlightStyle={styles.highlightStyle}>
+                {triangle}
+              </ModalDropdown>
+            </View>
           </View>
 
           <View style={styles.topRight}>
@@ -72,19 +89,37 @@ const styles = {
   triangle: {
     width: 0,
     height: 0,
-    backgroundColor: 'transparent',
     borderStyle: 'solid',
     borderLeftWidth: 14,
     borderRightWidth: 14,
     borderBottomWidth: 20,
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
     borderBottomColor: 'blue',
     transform: [
       {rotate: '180deg'}
     ],
-    marginLeft: 3,
-    marginTop: 5
+    marginLeft: 4,
+    marginTop: 5,
+  },
+  highlightStyle: {
+    fontSize: 18,
+    fontFamily: 'RobotoCondensed-Regular',
+    backgroundColor: 'blue',
+    color: 'white'
+  },
+  dropdownStyle: {
+    width: 122,
+    height: 150
+  },
+  button: {
+    backgroundColor: 'black',
+    color: 'white',
+    fontSize: 18,
+    fontFamily: 'RobotoCondensed-Regular',
+  },
+  outerDropdown: {
+    // position: 'absolute',
+    // right: 2,
+    // marginRight: 80
   },
   modalDropdown: {
     flex: 1,
@@ -95,20 +130,20 @@ const styles = {
     flexDirection: 'column',
   },
   topRight:{
-    flex: 1
+    flex: 1,
   },
   topLeft: {
-    flex: 1,
-    borderColor: 'yellow',
-    borderWidth: 1,
+    flex: 2,
     marginLeft: 7,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    position: 'relative'
   },
   dropdownLever: {
     height: 30,
     width: 30,
-    flex: 1,
-    marginLeft: 13
+    flex: 3,
+    marginLeft: 13,
+
   },
   contentContainerStyle: {
     flexDirection: 'row',
@@ -120,7 +155,9 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: 40,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    borderBottomWidth: 2,
+    borderColor: 'white'
   },
   levels: {
     padding: 5,
@@ -150,7 +187,7 @@ const styles = {
     fontSize: 21,
     fontFamily: 'RobotoCondensed-Regular',
     marginLeft: 7,
-    // marginTop: 3,
+    marginTop: 2,
     color: 'white'
   },
 
