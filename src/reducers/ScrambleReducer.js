@@ -1,8 +1,9 @@
 import merge from 'lodash/merge';
 import {
   START_NEW_SCRAMBLE, TAP_SCRAMBLE_LETTER,
-  VERIFY_SCRAMBLE, UNDO_WORD, END_ROUND,
-  SHAKE_IT_UP, SEE_A_LETTER
+  VERIFY_SCRAMBLE, UNDO_WORD,
+  END_ROUND, SHAKE_IT_UP,
+  SEE_A_LETTER, UNLOCK_A_WORD
 } from '../actions/types';
 // import Scrambles from '../games/scrambles.json';
 
@@ -23,6 +24,12 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case UNLOCK_A_WORD:
+      const unlockState = merge({}, state);
+      // const findWord = state.
+
+      return unlockState;
+
     case START_NEW_SCRAMBLE:
       const newState = merge({}, state);
       newState.roundTime = action.roundTime;
@@ -114,14 +121,12 @@ export default (state = INITIAL_STATE, action) => {
 
         seeState.attemptLength = 1;
 
-        // debugger
         seeState.usedLetters.forEach((el, idx) => {
           seeState.usedLetters[idx] = false;
         });
 
         const letterIndex = state.activeLetters.split("").indexOf(letterInsert);
         seeState.usedLetters[letterIndex] = true;
-
       }
 
       return seeState;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Dimensions, ScrollView, FlatList } from 'react-native';
+import { View, Text, Image, Dimensions, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import goldCoin from '../assets/goldCoin.png';
 import CommaNumber from 'comma-number';
@@ -7,10 +7,10 @@ import CommaNumber from 'comma-number';
 import FryingPanItem from './FryingPanItem';
 import binocularsWhite from '../assets/binoculars_white.png';
 import binocularsBlack from '../assets/binoculars_black.png';
-import flameWhite from '../assets/flame_white.png';
-import flameBlack from '../assets/flame_black.png';
 import blenderWhite from '../assets/blender_white.png';
 import blenderBlack from '../assets/blender_black.png';
+import giftWhite from '../assets/gift_white.png';
+import giftBlack from '../assets/gift_black.png';
 
 var fryingItems = [
   { "item": "seeALetter",
@@ -19,11 +19,11 @@ var fryingItems = [
     "cost": 450,
     "description": "See a letter"
   },
-  { "item": "fireUp",
-    "firstImage": flameWhite,
-    "secondImage": flameBlack,
+  { "item": "freeWord",
+    "firstImage": giftWhite,
+    "secondImage": giftBlack,
     "cost": 650,
-    "description": "2x eggcoin earnings"
+    "description": "Unlock a word"
   },
   { "item": "shakeItUp",
     "firstImage": blenderWhite,

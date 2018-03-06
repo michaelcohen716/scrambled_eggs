@@ -1,7 +1,8 @@
 import firebase from 'firebase';
 import {
   MAKE_PURCHASE, SHAKE_IT_UP,
-  SHOW_ITEM_DESCRIPTION, SEE_A_LETTER
+  SHOW_ITEM_DESCRIPTION, SEE_A_LETTER,
+  UNLOCK_A_WORD
 } from './types';
 import merge from 'lodash/merge';
 
@@ -56,5 +57,12 @@ export const seeALetter = ({ itemsToggle, levelType, item }) => {
     itemsToggle,
     levelType,
     item
+  }
+}
+
+export const unlockAWord = () => {
+
+  return {
+    type: UNLOCK_A_WORD
   }
 }

@@ -1,19 +1,22 @@
 import React from 'react';
-import { View, ScrollView, Text, Image, Dimensions } from 'react-native';
+import { View, ScrollView, Text,
+        Image, Dimensions, TouchableWithoutFeedback,
+} from 'react-native';
 import { connect } from 'react-redux';
+import ModalDropdown from 'react-native-modal-dropdown';
 import Levels from '../games/levels.json';
 import LevelButton from './LevelButton';
 import FryingPan from './FryingPan';
-import goldCoin from '../assets/goldCoin.png';
-import CommaNumber from 'comma-number';
 
 class LevelsPage extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      activeLevel: null
+      activeLevel: null,
+      stage: this.props.stage
     };
     this.levels = Object.keys(Levels); //all levels in game
+    this.stages = Object.keys(this.props.stages);
     this.numLevels = this.levels.length;
   }
 
@@ -24,13 +27,31 @@ class LevelsPage extends React.Component {
       );
     });
 
+    const triangle = (
+      <View style={styles.triangle} />
+    )
+
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
 
         <View style={styles.info}>
-          <Text style={styles.stage}>
-            {this.props.stage}
-          </Text>
+
+          <View style={styles.topLeft}>
+
+            <TouchableWithoutFeedback style={styles.dropdownLever}>
+              <View>
+                <Text style={styles.stage}>
+                  {this.props.stage}
+                </Text>
+              </View>
+            </TouchableWithoutFeedback>
+
+            <ModalDropdown options={["Sunny Side Up", "Hard Boiled", "Over Easy"]} style={styles.triangle}>
+            </ModalDropdown>
+          </View>
+
+          <View style={styles.topRight}>
+          </View>
 
         </View>
 
@@ -48,24 +69,57 @@ class LevelsPage extends React.Component {
 }
 
 const styles = {
+  triangle: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderLeftWidth: 14,
+    borderRightWidth: 14,
+    borderBottomWidth: 20,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'blue',
+    transform: [
+      {rotate: '180deg'}
+    ],
+    marginLeft: 3,
+    marginTop: 5
+  },
+  modalDropdown: {
+    flex: 1,
+    backgroundColor: 'blue',
+  },
   parent: {
     flex: 1,
     flexDirection: 'column',
   },
-
+  topRight:{
+    flex: 1
+  },
+  topLeft: {
+    flex: 1,
+    borderColor: 'yellow',
+    borderWidth: 1,
+    marginLeft: 7,
+    flexDirection: 'row'
+  },
+  dropdownLever: {
+    height: 30,
+    width: 30,
+    flex: 1,
+    marginLeft: 13
+  },
   contentContainerStyle: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     flex: 1,
     alignItems: 'flex-start',
   },
-
   info: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: 40,
-    borderColor: 'white',
-    borderWidth: 2,
     backgroundColor: 'black'
   },
   levels: {
@@ -93,10 +147,10 @@ const styles = {
     marginTop: 2
   },
   stage: {
-    fontSize: 25,
+    fontSize: 21,
     fontFamily: 'RobotoCondensed-Regular',
-    marginLeft: 13,
-    marginBottom: 4,
+    marginLeft: 7,
+    // marginTop: 3,
     color: 'white'
   },
 
@@ -106,6 +160,7 @@ const mapStateToProps = state => {
   return {
     eggcoin: state.score.userEggcoin,
     stage: state.levels.stage,
+    stages: state.levels.stages
   };
 };
 

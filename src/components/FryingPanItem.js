@@ -95,8 +95,8 @@ class FryingPanItem extends React. Component {
     const { item, firstImage, secondImage, cost } = this.props.info;
 
     let firstStyle = styles.icon;
-    if(item === "fireUp"){
-      firstStyle = styles.fireUpIcon;
+    if(item === "freeWord"){
+      firstStyle = styles.giftIcon;
     } else if(item === "shakeItUp"){
       firstStyle = styles.blenderIcon;
     }
@@ -104,6 +104,8 @@ class FryingPanItem extends React. Component {
     let secondStyle = styles.icon;
     if(item === "shakeItUp"){
       secondStyle = styles.secondBlendIcon;
+    } else if(item === "freeWord"){
+      secondStyle = styles.secondGiftIcon;
     }
 
     if(this.state.touch === 2 && !this.props.inGame){ //level page bought
@@ -152,7 +154,7 @@ class FryingPanItem extends React. Component {
 const styles = {
   itemCard: {
     width: 50,
-    height: 36,
+    height: 46,
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 5,
@@ -161,7 +163,7 @@ const styles = {
   },
   itemCardCost: {
     width: 50,
-    height: 36,
+    height: 46,
     borderWidth: 3,
     borderColor: 'white',
     borderRadius: 5,
@@ -170,7 +172,7 @@ const styles = {
   },
   itemCardBought: {
     width: 50,
-    height: 36,
+    height: 46,
     borderWidth: 3,
     borderColor: 'white',
     borderRadius: 5,
@@ -186,12 +188,13 @@ const styles = {
     fontFamily: 'RobotoCondensed-Regular',
     fontSize: 16,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: 5
   },
   coin: {
     height: 14,
     width: 14,
-    marginTop: 4,
+    marginTop: 9,
     marginLeft: 2
   },
   icon: {
@@ -201,26 +204,33 @@ const styles = {
     width: undefined,
     resizeMode: 'cover'
   },
-  fireUpIcon: {
+  giftIcon: {
+    marginTop: 2,
+    flex: 1,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'contain'
+  },
+  secondGiftIcon: {
+    marginTop: 2,
+    flex: 1,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'contain'
+  },
+  blenderIcon: {
     marginTop: 2.5,
     flex: 1,
     height: undefined,
     width: undefined,
-    resizeMode: 'cover'
-  },
-  blenderIcon: {
-    marginBottom: 0.5,
-    flex: 1,
-    height: undefined,
-    width: undefined,
-    resizeMode: 'cover'
+    resizeMode: 'contain'
   },
   secondBlendIcon: {
-    marginBottom: 2,
+    marginTop: 1,
     flex: 1,
     height: undefined,
     width: undefined,
-    resizeMode: 'cover'
+    resizeMode: 'contain'
   }
 };
 

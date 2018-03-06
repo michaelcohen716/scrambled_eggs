@@ -2,7 +2,7 @@ import {
   TAP_LETTER, START_NEW_WORD,
   VERIFY_WORD, END_ROUND,
   UNDO_WORD, SHAKE_IT_UP,
-  SEE_A_LETTER
+  SEE_A_LETTER, UNLOCK_A_WORD
 } from '../actions/types';
 import merge from 'lodash/merge';
 
@@ -20,6 +20,27 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case UNLOCK_A_WORD:
+      const unlockState = merge({}, state);
+      let findWord;
+      for (var u = 0; u < state.answers.length; u++) {
+        if(state.answers[u] !== true){
+          findWord = state.answers[u];
+          break;
+        }
+      }
+
+      const insertWordArray = [];
+      findWord = findWord.split("");
+      findWord.forEach(letter => {
+        insertWordArray.push(letter);
+      });
+
+      unlockState.atempts[state.wordIndex] = insertWordArray;
+      unlockState.attemptLength = 0;
+
+      return unlockState;
+
     case START_NEW_WORD:
       const newState = merge({}, state);
 
