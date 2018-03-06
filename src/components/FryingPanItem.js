@@ -3,7 +3,9 @@ import { TouchableOpacity, Text, Image, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import goldCoin from '../assets/goldCoin.png';
-import { makePurchase, shakeItUp, showItemDescription } from '../actions';
+import { makePurchase, shakeItUp,
+  showItemDescription, seeALetter
+} from '../actions';
 
 class FryingPanItem extends React. Component {
   constructor(props){
@@ -58,17 +60,20 @@ class FryingPanItem extends React. Component {
     } else { //touch == 2
       // debugger
       this.setState({ touch: 0}, () => {
+        const itemObject = {
+          itemsToggle: this.props.itemsToggle,
+          levelType: this.props.levelType,
+          item: this.item
+        };
+
         if(this.item === "shakeItUp"){
-          this.props.shakeItUp({
-            itemsToggle: this.props.itemsToggle,
-            levelType: this.props.levelType,
-            item: this.item
-          });
+          this.props.shakeItUp(itemObject);
+
+        } else if(this.item === "seeALetter"){
+          this.props.seeALetter(itemObject);
         }
       });
     }
-
-
   }
 
   showDescription(){
@@ -227,5 +232,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-  makePurchase, shakeItUp, showItemDescription
+  makePurchase, shakeItUp, showItemDescription,
+  seeALetter
 })(FryingPanItem);

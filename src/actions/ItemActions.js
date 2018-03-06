@@ -44,9 +44,17 @@ export const shakeItUp = ({ itemsToggle, levelType, item }) => {
   }
 }
 
-export const seeALetter = () => {
+export const seeALetter = ({ itemsToggle, levelType, item }) => {
+  const { currentUser } = firebase.auth();
+  itemsToggle[item] = false;
+
+  firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .update({  itemsToggle })
 
   return {
-    type: SEE_A_LETTER
+    type: SEE_A_LETTER,
+    itemsToggle,
+    levelType,
+    item
   }
 }

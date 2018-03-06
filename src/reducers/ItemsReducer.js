@@ -1,7 +1,7 @@
 import {
   MAKE_PURCHASE, LOGIN_USER_SUCCESS,
   SHOW_ITEM_DESCRIPTION, SHAKE_IT_UP,
-  SEE_A_LETTER
+  SEE_A_LETTER, START_NEW_SCRAMBLE
 }
 from '../actions/types';
 import merge from 'lodash/merge';
@@ -44,6 +44,11 @@ export default(state = INITIAL_STATE, action) => {
       descriptionState.message = action.message;
       return descriptionState;
 
+    case START_NEW_SCRAMBLE:
+      const sState = merge({}, state);
+      sState.message = '';
+      return sState;
+      
     default:
       return state;
 

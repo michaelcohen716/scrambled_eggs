@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 import {
   START_NEW_SCRAMBLE, TAP_SCRAMBLE_LETTER,
   VERIFY_SCRAMBLE, UNDO_WORD, END_ROUND,
-  SHAKE_IT_UP
+  SHAKE_IT_UP, SEE_A_LETTER
 } from '../actions/types';
 // import Scrambles from '../games/scrambles.json';
 
@@ -104,6 +104,27 @@ export default (state = INITIAL_STATE, action) => {
       }
 
       return shakeState;
+
+    case SEE_A_LETTER:
+      const seeState = merge({}, state);
+      if(action.levelType === "scramble"){
+        seeState.attempts[state.wordIndex] = [];
+        const letterInsert = state.answers[state.wordIndex].split("")[0];
+        seeState.attempts[state.wordIndex].push(letterInsert);
+
+        seeState.attemptLength = 1;
+
+        // debugger
+        seeState.usedLetters.forEach((el, idx) => {
+          seeState.usedLetters[idx] = false;
+        });
+
+        const letterIndex = state.activeLetters.split("").indexOf(letterInsert);
+        seeState.usedLetters[letterIndex] = true;
+
+      }
+
+      return seeState;
 
     case TAP_SCRAMBLE_LETTER:
       const tapState = merge({}, state);

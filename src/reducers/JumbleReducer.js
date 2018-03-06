@@ -1,8 +1,9 @@
 import {
   TAP_LETTER, START_NEW_WORD,
   VERIFY_WORD, END_ROUND,
-  UNDO_WORD, SHAKE_IT_UP }
-from '../actions/types';
+  UNDO_WORD, SHAKE_IT_UP,
+  SEE_A_LETTER
+} from '../actions/types';
 import merge from 'lodash/merge';
 
 const INITIAL_STATE = {
@@ -104,6 +105,34 @@ export default (state = INITIAL_STATE, action) => {
       futureState.attemptLength = 0;
       futureState.usedLetters = usedLetters1;
       return futureState;
+
+      case SEE_A_LETTER:
+        const seeState = merge({}, state);
+        if(action.levelType === "jumble"){
+          seeState.attempts[state.wordIndex] = [];
+          // debugger
+          let answerToGive;
+          for(var b = 0; b < state.answers.length; b++){
+            if(typeof state.answers[b] === "string"){
+              answerToGive = state.answers[b];
+              break;
+            }
+          }
+
+          const letterInsert = answerToGive.split("")[0];
+          seeState.attempts[state.wordIndex].push(letterInsert);
+
+          seeState.attemptLength = 1;
+
+          seeState.usedLetters.forEach((el, idx) => {
+            seeState.usedLetters[idx] = false;
+          });
+
+          const letterIndex = state.activeLetters.indexOf(letterInsert);
+          seeState.usedLetters[letterIndex] = true;
+        }
+
+        return seeState;
 
       case END_ROUND:
         const endState = merge({}, state);
