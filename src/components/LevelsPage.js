@@ -14,11 +14,29 @@ class LevelsPage extends React.Component {
     this.state = {
       activeLevel: null,
       stage: this.props.stage,
-      stageDropdown: 0
+      stageDropdown: 0,
+      dropdownShowing: false,
     };
     this.levels = Object.keys(Levels); //all levels in game
     this.stages = Object.keys(this.props.stages);
+    this.levelFrameworks = this.levelFrameworks();
+
     this.numLevels = this.levels.length;
+    this.tiltTriangle = this.tiltTriangle.bind(this);
+  }
+
+  levelFrameworks(){
+    let frameworks = [];
+    let framework = [];
+    for (var i = 0; i < this.numLevels; i++) {
+      const level = <LevelButton num={i+1} key={i} />
+      framework.push(level);
+
+      if((i+1) % 20 === 0){
+        frameworks.push(framework);
+        framework = [];
+      }
+    }
   }
 
   dropdownSelect(stageIdx){
@@ -26,9 +44,13 @@ class LevelsPage extends React.Component {
   }
 
   adjustFrame(style){
-    style.top -= 25;
-    style.left -= 122;
+    style.top -= 24;
+    style.left -= 130;
     return style;
+  }
+
+  tiltTriangle(){
+    this.setState({ dropdownShowing: !this.state.dropdownShowing})
   }
 
   render(){
@@ -38,7 +60,9 @@ class LevelsPage extends React.Component {
       );
     });
 
-    const triangle = (
+    const triangle = this.state.dropdownShowing ? (
+      <View style={styles.triangleLeft} />
+    ) : (
       <View style={styles.triangle} />
     )
 
@@ -49,7 +73,7 @@ class LevelsPage extends React.Component {
 
           <View style={styles.topLeft}>
 
-            <TouchableWithoutFeedback style={styles.dropdownLever}>
+            <TouchableWithoutFeedback style={styles.stageName}>
               <View>
                 <Text style={styles.stage}>
                   {this.stages[this.state.stageDropdown]}
@@ -61,7 +85,8 @@ class LevelsPage extends React.Component {
               <ModalDropdown options={["Sunny Side Up", "Hard Boiled", "Over Easy"]} defaultIndex={0}
                 onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
                 adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
-                dropdownTextHighlightStyle={styles.highlightStyle}>
+                dropdownTextHighlightStyle={styles.highlightStyle} onDropdownWillShow={this.tiltTriangle}
+                onDropdownWillHide={this.tiltTriangle}>
                 {triangle}
               </ModalDropdown>
             </View>
@@ -98,7 +123,21 @@ const styles = {
       {rotate: '180deg'}
     ],
     marginLeft: 4,
-    marginTop: 5,
+    marginTop: 7,
+  },
+  triangleLeft: {
+    width: 0,
+    height: 0,
+    borderStyle: 'solid',
+    borderLeftWidth: 14,
+    borderRightWidth: 14,
+    borderBottomWidth: 20,
+    borderBottomColor: 'blue',
+    transform: [
+      {rotate: '272deg'}
+    ],
+    marginLeft: 4,
+    marginTop: 7,
   },
   highlightStyle: {
     fontSize: 18,
@@ -107,14 +146,16 @@ const styles = {
     color: 'white'
   },
   dropdownStyle: {
-    width: 122,
-    height: 150
+    // width: 116,
+    height: 150,
+    marginRight: 16
   },
   button: {
     backgroundColor: 'black',
     color: 'white',
     fontSize: 18,
     fontFamily: 'RobotoCondensed-Regular',
+    width: 132,
   },
   outerDropdown: {
     // position: 'absolute',
@@ -138,11 +179,11 @@ const styles = {
     flexDirection: 'row',
     position: 'relative'
   },
-  dropdownLever: {
+  stageName: {
     height: 30,
     width: 30,
     flex: 3,
-    marginLeft: 13,
+    // marginLeft: 13,
 
   },
   contentContainerStyle: {
@@ -184,7 +225,7 @@ const styles = {
     marginTop: 2
   },
   stage: {
-    fontSize: 21,
+    fontSize: 23,
     fontFamily: 'RobotoCondensed-Regular',
     marginLeft: 7,
     marginTop: 2,

@@ -148,13 +148,13 @@ const styles = {
   fryingPanText: {
     color: 'white',
     fontFamily: 'RobotoCondensed-Regular',
-    fontSize: 22,
-    marginTop: 1,
+    fontSize: 23,
+    marginBottom: 1,
     marginLeft: 12
   },
   fryingEggcoin: {
     flexDirection: 'row',
-    marginTop: 1,
+    marginBottom: 1,
     marginRight: 9
   },
   fryingPan: {
