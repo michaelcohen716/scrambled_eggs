@@ -20,6 +20,7 @@ class Game extends React.Component {
 
   breakDown(){
     const levelType = Levels[this.props.activeLevel].type;
+
     if(levelType === "jumble"){
       this.activeWord = Levels[this.props.activeLevel].letters;
       this.answers = Jumbles[this.activeWord];
@@ -77,7 +78,7 @@ const mapStateToProps = state => {
   return {
     activeLetters: state.jumble.activeLetters,
     activeLevel: state.levels.activeLevel,
-    levelType: state.levels.levelType
+    levelType: state.levels.levelType,
   };
 };
 

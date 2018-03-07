@@ -1,7 +1,8 @@
 import {
   MAKE_PURCHASE, LOGIN_USER_SUCCESS,
   SHOW_ITEM_DESCRIPTION, SHAKE_IT_UP,
-  SEE_A_LETTER, START_NEW_SCRAMBLE
+  SEE_A_LETTER, START_NEW_SCRAMBLE,
+  FIRE_UP, UNLOCK_A_WORD
 }
 from '../actions/types';
 import merge from 'lodash/merge';
@@ -9,8 +10,9 @@ import merge from 'lodash/merge';
 const INITIAL_STATE = {
   itemsToggle: {
     'seeALetter': false,
-    'fireUp': false,
-    'shakeItUp': false
+    'unlockAWord': false,
+    'shakeItUp': false,
+    'fireUp': false
   },
   message: ''
 };
@@ -35,6 +37,8 @@ export default(state = INITIAL_STATE, action) => {
 
     case SHAKE_IT_UP:
     case SEE_A_LETTER:
+    case UNLOCK_A_WORD:
+    case FIRE_UP:
       const itemState = merge({}, state);
       itemState.itemsToggle[action.item] = false;
       return itemState;
@@ -48,7 +52,7 @@ export default(state = INITIAL_STATE, action) => {
       const sState = merge({}, state);
       sState.message = '';
       return sState;
-      
+
     default:
       return state;
 

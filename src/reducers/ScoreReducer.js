@@ -30,7 +30,11 @@ export default (state = INITIAL_STATE, action) => {
     case AWARD_WORD_COMPLETION:
       const newState = merge({}, state);
 
-      newState.roundScore += action.scoreIncrement;
+      if(state.fireUpToggle){
+        newState.roundScore += (2 * action.scoreIncrement);
+      } else {
+        newState.roundScore += action.scoreIncrement;
+      }
       return newState;
 
     case START_NEW_WORD:
@@ -47,6 +51,8 @@ export default (state = INITIAL_STATE, action) => {
       } else {
         updatedState.activeLevelAttempted = true;
       }
+
+      updatedState.fireUpToggle = false;
       return updatedState;
 
     case REDUCE_SCORE_MULTIPLIER:
