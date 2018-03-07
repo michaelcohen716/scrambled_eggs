@@ -14,6 +14,8 @@ import logger from 'redux-logger';
   // Alexander Skowalsky
   // Deemak Daksina S
   // Hartley Miller
+  // Noël Rasendrason
+  // Oliver Kittler
 
 class App extends Component {
   componentWillMount() {

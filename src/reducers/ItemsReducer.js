@@ -2,7 +2,7 @@ import {
   MAKE_PURCHASE, LOGIN_USER_SUCCESS,
   SHOW_ITEM_DESCRIPTION, SHAKE_IT_UP,
   SEE_A_LETTER, START_NEW_SCRAMBLE,
-  FIRE_UP, UNLOCK_A_WORD
+  FIRE_UP, UNLOCK_A_WORD, ASSIGN_LEVEL
 }
 from '../actions/types';
 import merge from 'lodash/merge';
@@ -18,11 +18,12 @@ const INITIAL_STATE = {
 };
 
 export default(state = INITIAL_STATE, action) => {
-  const newState = merge({}, state);
-  const newAction = merge({}, action);
-  state = newState;
-  action = newAction;
   switch(action.type) {
+    case ASSIGN_LEVEL:
+      const assignState = merge({}, state);
+      assignState.message = '';
+      return assignState;
+      
     case MAKE_PURCHASE:
       const purchaseState = merge({}, state);
       const item = action.item;

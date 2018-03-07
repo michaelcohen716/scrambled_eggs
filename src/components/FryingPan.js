@@ -36,7 +36,7 @@ var fryingItems = [
   { "item": "fireUp",
     "firstImage": flameWhite,
     "secondImage": flameBlack,
-    "cost": 875,
+    "cost": 975,
     "description": "2x eggcoin earnings"
   },
 ];

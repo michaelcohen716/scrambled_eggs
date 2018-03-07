@@ -7,6 +7,7 @@ import ModalDropdown from 'react-native-modal-dropdown';
 import Levels from '../games/levels.json';
 import LevelButton from './LevelButton';
 import FryingPan from './FryingPan';
+import houseLogo from '../assets/houselogo.svg';
 
 class LevelsPage extends React.Component {
   constructor(props){
@@ -93,6 +94,14 @@ class LevelsPage extends React.Component {
           </View>
 
           <View style={styles.topRight}>
+            <View style={{flex: 2}}>
+            </View>
+
+            <View style={styles.buttonHolder}>
+              <TouchableWithoutFeedback  style={styles.houseButton}>
+                <Image source={houseLogo} style={styles.houseLogo} />
+              </TouchableWithoutFeedback>
+            </View>
           </View>
 
         </View>
@@ -114,7 +123,31 @@ const styles = {
   dropdownHolder: {
     flex: 2
   },
-
+  buttonHolder: {
+    flex: 1,
+    // backgroundColor: 'silver',
+    marginRight: 15
+  },
+  houseLogo: {
+    flex: 1,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'contain'
+  },
+  houseButton: {
+    height: 35,
+    width: 65,
+    borderColor: 'silver',
+    borderWidth: 2,
+    flex: 1,
+    opacity: 0,
+    // backgroundColor: 'silver'
+  },
+  topRight:{
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
   triangle: {
     width: 0,
     height: 0,
@@ -178,9 +211,6 @@ const styles = {
   parent: {
     flex: 1,
     flexDirection: 'column',
-  },
-  topRight:{
-    flex: 1,
   },
   topLeft: {
     flex: 2,
