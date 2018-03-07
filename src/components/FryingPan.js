@@ -19,7 +19,7 @@ var fryingItems = [
     "cost": 450,
     "description": "See a letter"
   },
-  { "item": "freeWord",
+  { "item": "unlockAWord",
     "firstImage": giftWhite,
     "secondImage": giftBlack,
     "cost": 650,

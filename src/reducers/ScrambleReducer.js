@@ -26,7 +26,19 @@ export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case UNLOCK_A_WORD:
       const unlockState = merge({}, state);
-      // const findWord = state.
+      if(action.levelType === "scramble"){
+        let findWord = state.answers[state.wordIndex];
+
+        const insertWordArray = [];
+        findWord = findWord.split("");
+        findWord.forEach(letter => {
+          insertWordArray.push(letter);
+        });
+
+        unlockState.attempts[state.wordIndex] = insertWordArray;
+        unlockState.attemptLength = 0;
+        unlockState.wordIndex+=1;
+      }
 
       return unlockState;
 

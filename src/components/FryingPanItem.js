@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import goldCoin from '../assets/goldCoin.png';
 import { makePurchase, shakeItUp,
-  showItemDescription, seeALetter
+  showItemDescription, seeALetter,
+  unlockAWord
 } from '../actions';
 
 class FryingPanItem extends React. Component {
@@ -58,7 +59,6 @@ class FryingPanItem extends React. Component {
       this.setState({ touch: 2});
 
     } else { //touch == 2
-      // debugger
       this.setState({ touch: 0}, () => {
         const itemObject = {
           itemsToggle: this.props.itemsToggle,
@@ -71,6 +71,9 @@ class FryingPanItem extends React. Component {
 
         } else if(this.item === "seeALetter"){
           this.props.seeALetter(itemObject);
+
+        } else if(this.item === "unlockAWord"){
+          this.props.unlockAWord(itemObject);
         }
       });
     }
@@ -95,7 +98,7 @@ class FryingPanItem extends React. Component {
     const { item, firstImage, secondImage, cost } = this.props.info;
 
     let firstStyle = styles.icon;
-    if(item === "freeWord"){
+    if(item === "unlockAWord"){
       firstStyle = styles.giftIcon;
     } else if(item === "shakeItUp"){
       firstStyle = styles.blenderIcon;
@@ -104,7 +107,7 @@ class FryingPanItem extends React. Component {
     let secondStyle = styles.icon;
     if(item === "shakeItUp"){
       secondStyle = styles.secondBlendIcon;
-    } else if(item === "freeWord"){
+    } else if(item === "unlockAWord"){
       secondStyle = styles.secondGiftIcon;
     }
 
@@ -161,6 +164,15 @@ const styles = {
     backgroundColor: 'silver',
     marginRight: 7
   },
+  itemCardExpand: {
+    width: 60,
+    height: 46,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 5,
+    backgroundColor: 'silver',
+    marginRight: 7
+  },
   itemCardCost: {
     width: 50,
     height: 46,
@@ -205,11 +217,11 @@ const styles = {
     resizeMode: 'cover'
   },
   giftIcon: {
-    marginTop: 2,
+    // marginTop: 2,
     flex: 1,
     height: undefined,
     width: undefined,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
   },
   secondGiftIcon: {
     marginTop: 2,
@@ -243,5 +255,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   makePurchase, shakeItUp, showItemDescription,
-  seeALetter
+  seeALetter, unlockAWord
 })(FryingPanItem);

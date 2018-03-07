@@ -22,22 +22,25 @@ export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case UNLOCK_A_WORD:
       const unlockState = merge({}, state);
-      let findWord;
-      for (var u = 0; u < state.answers.length; u++) {
-        if(state.answers[u] !== true){
-          findWord = state.answers[u];
-          break;
+      if(action.levelType === "jumble"){
+        let findWord;
+        for (var u = 0; u < state.answers.length; u++) {
+          if(state.answers[u] !== true){
+            findWord = state.answers[u];
+            break;
+          }
         }
+
+        const insertWordArray = [];
+        findWord = findWord.split("");
+        findWord.forEach(letter => {
+          insertWordArray.push(letter);
+        });
+
+        unlockState.attempts[state.wordIndex] = insertWordArray;
+        unlockState.attemptLength = 0;
+        unlockState.wordIndex+=1;
       }
-
-      const insertWordArray = [];
-      findWord = findWord.split("");
-      findWord.forEach(letter => {
-        insertWordArray.push(letter);
-      });
-
-      unlockState.atempts[state.wordIndex] = insertWordArray;
-      unlockState.attemptLength = 0;
 
       return unlockState;
 

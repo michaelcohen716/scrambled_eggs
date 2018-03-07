@@ -60,9 +60,17 @@ export const seeALetter = ({ itemsToggle, levelType, item }) => {
   }
 }
 
-export const unlockAWord = () => {
+export const unlockAWord = ({ itemsToggle, levelType, item }) => {
+  const { currentUser } = firebase.auth();
+  itemsToggle[item] = false;
+
+  firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .update({  itemsToggle })
 
   return {
-    type: UNLOCK_A_WORD
+    type: UNLOCK_A_WORD,
+    itemsToggle,
+    levelType,
+    item
   }
 }
