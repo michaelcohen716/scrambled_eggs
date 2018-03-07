@@ -34,3 +34,4 @@ export const SHOW_ITEM_DESCRIPTION = 'show_item_description';
 export const SHAKE_IT_UP = 'shake_it_up';
 export const SEE_A_LETTER = 'see_a_letter';
 export const UNLOCK_A_WORD = 'unlock_a_word';
+export const FIRE_UP = 'fire_up';

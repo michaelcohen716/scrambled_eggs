@@ -11,12 +11,14 @@ import blenderWhite from '../assets/blender_white.png';
 import blenderBlack from '../assets/blender_black.png';
 import giftWhite from '../assets/gift_white.png';
 import giftBlack from '../assets/gift_black.png';
+import flameWhite from '../assets/flame_white.png';
+import flameBlack from '../assets/flame_black.png';
 
 var fryingItems = [
   { "item": "seeALetter",
     "firstImage": binocularsWhite,
     "secondImage": binocularsBlack,
-    "cost": 450,
+    "cost": 350,
     "description": "See a letter"
   },
   { "item": "unlockAWord",
@@ -31,16 +33,12 @@ var fryingItems = [
     "cost": 75,
     "description": "Shake up letters"
   },
-  // { "item": "shakeItUp",
-  //   "firstImage": blenderWhite,
-  //   "secondImage": blenderBlack,
-  //   "cost": 75
-  // },
-  // { "item": "shakeItUp",
-  //   "firstImage": blenderWhite,
-  //   "secondImage": blenderBlack,
-  //   "cost": 75
-  // }
+  { "item": "fireUp",
+    "firstImage": flameWhite,
+    "secondImage": flameBlack,
+    "cost": 875,
+    "description": "2x eggcoin earnings"
+  },
 ];
 
 class FryingPan extends React.Component {

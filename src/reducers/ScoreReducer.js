@@ -6,7 +6,7 @@ import {
   LOGIN_USER_SUCCESS,
   START_NEW_WORD, RECORD_SCORE,
   START_NEW_SCRAMBLE, SPEND_EGGCOIN,
-  MAKE_PURCHASE
+  MAKE_PURCHASE, FIRE_UP
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -16,11 +16,17 @@ const INITIAL_STATE = {
   scoreMultiplier: 100,
   activeLevelAttempted: false,
   unattemptedBaseScore: 5, //actions/reducers don't change these
-  attemptedBaseScore: 1 //actions/reducers don't change these
+  attemptedBaseScore: 1, //actions/reducers don't change these
+  fireUpToggle: false
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case FIRE_UP:
+      const fireState = merge({}, state);
+      fireState.fireUpToggle = true;
+      return fireState;
+
     case AWARD_WORD_COMPLETION:
       const newState = merge({}, state);
 

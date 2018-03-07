@@ -2,17 +2,18 @@ import firebase from 'firebase';
 import {
   MAKE_PURCHASE, SHAKE_IT_UP,
   SHOW_ITEM_DESCRIPTION, SEE_A_LETTER,
-  UNLOCK_A_WORD
+  UNLOCK_A_WORD, FIRE_UP
 } from './types';
 import merge from 'lodash/merge';
 
-export const makePurchase = ({ item, cost, itemsToggle }) => {
+export const makePurchase = ({ item, cost, itemsToggle, eggcoin }) => {
   const { currentUser } = firebase.auth();
   itemsToggle[item] = true;
+  const newEggcoin = eggcoin - cost;
 
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
     .update({
-      itemsToggle
+      itemsToggle, eggcoin: newEggcoin
     })
 
   return {
@@ -69,6 +70,21 @@ export const unlockAWord = ({ itemsToggle, levelType, item }) => {
 
   return {
     type: UNLOCK_A_WORD,
+    itemsToggle,
+    levelType,
+    item
+  }
+}
+
+export const fireUp = ({ itemsToggle, levelType, item }) => {
+  const { currentUser } = firebase.auth();
+  itemsToggle[item] = false;
+
+  firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .update({  itemsToggle })
+
+  return {
+    type: FIRE_UP,
     itemsToggle,
     levelType,
     item

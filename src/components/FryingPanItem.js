@@ -18,6 +18,7 @@ class FryingPanItem extends React. Component {
     this.makePurchase = this.makePurchase.bind(this);
     this.unmarkOtherItems = this.unmarkOtherItems.bind(this);
     this.showDescription = this.showDescription.bind(this);
+    this.useItem = this.useItem.bind(this);
 
     this.item = this.props.info.item;
     this.cost = this.props.info.cost;
@@ -56,7 +57,7 @@ class FryingPanItem extends React. Component {
 
     } else if(this.state.touch === 1) {
       this.makePurchase();
-      this.setState({ touch: 2});
+      // this.setState({ touch: 2});
 
     } else { //touch == 2
       this.setState({ touch: 0}, () => {
@@ -66,16 +67,22 @@ class FryingPanItem extends React. Component {
           item: this.item
         };
 
-        if(this.item === "shakeItUp"){
-          this.props.shakeItUp(itemObject);
-
-        } else if(this.item === "seeALetter"){
-          this.props.seeALetter(itemObject);
-
-        } else if(this.item === "unlockAWord"){
-          this.props.unlockAWord(itemObject);
-        }
+        this.useItem(itemObject);
       });
+    }
+  }
+
+  useItem(itemObject){
+    switch(this.item){
+      case "shakeItUp":
+        this.props.shakeItUp(itemObject);
+        return;
+      case "seeALetter":
+        this.props.seeALetter(itemObject);
+        return;
+      case "unlockAWord":
+        this.props.unlockAWord(itemObject);
+        return;
     }
   }
 
@@ -85,13 +92,21 @@ class FryingPanItem extends React. Component {
   }
 
   makePurchase(){
-    const object = {
-      item: this.item,
-      cost: this.cost,
-      itemsToggle: this.props.itemsToggle
-    };
+    if(this.props.eggcoin > this.cost){
+      const object = {
+        item: this.item,
+        cost: this.cost,
+        itemsToggle: this.props.itemsToggle,
+        eggcoin: this.props.eggcoin
+      };
 
-    this.props.makePurchase(object);
+      this.props.makePurchase(object);
+      this.setState({ touch: 2});
+
+    } else {
+      this.setState({ touch: 0});
+      this.props.showItemDescription("Buy Some Eggcoin");
+    }
   }
 
   render(){
@@ -165,7 +180,7 @@ const styles = {
     marginRight: 7
   },
   itemCardExpand: {
-    width: 60,
+    width: 50,
     height: 46,
     borderWidth: 1,
     borderColor: 'black',
@@ -249,7 +264,8 @@ const styles = {
 const mapStateToProps = state => {
   return {
     itemsToggle: state.items.itemsToggle,
-    levelType: state.levels.levelType
+    levelType: state.levels.levelType,
+    eggcoin: state.score.userEggcoin
   };
 };
 

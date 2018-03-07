@@ -27,6 +27,7 @@ export default (state = INITIAL_STATE, action) => {
         for (var u = 0; u < state.answers.length; u++) {
           if(state.answers[u] !== true){
             findWord = state.answers[u];
+            unlockState.answers[u] = true;
             break;
           }
         }
