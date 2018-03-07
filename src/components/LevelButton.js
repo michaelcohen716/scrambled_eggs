@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, View, TouchableOpacity,
         Animated, Easing, Image,
-        Modal
+        Modal, Dimensions
 } from 'react-native';
 import { connect } from 'react-redux';
-import { assignLevel } from '../actions';
+import { assignLevel, fireUp } from '../actions';
 import Levels from '../games/levels.json';
 import lockImage from '../assets/lock.png';
 
@@ -16,6 +16,7 @@ class LevelButton extends React.Component {
     };
     this.renderItemAsk = this.renderItemAsk.bind(this);
     this.renderModal = this.renderModal.bind(this);
+    this.onPressModal = this.onPressModal.bind(this);
   }
 
   onPress(num){
@@ -28,33 +29,107 @@ class LevelButton extends React.Component {
     }
   }
 
+  onPressModal(choice, num){
+    const levelType = Levels[num].type;
+    if(choice === "y"){
+      const itemObject = {
+        itemsToggle: this.props.itemsToggle,
+        item: "fireUp"
+      };
+      this.setState({ modalVisible: false });
+      this.props.fireUp(itemObject);
+      this.props.assignLevel(num, levelType);
+    } else if(choice === "n"){
+      this.setState({ modalVisible: false });
+      this.props.assignLevel(num, levelType);
+    }
+  }
+
   renderItemAsk(){
     this.setState({ modalVisible: true});
   }
 
-  renderModal(){
+  renderModal(num){
+    const { width } = Dimensions;
+
+    const styles = {
+      modalHolder: {
+        flex: 1,
+        width: width/2,
+        flexDirection: 'column'
+      },
+      questionText: {
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 22,
+        color: 'white',
+        fontWeight: 'bold'
+      },
+      questionHolder: {
+        flex: 1
+      },
+      modalButtonHolder: {
+        flex: 1,
+        flexDirection: 'row',
+        width: 200,
+        justifyContent: 'center',
+        marginBottom: 15
+      },
+      empty: {
+        flex: 3,
+        backgroundColor: 'transparent'
+      },
+      contentHolder: {
+        backgroundColor: 'blue',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 70,
+        marginRight: 70,
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 5
+      },
+      yesNoButton: {
+        width: 40,
+        height: 40,
+        margin: 8,
+        backgroundColor: 'black',
+        borderColor: 'white',
+        borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }
+    };
 
     return (
-      <Modal animationType="slide" transparent={false}
+      <Modal animationType="slide" transparent={true}
              visible={this.state.modalVisible}>
-        <View style={{flex: 1, flexDirection: 'column'}}>
-          <View style={{flex: 1}}>
-            <Text>
+        <View style={styles.modalHolder}>
+          <View style={styles.empty}/>
 
-            </Text>
+          <View style={styles.contentHolder}>
+
+            <View style={styles.questionHolder}>
+              <Text style={styles.questionText}>
+                Use 'Fire Up'?
+              </Text>
+            </View>
+
+            <View style={styles.modalButtonHolder}>
+
+              <TouchableOpacity style={styles.yesNoButton} onPress={() =>this.onPressModal("y", num)}>
+                <Text style={styles.questionText}>Y</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.yesNoButton} onPress={() => this.onPressModal("n", num)}>
+                <Text style={styles.questionText}>N</Text>
+              </TouchableOpacity>
+
+            </View>
           </View>
 
-          <View style={{flex: 1, flexDirection: 'row'}}>
+          <View style={styles.empty} />
 
-            <TouchableOpacity style={{flex: 1}}>
-              <Text>Y</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={{flex: 1}}>
-              <Text>N</Text>
-            </TouchableOpacity>
-
-          </View>
         </View>
       </Modal>
     );
@@ -63,7 +138,7 @@ class LevelButton extends React.Component {
   render(){
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
-    const modal = this.renderModal();
+    const modal = this.renderModal(num);
 
     const { stages } = this.props;
     // STAGES
@@ -120,7 +195,7 @@ class LevelButton extends React.Component {
               {num}
             </Text>
             {modal}
-            
+
           </View>
         </View>
       </TouchableOpacity>
@@ -260,8 +335,11 @@ const mapStateToProps = state => {
     nextUnsolvedLevel: state.levels.nextUnsolvedLevel,
     stages: state.levels.stages,
     stageNum: state.levels.stageNum,
-    fireUpAvailable: state.items.itemsToggle.fireUp
+    fireUpAvailable: state.items.itemsToggle.fireUp,
+    itemsToggle: state.items.itemsToggle,
   };
 };
 
-export default connect(mapStateToProps, { assignLevel })(LevelButton);
+export default connect(mapStateToProps, {
+  assignLevel, fireUp
+})(LevelButton);

@@ -76,7 +76,7 @@ export const unlockAWord = ({ itemsToggle, levelType, item }) => {
   }
 }
 
-export const fireUp = ({ itemsToggle, levelType, item }) => {
+export const fireUp = ({ itemsToggle, item }) => {
   const { currentUser } = firebase.auth();
   itemsToggle[item] = false;
 
@@ -86,7 +86,6 @@ export const fireUp = ({ itemsToggle, levelType, item }) => {
   return {
     type: FIRE_UP,
     itemsToggle,
-    levelType,
     item
   }
 }

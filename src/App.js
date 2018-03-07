@@ -13,6 +13,8 @@ import logger from 'redux-logger';
   // mikicon
   // Alexander Skowalsky
   // Deemak Daksina S
+  // Hartley Miller
+
 class App extends Component {
   componentWillMount() {
     const config = {
