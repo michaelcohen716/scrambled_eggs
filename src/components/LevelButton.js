@@ -21,7 +21,7 @@ class LevelButton extends React.Component {
 
     const { stages } = this.props;
     // STAGES
-
+    debugger
     const thisLevelsStage = stages[Levels[num].stage];
     // numeric value of stage
 

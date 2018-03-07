@@ -19,24 +19,28 @@ class LevelsPage extends React.Component {
     };
     this.levels = Object.keys(Levels); //all levels in game
     this.stages = Object.keys(this.props.stages);
-    this.levelFrameworks = this.levelFrameworks();
-
     this.numLevels = this.levels.length;
+    this.frameworks = this.levelFrameworks();
+
     this.tiltTriangle = this.tiltTriangle.bind(this);
   }
 
   levelFrameworks(){
     let frameworks = [];
-    let framework = [];
-    for (var i = 0; i < this.numLevels; i++) {
-      const level = <LevelButton num={i+1} key={i} />
-      framework.push(level);
 
-      if((i+1) % 20 === 0){
-        frameworks.push(framework);
-        framework = [];
+    for (var i = 0; i < this.numLevels / 20; i++) {
+      const framework = [];
+      for (var j = 0; j < 20; j++) {
+        if(((20 * i) + j) === this.numLevels){
+          break;
+        }
+        const level = <LevelButton num={(20 * i) + j + 1} key={(20*i)+j} />
+        framework.push(level);
       }
+      frameworks.push(framework);
     }
+
+    return frameworks;
   }
 
   dropdownSelect(stageIdx){
@@ -44,8 +48,8 @@ class LevelsPage extends React.Component {
   }
 
   adjustFrame(style){
-    style.top -= 24;
-    style.left -= 130;
+    // style.top -= 24;
+    style.left -= 142;
     return style;
   }
 
@@ -54,11 +58,7 @@ class LevelsPage extends React.Component {
   }
 
   render(){
-    const levels = this.levels.map((level, idx) => {
-      return (
-        <LevelButton num={idx+1} key={idx} />
-      );
-    });
+    const levels = this.frameworks[this.state.stageDropdown];
 
     const triangle = this.state.dropdownShowing ? (
       <View style={styles.triangleLeft} />
@@ -73,15 +73,15 @@ class LevelsPage extends React.Component {
 
           <View style={styles.topLeft}>
 
-            <TouchableWithoutFeedback style={styles.stageName}>
-              <View>
+            <View style={styles.stageName}>
+              <View style={styles.stageSpot}>
                 <Text style={styles.stage}>
                   {this.stages[this.state.stageDropdown]}
                 </Text>
               </View>
-            </TouchableWithoutFeedback>
+            </View>
 
-            <View>
+            <View style={styles.dropdownHolder}>
               <ModalDropdown options={["Sunny Side Up", "Hard Boiled", "Over Easy"]} defaultIndex={0}
                 onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
                 adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
@@ -111,6 +111,10 @@ class LevelsPage extends React.Component {
 }
 
 const styles = {
+  dropdownHolder: {
+    flex: 2
+  },
+
   triangle: {
     width: 0,
     height: 0,
@@ -122,8 +126,11 @@ const styles = {
     transform: [
       {rotate: '180deg'}
     ],
-    marginLeft: 4,
-    marginTop: 7,
+    position: 'absolute',
+    top: 9,
+    left: -2
+    // marginLeft: 4,
+    // marginTop: 7,
   },
   triangleLeft: {
     width: 0,
@@ -136,8 +143,16 @@ const styles = {
     transform: [
       {rotate: '272deg'}
     ],
-    marginLeft: 4,
-    marginTop: 7,
+    // marginLeft: 4,
+    // marginTop: 7,
+    position: 'absolute',
+    top: 9,
+    left: -2
+  },
+  stageSpot: {
+    position: 'absolute',
+    top: 2,
+    left: 9
   },
   highlightStyle: {
     fontSize: 18,
@@ -146,7 +161,6 @@ const styles = {
     color: 'white'
   },
   dropdownStyle: {
-    // width: 116,
     height: 150,
     marginRight: 16
   },
@@ -156,11 +170,6 @@ const styles = {
     fontSize: 18,
     fontFamily: 'RobotoCondensed-Regular',
     width: 132,
-  },
-  outerDropdown: {
-    // position: 'absolute',
-    // right: 2,
-    // marginRight: 80
   },
   modalDropdown: {
     flex: 1,
@@ -180,8 +189,8 @@ const styles = {
     position: 'relative'
   },
   stageName: {
-    height: 30,
-    width: 30,
+    // height: 30,
+    // width: 30,
     flex: 3,
     // marginLeft: 13,
 
@@ -227,7 +236,7 @@ const styles = {
   stage: {
     fontSize: 23,
     fontFamily: 'RobotoCondensed-Regular',
-    marginLeft: 7,
+    // marginLeft: 7,
     marginTop: 2,
     color: 'white'
   },
