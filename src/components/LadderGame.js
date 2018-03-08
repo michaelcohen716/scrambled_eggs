@@ -14,7 +14,13 @@ class LadderGame extends React.Component {
   }
 
   render(){
+    const attemptHolders = this.answers.map((answer, idx) => {
+      return (
+        <LadderHolder letters={answer.split("")} wordIndex={idx} key={idx} />
+      );
+    });
 
+    console.log(attemptHolders);
 
     return (
       <View style={styles.parent}>
@@ -25,7 +31,14 @@ class LadderGame extends React.Component {
           <View style={styles.clues}>
             <LadderHolder letters={this.letters} wordIndex={-1}/>
 
-            <LadderHolder letters={this.letters} />
+            <View style={styles.messageBox}>
+              <Text>Hey</Text>
+            </View>
+
+            {attemptHolders}
+
+          </View>
+          <View style={styles.filler}>
 
           </View>
 
@@ -43,25 +56,34 @@ const styles = {
     flex: 1
   },
   clues: {
-    flex: 1,
+    flex: 4,
     borderColor: 'red',
     flexDirection: 'column',
     borderWidth: 2,
+  },
+  messageBox: {
+    flex: 1,
+    backgroundColor: 'white'
+  },
+  filler: {
+    flex: 2
   },
   game: {
     flex: 1,
     backgroundColor: 'silver'
   },
-
-
+  holders: {
+    // flex: 1,
+    flexDirection: 'column'
+  }
 
 };
 
 const mapStateToProps = state => {
   return {
     wordIndex: state.ladder.wordIndex,
-    activeAnswer
-  }
-}
+    answers: state.ladder.answers
+  };
+};
 
 export default connect(null, null)(LadderGame);

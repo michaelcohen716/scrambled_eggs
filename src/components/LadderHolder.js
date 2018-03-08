@@ -5,8 +5,18 @@ import LadderTile from './LadderTile';
 
 class LadderHolder extends React.Component {
   render(){
-    const { wordIndex, currentWordIndex } = this.props;
+    const { wordIndex, currentWordIndex, attempts } = this.props;
     const tiles = this.props.letters.map((letter, idx) => {
+      // debugger
+      if(wordIndex != -1){
+        if(!attempts[wordIndex][idx]){
+          letter = '';
+        } else if(wordIndex !== -1) {
+          letter = attempts[wordIndex][idx];
+        }
+
+      }
+
       return (
         <LadderTile letter={letter} letterIndex={idx} key={idx} wordIndex={wordIndex}/>
       );
@@ -25,10 +35,11 @@ class LadderHolder extends React.Component {
         </View>
       );
     }
-
-    else if(wordIndex < currentWordIndex) { // solved, letters not active
+    else {
+    // else if(wordIndex < currentWordIndex) { // solved, letters not active
       return (
-        <View>
+        <View style={styles.stillEmpty}>
+          {tiles}
         </View>
       );
     }
@@ -36,30 +47,49 @@ class LadderHolder extends React.Component {
 }
 
 const styles = {
+  stillEmpty: {
+    borderBottomWidth: 1,
+    padding: 5,
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    flex: 1,
+    // minHeight: 50,
+    marginBottom: 10
+  },
   lettersActive: {
     borderBottomWidth: 1,
     padding: 5,
     backgroundColor: 'blue',
     justifyContent: 'center',
+    alignItems: 'center',
+
     flexDirection: 'row',
-    borderColor: '#ddd',
-      // position: 'relative'
-    flex: 1
+    flex: 1,
+    // minHeight: 50,
+    marginBottom: 10
+
   },
   attemptActive: {
     borderBottomWidth: 1,
     padding: 5,
     backgroundColor: 'black',
     justifyContent: 'center',
+    alignItems: 'center',
+
     flexDirection: 'row',
-    borderColor: '#ddd',
-    flex: 1
+    flex: 1,
+    // minHeight: 50,
+    marginBottom: 10
+
   }
 };
 
 const mapStateToProps = state => {
   return {
-    currentWordIndex: state.ladder.wordIndex
+    currentWordIndex: state.ladder.wordIndex,
+    attempts: state.ladder.attempts
   };
 };
 

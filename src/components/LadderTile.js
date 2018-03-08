@@ -25,25 +25,25 @@ class LadderTile extends React.Component {
     const { wordIndex, currentIndex, usedLetters, letterIndex } = this.props;
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
 
-    if(currentIndex === wordIndex && usedLetters[letterIndex] === true){ //active used
+    // if(currentIndex === wordIndex && usedLetters[letterIndex] === true){ //active used
       return (
         <TouchableOpacity style={styles.usedTile}>
           <Text style={styles.usedText}>{letter}</Text>
         </TouchableOpacity>
       );
-    }
+    // }
 
-    if(currentIndex === wordIndex){ //active unused
-      return (
-        <TouchableOpacity style={styles.unusedTile} onPress={this.press}>
-          <Text style={styles.unusedText}>{letter}</Text>
-        </TouchableOpacity>
-      );
-    }
-
-    return (
-      <View></View>
-    );
+    // if(currentIndex === wordIndex){ //active unused
+    //   return (
+    //     <TouchableOpacity style={styles.unusedTile} onPress={this.press}>
+    //       <Text style={styles.unusedText}>{letter}</Text>
+    //     </TouchableOpacity>
+    //   );
+    // }
+    //
+    // return (
+    //   <View></View>
+    // );
 
   }
 }
