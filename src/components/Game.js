@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import { startNewWord, startNewScramble } from '../actions';
+import { startNewWord, startNewScramble, startNewLadder } from '../actions';
 import Jumbles from '../games/jumbles.json';
 import Scrambles from '../games/scrambles.json';
+import Ladders from '../games/ladders.json';
 import Levels from '../games/levels.json';
 import JumbleGame from './JumbleGame';
 import ScrambleGame from './ScrambleGame';
+import LadderGame from './LadderGame';
 
 class Game extends React.Component {
   constructor(props){
@@ -44,6 +46,19 @@ class Game extends React.Component {
       };
 
       this.props.startNewScramble(startScrambleObject);
+    } else if(levelType === "ladder"){
+      this.firstAnswer = Levels[this.props.activeLevel].firstAnswer;
+      this.gameObject = Ladders[this.firstAnswer];
+
+      const startLadderObject = {
+        firstAnswer: this.firstAnswer,
+        answers: this.gameObject.answers,
+        subtractions: this.gameObject.subtractions,
+        numWords: this.gameObject.answers.length,
+        roundTime: this.seconds
+      };
+
+      this.props.startNewLadder(startLadderObject);
     }
   }
 
@@ -66,7 +81,12 @@ class Game extends React.Component {
       return (
         <ScrambleGame />
       );
-    } else {
+    } else if(this.props.levelType === "ladder"){
+      return (
+        <LadderGame />
+      );
+    }
+    else {
       return (
         <View></View>
       );
@@ -82,4 +102,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { startNewWord, startNewScramble })(Game);
+export default connect(mapStateToProps, {
+  startNewWord, startNewScramble, startNewLadder 
+})(Game);

@@ -51,28 +51,17 @@ class ScoreKeeper extends React.Component {
 
 
 const mapStateToProps = state => {
-  // let levelType = state.levels.levelType;
-
-  // return {
-  //   roundScore: state.score.roundScore,
-  //   wordIndex: state[levelType].wordIndex,
-  //   scoreMultiplier: state.score.scoreMultiplier,
-  //   activeLevelAttempted: state.score.activeLevelAttempted,
-  //   attemptedBaseScore: state.score.attemptedBaseScore,
-  //   unattemptedBaseScore: state.score.unattemptedBaseScore,
-  //   activeLevel: state.levels.activeLevel,
-  //   nextUnsolvedLevel: state.levels.nextUnsolvedLevel
-  // };
+  let levelType = state.levels.levelType;
 
   return {
-    roundScore: 0,
-    wordIndex: 1,
-    scoreMultiplier: 1,
-    activeLevelAttempted: false,
-    attemptedBaseScore: 1,
-    unattemptedBaseScore: 5,
-    activeLevel: 1,
-    nextUnsolvedLevel: 1
+    roundScore: state.score.roundScore,
+    wordIndex: state[levelType].wordIndex,
+    scoreMultiplier: state.score.scoreMultiplier,
+    activeLevelAttempted: state.score.activeLevelAttempted,
+    attemptedBaseScore: state.score.attemptedBaseScore,
+    unattemptedBaseScore: state.score.unattemptedBaseScore,
+    activeLevel: state.levels.activeLevel,
+    nextUnsolvedLevel: state.levels.nextUnsolvedLevel
   };
 };
 

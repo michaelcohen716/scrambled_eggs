@@ -7,7 +7,7 @@
   },
   "1": {
     "type": "ladder",
-    "letters": "chrome",
+    "firstAnswer": "chrome",
     "time": 60,
     "stage": "Sunny Side Up"
   },
