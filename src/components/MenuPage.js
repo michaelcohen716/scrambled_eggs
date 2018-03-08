@@ -1,11 +1,24 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
 class MenuPage extends React.Component {
   render(){
     return (
       <View style={styles.parent}>
+        <View style={styles.item}>
+
+        </View>
+        <View style={styles.item}></View>
+        <View style={styles.item}></View>
+        <View style={styles.item}></View>
+        <View style={styles.item}></View>
+        <View style={styles.item}></View>
+        <View style={styles.item}>
+          <TouchableOpacity style={styles.logoutButton}>
+            <Text style={styles.buttonText}>Logout</Text>
+          </TouchableOpacity>
+        </View>
 
       </View>
     );
@@ -15,6 +28,25 @@ class MenuPage extends React.Component {
 const styles = {
   parent: {
     flex: 1
+  },
+  logoutButton: {
+    flex: 1,
+    justifyContent: 'center',
+    borderWidth: 2,
+    backgroundColor: 'black'
+  },
+  buttonText: {
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 22,
+    color: 'white',
+    fontWeight: 'bold',
+    marginLeft: 20
+  },
+  item: {
+    flex: 1,
+    margin: 15,
+    borderColor: 'white',
+    borderWidth: 2
   }
 };
 

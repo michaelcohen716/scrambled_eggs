@@ -12,11 +12,11 @@ const RouterComponent = () => {
     <Router>
       <Scene key="root" tabs={false}>
         <Scene key="login" component={LoginForm} title="Please Login" />
-        <Scene initial key="levels" component={LevelsPage} title="Levels" />
+        <Scene key="levels" component={LevelsPage} title="Levels" />
         <Scene key="game" component={Game} title="Game On" />
         <Scene key="roundReview" component={RoundReview} title="Round Review" />
         <Scene key="advanceStage" component={AdvanceStage} title="Advance Stage" />
-        <Scene key="menuPage" component={MenuPage} title="Menu" />
+        <Scene initial key="menuPage" component={MenuPage} title="Menu" />
       </Scene>
     </Router>
   );
