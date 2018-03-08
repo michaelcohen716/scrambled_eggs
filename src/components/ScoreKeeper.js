@@ -3,8 +3,6 @@ import { View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { awardWordCompletion } from '../actions';
 import Timer from './Timer';
-// import eggImage from '../assets/egg.png';
-// import coinSpin from '../assets/coin_spin.gif';
 
 class ScoreKeeper extends React.Component {
   constructor(){
@@ -53,17 +51,28 @@ class ScoreKeeper extends React.Component {
 
 
 const mapStateToProps = state => {
-  const levelType = state.levels.levelType;
+  // let levelType = state.levels.levelType;
+
+  // return {
+  //   roundScore: state.score.roundScore,
+  //   wordIndex: state[levelType].wordIndex,
+  //   scoreMultiplier: state.score.scoreMultiplier,
+  //   activeLevelAttempted: state.score.activeLevelAttempted,
+  //   attemptedBaseScore: state.score.attemptedBaseScore,
+  //   unattemptedBaseScore: state.score.unattemptedBaseScore,
+  //   activeLevel: state.levels.activeLevel,
+  //   nextUnsolvedLevel: state.levels.nextUnsolvedLevel
+  // };
 
   return {
-    roundScore: state.score.roundScore,
-    wordIndex: state[levelType].wordIndex,
-    scoreMultiplier: state.score.scoreMultiplier,
-    activeLevelAttempted: state.score.activeLevelAttempted,
-    attemptedBaseScore: state.score.attemptedBaseScore,
-    unattemptedBaseScore: state.score.unattemptedBaseScore,
-    activeLevel: state.levels.activeLevel,
-    nextUnsolvedLevel: state.levels.nextUnsolvedLevel
+    roundScore: 0,
+    wordIndex: 1,
+    scoreMultiplier: 1,
+    activeLevelAttempted: false,
+    attemptedBaseScore: 1,
+    unattemptedBaseScore: 5,
+    activeLevel: 1,
+    nextUnsolvedLevel: 1
   };
 };
 

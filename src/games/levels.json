@@ -5,6 +5,12 @@
     "time": 45,
     "stage": "Sunny Side Up"
   },
+  "1": {
+    "type": "ladder",
+    "letters": "chrome",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
   "2": {
     "type": "scramble",
     "firstAnswer": "boat",

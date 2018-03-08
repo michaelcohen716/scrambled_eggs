@@ -96,17 +96,30 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  let levelType = state.levels.levelType;
+  // let levelType = state.levels.levelType;
+  //
+  // return {
+  //   wordIndex: state[levelType].wordIndex,
+  //   attempts: state[levelType].attempts,
+  //   roundScore: state.score.roundScore,
+  //   eggcoin: state.score.userEggcoin,
+  //   activeLevel: state.levels.activeLevel,
+  //   seconds: state[levelType].roundTime,
+  //   itemsToggle: state.items.itemsToggle,
+  //   levelType
+  // };
 
   return {
-    wordIndex: state[levelType].wordIndex,
-    attempts: state[levelType].attempts,
-    roundScore: state.score.roundScore,
-    eggcoin: state.score.userEggcoin,
-    activeLevel: state.levels.activeLevel,
-    seconds: state[levelType].roundTime,
-    itemsToggle: state.items.itemsToggle,
-    levelType
+    wordIndex: 0,
+    attempts: [[]],
+    roundScore: 0,
+    eggcoin: 1005,
+    activeLevel: 1,
+    seconds: 60,
+    itemsToggle: {
+
+    },
+    levelType: "scramble"
   };
 };
 

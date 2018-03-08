@@ -6,6 +6,7 @@ import LevelsPage from './components/LevelsPage';
 import RoundReview from './components/RoundReview';
 import AdvanceStage from './components/AdvanceStage';
 import MenuPage from './components/MenuPage';
+import LadderGame from './components/LadderGame';
 
 const RouterComponent = () => {
   return (
@@ -16,7 +17,8 @@ const RouterComponent = () => {
         <Scene key="game" component={Game} title="Game On" />
         <Scene key="roundReview" component={RoundReview} title="Round Review" />
         <Scene key="advanceStage" component={AdvanceStage} title="Advance Stage" />
-        <Scene initial key="menuPage" component={MenuPage} title="Menu" />
+        <Scene key="menuPage" component={MenuPage} title="Menu" />
+        <Scene initial key="ladderGame" component={LadderGame} title="Game On" />
       </Scene>
     </Router>
   );

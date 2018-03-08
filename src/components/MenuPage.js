@@ -6,16 +6,20 @@ class MenuPage extends React.Component {
   render(){
     return (
       <View style={styles.parent}>
-        <View style={styles.item}>
 
+        <View style={styles.item}>
+          <TouchableOpacity style={styles.optionButton}>
+            <Text style={styles.buttonText}>Instructions</Text>
+          </TouchableOpacity>
         </View>
+
         <View style={styles.item}></View>
         <View style={styles.item}></View>
         <View style={styles.item}></View>
         <View style={styles.item}></View>
         <View style={styles.item}></View>
         <View style={styles.item}>
-          <TouchableOpacity style={styles.logoutButton}>
+          <TouchableOpacity style={styles.optionButton}>
             <Text style={styles.buttonText}>Logout</Text>
           </TouchableOpacity>
         </View>
@@ -29,7 +33,7 @@ const styles = {
   parent: {
     flex: 1
   },
-  logoutButton: {
+  optionButton: {
     flex: 1,
     justifyContent: 'center',
     borderWidth: 2,

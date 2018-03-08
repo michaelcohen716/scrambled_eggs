@@ -1,0 +1,10 @@
+{
+  "chrome": {
+    "answers": ["chrome", "homer", "more"],
+    "subtractions": ["c", "h"]
+  },
+  "median": {
+    "answers": ["median", "named", "dame"],
+    "subtractions": ["i", "n"]
+  }
+}
