@@ -38,3 +38,5 @@ export const FIRE_UP = 'fire_up';
 
 //ladder
 export const START_NEW_LADDER = 'start_new_ladder';
+export const TAP_LADDER_LETTER = 'tap_ladder_letter';
+export const VERIFY_LADDER_WORD = 'verify_ladder_word';

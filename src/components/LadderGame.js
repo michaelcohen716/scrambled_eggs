@@ -3,27 +3,17 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import FryingPan from './FryingPan';
 import InfoBar from './InfoBar';
-// import WordHolder from './WordHolder';
-import LadderTile from './LadderTile';
+import LadderHolder from './LadderHolder';
+
 
 class LadderGame extends React.Component {
   constructor(props){
     super(props);
-    this.letters = ["a", "b", "c", "d", "e"];
+    this.letters = ["e", "m", "o", "r", "h","c"];
+    this.answers = ["chrome", "homer", "more"];
   }
 
   render(){
-    const initialTiles = this.letters.map((letter, idx) => {
-      return (
-        <LadderTile letter={letter} key={idx} wordIndex={0} letterIndex={idx}/>
-      );
-    });
-
-    const initialWordHolder = (
-      <View style={styles.container}>
-        {initialTiles}
-      </View>
-    );
 
 
     return (
@@ -33,7 +23,10 @@ class LadderGame extends React.Component {
 
         <View style={styles.game}>
           <View style={styles.clues}>
-            {initialWordHolder}
+            <LadderHolder letters={this.letters} wordIndex={-1}/>
+
+            <LadderHolder letters={this.letters} />
+
           </View>
 
         </View>
@@ -52,27 +45,22 @@ const styles = {
   clues: {
     flex: 1,
     borderColor: 'red',
+    flexDirection: 'column',
     borderWidth: 2,
   },
   game: {
     flex: 1,
     backgroundColor: 'silver'
   },
-  container: {
-    borderBottomWidth: 1,
-    padding: 5,
-    backgroundColor: 'blue',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    borderColor: '#ddd',
-    position: 'relative'
-  }
+
+
 
 };
 
 const mapStateToProps = state => {
   return {
-    wordIndex: state.ladder.wordIndex
+    wordIndex: state.ladder.wordIndex,
+    activeAnswer
   }
 }
 

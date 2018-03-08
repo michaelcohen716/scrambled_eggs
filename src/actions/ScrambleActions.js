@@ -1,5 +1,3 @@
-// import firebase from 'firebase';
-// import { Actions } from 'react-native-router-flux';
 import {
   START_NEW_SCRAMBLE, TAP_SCRAMBLE_LETTER,
   VERIFY_SCRAMBLE
