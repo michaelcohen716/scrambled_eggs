@@ -25,30 +25,64 @@ class LadderTile extends React.Component {
     const { wordIndex, currentIndex, usedLetters, letterIndex } = this.props;
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
 
-    // if(currentIndex === wordIndex && usedLetters[letterIndex] === true){ //active used
+    if(currentIndex - 1 === wordIndex && usedLetters[letterIndex] === true){ //active letters, tapped
       return (
         <TouchableOpacity style={styles.usedTile}>
           <Text style={styles.usedText}>{letter}</Text>
         </TouchableOpacity>
       );
-    // }
+    }
 
-    // if(currentIndex === wordIndex){ //active unused
-    //   return (
-    //     <TouchableOpacity style={styles.unusedTile} onPress={this.press}>
-    //       <Text style={styles.unusedText}>{letter}</Text>
-    //     </TouchableOpacity>
-    //   );
-    // }
-    //
-    // return (
-    //   <View></View>
-    // );
+    if(currentIndex - 1 === wordIndex){ //active unused
+      return (
+        <TouchableOpacity style={styles.unusedTile} onPress={this.press}>
+          <Text style={styles.unusedText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
 
+    if(currentIndex === wordIndex){ //current attempt holder
+      return (
+        <TouchableOpacity style={styles.attemptTile}>
+          <Text style={styles.attemptText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
+
+    else {
+      return (
+        <TouchableOpacity style={styles.unreachedTile} />
+      );
+    }
   }
 }
 
 const styles = {
+  attemptTile: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'blue',
+    borderColor: 'white',
+    borderWidth: 3,
+    margin: 5,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  attemptText: {
+    fontSize: 24,
+    fontFamily: 'RobotoCondensed-Regular',
+    color: 'white'
+  },
+  unreachedTile: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'orange',
+    borderColor: 'white',
+    borderWidth: 3,
+    margin: 5,
+    borderRadius: 10,
+  },
   usedTile: {
     width: 50,
     height: 50,

@@ -22,6 +22,7 @@ export default (state = INITIAL_STATE, action) => {
       tapState.message = '';
 
       tapState.attempts[state.wordIndex].push(action.letter);
+
       tapState.usedLetters[action.letterIndex] = true;
       tapState.attemptLength +=1;
 

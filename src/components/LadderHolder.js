@@ -5,16 +5,15 @@ import LadderTile from './LadderTile';
 
 class LadderHolder extends React.Component {
   render(){
-    const { wordIndex, currentWordIndex, attempts } = this.props;
-    const tiles = this.props.letters.map((letter, idx) => {
-      // debugger
-      if(wordIndex != -1){
-        if(!attempts[wordIndex][idx]){
-          letter = '';
-        } else if(wordIndex !== -1) {
-          letter = attempts[wordIndex][idx];
-        }
+    const { wordIndex, currentWordIndex, attempts, attemptLength } = this.props;
 
+    const tiles = this.props.letters.map((letter, idx) => {
+      if(currentWordIndex === wordIndex && idx < attemptLength){ //active guessing attempt, letter present
+        letter = attempts[wordIndex][idx];
+      } else if(currentWordIndex === wordIndex && idx >= attemptLength){ //active attempts, letter not present
+        letter = '';
+      } else if(currentWordIndex < wordIndex){ //still inactive word
+        letter = '';
       }
 
       return (
@@ -56,7 +55,7 @@ const styles = {
     flexDirection: 'row',
     flex: 1,
     // minHeight: 50,
-    marginBottom: 10
+    marginBottom: 13
   },
   lettersActive: {
     borderBottomWidth: 1,
@@ -68,7 +67,7 @@ const styles = {
     flexDirection: 'row',
     flex: 1,
     // minHeight: 50,
-    marginBottom: 10
+    marginBottom: 13
 
   },
   attemptActive: {
@@ -81,7 +80,7 @@ const styles = {
     flexDirection: 'row',
     flex: 1,
     // minHeight: 50,
-    marginBottom: 10
+    marginBottom: 13
 
   }
 };
@@ -89,7 +88,8 @@ const styles = {
 const mapStateToProps = state => {
   return {
     currentWordIndex: state.ladder.wordIndex,
-    attempts: state.ladder.attempts
+    attempts: state.ladder.attempts,
+    attemptLength: state.ladder.attemptLength
   };
 };
 

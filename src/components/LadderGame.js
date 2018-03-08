@@ -32,7 +32,7 @@ class LadderGame extends React.Component {
             <LadderHolder letters={this.letters} wordIndex={-1}/>
 
             <View style={styles.messageBox}>
-              <Text>Hey</Text>
+              <Text style={styles.message}>Hey</Text>
             </View>
 
             {attemptHolders}
@@ -57,13 +57,17 @@ const styles = {
   },
   clues: {
     flex: 4,
-    borderColor: 'red',
     flexDirection: 'column',
-    borderWidth: 2,
   },
   messageBox: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'silver',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  message: {
+    fontSize: 24,
+    fontFamily: 'RobotoCondensed-Regular',
   },
   filler: {
     flex: 2
@@ -82,7 +86,8 @@ const styles = {
 const mapStateToProps = state => {
   return {
     wordIndex: state.ladder.wordIndex,
-    answers: state.ladder.answers
+    answers: state.ladder.answers,
+    attempts: state.ladder.attempts
   };
 };
 

@@ -16,7 +16,7 @@ export const startNewLadder = ({ answers, subtractions, numWords, firstAnswer, r
 
 export const tapLadderLetter = (letter, letterIndex) => {
   return {
-    type: TAP_LETTER,
+    type: TAP_LADDER_LETTER,
     letter,
     letterIndex
   };
@@ -24,7 +24,7 @@ export const tapLadderLetter = (letter, letterIndex) => {
 
 export const verifyLadderWord = (letter, letterIndex) => {
   return {
-    type: VERIFY_WORD,
+    type: VERIFY_LADDER_WORD,
     letter,
     letterIndex
   }
