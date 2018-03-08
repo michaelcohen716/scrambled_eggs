@@ -3,11 +3,12 @@ import { View, ScrollView, Text,
         Image, Dimensions, TouchableWithoutFeedback,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import ModalDropdown from 'react-native-modal-dropdown';
 import Levels from '../games/levels.json';
 import LevelButton from './LevelButton';
 import FryingPan from './FryingPan';
-import houseLogo from '../assets/houselogo.svg';
+import houseLogo from '../assets/red_house.png';
 
 class LevelsPage extends React.Component {
   constructor(props){
@@ -98,7 +99,7 @@ class LevelsPage extends React.Component {
             </View>
 
             <View style={styles.buttonHolder}>
-              <TouchableWithoutFeedback  style={styles.houseButton}>
+              <TouchableWithoutFeedback  style={styles.houseButton} onPress={() => Actions.menuPage()}>
                 <Image source={houseLogo} style={styles.houseLogo} />
               </TouchableWithoutFeedback>
             </View>
@@ -132,7 +133,8 @@ const styles = {
     flex: 1,
     height: undefined,
     width: undefined,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    marginBottom: 1
   },
   houseButton: {
     height: 35,
