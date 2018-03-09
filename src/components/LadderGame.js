@@ -52,7 +52,7 @@ class LadderGame extends React.Component {
             {firstHolder}
 
             <View style={styles.messageBox}>
-              <Text style={styles.message}>Hey</Text>
+              <Text style={styles.message}>{this.props.message}</Text>
             </View>
 
             <LadderHolder letters={this.answersArray[0]} wordIndex={0}
@@ -94,6 +94,7 @@ const styles = {
   message: {
     fontSize: 24,
     fontFamily: 'RobotoCondensed-Regular',
+    marginBottom: 12
   },
   filler: {
     flex: 2
@@ -115,7 +116,8 @@ const mapStateToProps = state => {
     answers: state.ladder.answers,
     attempts: state.ladder.attempts,
     activeLetters: state.ladder.activeLetters,
-    shakeItUp: state.items.itemsToggle.shakeItUp
+    shakeItUp: state.items.itemsToggle.shakeItUp,
+    message: state.ladder.message
   };
 };
 

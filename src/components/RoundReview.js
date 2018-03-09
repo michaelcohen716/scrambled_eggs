@@ -79,7 +79,7 @@ class RoundReview extends React.Component {
 
         <View style={styles.invite}>
           <TouchableOpacity style={styles.proceed}>
-            <Text style={styles.buttonText}>Invite Friends</Text>
+            <Text style={styles.buttonText}>Invite friends</Text>
           </TouchableOpacity>
         </View>
 

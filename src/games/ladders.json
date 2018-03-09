@@ -3,6 +3,10 @@
 
   "router": [["router"], ["route", "outer"], ["tour", "tore", "rote", "rout", "true"]],
 
-  "median": [["median"], ["named", "media", "aimed"], ["dame", "made", "mead", "mean", "mane", "aide", "idea"]]
+  "median": [["median"], ["named", "media", "aimed"], ["dame", "made", "mead", "mean", "mane", "aide", "idea"]],
+
+  "taint": [["taint"], ["tint"], ["tit", "tin"]],
+
+  "phone": [["phone"], ["hone", "open", "nope", "hope"], ["hop", "pen", "one"]]
 
 }

@@ -53,6 +53,7 @@ export default (state = INITIAL_STATE, action) => {
     case SEE_A_LETTER:
       const seeState = merge({}, state);
       if(action.levelType === "ladder"){
+        seeState.message = "Here's a letter";
         seeState.attempts[state.wordIndex] = [];
         let answerToGive = state.answers[state.wordIndex][0];
 
@@ -86,6 +87,7 @@ export default (state = INITIAL_STATE, action) => {
     case UNLOCK_A_WORD:
       const unlockState = merge({}, state);
       if(action.levelType === "ladder"){
+        unlockState.message = "Here's a word";
         let findWord = state.answers[state.wordIndex][0];
         unlockState.answers[state.wordIndex] = true;
 
