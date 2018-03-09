@@ -22,7 +22,6 @@ class FryingPanItem extends React. Component {
 
     this.item = this.props.info.item;
     this.cost = this.props.info.cost;
-    console.log(this.props);
   }
 
   componentWillReceiveProps(nextProps){

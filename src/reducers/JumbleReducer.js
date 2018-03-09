@@ -135,7 +135,6 @@ export default (state = INITIAL_STATE, action) => {
         const seeState = merge({}, state);
         if(action.levelType === "jumble"){
           seeState.attempts[state.wordIndex] = [];
-          // debugger
           let answerToGive;
           for(var b = 0; b < state.answers.length; b++){
             if(typeof state.answers[b] === "string"){

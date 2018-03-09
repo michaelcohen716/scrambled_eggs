@@ -26,7 +26,6 @@ class LadderGame extends React.Component {
     }
 
     if(nextProps.shakeItUp != this.props.shakeItUp){
-      // debugger
       this.answersArray[this.props.currentWordIndex - 1] = nextProps.activeLetters;
     }
   }

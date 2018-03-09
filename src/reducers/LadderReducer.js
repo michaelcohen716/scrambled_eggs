@@ -45,6 +45,26 @@ export default (state = INITIAL_STATE, action) => {
 
       return shakeState;
 
+    case SEE_A_LETTER:
+      const seeState = merge({}, state);
+      if(action.levelType === "ladder"){
+        seeState.attempts[state.wordIndex] = [];
+        let answerToGive = state.answers[state.wordIndex][0];
+
+        const letterInsert =  answerToGive.split("")[0];
+        seeState.attempts[state.wordIndex].push(letterInsert);
+        seeState.attemptLength = 1;
+
+        seeState.usedLetters.forEach((el, idx) => {
+          seeState.usedLetters[idx] = false;
+        });
+
+        const letterIndex = state.activeLetters.indexOf(letterInsert);
+        seeState.usedLetters[letterIndex] = true;
+      }
+
+      return seeState;
+
     case UNDO_WORD:
       const undoState = merge({}, state);
       undoState.attempts[state.wordIndex] = [];
