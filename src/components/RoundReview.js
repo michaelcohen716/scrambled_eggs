@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import CommaNumber from 'comma-number';
+import SunnySideUp from '../assets/sunny_side_up.png';
+import HardBoiled from '../assets/hard_boiled.png';
+import OverEasy from '../assets/over_easy.png';
 
 class RoundReview extends React.Component {
   proceed(){
@@ -10,28 +13,53 @@ class RoundReview extends React.Component {
   }
 
   render(){
-    let { completedWords, potentialWords, roundScore } = this.props;
+    let { completedWords, potentialWords, roundScore, activeLevel } = this.props;
     let summary = `You found ${completedWords} of ${potentialWords} words.`;
     let text = "Better luck next time!";
     let buttonText = "Try again!";
 
     roundScore = CommaNumber(roundScore);
+    const { roundCompleted, levelType } = this.props;
 
-    if(this.props.roundCompleted && this.props.levelType === "jumble"){
-      summary = `Congrats, you found all ${potentialWords} jumbles.`;
-      text = `You earned ${roundScore} eggcoin!`;
+    if(roundCompleted && levelType === "jumble"){
+      summary = "You found every possible jumble. Good work!";
+      text = `And you earned ${roundScore} eggcoin!`;
       buttonText = "Solve the next puzzle";
     }
 
-    if(this.props.roundCompleted && this.props.levelType === "scramble"){
+    if(roundCompleted && levelType === "scramble"){
       summary = "You cracked the shell. Well done.";
-      text = `You earned ${roundScore} eggcoin!`;
+      text = `And you earned ${roundScore} eggcoin!`;
       buttonText = "Solve the next puzzle";
+    }
+
+    if(roundCompleted && levelType === "ladder"){
+      summary = "You climbed down the ladder. Nice!";
+      text = `And you earned ${roundScore} eggcoin!`;
+      buttonText = "Solve the next puzzle";
+    }
+
+    let image;
+    if(activeLevel < 21){
+      image = SunnySideUp;
+    } else if(activeLevel < 41){
+      image = HardBoiled;
+    } else if(activeLevel < 61){
+      image = OverEasy;
     }
 
     return (
       <View style={styles.container}>
-        <View style={styles.inner}>
+        <View style={styles.stage}>
+          <View style={styles.stageName}>
+            <Text style={styles.stageText}>{this.props.stageName}</Text>
+          </View>
+          <View style={styles.picHolder}>
+            <Image source={image} style={styles.image}/>
+          </View>
+        </View>
+
+        <View style={styles.summary}>
           <Text style={styles.text}>
             {summary}
           </Text>
@@ -41,11 +69,19 @@ class RoundReview extends React.Component {
           </Text>
         </View>
 
-        <TouchableOpacity onPress={this.proceed} style={styles.proceed}>
-          <Text style={styles.buttonText}>
-            {buttonText}
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.proceedHolder}>
+          <TouchableOpacity onPress={this.proceed} style={styles.proceed}>
+            <Text style={styles.buttonText}>
+              {buttonText}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.invite}>
+          <TouchableOpacity style={styles.inviteFriends}>
+            <Text>Invite Friends</Text>
+          </TouchableOpacity>
+        </View>
 
       </View>
     );
@@ -53,34 +89,78 @@ class RoundReview extends React.Component {
 }
 
 const styles = {
+  stageText: {
+    fontSize: 24,
+    fontFamily: 'RobotoCondensed-Regular',
+    fontWeight: 'bold'
+  },
+  picHolder: {
+    width: 90,
+    height: 90
+  },
+  proceedHolder: {
+    flex: 1,
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  inviteFriends: {
+    flex: 1,
+    marginLeft: 40,
+    marginRight: 40
+  },
+  stage: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
+  },
+  summary: {
+    flex: 1,
+    backgroundColor: 'blue',
+    flexDirection: 'column'
+  },
+  invite: {
+    flex: 3,
+    backgroundColor: 'red'
+  },
+  image: {
+    flex: 1,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'contain',
+  },
   container: {
     flexDirection: 'column',
     flex: 1
   },
   text: {
     fontSize: 23,
-    color: 'blue',
+    color: 'white',
+    fontFamily: 'RobotoCondensed-Regular',
+    fontWeight: 'bold',
     margin: 5,
     textAlign: 'center'
   },
   buttonText: {
     fontSize: 20,
     color: 'white',
+    fontFamily: 'RobotoCondensed-Regular',
     fontWeight: 'bold',
     textAlign: 'center'
   },
-  inner: {
-    marginTop: 75
-  },
   proceed: {
     justifyContent: 'center',
-    flex: 0.12,
-    marginTop: 20,
+    height: 70,
+    width: 200,
+    marginTop: 8,
     marginLeft: 40,
     marginRight: 40,
-    backgroundColor: 'blue',
-    borderWidth: 1,
-    borderRadius: 5
+    backgroundColor: 'black',
+    borderWidth: 3,
+    borderColor: 'white',
+    borderRadius: 5,
+
   }
 };
 
@@ -92,6 +172,8 @@ const mapStateToProps = state => {
     potentialWords: state[levelType].attempts.length,
     completedWords: state[levelType].wordIndex,
     roundScore: state.score.roundScore,
+    activeLevel: state.levels.activeLevel,
+    stageName: state.levels.stage,
     levelType,
   };
 };

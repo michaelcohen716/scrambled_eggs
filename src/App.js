@@ -15,7 +15,10 @@ import logger from 'redux-logger';
   // Deemak Daksina S
   // Hartley Miller
   // Noël Rasendrason
-  // Oliver Kittler
+  // Oliver Kittler\
+  // Naveesh Khattar
+  // Jose Manuel de Laa
+  // Marianna Rossi
 
 class App extends Component {
   componentWillMount() {
