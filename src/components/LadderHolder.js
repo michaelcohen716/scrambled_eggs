@@ -35,8 +35,15 @@ class LadderHolder extends React.Component {
         </View>
       );
     }
+    else if(currentWordIndex > wordIndex) { // solved, letters not active
+      return (
+        <View style={styles.inactive}>
+          {tiles}
+        </View>
+      );
+    }
+
     else {
-    // else if(wordIndex < currentWordIndex) { // solved, letters not active
       return (
         <View style={styles.stillEmpty}>
           {tiles}
@@ -57,6 +64,18 @@ const styles = {
     flex: 1,
     // minHeight: 50,
     marginBottom: 13
+  },
+  inactive: {
+      borderBottomWidth: 1,
+      padding: 5,
+      backgroundColor: 'gray',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'row',
+      flex: 1,
+      // minHeight: 50,
+      marginBottom: 13,
+      opacity: 0.5
   },
   lettersActive: {
     borderBottomWidth: 1,
