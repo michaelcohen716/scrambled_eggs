@@ -78,8 +78,8 @@ class RoundReview extends React.Component {
         </View>
 
         <View style={styles.invite}>
-          <TouchableOpacity style={styles.inviteFriends}>
-            <Text>Invite Friends</Text>
+          <TouchableOpacity style={styles.proceed}>
+            <Text style={styles.buttonText}>Invite Friends</Text>
           </TouchableOpacity>
         </View>
 
@@ -90,7 +90,7 @@ class RoundReview extends React.Component {
 
 const styles = {
   stageText: {
-    fontSize: 24,
+    fontSize: 27,
     fontFamily: 'RobotoCondensed-Regular',
     fontWeight: 'bold'
   },
@@ -122,7 +122,8 @@ const styles = {
   },
   invite: {
     flex: 3,
-    backgroundColor: 'red'
+    backgroundColor: 'blue',
+    alignItems: 'center'
   },
   image: {
     flex: 1,

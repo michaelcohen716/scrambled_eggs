@@ -2,7 +2,7 @@ import {
   START_NEW_LADDER, TAP_LADDER_LETTER,
   UNDO_WORD, VERIFY_LADDER_WORD,
   SHAKE_IT_UP, SEE_A_LETTER,
-  UNLOCK_A_WORD
+  UNLOCK_A_WORD, END_ROUND
 } from '../actions/types';
 import merge from 'lodash/merge';
 
@@ -21,6 +21,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case END_ROUND:
+      const endState = merge({}, state);
+      endState.roundCompleted = action.roundCompleted;
+      return endState;
+
     case SHAKE_IT_UP:
       const shakeState = merge({}, state);
       let newActiveLetters = "";
