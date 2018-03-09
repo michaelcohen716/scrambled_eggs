@@ -78,6 +78,25 @@ export default (state = INITIAL_STATE, action) => {
 
       return undoState;
 
+    case UNLOCK_A_WORD:
+      const unlockState = merge({}, state);
+      if(action.levelType === "ladder"){
+        let findWord = state.answers[state.wordIndex][0];
+        unlockState.answers[state.wordIndex] = true;
+
+        const insertWordArray = [];
+        findWord = findWord.split("");
+        findWord.forEach(letter => {
+          insertWordArray.push(letter);
+        });
+
+        unlockState.attempts[state.wordIndex] = insertWordArray;
+        unlockState.attemptLength = 0;
+        unlockState.wordIndex += 1;
+      }
+
+      return unlockState;
+
     case TAP_LADDER_LETTER:
       const tapState = merge({}, state);
       tapState.message = '';
