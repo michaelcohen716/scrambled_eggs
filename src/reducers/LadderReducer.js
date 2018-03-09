@@ -1,6 +1,7 @@
 import {
   START_NEW_LADDER, TAP_LADDER_LETTER,
-  VERIFY_LADDER_WORD
+  UNDO_WORD, VERIFY_LADDER_WORD,
+
 } from '../actions/types';
 import merge from 'lodash/merge';
 
@@ -11,7 +12,7 @@ const INITIAL_STATE = {
   attemptLength: 0,
   currentWordIndex: 0,
   usedLetters: [],
-  answers: [[]],
+  answers: [[]], // [["..."], ["..", "..."], ["..", "...", "..."]]
   message: '',
   roundCompleted: false,
   roundTime: 0
@@ -19,6 +20,19 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case UNDO_WORD:
+      const undoState = merge({}, state);
+      undoState.attempts[state.wordIndex] = [];
+      undoState.attemptLength = 0;
+
+      const usedLetters2 = new Array(state.activeLetters.length);
+      for (var m = 0; m < usedLetters2.length; m++) {
+        usedLetters2[m] = false;
+      }
+      undoState.usedLetters = usedLetters2; //from START_NEW_WORD
+
+      return undoState;
+
     case TAP_LADDER_LETTER:
       const tapState = merge({}, state);
       tapState.message = '';
@@ -34,10 +48,10 @@ export default (state = INITIAL_STATE, action) => {
       const verifyState = merge({}, state);
 
       verifyState.attempts[state.wordIndex].push(action.letter);
-      const answer = state.answers[state.wordIndex];
+      const possibleAnswers = state.answers[state.wordIndex];
       const attempt = verifyState.attempts[state.wordIndex].join("");
       // debugger
-      if(answer === attempt){
+      if(possibleAnswers.includes(attempt)){
         verifyState.answers[state.wordIndex] = true;
         verifyState.message = "Nice!";
         const nextUsedLetters = new Array(state.answers[verifyState.wordIndex].length);

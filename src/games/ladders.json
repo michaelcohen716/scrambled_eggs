@@ -1,10 +1,8 @@
 {
-  "chrome": {
-    "answers": ["chrome", "homer", "more"],
-    "subtractions": ["c", "h"]
-  },
-  "median": {
-    "answers": ["median", "named", "dame"],
-    "subtractions": ["i", "n"]
-  }
+  "chrome": [["chrome"], ["homer", "comer", "chore", "ochre"], ["more", "come", "core"]],
+
+  "router": [["router"], ["route", "outer"], ["tour", "tore", "rote", "rout", "true"]],
+
+  "median": [["median"], ["named", "media", "aimed"], ["dame", "made", "mead", "mean", "mane", "aide", "idea"]]
+
 }

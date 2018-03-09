@@ -3,13 +3,11 @@ import {
   VERIFY_LADDER_WORD
 } from './types';
 
-export const startNewLadder = ({ answers, subtractions, numWords, firstAnswer, roundTime, activeLetters }) => {
+export const startNewLadder = ({ answers, numWords, roundTime, activeLetters }) => {
   return {
     type: START_NEW_LADDER,
     answers,
-    subtractions,
     numWords,
-    firstAnswer,
     roundTime,
     activeLetters
   };

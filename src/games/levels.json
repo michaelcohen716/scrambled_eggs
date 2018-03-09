@@ -138,6 +138,12 @@
     "letters": "cemprstu",
     "time": 75,
     "stage": "Over Easy"
+  },
+  "22": {
+    "type": "jumble",
+    "letters": "bdegu",
+    "time": 65,
+    "stage": "Over Easy"
   }
 
 

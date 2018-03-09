@@ -10,16 +10,23 @@ class LadderGame extends React.Component {
   constructor(props){
     super(props);
     this.letters = ["e", "m", "o", "r", "h","c"];
-    this.answers = this.props.answers;
+    this.answers = this.props.answers; // [[], [ , ], [ , ]]
+
+    this.answersArray = [
+      this.answers[0][0].split(""),
+      this.answers[1][0].split(""),
+      this.answers[2][0].split("")
+    ];
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.currentWordIndex != this.props.currentWordIndex){
+      this.answersArray[this.props.currentWordIndex - 1] = this.props.attempts[this.props.currentWordIndex - 1];
+    }
   }
 
   render(){
     const { answers, activeLetters, currentWordIndex } = this.props;
-    // let shaded = false;
-    //
-    // if(wordIndex > idx){
-    //   shaded = true;
-    // }
 
     return (
       <View style={styles.parent}>
@@ -35,11 +42,13 @@ class LadderGame extends React.Component {
               <Text style={styles.message}>Hey</Text>
             </View>
 
-            <LadderHolder letters={this.answers[0].split('')} wordIndex={0}
+            <LadderHolder letters={this.answersArray[0]} wordIndex={0}
               wordLength={activeLetters.length}  currentWordIndex={currentWordIndex}/>
-            <LadderHolder letters={this.answers[1].split('')} wordIndex={1}
+
+            <LadderHolder letters={this.answersArray[1]} wordIndex={1}
               wordLength={activeLetters.length - 1} currentWordIndex={currentWordIndex}/>
-            <LadderHolder letters={this.answers[2].split('')} wordIndex={2} wordLength={activeLetters.length - 2} />
+
+            <LadderHolder letters={this.answersArray[2]} wordIndex={2} wordLength={activeLetters.length - 2} />
 
           </View>
           <View style={styles.filler}>

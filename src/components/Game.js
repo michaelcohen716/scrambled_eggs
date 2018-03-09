@@ -47,16 +47,14 @@ class Game extends React.Component {
 
       this.props.startNewScramble(startScrambleObject);
     } else if(levelType === "ladder"){
-      this.firstAnswer = Levels[this.props.activeLevel].firstAnswer;
-      this.gameObject = Ladders[this.firstAnswer];
+      const firstAnswer = Levels[this.props.activeLevel].firstAnswer;
+      this.answers = Ladders[firstAnswer];
 
       const startLadderObject = {
-        firstAnswer: this.firstAnswer,
-        answers: this.gameObject.answers,
-        subtractions: this.gameObject.subtractions,
-        numWords: this.gameObject.answers.length,
+        answers: this.answers,
+        numWords: this.answers.length,
         roundTime: this.seconds,
-        activeLetters: this.scrambleLetters(this.firstAnswer)
+        activeLetters: this.scrambleLetters(firstAnswer)
       };
 
       this.props.startNewLadder(startLadderObject);

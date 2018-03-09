@@ -23,12 +23,16 @@ class LadderHolder extends React.Component {
     });
 
     if(wordIndex + 1 === currentWordIndex){ //tapping these letters
+      console.log("tapping these letter");
+      console.log(this.props);
       return (
         <View style={styles.lettersActive}>
           {tiles}
         </View>
       );
     } else if(wordIndex === currentWordIndex){ //active answer attempt
+      console.log("active answer attempt");
+      console.log(this.props);
       return (
         <View style={styles.attemptActive}>
           {tiles}
@@ -36,6 +40,8 @@ class LadderHolder extends React.Component {
       );
     }
     else if(currentWordIndex > wordIndex) { // solved, letters not active
+      console.log("solved, not active");
+      console.log(this.props);
       return (
         <View style={styles.inactive}>
           {tiles}
@@ -44,6 +50,8 @@ class LadderHolder extends React.Component {
     }
 
     else {
+      console.log("else");
+      console.log(this.props);
       return (
         <View style={styles.stillEmpty}>
           {tiles}
@@ -75,7 +83,7 @@ const styles = {
       flex: 1,
       // minHeight: 50,
       marginBottom: 13,
-      opacity: 0.5
+      opacity: 0.3
   },
   lettersActive: {
     borderBottomWidth: 1,
