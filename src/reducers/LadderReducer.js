@@ -9,7 +9,9 @@ const INITIAL_STATE = {
   attempts: [[]],
   wordIndex: 0,
   attemptLength: 0,
+  currentWordIndex: 0,
   usedLetters: [],
+  answers: [[]],
   message: '',
   roundCompleted: false,
   roundTime: 0
@@ -33,31 +35,37 @@ export default (state = INITIAL_STATE, action) => {
 
       verifyState.attempts[state.wordIndex].push(action.letter);
       const answer = state.answers[state.wordIndex];
-      const attempt = state.attempts[state.wordIndex].join("");
+      const attempt = verifyState.attempts[state.wordIndex].join("");
+      // debugger
       if(answer === attempt){
         verifyState.answers[state.wordIndex] = true;
-        verifyState.wordIndex +=1;
         verifyState.message = "Nice!";
-
         const nextUsedLetters = new Array(state.answers[verifyState.wordIndex].length);
         for (var n = 0; n < nextUsedLetters.length; n++) {
           nextUsedLetters[n] = false;
         }
-        futureState.usedLetters = nextUsedLetters;
+        verifyState.usedLetters = nextUsedLetters;
+
+        if(verifyState.wordIndex < state.answers.length){
+          verifyState.usedLetters = nextUsedLetters;
+          verifyState.currentWordLength -=1;
+        }
+        verifyState.wordIndex +=1;
 
       } else {
-        futureState.message = "Not a word. Try again.";
-        futureState.attempts[state.wordIndex] = [];
+        verifyState.message = "Not a word. Try again.";
+        verifyState.attempts[state.wordIndex] = [];
 
         const usedLetters1 = new Array(state.activeLetters.length);
         for (var k = 0; k < usedLetters1.length; k++) {
           usedLetters1[k] = false;
         }
-        futureState.usedLetters = usedLetters1;
+
+        verifyState.usedLetters = usedLetters1;
       }
 
 
-      futureState.attemptLength = 0;
+      verifyState.attemptLength = 0;
 
       return verifyState;
 
@@ -70,10 +78,10 @@ export default (state = INITIAL_STATE, action) => {
       }
       ladderState.attempts = attemptsArray;
 
-      const activeLetters = action.firstAnswer.split("");
-      ladderState.activeLetters = activeLetters;
+      ladderState.activeLetters = action.activeLetters;
+      ladderState.currentWordLength = action.activeLetters.length;
 
-      var usedLetters = new Array(activeLetters.length);
+      var usedLetters = new Array(action.activeLetters.length);
       for (var j = 0; j < usedLetters.length; j++) {
         usedLetters[j] = false;
       }

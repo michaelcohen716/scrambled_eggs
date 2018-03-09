@@ -10,17 +10,17 @@ class LadderGame extends React.Component {
   constructor(props){
     super(props);
     this.letters = ["e", "m", "o", "r", "h","c"];
-    this.answers = ["chrome", "homer", "more"];
+    this.answers = this.props.answers;
   }
 
   render(){
-    const attemptHolders = this.answers.map((answer, idx) => {
-      return (
-        <LadderHolder letters={answer.split("")} wordIndex={idx} key={idx} />
-      );
-    });
+    const { answers, activeLetters, wordIndex } = this.props;
 
-    console.log(attemptHolders);
+    const holders = answers.map((answer, idx) => {
+      if(wordIndex > idx){
+
+      }
+    });
 
     return (
       <View style={styles.parent}>
@@ -29,13 +29,15 @@ class LadderGame extends React.Component {
 
         <View style={styles.game}>
           <View style={styles.clues}>
-            <LadderHolder letters={this.letters} wordIndex={-1}/>
+            <LadderHolder letters={activeLetters} wordIndex={-1} wordLength={activeLetters.length}/>
 
             <View style={styles.messageBox}>
               <Text style={styles.message}>Hey</Text>
             </View>
 
-            {attemptHolders}
+            <LadderHolder letters={this.answers[0].split('')} wordIndex={0} wordLength={activeLetters.length}/>
+            <LadderHolder letters={this.answers[1].split('')} wordIndex={1} wordLength={activeLetters.length - 1} />
+            <LadderHolder letters={this.answers[2].split('')} wordIndex={2} wordLength={activeLetters.length - 2} />
 
           </View>
           <View style={styles.filler}>
@@ -87,8 +89,9 @@ const mapStateToProps = state => {
   return {
     wordIndex: state.ladder.wordIndex,
     answers: state.ladder.answers,
-    attempts: state.ladder.attempts
+    attempts: state.ladder.attempts,
+    activeLetters: state.ladder.activeLetters
   };
 };
 
-export default connect(null, null)(LadderGame);
+export default connect(mapStateToProps, null)(LadderGame);

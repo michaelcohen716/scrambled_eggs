@@ -12,9 +12,8 @@ class LadderTile extends React.Component {
 
   press(){
     const { letter, letterIndex } = this.props;
-    const { wordLength, attemptLength } = this.props;
-
-    if(wordLength - 1 === attemptLength){
+    const { currentWordLength, attemptLength } = this.props;
+    if(currentWordLength - 1 === attemptLength){
       this.props.verifyLadderWord(letter, letterIndex);
     } else {
       this.props.tapLadderLetter(letter, letterIndex);
@@ -45,6 +44,14 @@ class LadderTile extends React.Component {
       return (
         <TouchableOpacity style={styles.attemptTile}>
           <Text style={styles.attemptText}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
+
+    if(currentIndex > wordIndex){ //answer found
+      return (
+        <TouchableOpacity style={styles.unusedTile}>
+          <Text style={styles.unusedText}>{letter}</Text>
         </TouchableOpacity>
       );
     }
@@ -119,7 +126,9 @@ const styles = {
 const mapStateToProps = state => {
   return {
     currentIndex: state.ladder.wordIndex,
-    usedLetters: state.ladder.usedLetters
+    usedLetters: state.ladder.usedLetters,
+    attemptLength: state.ladder.attemptLength,
+    currentWordLength: state.ladder.currentWordLength
   };
 };
 

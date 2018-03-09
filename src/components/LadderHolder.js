@@ -16,8 +16,11 @@ class LadderHolder extends React.Component {
         letter = '';
       }
 
+      console.log(this.props.wordLength);
+
       return (
-        <LadderTile letter={letter} letterIndex={idx} key={idx} wordIndex={wordIndex}/>
+        <LadderTile letter={letter} letterIndex={idx}
+                    key={idx} wordIndex={wordIndex} />
       );
     });
 

@@ -55,7 +55,8 @@ class Game extends React.Component {
         answers: this.gameObject.answers,
         subtractions: this.gameObject.subtractions,
         numWords: this.gameObject.answers.length,
-        roundTime: this.seconds
+        roundTime: this.seconds,
+        activeLetters: this.scrambleLetters(this.firstAnswer)
       };
 
       this.props.startNewLadder(startLadderObject);
@@ -103,5 +104,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-  startNewWord, startNewScramble, startNewLadder 
+  startNewWord, startNewScramble, startNewLadder
 })(Game);
