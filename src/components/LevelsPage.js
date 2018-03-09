@@ -126,7 +126,6 @@ const styles = {
   },
   buttonHolder: {
     flex: 1,
-    // backgroundColor: 'silver',
     marginRight: 15
   },
   houseLogo: {
@@ -164,8 +163,6 @@ const styles = {
     position: 'absolute',
     top: 9,
     left: -2
-    // marginLeft: 4,
-    // marginTop: 7,
   },
   triangleLeft: {
     width: 0,
@@ -178,11 +175,9 @@ const styles = {
     transform: [
       {rotate: '272deg'}
     ],
-    // marginLeft: 4,
-    // marginTop: 7,
     position: 'absolute',
     top: 9,
-    left: -2
+    left: -8
   },
   stageSpot: {
     position: 'absolute',
@@ -196,8 +191,11 @@ const styles = {
     color: 'white'
   },
   dropdownStyle: {
-    height: 150,
-    marginRight: 16
+    height: 135,
+    marginRight: 16,
+    elevation: 4,
+    borderColor: 'white',
+    borderWidth: 2
   },
   button: {
     backgroundColor: 'black',

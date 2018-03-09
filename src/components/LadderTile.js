@@ -49,8 +49,9 @@ class LadderTile extends React.Component {
     }
 
     if(currentIndex > wordIndex){ //answer found
+      console.log(this.props);
       return (
-        <TouchableOpacity style={styles.unusedTile}>
+        <TouchableOpacity style={styles.pastTile}>
           <Text style={styles.unusedText}>{letter}</Text>
         </TouchableOpacity>
       );
@@ -75,6 +76,18 @@ const styles = {
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  pastTile: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'orange',
+    borderColor: 'white',
+    borderWidth: 3,
+    margin: 5,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 0.5
   },
   attemptText: {
     fontSize: 24,
