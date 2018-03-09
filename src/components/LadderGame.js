@@ -21,7 +21,8 @@ class LadderGame extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if(nextProps.currentWordIndex != this.props.currentWordIndex){
-      this.answersArray[this.props.currentWordIndex - 1] = this.props.attempts[this.props.currentWordIndex - 1];
+      // debugger
+      this.answersArray[this.props.currentWordIndex] = nextProps.attempts[this.props.currentWordIndex];
     }
   }
 
