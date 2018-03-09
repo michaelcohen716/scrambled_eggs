@@ -1,7 +1,8 @@
 import {
   START_NEW_LADDER, TAP_LADDER_LETTER,
   UNDO_WORD, VERIFY_LADDER_WORD,
-
+  SHAKE_IT_UP, SEE_A_LETTER,
+  UNLOCK_A_WORD
 } from '../actions/types';
 import merge from 'lodash/merge';
 
@@ -20,6 +21,30 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case SHAKE_IT_UP:
+      const shakeState = merge({}, state);
+      let newActiveLetters = "";
+      const oldActiveLetters = state.activeLetters;
+      //shuffle
+      while(oldActiveLetters.length > 0){
+        newActiveLetters += oldActiveLetters.splice(oldActiveLetters.length * Math.random() << 0, 1);
+      }
+
+      newActiveLetters = newActiveLetters.split("");
+      shakeState.activeLetters = newActiveLetters;
+      shakeState.attemptLength = 0;
+
+      shakeState.attempts[state.wordIndex] = [];
+      shakeState.message = 'Shake it up!';
+
+      const usedLettersShake = new Array(shakeState.activeLetters.length);
+      for (var a = 0; a < usedLettersShake.length; a++) {
+        usedLettersShake[a] = false;
+      }
+      shakeState.usedLetters = usedLettersShake;
+
+      return shakeState;
+
     case UNDO_WORD:
       const undoState = merge({}, state);
       undoState.attempts[state.wordIndex] = [];
@@ -50,11 +75,13 @@ export default (state = INITIAL_STATE, action) => {
       verifyState.attempts[state.wordIndex].push(action.letter);
       const possibleAnswers = state.answers[state.wordIndex];
       const attempt = verifyState.attempts[state.wordIndex].join("");
-      // debugger
+
       if(possibleAnswers.includes(attempt)){
         verifyState.answers[state.wordIndex] = true;
         verifyState.message = "Nice!";
-        const nextUsedLetters = new Array(state.answers[verifyState.wordIndex].length);
+        verifyState.activeLetters = verifyState.attempts[state.wordIndex];
+
+        const nextUsedLetters = new Array(verifyState.activeLetters.length);
         for (var n = 0; n < nextUsedLetters.length; n++) {
           nextUsedLetters[n] = false;
         }
@@ -65,6 +92,7 @@ export default (state = INITIAL_STATE, action) => {
           verifyState.currentWordLength -=1;
         }
         verifyState.wordIndex +=1;
+
 
       } else {
         verifyState.message = "Not a word. Try again.";
@@ -77,7 +105,6 @@ export default (state = INITIAL_STATE, action) => {
 
         verifyState.usedLetters = usedLetters1;
       }
-
 
       verifyState.attemptLength = 0;
 

@@ -49,7 +49,6 @@ class LadderTile extends React.Component {
     }
 
     if(currentIndex > wordIndex){ //answer found
-      console.log(this.props);
       return (
         <TouchableOpacity style={styles.pastTile}>
           <Text style={styles.unusedText}>{letter}</Text>

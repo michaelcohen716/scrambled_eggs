@@ -17,17 +17,30 @@ class LadderGame extends React.Component {
       this.answers[1][0].split(""),
       this.answers[2][0].split("")
     ];
+    this.originalActiveLetters = this.props.activeLetters;
   }
 
   componentWillReceiveProps(nextProps){
     if(nextProps.currentWordIndex != this.props.currentWordIndex){
-      // debugger
       this.answersArray[this.props.currentWordIndex] = nextProps.attempts[this.props.currentWordIndex];
+    }
+
+    if(nextProps.shakeItUp != this.props.shakeItUp){
+      // debugger
+      this.answersArray[this.props.currentWordIndex - 1] = nextProps.activeLetters;
     }
   }
 
   render(){
     const { answers, activeLetters, currentWordIndex } = this.props;
+
+    const firstHolder = this.props.currentWordIndex === 0 ? (
+      <LadderHolder letters={activeLetters} wordIndex={-1}
+        wordLength={activeLetters.length} currentWordIndex={currentWordIndex}/>
+    ) : (
+      <LadderHolder letters={this.originalActiveLetters} wordIndex={-1}
+        wordLength={activeLetters.length} currentWordIndex={currentWordIndex}/>
+    );
 
     return (
       <View style={styles.parent}>
@@ -36,8 +49,8 @@ class LadderGame extends React.Component {
 
         <View style={styles.game}>
           <View style={styles.clues}>
-            <LadderHolder letters={activeLetters} wordIndex={-1}
-              wordLength={activeLetters.length} currentWordIndex={currentWordIndex}/>
+
+            {firstHolder}
 
             <View style={styles.messageBox}>
               <Text style={styles.message}>Hey</Text>
@@ -58,7 +71,7 @@ class LadderGame extends React.Component {
 
         </View>
 
-        <FryingPan />
+        <FryingPan inGame={true}/>
 
       </View>
     );
@@ -102,7 +115,8 @@ const mapStateToProps = state => {
     currentWordIndex: state.ladder.wordIndex,
     answers: state.ladder.answers,
     attempts: state.ladder.attempts,
-    activeLetters: state.ladder.activeLetters
+    activeLetters: state.ladder.activeLetters,
+    shakeItUp: state.items.itemsToggle.shakeItUp
   };
 };
 
