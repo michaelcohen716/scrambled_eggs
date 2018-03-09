@@ -145,6 +145,8 @@ class LevelButton extends React.Component {
     const thisLevelsStage = stages[Levels[num].stage];
     // numeric value of stage
 
+    console.log(thisLevelsStage);
+    console.log(num);
     if(this.props.stageNum < thisLevelsStage){
       return (
         <TouchableOpacity style={styles.lockedLevel}>
@@ -159,7 +161,6 @@ class LevelButton extends React.Component {
         <TouchableOpacity style={styles.lockedLevel} key={num} >
           <View style={styles.innerLocked}>
             <View style={styles.innerInnerLocked}>
-              <Image source={lockImage} style={styles.lock} />
               <Text style={styles.lockedText}>
                 {num}
               </Text>
@@ -327,6 +328,7 @@ const styles = {
     width: 90,
     height: 90,
     position: 'absolute',
+    zIndex: 2
   }
 };
 
