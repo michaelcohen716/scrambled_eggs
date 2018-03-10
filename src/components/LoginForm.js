@@ -31,7 +31,12 @@ class LoginForm extends React.Component {
 
   renderAuthButtons() {
     if (this.props.loading) {
-      return <Spinner style={styles.spinner} size="large" />;
+      return (
+        <View style={styles.spinner} >
+          <Spinner size="large" />
+        </View>
+
+      )
     }
 
     return (
@@ -52,6 +57,8 @@ class LoginForm extends React.Component {
         <View style={styles.logoHolder}>
           <View style={styles.logoTextHolder}>
             <Text style={styles.circleText}>Scrambled</Text>
+          </View>
+          <View style={styles.logoTextHolder2}>
             <Text style={styles.circleText2}>Eggs</Text>
           </View>
           <View style={styles.circleLeft} />
@@ -86,18 +93,34 @@ class LoginForm extends React.Component {
 
         </Card>
 
+
       </View>
     );
   }
 }
 
+// <View style={styles.filler}>
+// </View>
 const styles = {
+  filler: {
+    height: 245,
+    backgroundColor: 'black'
+  },
   logoTextHolder: {
     zIndex: 3,
     backgroundColor: 'transparent',
     position: 'absolute',
-    top: 28,
+    top: 35,
     left: 94,
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  logoTextHolder2: {
+    zIndex: 3,
+    backgroundColor: 'transparent',
+    position: 'absolute',
+    top: 78,
+    left: 145,
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
@@ -145,6 +168,7 @@ const styles = {
   },
   logoHolder: {
     height: 180,
+    backgroundColor: 'black'
     // flexDirection: 'row'
   }
 };
