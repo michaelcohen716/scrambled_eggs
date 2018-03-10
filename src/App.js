@@ -21,6 +21,12 @@ import logger from 'redux-logger';
   // Marianna Rossi
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      loading: true
+    };
+  }
   componentWillMount() {
     const config = {
       apiKey: "AIzaSyDhF5_F0lEeIG861rnBXXO0fR2lKfgZRMY",
@@ -33,6 +39,19 @@ class App extends Component {
 
     firebase.initializeApp(config);
   }
+
+  // componentWillUnmount() {
+  //   this.authSubscription();
+  // }
+  //
+  // componentDidMount() {
+  //   this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
+  //     this.setState({
+  //       loading: false,
+  //       user,
+  //     });
+  //   });
+  // }
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk, logger));
