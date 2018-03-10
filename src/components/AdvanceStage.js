@@ -7,6 +7,7 @@ import { spendEggcoin } from '../actions';
 import SunnySideUp from '../assets/sunny_side_up.png';
 import HardBoiled from '../assets/hard_boiled.png';
 import OverEasy from '../assets/over_easy.png';
+import goldCoin from '../assets/goldCoin.png';
 
 class AdvanceStage extends React.Component {
   constructor(props){
@@ -21,12 +22,17 @@ class AdvanceStage extends React.Component {
     if(!this.state.initialTap){
       this.setState({ initialTap: true});
     } else {
-      this.props.spendEggcoin(10000); //advance stage
 
-      setTimeout(() => {
-        Actions.levels({ type:'reset' });
+      if(this.props.eggcoin > 10000){
+        this.props.spendEggcoin(10000); //advance stage
 
-      }, 1400);
+        setTimeout(() => {
+          Actions.levels({ type:'reset' });
+
+        }, 1400);
+      } else {
+        //not enough eggcoin
+      }
     }
   }
 
@@ -34,9 +40,21 @@ class AdvanceStage extends React.Component {
     const { stage } = this.props;
 
     const buttonText = this.state.initialTap ? (
-      '10,000 Eggcoin'
+      <View style={styles.eggcoinHolder}>
+        <Text style={styles.buttonText}>
+          '10,000 Eggcoin'
+        </Text>
+        <Image source={goldCoin} style={styles.eggcoin} />
+      </View>
     ) : (
-      `Unlock ${this.props.stage}`
+      <View style={{flexDirection: 'column'}}>
+        <Text style={styles.buttonText}>
+          Unlock
+        </Text>
+        <Text style={styles.buttonText}>
+          {this.props.stage}
+        </Text>
+      </View>
     );
 
     let image;
@@ -56,11 +74,6 @@ class AdvanceStage extends React.Component {
 
           <View style={styles.advanced}>
             <View style={{flex: 1}}>
-              <Text style={styles.text}>
-                You advanced to the next stage!
-              </Text>
-            </View>
-            <View style={{flex: 1}}>
               <Text style={styles.largerText}>
                 {this.props.stage}
               </Text>
@@ -75,10 +88,19 @@ class AdvanceStage extends React.Component {
 
           <View style={styles.proceedHolder}>
             <TouchableOpacity onPress={this.proceed} style={styles.proceed}>
-              <Text style={styles.buttonText}>
-                {buttonText}
+              {buttonText}
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.proceedHolder}>
+            <TouchableOpacity style={styles.proceed}>
+              <Text>
+                {}
               </Text>
             </TouchableOpacity>
+          </View>
+
+          <View style={{flex: 1, backgroundColor: 'black'}}>
           </View>
         </View>
 
@@ -88,9 +110,17 @@ class AdvanceStage extends React.Component {
 }
 
 const styles = {
+  eggcoinHolder: {
+    flexDirection: 'row',
+
+  },
+  eggcoin: {
+    height: 18,
+    width: 18
+  },
   proceedHolder: {
-    flex: 1,
-    backgroundColor: 'blue',
+    flex: 2,
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -101,11 +131,13 @@ const styles = {
     flex:1
   },
   picHolder: {
-    width: 90,
-    height: 90
+    width: 130,
+    height: 130
   },
   stagePic: {
-    flex: 2
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   container: {
     flexDirection: 'column',
@@ -116,9 +148,6 @@ const styles = {
     height: undefined,
     width: undefined,
     resizeMode: 'contain',
-  },
-  inner: {
-    marginTop: 35
   },
   text: {
     fontSize: 20,
@@ -139,21 +168,25 @@ const styles = {
     marginLeft: 40,
     marginRight: 40,
     backgroundColor: 'blue',
-    borderWidth: 1,
+    borderWidth: 2,
+    borderColor: 'white',
     borderRadius: 5,
-    height: 50,
+    height: 70,
+    width: 150
   },
   buttonText: {
     fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'RobotoCondensed-Regular'
   },
 };
 
 const mapStateToProps = state => {
   return {
     stage: state.levels.stage,
+    eggcoin: state.score.userEggcoin
   };
 };
 

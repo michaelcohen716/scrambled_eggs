@@ -64,7 +64,8 @@ const createUser = (dispatch) => {
       itemsToggle: {
         seeALetter: false,
         fireUp: false,
-        shakeItUp: false
+        shakeItUp: false,
+        unlockAWord: false
       }
     })
 }
