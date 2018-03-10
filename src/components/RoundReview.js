@@ -22,7 +22,7 @@ class RoundReview extends React.Component {
     const { roundCompleted, levelType } = this.props;
 
     if(roundCompleted && levelType === "jumble"){
-      summary = "You found every possible jumble. Good work!";
+      summary = "You found every possible jumble!";
       text = `And you earned ${roundScore} eggcoin!`;
       buttonText = "Solve the next puzzle";
     }

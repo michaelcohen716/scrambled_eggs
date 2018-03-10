@@ -5,9 +5,17 @@ import { connect } from 'react-redux';
 
 class WordHolder extends React.Component {
   render(){
+    let size;
+    if(this.props.activeLetters.length > 6){
+      size = "small";
+    } else {
+      size = "large";
+    }
+
     const tiles = this.props.activeLetters.map((letter, idx) => {
       return (
-        <Tile letter={letter} key={idx} letterIndex={idx} topHolder={true}/>
+        <Tile letter={letter} key={idx} letterIndex={idx}
+              topHolder={true} size={size}/>
       );
     });
 
@@ -29,8 +37,9 @@ const styles = {
    justifyContent: 'center',
    flexDirection: 'row',
    borderColor: '#ddd',
-   position: 'relative'
-  }
+   position: 'relative',
+ },
+
 };
 
 const mapStateToProps = state => {

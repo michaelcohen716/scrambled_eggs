@@ -4,6 +4,9 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import InfoBar from './InfoBar';
 import { spendEggcoin } from '../actions';
+import SunnySideUp from '../assets/sunny_side_up.png';
+import HardBoiled from '../assets/hard_boiled.png';
+import OverEasy from '../assets/over_easy.png';
 
 class AdvanceStage extends React.Component {
   constructor(props){
@@ -18,7 +21,7 @@ class AdvanceStage extends React.Component {
     if(!this.state.initialTap){
       this.setState({ initialTap: true});
     } else {
-      this.props.spendEggcoin(2000); //advance stage
+      this.props.spendEggcoin(10000); //advance stage
 
       setTimeout(() => {
         Actions.levels({ type:'reset' });
@@ -29,7 +32,7 @@ class AdvanceStage extends React.Component {
 
   render(){
     const buttonText = this.state.initialTap ? (
-      '2000 Eggcoin'
+      '10,000 Eggcoin'
     ) : (
       `Unlock ${this.props.stage}`
     );

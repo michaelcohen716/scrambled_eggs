@@ -24,62 +24,88 @@ class Tile extends React.Component {
   render(){
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
 
+    const sizeStyle = this.props.size === 'large' ? styles.containerSizeLarge : styles.containerSizeSmall;
+    const fontSize = this.props.size === 'large' ? styles.fontSizeLarge : styles.fontSizeSmall;
+
     if(this.props.untappable){
       return(
-        <TouchableOpacity style={styles.unusedHolder}>
-          <Text style={styles.unusedText}>{letter}</Text>
+        <TouchableOpacity style={[styles.unusedHolder, sizeStyle]}>
+          <Text style={[styles.unusedText, fontSize]}>{letter}</Text>
         </TouchableOpacity>
       );
     }
 
     if(this.props.topHolder && this.props.usedLetters[this.props.letterIndex]){
       return (
-        <TouchableOpacity style={styles.usedHolder}>
-          <Text style={styles.usedText}>{letter}</Text>
+        <TouchableOpacity style={[styles.usedHolder, sizeStyle]}>
+          <Text style={[styles.usedText, fontSize]}>{letter}</Text>
         </TouchableOpacity>
       );
     }
 
     return (
-      <TouchableOpacity style={styles.unusedHolder} onPress={this.press}>
-        <Text style={styles.unusedText}>{letter}</Text>
+      <TouchableOpacity style={[styles.unusedHolder, sizeStyle]} onPress={this.press}>
+        <Text style={[styles.unusedText, fontSize]}>{letter}</Text>
       </TouchableOpacity>
     );
   }
 }
 
 const styles = {
-  unusedHolder: {
+  containerSizeLarge: {
+    width: 50,
+    minHeight: 50,
+    borderRadius: 10,
+    padding: 4,
+    margin: 5,
     borderWidth: 3,
+  },
+  containerSizeSmall: {
+    width: 45,
+    minHeight: 45,
+    borderRadius: 8,
+    padding: 3,
+    margin: 4,
+    borderWidth: 2.5
+  },
+  unusedHolder: {
+    // borderWidth: 3,
     backgroundColor: 'orange',
     flexDirection: 'row',
     borderColor: 'white',
     position: 'relative',
-    width: 50,
-    padding: 4,
-    margin: 5,
-    borderRadius: 10,
+    // width: 50,
+    // padding: 4,
+    // margin: 5,
+    // borderRadius: 10,
     justifyContent: 'center',
-    minHeight: 50
+    // minHeight: 50
   },
   usedHolder: {
-    borderWidth: 3,
+    // borderWidth: 3,
     backgroundColor: 'gray',
     flexDirection: 'row',
     borderColor: 'white',
     position: 'relative',
-    width: 50,
-    padding: 4,
-    margin: 5,
-    borderRadius: 10,
+    // width: 50,
+    // padding: 4,
+    // margin: 5,
+    // borderRadius: 10,
     justifyContent: 'center',
-    minHeight: 50
+    // minHeight: 50
   },
   unusedText: {
-    fontSize: 30,
+    // fontSize: 30,
+  },
+  fontSizeSmall: {
+    fontSize: 25,
+    marginTop: 3
+  },
+  fontSizeLarge: {
+    fontSize: 30
   },
   usedText: {
-    fontSize: 30,
+    // fontSize: 30,
     color: 'white'
   }
 };
