@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import InfoBar from './InfoBar';
 import { spendEggcoin } from '../actions';
@@ -31,42 +31,91 @@ class AdvanceStage extends React.Component {
   }
 
   render(){
+    const { stage } = this.props;
+
     const buttonText = this.state.initialTap ? (
       '10,000 Eggcoin'
     ) : (
       `Unlock ${this.props.stage}`
     );
 
+    let image;
+    if(stage === "Sunny Side Up"){
+      image = SunnySideUp;
+    } else if(stage === "Hard Boiled"){
+      image = HardBoiled;
+    } else if(stage === "Over Easy"){
+      image = OverEasy;
+    }
+
     return (
       <View style={styles.container}>
         <InfoBar advanceStagePage={true} />
 
-        <View style={styles.inner}>
+        <View style={styles.stage}>
 
-          <Text style={styles.text}>
-            You advanced to the next stage:
-          </Text>
+          <View style={styles.advanced}>
+            <View style={{flex: 1}}>
+              <Text style={styles.text}>
+                You advanced to the next stage!
+              </Text>
+            </View>
+            <View style={{flex: 1}}>
+              <Text style={styles.largerText}>
+                {this.props.stage}
+              </Text>
+            </View>
+          </View>
 
-          <Text style={styles.largerText}>
-            {this.props.stage}
-          </Text>
+          <View style={styles.stagePic}>
+            <View style={styles.picHolder}>
+              <Image source={image} style={styles.image}/>
+            </View>
+          </View>
 
-          <TouchableOpacity onPress={this.proceed} style={styles.proceed}>
-            <Text style={styles.buttonText}>
-              {buttonText}
-            </Text>
-          </TouchableOpacity>
-
+          <View style={styles.proceedHolder}>
+            <TouchableOpacity onPress={this.proceed} style={styles.proceed}>
+              <Text style={styles.buttonText}>
+                {buttonText}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
+
       </View>
     );
   }
 }
 
 const styles = {
+  proceedHolder: {
+    flex: 1,
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  advanced: {
+    flex: 1
+  },
+  stage: {
+    flex:1
+  },
+  picHolder: {
+    width: 90,
+    height: 90
+  },
+  stagePic: {
+    flex: 2
+  },
   container: {
     flexDirection: 'column',
     flex: 1
+  },
+  image: {
+    flex: 1,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'contain',
   },
   inner: {
     marginTop: 35
@@ -104,7 +153,7 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    stage: state.levels.stage
+    stage: state.levels.stage,
   };
 };
 
