@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity,
+        Image, Modal, Dimensions
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import InfoBar from './InfoBar';
+import EggcoinMarket from './EggcoinMarket';
 import { spendEggcoin } from '../actions';
 import SunnySideUp from '../assets/sunny_side_up.png';
 import HardBoiled from '../assets/hard_boiled.png';
@@ -13,9 +16,11 @@ class AdvanceStage extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      initialTap: false
+      initialTap: false,
+      modalVisible: false
     };
     this.proceed = this.proceed.bind(this);
+    this.renderModal = this.renderModal.bind(this);
   }
 
   proceed(){
@@ -32,8 +37,15 @@ class AdvanceStage extends React.Component {
         }, 1400);
       } else {
         //not enough eggcoin
+        this.setState({ initialTap: false });
+        this.setState({ modalVisible: true });
+        // this.renderModal();
       }
     }
+  }
+
+  renderModal(){
+
   }
 
   render(){
@@ -69,6 +81,10 @@ class AdvanceStage extends React.Component {
     return (
       <View style={styles.container}>
         <InfoBar advanceStagePage={true} />
+
+        {this.state.modalVisible ?
+          <EggcoinMarket visible={this.state.modalVisible}/> : 
+            null}
 
         <View style={styles.stage}>
 

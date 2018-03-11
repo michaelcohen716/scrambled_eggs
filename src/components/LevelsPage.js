@@ -51,7 +51,6 @@ class LevelsPage extends React.Component {
   }
 
   adjustFrame(style){
-    // style.top -= 24;
     style.left -= 142;
     return style;
   }
