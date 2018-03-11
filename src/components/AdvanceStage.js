@@ -20,7 +20,6 @@ class AdvanceStage extends React.Component {
       modalVisible: false
     };
     this.proceed = this.proceed.bind(this);
-    this.renderModal = this.renderModal.bind(this);
   }
 
   proceed(){
@@ -36,16 +35,10 @@ class AdvanceStage extends React.Component {
 
         }, 1400);
       } else {
-        //not enough eggcoin
         this.setState({ initialTap: false });
         this.setState({ modalVisible: true });
-        // this.renderModal();
       }
     }
-  }
-
-  renderModal(){
-
   }
 
   render(){
@@ -83,8 +76,7 @@ class AdvanceStage extends React.Component {
         <InfoBar advanceStagePage={true} />
 
         {this.state.modalVisible ?
-          <EggcoinMarket visible={this.state.modalVisible}/> : 
-            null}
+          <EggcoinMarket visible={this.state.modalVisible}/> : null}
 
         <View style={styles.stage}>
 
