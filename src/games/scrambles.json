@@ -142,44 +142,136 @@
       "clue": "Use poorly",
       "letters": "wates",
       "answer": "waste"
-    },
-
-    "party": {
-      "1": {
-        "clue": "Celebration or affair",
-        "letters": "rlalytpaj",
-        "answer": "party"
-      },
-      "2": {
-        "clue": "Add",
-        "article": "an",
-        "letter": "s"
-      },
-      "3": {
-        "clue": "Something tasty",
-        "letters": "partys",
-        "answer": "pastry"
-      }
-    },
-
-    "titan": {
-      "1": {
-        "clue": "A warrior or leader",
-        "letters": "aevztotin",
-        "answer": "titan"
-      },
-      "2": {
-        "clue": "Subtract",
-        "article": "an",
-        "letter": "a"
-      },
-      "3": {
-        "clue": "Change slightly",
-        "letters": "titn",
-        "answer": "tint"
-      }
     }
-  }
+  },
+
+  "party": {
+    "1": {
+      "clue": "Celebration or affair",
+      "letters": "rlalytpaj",
+      "answer": "party"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "s"
+    },
+    "3": {
+      "clue": "Something tasty",
+      "letters": "partys",
+      "answer": "pastry"
+    }
+  },
+
+  "titan": {
+    "1": {
+      "clue": "A warrior or leader",
+      "letters": "aevztotin",
+      "answer": "titan"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "a"
+    },
+    "3": {
+      "clue": "Change slightly",
+      "letters": "titn",
+      "answer": "tint"
+    }
+  },
+
+  "false": {
+    "1": {
+      "clue": "It's not true",
+      "letters": "walesfbip",
+      "answer": "false"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "s"
+    },
+    "3": {
+      "clue": "Part of a plant",
+      "letters": "fale",
+      "answer": "leaf"
+    }
+  },
+
+  "scandal": {
+    "1": {
+      "clue": "An unseemly situation",
+      "letters": "lentraacds",
+      "answer": "scandal"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "a",
+      "letter": "c"
+    },
+    "3": {
+      "clue": "One open shoe",
+      "letters": "sandal",
+      "answer": "sandal"
+    }
+  },
+
+  "region": {
+    "1": {
+      "clue": "An area of land",
+      "letters": "veocriing",
+      "answer": "region"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "e"
+    },
+    "3": {
+      "clue": "Below the waist",
+      "letters": "rgion",
+      "answer": "groin"
+    }
+  },
+
+  "search": {
+    "1": {
+      "clue": "To seek out",
+      "letters": "hrbefesca",
+      "answer": "search"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "h"
+    },
+    "3": {
+      "clue": "To frighten",
+      "letters": "searc",
+      "answer": "scare"
+    }
+  },
+
+  "search": {
+    "1": {
+      "clue": "To seek out",
+      "letters": "hrbefesca",
+      "answer": "search"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "h"
+    },
+    "3": {
+      "clue": "To frighten",
+      "letters": "searc",
+      "answer": "scare"
+    }
+  },
+
+
 
 
 }

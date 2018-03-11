@@ -144,7 +144,75 @@
     "letters": "bdegu",
     "time": 65,
     "stage": "Over Easy"
-  }
+  },
+
+  "aa": {
+    "type": "jumble",
+    "letters": "eimrt",
+    "time": 45,
+    "stage": "Over Easy"
+  },
+
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "gear",
+    "time": 45,
+    "stage": "Sunny Side Up"
+  },
+  "b": {
+    "type": "scramble",
+    "firstAnswer": "mouse",
+    "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "c": {
+    "type": "scramble",
+    "firstAnswer": "wheat",
+    "time": 45,
+    "stage": "Sunny Side Up"
+  },
+  "d": {
+    "type": "scramble",
+    "firstAnswer": "waters",
+    "time": 65,
+    "stage": "Sunny Side Up"
+  },
+  "e": {
+    "type": "scramble",
+    "firstAnswer": "party",
+    "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "f": {
+    "type": "scramble",
+    "firstAnswer": "titan",
+    "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "g": {
+    "type": "scramble",
+    "firstAnswer": "false",
+    "time": 45,
+    "stage": "Sunny Side Up"
+  },
+  "h": {
+    "type": "scramble",
+    "firstAnswer": "scandal",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
+  "i": {
+    "type": "scramble",
+    "firstAnswer": "region",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
+  "j": {
+    "type": "scramble",
+    "firstAnswer": "search",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
 
 
 }
