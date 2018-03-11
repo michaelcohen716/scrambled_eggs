@@ -101,8 +101,8 @@ class AdvanceStage extends React.Component {
               </TouchableOpacity>
             </View>
 
-            <View style={styles.proceedHolder}>
-              <TouchableOpacity style={styles.proceed}>
+            <View style={styles.proceedHolder2}>
+              <TouchableOpacity style={styles.proceed} onPress={() => Actions.levels()}>
                 <Text style={styles.buttonText}>
                   {this.props.lastStage}
                 </Text>
@@ -141,6 +141,13 @@ const styles = {
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  proceedHolder2: {
+    flex: 2,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: -10
   },
   advanced: {
     flex: 1
