@@ -69,6 +69,117 @@
       "letters": "friend",
       "answer": "finder"
     }
+  },
+
+
+
+  "gear": {
+    "1": {
+      "clue": "Bike or car part",
+      "letters": "rermgnas",
+      "answer": "gear"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "a",
+      "letter": "t"
+    },
+    "3": {
+      "clue": "Fantastic",
+      "letters": "geart",
+      "answer": "great"
+    }
+  },
+
+  "mouse": {
+    "1": {
+      "clue": "Midnight crawler",
+      "letters": "qseuomes",
+      "answer": "mouse"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "o"
+    },
+    "3": {
+      "clue": "Multiple Australian birds",
+      "letters": "muse",
+      "answer": "emus"
+    }
+  },
+
+  "wheat": {
+    "1": {
+      "clue": "A common grain",
+      "letters": "cmurhatew",
+      "answer": "wheat"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "e"
+    },
+    "3": {
+      "clue": "Warming ice",
+      "letters": "what",
+      "answer": "thaw"
+    }
+  },
+
+  "waters": {
+    "1": {
+      "clue": "Seas or oceans",
+      "letters": "nordatewsc",
+      "answer": "waters"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "r"
+    },
+    "3": {
+      "clue": "Use poorly",
+      "letters": "wates",
+      "answer": "waste"
+    },
+
+    "party": {
+      "1": {
+        "clue": "Celebration or affair",
+        "letters": "rlalytpaj",
+        "answer": "party"
+      },
+      "2": {
+        "clue": "Add",
+        "article": "an",
+        "letter": "s"
+      },
+      "3": {
+        "clue": "Something tasty",
+        "letters": "partys",
+        "answer": "pastry"
+      }
+    },
+
+    "titan": {
+      "1": {
+        "clue": "A warrior or leader",
+        "letters": "aevztotin",
+        "answer": "titan"
+      },
+      "2": {
+        "clue": "Subtract",
+        "article": "an",
+        "letter": "a"
+      },
+      "3": {
+        "clue": "Change slightly",
+        "letters": "titn",
+        "answer": "tint"
+      }
+    }
   }
+
 
 }
