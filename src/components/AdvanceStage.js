@@ -24,7 +24,7 @@ class AdvanceStage extends React.Component {
     } else {
 
       if(this.props.eggcoin > 10000){
-        this.props.spendEggcoin(10000); //advance stage
+        this.props.spendEggcoin(10000, this.props.eggcoin); //advance stage
 
         setTimeout(() => {
           Actions.levels({ type:'reset' });
@@ -41,8 +41,8 @@ class AdvanceStage extends React.Component {
 
     const buttonText = this.state.initialTap ? (
       <View style={styles.eggcoinHolder}>
-        <Text style={styles.buttonText}>
-          '10,000 Eggcoin'
+        <Text style={[styles.buttonText, styles.eggcoinText]}>
+          10,000
         </Text>
         <Image source={goldCoin} style={styles.eggcoin} />
       </View>
@@ -86,18 +86,21 @@ class AdvanceStage extends React.Component {
             </View>
           </View>
 
-          <View style={styles.proceedHolder}>
-            <TouchableOpacity onPress={this.proceed} style={styles.proceed}>
-              {buttonText}
-            </TouchableOpacity>
-          </View>
+          <View style={{flex: 3}}>
+            <View style={styles.proceedHolder}>
+              <TouchableOpacity onPress={this.proceed} style={styles.proceed}>
+                {buttonText}
+              </TouchableOpacity>
+            </View>
 
-          <View style={styles.proceedHolder}>
-            <TouchableOpacity style={styles.proceed}>
-              <Text>
-                {}
-              </Text>
-            </TouchableOpacity>
+            <View style={styles.proceedHolder}>
+              <TouchableOpacity style={styles.proceed}>
+                <Text style={styles.buttonText}>
+                  {this.props.lastStage}
+                </Text>
+              </TouchableOpacity>
+            </View>
+
           </View>
 
           <View style={{flex: 1, backgroundColor: 'black'}}>
@@ -112,11 +115,18 @@ class AdvanceStage extends React.Component {
 const styles = {
   eggcoinHolder: {
     flexDirection: 'row',
-
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  eggcoinText: {
+    fontSize: 30,
+    fontFamily: 'RobotoCondensed-Regular'
   },
   eggcoin: {
     height: 18,
-    width: 18
+    width: 18,
+    marginTop: 5,
+    marginLeft: 3
   },
   proceedHolder: {
     flex: 2,
@@ -171,7 +181,7 @@ const styles = {
     borderWidth: 2,
     borderColor: 'white',
     borderRadius: 5,
-    height: 70,
+    height: 78,
     width: 150
   },
   buttonText: {
@@ -186,7 +196,8 @@ const styles = {
 const mapStateToProps = state => {
   return {
     stage: state.levels.stage,
-    eggcoin: state.score.userEggcoin
+    eggcoin: state.score.userEggcoin,
+    lastStage: state.levels.lastStage
   };
 };
 

@@ -23,6 +23,7 @@ class LevelsPage extends React.Component {
     this.stages = Object.keys(this.props.stages);
     this.numLevels = this.levels.length;
     this.frameworks = this.levelFrameworks();
+    this.levelFrameworks = this.levelFrameworks.bind(this);
 
     this.tiltTriangle = this.tiltTriangle.bind(this);
   }
@@ -277,7 +278,8 @@ const mapStateToProps = state => {
   return {
     eggcoin: state.score.userEggcoin,
     stage: state.levels.stage,
-    stages: state.levels.stages
+    stages: state.levels.stages,
+    stageNum: state.levels.stageNum
   };
 };
 

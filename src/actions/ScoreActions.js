@@ -34,7 +34,12 @@ export const reduceScoreMultiplier = (decrement) => {
   };
 };
 
-export const spendEggcoin = (cost) => {
+export const spendEggcoin = (cost, eggcoin) => {
+  const { currentUser } = firebase.auth();
+  const newEggcoin = eggcoin - cost;
+  firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .update({eggcoin: newEggcoin});
+
   return {
     type: SPEND_EGGCOIN,
     cost

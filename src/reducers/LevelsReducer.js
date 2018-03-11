@@ -8,8 +8,8 @@ import Levels from '../games/levels.json';
 
 var STAGES = {
   "Sunny Side Up": 1,
-  "Hard Boiled": 2,
-  "Over Easy": 3
+  "Over Easy": 2,
+  "Hard Boiled": 3,
 };
 
 const INITIAL_STATE = {
@@ -17,6 +17,7 @@ const INITIAL_STATE = {
   nextUnsolvedLevel: 1,
   levelType: null,
   stage: "Sunny Side Up",
+  lastStage: "Sunny Side Up",
   stageNum: 1,
   stages: STAGES,
   advanceStagePage: false //whether next round is next stage (different RoundReview component)
@@ -48,6 +49,7 @@ export default (state = INITIAL_STATE, action) => {
         // advance stage
         const stage = Levels[updatedState.nextUnsolvedLevel].stage;
         if(stage !== state.stage){
+          updatedState.lastStage = state.stage;
           updatedState.stage = stage;
           updatedState.stageNum += 1;
         }
