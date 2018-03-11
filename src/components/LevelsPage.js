@@ -16,7 +16,7 @@ class LevelsPage extends React.Component {
     this.state = {
       activeLevel: null,
       stage: this.props.stage,
-      stageDropdown: 0,
+      stageDropdown: this.props.stageNum - 1,
       dropdownShowing: false,
     };
     this.levels = Object.keys(Levels); //all levels in game
@@ -26,6 +26,12 @@ class LevelsPage extends React.Component {
     this.levelFrameworks = this.levelFrameworks.bind(this);
 
     this.tiltTriangle = this.tiltTriangle.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.stageNum !== this.props.stageNum){
+      this.setState({ stageDropdown: nextProps.stageNum - 1})
+    }
   }
 
   levelFrameworks(){
@@ -60,6 +66,7 @@ class LevelsPage extends React.Component {
   }
 
   render(){
+    console.log(this.state);
     const levels = this.frameworks[this.state.stageDropdown];
 
     const triangle = this.state.dropdownShowing ? (
@@ -84,7 +91,7 @@ class LevelsPage extends React.Component {
             </View>
 
             <View style={styles.dropdownHolder}>
-              <ModalDropdown options={["Sunny Side Up", "Hard Boiled", "Over Easy"]} defaultIndex={0}
+              <ModalDropdown options={["Sunny Side Up", "Hard Boiled", "Over Easy"]} defaultIndex={this.props.stageNum - 1}
                 onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
                 adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
                 dropdownTextHighlightStyle={styles.highlightStyle} onDropdownWillShow={this.tiltTriangle}
