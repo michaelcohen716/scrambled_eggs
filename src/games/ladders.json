@@ -7,7 +7,7 @@
 
   "taint": [["taint"], ["tint"], ["tit", "tin"]],
 
-  "phone": [["phone"], ["hone", "open", "nope", "hope"], ["hop", "pen", "one"]],
+  "phone": [["phone"], ["hone", "open", "nope", "hope"], ["hop", "pen", "one", "hoe"]],
 
   "rarely": [["rarely"], ["layer", "early", "relay"], ["real", "lyre", "year"]],
 
@@ -32,6 +32,6 @@
     "tame", "meat", "teas", "seat", "sate", "rate", "tear", "arts", "tars", "star"]],
 
   "silver": [["silver", "sliver", "livers"], ["liver", "rives", "riles", "lives", "evils"],
-    ["live", "evil", "vile", "isle", "lies", "rile", "sire", "rive", "veil"]]  
+    ["live", "evil", "vile", "isle", "lies", "rile", "sire", "rive", "veil"]]
 
 }

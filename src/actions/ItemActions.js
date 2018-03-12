@@ -99,6 +99,8 @@ export const addTime = ({ itemsToggle, item }) => {
     .update({  itemsToggle })
 
   return {
-    type: ADD_TIME
+    type: ADD_TIME,
+    itemsToggle,
+    item
   }
 }

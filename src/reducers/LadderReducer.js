@@ -100,6 +100,7 @@ export default (state = INITIAL_STATE, action) => {
         unlockState.attempts[state.wordIndex] = insertWordArray;
         unlockState.attemptLength = 0;
         unlockState.wordIndex += 1;
+        unlockState.currentWordLength -=1;
       }
 
       return unlockState;
