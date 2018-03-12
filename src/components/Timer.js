@@ -15,6 +15,12 @@ class Timer extends React.Component {
     this.decrement = 100 / this.initialTime; // 100/10 = 10
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.addTimeToggle === true && this.props.addTimeToggle === false){
+      this.setState({seconds: this.state.seconds + 20});
+    }
+  }
+
   componentDidMount(){
     let timer = setInterval(this.tick, 1000);
     this.setState({ timer });
@@ -106,6 +112,7 @@ const mapStateToProps = state => {
     activeLevel: state.levels.activeLevel,
     seconds: state[levelType].roundTime,
     itemsToggle: state.items.itemsToggle,
+    addTimeToggle: state.items.addTimeToggle,
     levelType
   };
 };

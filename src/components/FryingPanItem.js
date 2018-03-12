@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import goldCoin from '../assets/goldCoin.png';
 import { makePurchase, shakeItUp,
   showItemDescription, seeALetter,
-  unlockAWord
+  unlockAWord, addTime
 } from '../actions';
 
 class FryingPanItem extends React. Component {
@@ -83,6 +83,9 @@ class FryingPanItem extends React. Component {
         return;
       case "unlockAWord":
         this.props.unlockAWord(itemObject);
+        return;
+      case "addTime":
+        this.props.addTime(itemObject);
         return;
     }
   }

@@ -2,7 +2,8 @@ import firebase from 'firebase';
 import {
   MAKE_PURCHASE, SHAKE_IT_UP,
   SHOW_ITEM_DESCRIPTION, SEE_A_LETTER,
-  UNLOCK_A_WORD, FIRE_UP
+  UNLOCK_A_WORD, FIRE_UP,
+  ADD_TIME
 } from './types';
 import merge from 'lodash/merge';
 
@@ -87,5 +88,17 @@ export const fireUp = ({ itemsToggle, item }) => {
     type: FIRE_UP,
     itemsToggle,
     item
+  }
+}
+
+export const addTime = ({ itemsToggle, item }) => {
+  const { currentUser } = firebase.auth();
+  itemsToggle[item] = false;
+
+  firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+    .update({  itemsToggle })
+
+  return {
+    type: ADD_TIME
   }
 }

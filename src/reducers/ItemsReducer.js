@@ -2,7 +2,8 @@ import {
   MAKE_PURCHASE, LOGIN_USER_SUCCESS,
   SHOW_ITEM_DESCRIPTION, SHAKE_IT_UP,
   SEE_A_LETTER, START_NEW_SCRAMBLE,
-  FIRE_UP, UNLOCK_A_WORD, ASSIGN_LEVEL
+  FIRE_UP, UNLOCK_A_WORD, ASSIGN_LEVEL,
+  ADD_TIME, END_ROUND
 }
 from '../actions/types';
 import merge from 'lodash/merge';
@@ -15,7 +16,8 @@ const INITIAL_STATE = {
     'fireUp': false,
     'addTime': false
   },
-  message: ''
+  message: '',
+  addTimeToggle: false
 };
 
 export default(state = INITIAL_STATE, action) => {
@@ -36,6 +38,17 @@ export default(state = INITIAL_STATE, action) => {
       const loginState = merge({}, state);
       loginState.itemsToggle = action.itemsToggle;
       return loginState;
+
+    case END_ROUND:
+      const roundState = merge({}, state);
+      roundState.addTimeToggle = false;
+      return roundState;
+
+    case ADD_TIME:
+      const timeState = merge({}, state);
+      timeState.itemsToggle = action.itemsToggle;
+      timeState.addTimeToggle = true;
+      return timeState;
 
     case SHAKE_IT_UP:
     case SEE_A_LETTER:
