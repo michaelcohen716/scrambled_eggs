@@ -14,8 +14,10 @@ class JumbleGame extends React.Component {
 
   render(){
     const empties = this.props.answers.map((scramble, idx) => {
+      const numAnswers = this.props.answers.length;
       return (
-        <EmptyHolder letters={this.props.activeLetters} answerIndex={idx} key={idx}/>
+        <EmptyHolder letters={this.props.activeLetters} answerIndex={idx}
+                     numAnswers={numAnswers} key={idx}/>
       );
     });
 
@@ -34,7 +36,7 @@ class JumbleGame extends React.Component {
           {empties}
         </View>
 
-        <FryingPan inGame={true} /> 
+        <FryingPan inGame={true} />
 
       </View>
     );

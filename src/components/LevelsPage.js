@@ -66,7 +66,6 @@ class LevelsPage extends React.Component {
   }
 
   render(){
-    console.log(this.state);
     const levels = this.frameworks[this.state.stageDropdown];
 
     const triangle = this.state.dropdownShowing ? (
@@ -74,6 +73,8 @@ class LevelsPage extends React.Component {
     ) : (
       <View style={styles.triangle} />
     )
+
+    const options = ["Sunny Side Up", "Over Easy", "Hard Boiled", "Frittata"];
 
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
@@ -91,7 +92,7 @@ class LevelsPage extends React.Component {
             </View>
 
             <View style={styles.dropdownHolder}>
-              <ModalDropdown options={["Sunny Side Up", "Hard Boiled", "Over Easy"]} defaultIndex={this.props.stageNum - 1}
+              <ModalDropdown options={options} defaultIndex={this.props.stageNum - 1}
                 onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
                 adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
                 dropdownTextHighlightStyle={styles.highlightStyle} onDropdownWillShow={this.tiltTriangle}
@@ -198,7 +199,7 @@ const styles = {
     color: 'white'
   },
   dropdownStyle: {
-    height: 135,
+    height: 180,
     marginRight: 16,
     elevation: 4,
     borderColor: 'white',

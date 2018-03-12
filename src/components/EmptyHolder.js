@@ -10,6 +10,10 @@ class EmptyHolder extends React.Component {
   }
 
   render(){
+    let marginStyle = styles.bigMargin;
+    if(this.props.numAnswers > 5){
+      marginStyle = styles.smallMargin;
+    }
     // word level
     const firstIndex = this.props.answerIndex;
 
@@ -32,14 +36,14 @@ class EmptyHolder extends React.Component {
 
     if(this.props.wordIndex === this.props.answerIndex){
       return (
-        <View style={styles.active}>
+        <View style={[styles.active, marginStyle]}>
           {tiles}
         </View>
       );
     }
 
     return (
-      <View style={styles.inactive}>
+      <View style={[styles.inactive, marginStyle]}>
         {tiles}
       </View>
     );
@@ -49,23 +53,27 @@ class EmptyHolder extends React.Component {
 const styles = {
   active: {
    borderBottomWidth: 1,
-   padding: 2,
    backgroundColor: 'blue',
    justifyContent: 'center',
    flexDirection: 'row',
    borderColor: '#ddd',
    position: 'relative',
-   marginBottom: 15
  },
  inactive: {
    borderBottomWidth: 1,
-   padding: 2,
    backgroundColor: 'transparent',
    justifyContent: 'center',
    flexDirection: 'row',
    borderColor: '#ddd',
    position: 'relative',
-   marginBottom: 15
+ },
+ smallMargin: {
+   marginBottom: 2,
+   padding: 1
+ },
+ bigMargin: {
+   marginBottom: 15,
+   padding: 2
  }
 };
 

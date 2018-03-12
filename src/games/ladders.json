@@ -29,6 +29,9 @@
 
   "master": [["master", "stream", "tamers"], ["mates", "tames", "tamer", "rates", "stare", "tears",
     "mares", "marts", "trams", "teams", "reams", "smear", "meats", "steam"], ["mare", "team", "mate",
-    "tame", "meat", "teas", "seat", "sate", "rate", "tear", "arts", "tars", "star"]]
+    "tame", "meat", "teas", "seat", "sate", "rate", "tear", "arts", "tars", "star"]],
+
+  "silver": [["silver", "sliver", "livers"], ["liver", "rives", "riles", "lives", "evils"],
+    ["live", "evil", "vile", "isle", "lies", "rile", "sire", "rive", "veil"]]  
 
 }

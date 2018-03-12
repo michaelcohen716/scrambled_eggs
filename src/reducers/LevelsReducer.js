@@ -10,6 +10,7 @@ var STAGES = {
   "Sunny Side Up": 1,
   "Over Easy": 2,
   "Hard Boiled": 3,
+  "Frittata": 4
 };
 
 const INITIAL_STATE = {
