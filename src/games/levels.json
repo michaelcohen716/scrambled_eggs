@@ -165,6 +165,31 @@
     "time": 55,
     "stage": "Over Easy",
   },
+  "ad": {
+    "type": "jumble",
+    "letters": "eerst",
+    "time": 55,
+    "stage": "Over Easy",
+  },
+  "ae": {
+    "type": "jumble",
+    "letters": "opst",
+    "time": 75,
+    "stage": "Over Easy",
+    "COMMENT": "CHECK FOR 6 WORD PUZZLE FORMATTING"
+  },
+  "af": {
+    "type": "jumble",
+    "letters": "adinr",
+    "time": 45,
+    "stage": "Over Easy",
+  },
+  "af": {
+    "type": "jumble",
+    "letters": "aehrt",
+    "time": 60,
+    "stage": "Over Easy",
+  },
 
 
   "a": {
@@ -267,6 +292,18 @@
     "type": "scramble",
     "firstAnswer": "bathe",
     "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "r": {
+    "type": "scramble",
+    "firstAnswer": "praise",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
+  "s": {
+    "type": "scramble",
+    "firstAnswer": "hearts",
+    "time": 55,
     "stage": "Sunny Side Up"
   },
 

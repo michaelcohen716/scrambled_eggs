@@ -379,4 +379,60 @@
     }
   },
 
+  "praise": {
+    "1": {
+      "clue": "Adulation",
+      "letters": "virpcxseao",
+      "answer": "praise"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "r"
+    },
+    "3": {
+      "clue": "A shade of brown",
+      "letters": "paise",
+      "answer": "sepia"
+    }
+  },
+
+  "hearts": {
+    "1": {
+      "clue": "Multiple critical organs",
+      "letters": "erhtas",
+      "answer": "hearts"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "e"
+    },
+    "3": {
+      "clue": "Rubbish",
+      "letters": "harts",
+      "answer": "trash"
+    }
+  },
+
+  
+
+  "ideas": {
+    "1": {
+      "clue": "Multiple critical organs",
+      "letters": "erhtas",
+      "answer": "hearts"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "e"
+    },
+    "3": {
+      "clue": "Rubbish",
+      "letters": "harts",
+      "answer": "trash"
+    }
+  },
+
 }
