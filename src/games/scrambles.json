@@ -253,11 +253,83 @@
     }
   },
 
-  "search": {
+  "syringe": {
     "1": {
-      "clue": "To seek out",
-      "letters": "hrbefesca",
-      "answer": "search"
+      "clue": "A medical utensil",
+      "letters": "gcerenyis",
+      "answer": "syringe"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "a",
+      "letter": "y"
+    },
+    "3": {
+      "clue": "Type of performer",
+      "letters": "sringe",
+      "answer": "singer"
+    }
+  },
+
+  "cape": {
+    "1": {
+      "clue": "Superhero garb",
+      "letters": "psraicef",
+      "answer": "cape"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "e"
+    },
+    "3": {
+      "clue": "A global aspiration",
+      "letters": "capee",
+      "answer": "peace"
+    }
+  },
+
+  "pride": {
+    "1": {
+      "clue": "Self worth or accomplishment",
+      "letters": "mdearpei",
+      "answer": "pride"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "o"
+    },
+    "3": {
+      "clue": "A duration of time",
+      "letters": "prideo",
+      "answer": "period"
+    }
+  },
+
+  "self": {
+    "1": {
+      "clue": "You or me",
+      "letters": "arlfmies",
+      "answer": "self"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "i"
+    },
+    "3": {
+      "clue": "Many airborne insects",
+      "letters": "selfi",
+      "answer": "flies"
+    }
+  },
+
+  "machine": {
+    "1": {
+      "clue": "An automatic device",
+      "letters": "ancihmrte",
+      "answer": "machine"
     },
     "2": {
       "clue": "Subtract",
@@ -265,13 +337,46 @@
       "letter": "h"
     },
     "3": {
-      "clue": "To frighten",
-      "letters": "searc",
-      "answer": "scare"
+      "clue": "Fancy word for movie",
+      "letters": "macine",
+      "answer": "cinema"
     }
   },
 
+  "tender": {
+    "1": {
+      "clue": "Sensitive or delicate",
+      "letters": "rentde",
+      "answer": "tender"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "e"
+    },
+    "3": {
+      "clue": "A clear pattern",
+      "letters": "tnder",
+      "answer": "trend"
+    }
+  },
 
-
+  "bathe": {
+    "1": {
+      "clue": "To wash oneself",
+      "letters": "crablteh",
+      "answer": "bathe"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "r"
+    },
+    "3": {
+      "clue": "A serving of oxygen",
+      "letters": "bather",
+      "answer": "breath"
+    }
+  },
 
 }

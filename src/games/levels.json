@@ -152,6 +152,20 @@
     "time": 45,
     "stage": "Over Easy"
   },
+  "ab": {
+    "type": "jumble",
+    "letters": "aelpst",
+    "time": 85,
+    "stage": "Over Easy",
+    "COMMENT": "CHECK FOR 6 WORD PUZZLE FORMATTING"
+  },
+  "ac": {
+    "type": "jumble",
+    "letters": "aceno",
+    "time": 55,
+    "stage": "Over Easy",
+  },
+
 
   "a": {
     "type": "scramble",
@@ -211,6 +225,48 @@
     "type": "scramble",
     "firstAnswer": "search",
     "time": 60,
+    "stage": "Sunny Side Up"
+  },
+  "k": {
+    "type": "scramble",
+    "firstAnswer": "syringe",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
+  "l": {
+    "type": "scramble",
+    "firstAnswer": "cape",
+    "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "m": {
+    "type": "scramble",
+    "firstAnswer": "pride",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
+  "n": {
+    "type": "scramble",
+    "firstAnswer": "self",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
+  "o": {
+    "type": "scramble",
+    "firstAnswer": "machine",
+    "time": 65,
+    "stage": "Sunny Side Up"
+  },
+  "p": {
+    "type": "scramble",
+    "firstAnswer": "tender",
+    "time": 45,
+    "stage": "Sunny Side Up"
+  },
+  "q": {
+    "type": "scramble",
+    "firstAnswer": "bathe",
+    "time": 50,
     "stage": "Sunny Side Up"
   },
 
