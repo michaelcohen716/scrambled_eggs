@@ -184,10 +184,22 @@
     "time": 45,
     "stage": "Over Easy",
   },
-  "af": {
+  "ag": {
     "type": "jumble",
     "letters": "aehrt",
     "time": 60,
+    "stage": "Over Easy",
+  },
+  "ah": {
+    "type": "jumble",
+    "letters": "eilnst",
+    "time": 70,
+    "stage": "Over Easy",
+  },
+  "ai": {
+    "type": "jumble",
+    "letters": "adeprs",
+    "time": 70,
     "stage": "Over Easy",
   },
 
@@ -307,5 +319,78 @@
     "stage": "Sunny Side Up"
   },
 
+
+  "ba": {
+    "type": "ladder",
+    "firstAnswer": "chrome",
+    "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "bb": {
+    "type": "ladder",
+    "firstAnswer": "router",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
+  "bc": {
+    "type": "ladder",
+    "firstAnswer": "median",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
+  "bd": {
+    "type": "ladder",
+    "firstAnswer": "taint",
+    "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "be": {
+    "type": "ladder",
+    "firstAnswer": "rarely",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
+  "bf": {
+    "type": "ladder",
+    "firstAnswer": "secret",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
+  "bg": {
+    "type": "ladder",
+    "firstAnswer": "loaded",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
+  "bh": {
+    "type": "ladder",
+    "firstAnswer": "source",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
+  "bi": {
+    "type": "ladder",
+    "firstAnswer": "source",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
+  "bj": {
+    "type": "ladder",
+    "firstAnswer": "second",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
+  "bk": {
+    "type": "ladder",
+    "firstAnswer": "regard",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
+  "bl": {
+    "type": "ladder",
+    "firstAnswer": "stable",
+    "time": 55,
+    "stage": "Sunny Side Up"
+  },
 
 }

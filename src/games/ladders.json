@@ -7,6 +7,26 @@
 
   "taint": [["taint"], ["tint"], ["tit", "tin"]],
 
-  "phone": [["phone"], ["hone", "open", "nope", "hope"], ["hop", "pen", "one"]]
+  "phone": [["phone"], ["hone", "open", "nope", "hope"], ["hop", "pen", "one"]],
+
+  "rarely": [["rarely"], ["layer", "early", "relay"], ["real", "lyre", "year"]],
+
+  "secret": [["secret", "erects"], ["erect", "steer"], ["tree", "seer"]],
+
+  "loaded": [["loaded"], ["addle", "doled"], ["lead", "deal", "lode", "dole"]],
+
+  "source": [["course", "source"], ["scour", "cores", "cures", "score", "curse"],["ores", "sore", "core", "cure", "rose"]],
+
+  "reason": [["reason"], ["sonar", "snore"], ["soar", "sore", "rose", "ores"]],
+
+  "second": [["second"], ["nodes", "scone", "cones"], ["dose", "once", "cone", "node", "nose"]],
+
+  "regard": [["regard", "grader"], ["grade", "raged", "drear"], ["dear", "read", "dare", "gear", "rage"]],
+
+  "stable": [["stable", "tables", "bleats", "ablest"], ["table", "bleat", "baste", "beats", "tales", "teals",
+    "slate", "blase"], ["teal", "late", "sale", "teas", "sate", "seat", "late", "ales", "lest", "eats",
+    "bets", "best", "tale", "seal"]],
+
+    
 
 }
