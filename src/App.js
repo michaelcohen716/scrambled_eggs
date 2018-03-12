@@ -19,6 +19,7 @@ import logger from 'redux-logger';
   // Naveesh Khattar
   // Jose Manuel de Laa
   // Marianna Rossi
+  // Made by Made
 
 class App extends Component {
   constructor(props){

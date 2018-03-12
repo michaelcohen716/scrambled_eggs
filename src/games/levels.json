@@ -248,7 +248,6 @@
     "letters": "opst",
     "time": 75,
     "stage": "Hard Boiled",
-    "COMMENT": "CHECK FOR 6 WORD PUZZLE FORMATTING"
   },
   "42": {
     "type": "scramble",
@@ -345,7 +344,6 @@
     "letters": "aelpst",
     "time": 85,
     "stage": "Hard Boiled",
-    "COMMENT": "CHECK FOR 6 WORD PUZZLE FORMATTING"
   },
   "58": {
     "type": "ladder",

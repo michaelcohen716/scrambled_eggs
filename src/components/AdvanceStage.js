@@ -10,6 +10,7 @@ import { spendEggcoin } from '../actions';
 import SunnySideUp from '../assets/sunny_side_up.png';
 import HardBoiled from '../assets/hard_boiled.png';
 import OverEasy from '../assets/over_easy.png';
+import Frittata from '../assets/frittata.png';
 import goldCoin from '../assets/goldCoin.png';
 
 class AdvanceStage extends React.Component {
@@ -69,6 +70,8 @@ class AdvanceStage extends React.Component {
       image = HardBoiled;
     } else if(stage === "Over Easy"){
       image = OverEasy;
+    } else if(stage === "Frittata"){
+      image = Frittata;
     }
 
     return (
