@@ -5,6 +5,17 @@ import { View, Text, TouchableOpacity,
 } from 'react-native';
 import goldCoin from '../assets/goldCoin.png';
 
+// import { NativeModules } from 'react-native';
+// var { InAppUtils } = NativeModules;
+// var products = [
+//    'com.scrambledeggs.scrambledeggs.eggcoin10000',
+//    'com.scrambledeggs.scrambledeggs.eggcoin20000',
+//    'com.scrambledeggs.scrambledeggs.eggcoin30000',
+// ];
+// InAppUtils.loadProducts(products, (error, products) => {
+//    //update store here.
+// });
+
 class EggcoinMarket extends React.Component {
   constructor(props){
     super(props);
@@ -16,6 +27,21 @@ class EggcoinMarket extends React.Component {
 
   buyEggcoin(eggcoin, price){
 
+
+    InAppUtils.canMakePayments((canMakePayments) => {
+      if(!canMakePayments) {
+        Alert.alert('Not Allowed', 'This device is not allowed to make purchases. Please check restrictions on device');
+      }
+    });
+
+    var productIdentifier = 'com.xyz.abc';
+      InAppUtils.purchaseProduct(productIdentifier, (error, response) => {
+        // NOTE for v3.0: User can cancel the payment which will be available as error object here.
+      if(response && response.productIdentifier) {
+        Alert.alert('Purchase Successful', 'Your Transaction ID is ' + response.transactionIdentifier);
+      //unlock store here.
+      }
+    });
   }
 
   render(){
@@ -36,8 +62,8 @@ class EggcoinMarket extends React.Component {
                 <Image source={goldCoin} style={styles.eggcoin} />
               </View>
               <View style={styles.dollarPrice}>
-                <TouchableWithoutFeedback style={styles.buyButton} onPress={() => this.buyEggcoin(10000, 1.99)}>
-                  <Text style={styles.dollarNumber}>$1.99</Text>
+                <TouchableWithoutFeedback style={styles.buyButton} onPress={() => this.buyEggcoin(10000, 0.99)}>
+                  <Text style={styles.dollarNumber}>$0.99</Text>
                 </TouchableWithoutFeedback>
               </View>
             </View>
@@ -48,8 +74,8 @@ class EggcoinMarket extends React.Component {
                 <Image source={goldCoin} style={styles.eggcoin} />
               </View>
               <View style={styles.dollarPrice}>
-                <TouchableWithoutFeedback style={styles.buyButton} onPress={() => this.buyEggcoin(10000, 1.99)}>
-                  <Text style={styles.dollarNumber}>$2.99</Text>
+                <TouchableWithoutFeedback style={styles.buyButton} onPress={() => this.buyEggcoin(20000, 1.99)}>
+                  <Text style={styles.dollarNumber}>$1.99</Text>
                 </TouchableWithoutFeedback>
               </View>
             </View>
@@ -60,8 +86,8 @@ class EggcoinMarket extends React.Component {
                 <Image source={goldCoin} style={styles.eggcoin} />
               </View>
               <View style={styles.dollarPrice}>
-                <TouchableWithoutFeedback style={styles.buyButton} onPress={() => console.log("whatup")}>
-                  <Text style={styles.dollarNumber}>$3.99</Text>
+                <TouchableWithoutFeedback style={styles.buyButton} onPress={() => this.buyEggcoin(30000, 2.99)}>
+                  <Text style={styles.dollarNumber}>$2.99</Text>
                 </TouchableWithoutFeedback>
               </View>
             </View>

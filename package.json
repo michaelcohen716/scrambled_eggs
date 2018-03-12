@@ -19,6 +19,7 @@
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-animatable": "^1.2.4",
+    "react-native-in-app-utils": "^6.0.0",
     "react-native-modal-dropdown": "^0.6.1",
     "react-native-modal-overlay": "^1.2.3",
     "react-native-modal-wrapper": "^3.1.0",

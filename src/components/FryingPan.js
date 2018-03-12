@@ -13,12 +13,14 @@ import giftWhite from '../assets/gift_white.png';
 import giftBlack from '../assets/gift_black.png';
 import flameWhite from '../assets/flame_white.png';
 import flameBlack from '../assets/flame_black.png';
+import clockWhite from '../assets/clock_white.png';
+import clockBlack from '../assets/clock_black.png';
 
 var fryingItems = [
   { "item": "seeALetter",
     "firstImage": binocularsWhite,
     "secondImage": binocularsBlack,
-    "cost": 350,
+    "cost": 250,
     "description": "See a letter"
   },
   { "item": "unlockAWord",
@@ -36,8 +38,14 @@ var fryingItems = [
   { "item": "fireUp",
     "firstImage": flameWhite,
     "secondImage": flameBlack,
-    "cost": 975,
+    "cost": 925,
     "description": "2x eggcoin earnings"
+  },
+  { "item": "addTime",
+    "firstImage": clockWhite,
+    "secondImage": clockBlack,
+    "cost": 375,
+    "description": "Add 20 seconds"
   },
 ];
 

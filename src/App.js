@@ -20,6 +20,7 @@ import logger from 'redux-logger';
   // Jose Manuel de Laa
   // Marianna Rossi
   // Made by Made
+  // Oksana Latysheva
 
 class App extends Component {
   constructor(props){

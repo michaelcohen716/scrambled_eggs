@@ -73,6 +73,7 @@ class FryingPanItem extends React. Component {
   }
 
   useItem(itemObject){
+    //score powerup controlled in scorekeeper component (or score reducer)
     switch(this.item){
       case "shakeItUp":
         this.props.shakeItUp(itemObject);
@@ -113,14 +114,14 @@ class FryingPanItem extends React. Component {
     const { item, firstImage, secondImage, cost } = this.props.info;
 
     let firstStyle = styles.icon;
-    if(item === "unlockAWord"){
+    if(item === "unlockAWord" || item === "addTime"){
       firstStyle = styles.giftIcon;
     } else if(item === "shakeItUp"){
       firstStyle = styles.blenderIcon;
     }
 
     let secondStyle = styles.icon;
-    if(item === "shakeItUp"){
+    if(item === "shakeItUp" || item === "addTime"){
       secondStyle = styles.secondBlendIcon;
     } else if(item === "unlockAWord"){
       secondStyle = styles.secondGiftIcon;

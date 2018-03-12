@@ -65,7 +65,8 @@ const createUser = (dispatch) => {
         seeALetter: false,
         fireUp: false,
         shakeItUp: false,
-        unlockAWord: false
+        unlockAWord: false,
+        addTime: false
       }
     })
 }

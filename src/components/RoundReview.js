@@ -6,6 +6,7 @@ import CommaNumber from 'comma-number';
 import SunnySideUp from '../assets/sunny_side_up.png';
 import HardBoiled from '../assets/hard_boiled.png';
 import OverEasy from '../assets/over_easy.png';
+import Frittata from '../assets/frittata.png';
 
 class RoundReview extends React.Component {
   proceed(){
@@ -46,6 +47,8 @@ class RoundReview extends React.Component {
       image = HardBoiled;
     } else if(activeLevel < 61){
       image = OverEasy;
+    } else if(activeLevel < 81){
+      image = Frittata;
     }
 
     return (

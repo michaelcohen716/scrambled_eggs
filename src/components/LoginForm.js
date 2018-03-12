@@ -8,8 +8,28 @@ import {
   signupUser
 }
 from '../actions';
+import Logo from './Logo';
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 
 class LoginForm extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      loading: true,
+      user: null
+    };
+  }
+
+  // componentDidMount(){
+  //   this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
+  //     this.setState({
+  //       loading: false,
+  //       user
+  //     })
+  //   })
+  // }
+
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -54,16 +74,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <View>
-        <View style={styles.logoHolder}>
-          <View style={styles.logoTextHolder}>
-            <Text style={styles.circleText}>Scrambled</Text>
-          </View>
-          <View style={styles.logoTextHolder2}>
-            <Text style={styles.circleText2}>Eggs</Text>
-          </View>
-          <View style={styles.circleLeft} />
-          <View style={styles.circleRight} />
-        </View>
+        <Logo />
 
         <Card>
           <CardSection>
@@ -99,64 +110,11 @@ class LoginForm extends React.Component {
   }
 }
 
-// <View style={styles.filler}>
-// </View>
+
 const styles = {
   filler: {
     height: 245,
     backgroundColor: 'black'
-  },
-  logoTextHolder: {
-    zIndex: 3,
-    backgroundColor: 'transparent',
-    position: 'absolute',
-    top: 35,
-    left: 94,
-    justifyContent: 'flex-start',
-    alignItems: 'center'
-  },
-  logoTextHolder2: {
-    zIndex: 3,
-    backgroundColor: 'transparent',
-    position: 'absolute',
-    top: 78,
-    left: 145,
-    justifyContent: 'flex-start',
-    alignItems: 'center'
-  },
-  circleText2: {
-    fontFamily: 'RobotoCondensed-Italic',
-    fontSize: 40,
-    color: 'white',
-  },
-  circleText: {
-    fontFamily: 'RobotoCondensed-Italic',
-    fontSize: 42,
-    color: 'white',
-  },
-  circleLeft: {
-    height: 140,
-    width: 140,
-    borderRadius: 70,
-    backgroundColor: 'blue',
-    position: 'absolute',
-    top: 20,
-    left: 70,
-    borderColor: 'black',
-    borderWidth: 3,
-    zIndex: 1
-  },
-  circleRight: {
-    height: 140,
-    width: 140,
-    borderRadius: 70,
-    backgroundColor: 'red',
-    position: 'absolute',
-    top: 20,
-    right: 70,
-    borderColor: 'black',
-    borderWidth: 3,
-    zIndex: 1
   },
   errorTextStyle: {
     fontSize: 20,
@@ -166,11 +124,7 @@ const styles = {
   spinner: {
     marginTop: 10
   },
-  logoHolder: {
-    height: 180,
-    backgroundColor: 'black'
-    // flexDirection: 'row'
-  }
+
 };
 
 const mapStateToProps = ({ auth }) => {

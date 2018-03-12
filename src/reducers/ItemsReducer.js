@@ -12,7 +12,8 @@ const INITIAL_STATE = {
     'seeALetter': false,
     'unlockAWord': false,
     'shakeItUp': false,
-    'fireUp': false
+    'fireUp': false,
+    'addTime': false
   },
   message: ''
 };
@@ -23,7 +24,7 @@ export default(state = INITIAL_STATE, action) => {
       const assignState = merge({}, state);
       assignState.message = '';
       return assignState;
-      
+
     case MAKE_PURCHASE:
       const purchaseState = merge({}, state);
       const item = action.item;
