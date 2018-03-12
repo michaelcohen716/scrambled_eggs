@@ -94,6 +94,10 @@ export const loginUser = ({ email, password }) => {
 
 const loginUserSuccess = (dispatch, user) => {
   const { currentUser } = firebase.auth();
+  const lastSignInTime = user.metadata.lastSignInTime;
+  firebase.database().ref(`/users/${currentUser.uid}`)
+    .update({ lastSignInTime });
+
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
     .once('value', (snapshot) => {
 
