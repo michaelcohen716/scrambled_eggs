@@ -17,6 +17,7 @@ class Timer extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if(nextProps.addTimeToggle === true && this.props.addTimeToggle === false){
+      this.props.reduceScoreMultiplier(-(100 / this.initialTime * 20)); //add back score potential
       this.setState({seconds: this.state.seconds + 20});
     }
   }
@@ -38,7 +39,6 @@ class Timer extends React.Component {
        const provisionalEggcoin = eggcoin + roundScore;
 
        this.props.recordScore(roundScore, provisionalEggcoin);
-
 
        const endRoundObject = {
          roundCompleted: true,

@@ -26,7 +26,7 @@ var fryingItems = [
   { "item": "unlockAWord",
     "firstImage": giftWhite,
     "secondImage": giftBlack,
-    "cost": 650,
+    "cost": 600,
     "description": "Unlock a word"
   },
   { "item": "shakeItUp",
@@ -38,13 +38,13 @@ var fryingItems = [
   { "item": "fireUp",
     "firstImage": flameWhite,
     "secondImage": flameBlack,
-    "cost": 925,
+    "cost": 825,
     "description": "2x eggcoin earnings"
   },
   { "item": "addTime",
     "firstImage": clockWhite,
     "secondImage": clockBlack,
-    "cost": 375,
+    "cost": 475,
     "description": "Add 20 seconds"
   },
 ];
