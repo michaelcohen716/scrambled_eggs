@@ -8,7 +8,8 @@ import {
   LOGIN_USER,
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
-  CREATE_USER
+  CREATE_USER,
+  SIGNUP_USER_FAIL
 } from './types';
 
 // user input state change
@@ -32,9 +33,14 @@ export const signupUser = ({ email, password }) => {
     dispatch({ type: SIGNUP_USER });
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => signupUserSuccess(dispatch, user))
-      .catch((error) => console.log(error));
-      // .catch needed for email-already-taken error
+      .catch(() => signupUserFail(dispatch));
   }
+}
+
+const signupUserFail = (dispatch) => {
+  dispatch({
+    type: SIGNUP_USER_FAIL
+  })
 }
 
 const signupUserSuccess = (dispatch, user) => {
@@ -44,17 +50,20 @@ const signupUserSuccess = (dispatch, user) => {
       type: SIGNUP_USER_SUCCESS,
       payload: user
     });
-    createUser(dispatch);
+    createUser(dispatch, user);
 
 };
 
-const createUser = (dispatch) => {
+const createUser = (dispatch, user) => {
   dispatch({ type: CREATE_USER })
+  const email = user.email;
+  const creationTime = user.metadata.creationTime;
+  const lastSignInTime = user.metadata.lastSignInTime;
 
   const { currentUser } = firebase.auth();
   // default user game info
   firebase.database().ref(`/users/${currentUser.uid}`)
-    .set({ phone: '323-323-3232'});
+    .set({ email, creationTime, lastSignInTime });
 
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
     .set({

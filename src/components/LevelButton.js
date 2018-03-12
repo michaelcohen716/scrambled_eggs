@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { assignLevel, fireUp } from '../actions';
 import Levels from '../games/levels.json';
 import lockImage from '../assets/lock.png';
+import { Actions } from 'react-native-router-flux';
 
 class LevelButton extends React.Component {
   constructor(props){
