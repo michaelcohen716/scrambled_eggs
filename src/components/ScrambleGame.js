@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
+import { View, Text, Modal } from 'react-native';
 import InfoBar from './InfoBar';
 import ClueHolder from './ClueHolder';
 import ScrambleEmptyHolder from './ScrambleEmptyHolder';
@@ -10,6 +10,32 @@ import FryingPan from './FryingPan';
 class ScrambleGame extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      introVisible: true
+    };
+    this.introModal = this.introModal.bind(this);
+  }
+
+  introModal(){
+    const styles = {
+      topBarHolder: {
+        flex: 1,
+        borderColor: 'yellow',
+        borderWidth: 3
+      }
+    };
+
+    return (
+      <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
+        <View style={{flex: 1, flexDirection: 'column'}}>
+          <View style={styles.topBarHolder}>
+
+          </View>
+          <View style={{flex: 16, backgroundColor: 'blue'}} />
+
+        </View>
+      </Modal>
+    );
   }
 
   render(){
@@ -51,6 +77,7 @@ class ScrambleGame extends React.Component {
         );
       })
     );
+    // {this.state.introVisible ? this.introModal() : null}
 
     return (
       <View style={styles.parent}>

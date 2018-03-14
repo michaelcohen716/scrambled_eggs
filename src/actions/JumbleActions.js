@@ -57,7 +57,7 @@ export const endRound = ({ roundCompleted, activeLevel, itemsToggle}) => {
   }
 
   let advanceStagePage = false;
-  if(Levels[newLevel].stage !== Levels[activeLevel].stage){ //advance stage
+  if(Levels[newLevel].stage !== Levels[activeLevel].stage && roundCompleted){ //advance stage
     Actions.advanceStage({ type: 'reset' });
     advanceStagePage = true;
   } else {
