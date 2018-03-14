@@ -7,6 +7,7 @@ import { Actions } from 'react-native-router-flux';
 import ModalDropdown from 'react-native-modal-dropdown';
 import Levels from '../games/levels.json';
 import LevelButton from './LevelButton';
+import LevelsIntro from './LevelsIntro';
 import FryingPan from './FryingPan';
 import houseLogo from '../assets/red_house.png';
 
@@ -18,6 +19,7 @@ class LevelsPage extends React.Component {
       stage: this.props.stage,
       stageDropdown: this.props.stageNum - 1,
       dropdownShowing: false,
+      introVisible: true
     };
     this.levels = Object.keys(Levels); //all levels in game
     this.stages = Object.keys(this.props.stages);
@@ -81,6 +83,8 @@ class LevelsPage extends React.Component {
 
         <View style={styles.info}>
 
+          {this.state.introVisible ? <LevelsIntro /> : null}
+
           <View style={styles.topLeft}>
 
             <View style={styles.stageName}>
@@ -120,6 +124,7 @@ class LevelsPage extends React.Component {
             {levels}
           </ScrollView>
         </View>
+
 
         <FryingPan />
 

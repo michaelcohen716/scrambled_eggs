@@ -21,7 +21,8 @@ class Logo extends React.Component {
 const styles = {
   logoHolder: {
     height: 180,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    flex: 1
     // flexDirection: 'row'
   },
   logoTextHolder: {
