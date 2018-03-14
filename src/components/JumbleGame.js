@@ -10,19 +10,32 @@ class JumbleGame extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      introVisible: true
+      introVisible: true,
+      introModal: 1
     };
-    this.introModal = this.introModal.bind(this);
-
+    // this.renderModal = this.renderModal.bind(this);
+    this.introModal1 = this.introModal1.bind(this);
+    this.introModal2 = this.introModal2.bind(this);
+    this.advance = this.advance.bind(this);
   }
 
-  introModal(){
+  introModal2(){
     const styles = {
-      topBarHolder: {
+      topFiller: {
         flex: 3,
+        backgroundColor: 'black',
+        opacity: 0.9
+      },
+      topBar: {
+        flex: 5,
         borderColor: 'yellow',
         borderWidth: 3,
         backgroundColor: 'transparent'
+      },
+      bottomFiller: {
+        flex: 32,
+        backgroundColor: 'black',
+        opacity: 0.9
       }
     };
 
@@ -30,15 +43,128 @@ class JumbleGame extends React.Component {
       <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
         <View style={{flex: 1, flexDirection: 'column'}}>
           <View style={{flex: 4}} />
-          <View style={styles.topBarHolder}>
+          <View style={styles.topFiller} />
 
+          <View style={styles.topBar} />
+
+          <View style={styles.bottomFiller} />
+        </View>
+      </Modal>
+    );
+  }
+
+  introModal1(){
+    const styles = {
+      topBarHolder: {
+        flex: 3,
+        borderColor: 'yellow',
+        borderWidth: 3,
+        backgroundColor: 'transparent'
+      },
+      messageHolder: {
+        flex: 3,
+        backgroundColor: 'black',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingLeft: 4,
+        paddingRight: 4,
+        paddingTop: 3
+      },
+      advanceHolder: {
+        flex: 3,
+        backgroundColor: 'black',
+        opacity: 0.9,
+        justifyContent: 'center',
+        alignItems: 'flex-end'
+      },
+      filler: {
+        flex: 31,
+        backgroundColor: 'black',
+        opacity: 0.9
+      },
+      message: {
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 18,
+        color: 'white',
+        fontWeight: 'bold'
+      },
+      undo: {
+        marginLeft: 9
+      },
+      advance: {
+        width: 80,
+        height: 35,
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 4,
+        backgroundColor: 'black',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      advanceText: {
+        color: 'white',
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 18,
+      }
+    };
+
+    //1
+    // 4
+    // 3
+    // 3
+    // 3
+    // 31
+
+    return (
+      <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
+        <View style={{flex: 1, flexDirection: 'column'}}>
+          <View style={{flex: 4}} />
+          <View style={styles.topBarHolder} />
+
+          <View style={styles.messageHolder}>
+            <Text style={styles.message}>
+              Eggcoin
+            </Text>
+            <Text style={styles.message}>
+              Undo button
+            </Text>
+            <Text style={styles.message}>
+              Puzzle Clock
+            </Text>
           </View>
-          <View style={{flex: 37, backgroundColor: 'blue'}} />
+
+          <View style={styles.advanceHolder}>
+            <TouchableOpacity style={styles.advance} onPress={this.advance}>
+              <Text style={styles.advanceText}>Got it</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.filler} />
 
         </View>
       </Modal>
     );
   }
+
+  advance(){
+    this.setState({ introModal: this.state.introModal + 1});
+  }
+
+  // renderModal(){
+  //   if(!this.state.modalVisible){
+  //     return null;
+  //   }
+  //
+  //   if(this.state.introModal === 1){
+  //     return this.introModal1();
+  //   }
+  //
+  //   if(this.state.introModal === 2){
+  //     return this.introModal2();
+  //   }
+  //
+  //   // if(this.state.)
+  // }
 
   render(){
     const empties = this.props.answers.map((scramble, idx) => {
@@ -54,7 +180,8 @@ class JumbleGame extends React.Component {
 
         <InfoBar />
 
-        {this.state.introVisible ? this.introModal() : null}
+        {this.state.introVisible && this.state.introModal === 1 ? this.introModal1() : null}
+        {this.state.introVisible && this.state.introModal === 2 ? this.introModal2() : null}
 
         <WordHolder />
 
