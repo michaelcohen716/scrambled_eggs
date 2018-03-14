@@ -1,11 +1,27 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Modal, Dimensions } from 'react-native';
-
-
+import { connect } from 'react-redux';
+import { pauseTimer, unpauseTimer } from '../actions';
 
 class JumbleIntro extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      introModal: 1,
+      introVisible: true
+    };
+    this.introModal1 = this.introModal1.bind(this);
+    this.introModal2 = this.introModal2.bind(this);
+    this.introModal3 = this.introModal3.bind(this);
+    this.advance = this.advance.bind(this);
+  }
+
+  advance(){
+    if(this.state === 3){
+      this.setState({ modalVisible: false});
+      this.props.unpauseTimer();
+    }
+    this.setState({ introModal: this.state.introModal + 1});
   }
 
   introModal3(){
@@ -278,4 +294,16 @@ class JumbleIntro extends React.Component {
     );
   }
 
+  render(){
+
+    return (
+      <View>
+        {this.state.introModal === 1 ? this.introModal1() : null}
+        {this.state.introModal === 2 ? this.introModal2() : null}
+        {this.state.introModal === 3 ? this.introModal3() : null}
+      </View>
+    );
+  }
 }
+
+export default connect(null, null)(JumbleIntro);
