@@ -53,7 +53,8 @@ export const endRound = ({ roundCompleted, activeLevel, itemsToggle}) => {
       });
   } else if(roundCompleted && activeLevel % 20 === 0){
     firebase.database().ref(`/gameInfo/${currentUser.uid}`)
-      .update({ activeLevelAttempted: false,
+      .update({ activeLevel,
+                activeLevelAttempted: false,
                 itemsToggle
       });
   }

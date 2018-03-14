@@ -12,13 +12,13 @@ export const assignLevel = (nextLevel, levelType) => {
   };
 };
 
-export const advanceStage = () => {
+export const advanceStage = (activeLevel) => {
   const { currentUser } = firebase.auth();
   firebase.database().ref(`/gameInfo/${currentUser.uid}`)
-    .update({ activeLevelAttempted: false,
-              itemsToggle
-    });
+    .update({ activeLevel: activeLevel + 1 });
+
   return {
-    type: ADVANCE_STAGE
+    type: ADVANCE_STAGE,
+    activeLevel
   };
 };

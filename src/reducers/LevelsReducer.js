@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import {
   ASSIGN_LEVEL, END_ROUND,
-  LOGIN_USER_SUCCESS,
+  LOGIN_USER_SUCCESS, ADVANCE_STAGE
 } from '../actions/types';
 
 import Levels from '../games/levels.json';
@@ -26,6 +26,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case ADVANCE_STAGE:
+      const advanceState = merge({}, state);
+      advanceState.activeLevel = state.activeLevel + 1;
+      return advanceState;
+
     case LOGIN_USER_SUCCESS:
       const unsolvedState = merge({}, state);
       unsolvedState.activeLevel = action.activeLevel;
@@ -43,11 +48,18 @@ export default (state = INITIAL_STATE, action) => {
 
     case END_ROUND:
       const updatedState = merge({}, state);
-      if(action.roundCompleted){
+      if(action.roundCompleted && action.activeLevel % 20 != 0){
         const nextUpdated = Math.max(updatedState.nextUnsolvedLevel, action.activeLevel + 1);
         updatedState.nextUnsolvedLevel = nextUpdated;
 
         // advance stage
+        const stage = Levels[updatedState.nextUnsolvedLevel].stage;
+        if(stage !== state.stage){
+          updatedState.lastStage = state.stage;
+          updatedState.stage = stage;
+          updatedState.stageNum += 1;
+        }
+      } else if (action.roundCompleted && action.activeLevel % 20 === 0){
         const stage = Levels[updatedState.nextUnsolvedLevel].stage;
         if(stage !== state.stage){
           updatedState.lastStage = state.stage;

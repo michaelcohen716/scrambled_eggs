@@ -30,7 +30,7 @@ class AdvanceStage extends React.Component {
 
       if(this.props.eggcoin > 10000){
         this.props.spendEggcoin(10000, this.props.eggcoin); //advance stage
-        this.props.advanceStage();
+        this.props.advanceStage(this.props.activeLevel);
         setTimeout(() => {
           Actions.levels({ type:'reset' });
 
@@ -215,7 +215,8 @@ const mapStateToProps = state => {
   return {
     stage: state.levels.stage,
     eggcoin: state.score.userEggcoin,
-    lastStage: state.levels.lastStage
+    lastStage: state.levels.lastStage,
+    activeLevel: state.levels.activeLevel
   };
 };
 
