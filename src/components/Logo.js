@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 class Logo extends React.Component {
   render(){
     return (
-      <View style={styles.logoHolder}>
+      <View style={[styles.logoHolder, this.props.style]}>
         <View style={styles.logoTextHolder}>
           <Text style={styles.circleText}>Scrambled</Text>
         </View>
