@@ -9,8 +9,36 @@ import FryingPan from './FryingPan';
 class JumbleGame extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      introVisible: true
+    };
+    this.introModal = this.introModal.bind(this);
+
   }
 
+  introModal(){
+    const styles = {
+      topBarHolder: {
+        flex: 3,
+        borderColor: 'yellow',
+        borderWidth: 3,
+        backgroundColor: 'transparent'
+      }
+    };
+
+    return (
+      <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
+        <View style={{flex: 1, flexDirection: 'column'}}>
+          <View style={{flex: 4}} />
+          <View style={styles.topBarHolder}>
+
+          </View>
+          <View style={{flex: 37, backgroundColor: 'blue'}} />
+
+        </View>
+      </Modal>
+    );
+  }
 
   render(){
     const empties = this.props.answers.map((scramble, idx) => {
@@ -25,6 +53,8 @@ class JumbleGame extends React.Component {
       <View style={styles.parent}>
 
         <InfoBar />
+
+        {this.state.introVisible ? this.introModal() : null}
 
         <WordHolder />
 

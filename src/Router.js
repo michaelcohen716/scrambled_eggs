@@ -11,8 +11,8 @@ const RouterComponent = () => {
   return (
     <Router>
       <Scene key="root" tabs={false}>
-        <Scene initial key="login" component={LoginForm} title="" />
-        <Scene key="levels" component={LevelsPage} title="Levels" />
+        <Scene key="login" component={LoginForm} title="" />
+        <Scene initial key="levels" component={LevelsPage} title="Levels" />
         <Scene key="game" component={Game} title="Game On" />
         <Scene key="roundReview" component={RoundReview} title="Round Review" />
         <Scene key="advanceStage" component={AdvanceStage} title="Advance Stage" />

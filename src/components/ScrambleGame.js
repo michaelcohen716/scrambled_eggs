@@ -11,7 +11,7 @@ class ScrambleGame extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      introVisible: true
+      introVisible: false
     };
     this.introModal = this.introModal.bind(this);
   }
