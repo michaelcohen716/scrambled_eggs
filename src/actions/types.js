@@ -22,7 +22,10 @@ export const UNDO_WORD = 'undo_word';
 export const RECORD_SCORE = 'record_score';
 export const AWARD_WORD_COMPLETION = 'award_word_completion';
 export const REDUCE_SCORE_MULTIPLIER = 'reduce_score_multiplier';
+
+// levels
 export const SPEND_EGGCOIN = 'spend_eggcoin';
+export const ADVANCE_STAGE = 'advance_stage';
 
 //scramble
 export const START_NEW_SCRAMBLE = 'start_new_scramble';

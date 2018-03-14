@@ -6,7 +6,7 @@ import { View, Text, TouchableOpacity,
 import { Actions } from 'react-native-router-flux';
 import InfoBar from './InfoBar';
 import EggcoinMarket from './EggcoinMarket';
-import { spendEggcoin } from '../actions';
+import { spendEggcoin, advanceStage } from '../actions';
 import SunnySideUp from '../assets/sunny_side_up.png';
 import HardBoiled from '../assets/hard_boiled.png';
 import OverEasy from '../assets/over_easy.png';
@@ -30,7 +30,7 @@ class AdvanceStage extends React.Component {
 
       if(this.props.eggcoin > 10000){
         this.props.spendEggcoin(10000, this.props.eggcoin); //advance stage
-
+        this.props.advanceStage();
         setTimeout(() => {
           Actions.levels({ type:'reset' });
 
@@ -219,4 +219,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { spendEggcoin })(AdvanceStage);
+export default connect(mapStateToProps, { spendEggcoin, advanceStage })(AdvanceStage);
