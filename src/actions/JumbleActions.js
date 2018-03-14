@@ -45,13 +45,20 @@ export const endRound = ({ roundCompleted, activeLevel, itemsToggle}) => {
   const newLevel = activeLevel + 1;
   const { currentUser } = firebase.auth();
 
-  if(roundCompleted){
+  if(roundCompleted && activeLevel % 20 != 0){ //don't advance to next stage yet if % 20 == 0
     firebase.database().ref(`/gameInfo/${currentUser.uid}`)
       .update({ activeLevel: newLevel,
                 activeLevelAttempted: false,
                 itemsToggle
       });
-  } else {
+  } else if(roundCompleted && activeLevel % 20 === 0){
+    firebase.database().ref(`/gameInfo/${currentUser.uid}`)
+      .update({ activeLevelAttempted: false,
+                itemsToggle
+      });
+  }
+
+  else {
     firebase.database().ref(`/gameInfo/${currentUser.uid}`)
       .update({ activeLevelAttempted: true, itemsToggle });
   }
