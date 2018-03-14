@@ -8,7 +8,8 @@ class Timer extends React.Component {
     super(props);
     this.state = {
       seconds: this.props.seconds,
-      timer: null
+      timer: null,
+      timerActive: true
     };
     this.initialTime = this.props.seconds; //10
     this.tick = this.tick.bind(this);
@@ -20,6 +21,13 @@ class Timer extends React.Component {
       // this.props.reduceScoreMultiplier(-(100 / this.initialTime * 20)); //add back score potential
       // this.setState({seconds: this.state.seconds + 20});
     }
+
+    // if(nextProps.timerActive === false){
+    //   this.setState({ timerActive: false});
+    // }
+    // if(nextProps.timerActive === true){
+    //   this.setState({ timerActive: true});
+    // }
   }
 
   componentDidMount(){
@@ -30,25 +38,25 @@ class Timer extends React.Component {
   tick(){
     const { roundScore, activeLevel, eggcoin, itemsToggle } = this.props;
 
-    // executing 'recordScore' twice for some reason
+
     if(this.props.wordIndex === this.props.attempts.length){
       const timer = this.state.timer;
       this.setState({ timer: clearInterval(timer) });
 
       setTimeout(() => {
-       const provisionalEggcoin = eggcoin + roundScore;
+        const provisionalEggcoin = eggcoin + roundScore;
 
-       this.props.recordScore(roundScore, provisionalEggcoin);
+        this.props.recordScore(roundScore, provisionalEggcoin);
 
-       const endRoundObject = {
-         roundCompleted: true,
-         activeLevel,
-         itemsToggle
-       };
-       this.props.endRound(endRoundObject);
+        const endRoundObject = {
+          roundCompleted: true,
+          activeLevel,
+          itemsToggle
+        };
+        this.props.endRound(endRoundObject);
 
-       return;
-    }, 800);
+        return;
+      }, 800);
 
     }
 
@@ -66,8 +74,11 @@ class Timer extends React.Component {
       return;
     }
 
-    this.props.reduceScoreMultiplier(this.decrement);
-    this.setState({ seconds: this.state.seconds - 1});
+    if(this.state.timerActive){ //paused if intro rendered
+      this.props.reduceScoreMultiplier(this.decrement);
+      this.setState({ seconds: this.state.seconds - 1});
+
+    }
   }
 
   render(){
@@ -113,6 +124,7 @@ const mapStateToProps = state => {
     seconds: state[levelType].roundTime,
     itemsToggle: state.items.itemsToggle,
     addTimeToggle: state.items.addTimeToggle,
+    timerActive: state.score.timerActive,
     levelType
   };
 };

@@ -1,7 +1,8 @@
 import firebase from 'firebase';
 import {
   AWARD_WORD_COMPLETION, RECORD_SCORE,
-  REDUCE_SCORE_MULTIPLIER, SPEND_EGGCOIN
+  REDUCE_SCORE_MULTIPLIER, SPEND_EGGCOIN,
+  PAUSE_TIMER, UNPAUSE_TIMER
 } from './types';
 
 export const awardWordCompletion = (scoreIncrement) => {
@@ -43,5 +44,17 @@ export const spendEggcoin = (cost, eggcoin) => {
   return {
     type: SPEND_EGGCOIN,
     cost
+  };
+};
+
+export const pauseTimer = () => {
+  return {
+    type: PAUSE_TIMER
+  };
+};
+
+export const unpauseTimer = () => {
+  return {
+    type: UNPAUSE_TIMER
   };
 };

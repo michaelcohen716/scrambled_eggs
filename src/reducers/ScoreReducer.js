@@ -6,7 +6,8 @@ import {
   LOGIN_USER_SUCCESS,
   START_NEW_WORD, RECORD_SCORE,
   START_NEW_SCRAMBLE, SPEND_EGGCOIN,
-  MAKE_PURCHASE, FIRE_UP
+  MAKE_PURCHASE, FIRE_UP,
+  PAUSE_TIMER, UNPAUSE_TIMER
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -17,11 +18,22 @@ const INITIAL_STATE = {
   activeLevelAttempted: false,
   unattemptedBaseScore: 5, //actions/reducers don't change these
   attemptedBaseScore: 1, //actions/reducers don't change these
-  fireUpToggle: false
+  fireUpToggle: false,
+  timerActive: true
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case PAUSE_TIMER:
+      const pauseState = merge({}, state);
+      pauseState.timerActive = false;
+      return pauseState;
+
+    case UNPAUSE_TIMER:
+      const unpauseState = merge({}, state);
+      unpauseState.timerActive = true;
+      return unpauseState;
+
     case FIRE_UP:
       const fireState = merge({}, state);
       fireState.fireUpToggle = true;

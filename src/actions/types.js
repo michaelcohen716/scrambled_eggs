@@ -22,6 +22,8 @@ export const UNDO_WORD = 'undo_word';
 export const RECORD_SCORE = 'record_score';
 export const AWARD_WORD_COMPLETION = 'award_word_completion';
 export const REDUCE_SCORE_MULTIPLIER = 'reduce_score_multiplier';
+export const PAUSE_TIMER = 'pause_timer';
+export const UNPAUSE_TIMER = 'unpause_timer';
 
 // levels
 export const SPEND_EGGCOIN = 'spend_eggcoin';
