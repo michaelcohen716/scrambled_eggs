@@ -13,7 +13,6 @@ class JumbleGame extends React.Component {
       introVisible: true,
       introModal: 1
     };
-    // this.renderModal = this.renderModal.bind(this);
     this.introModal1 = this.introModal1.bind(this);
     this.introModal2 = this.introModal2.bind(this);
     this.advance = this.advance.bind(this);
@@ -32,10 +31,28 @@ class JumbleGame extends React.Component {
         borderWidth: 3,
         backgroundColor: 'transparent'
       },
+      messageHolder: {
+        flex: 6,
+        flexDirection: 'column',
+        backgroundColor: 'black',
+        alignItems: 'center'
+      },
       bottomFiller: {
-        flex: 32,
+        flex: 26,
         backgroundColor: 'black',
         opacity: 0.9
+      },
+      messageText: {
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 24,
+        color: 'white',
+        fontWeight: 'bold'
+      },
+      smallMessage: {
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 18,
+        color: 'white',
+        fontWeight: 'bold'
       }
     };
 
@@ -46,6 +63,20 @@ class JumbleGame extends React.Component {
           <View style={styles.topFiller} />
 
           <View style={styles.topBar} />
+
+          <View style={styles.messageHolder}>
+            <Text style={styles.messageText}>
+              This is a Jumble puzzle
+            </Text>
+            <Text style={styles.smallMessage}>
+              Find <Text style={{fontFamily: 'RobotoCondensed-Italic'}}>
+                      all
+                   </Text> the words with
+                   <Text style={{fontFamily: 'RobotoCondensed-Italic'}}>
+                      all
+                   </Text> the letters
+            </Text>
+          </View>
 
           <View style={styles.bottomFiller} />
         </View>
@@ -149,22 +180,6 @@ class JumbleGame extends React.Component {
   advance(){
     this.setState({ introModal: this.state.introModal + 1});
   }
-
-  // renderModal(){
-  //   if(!this.state.modalVisible){
-  //     return null;
-  //   }
-  //
-  //   if(this.state.introModal === 1){
-  //     return this.introModal1();
-  //   }
-  //
-  //   if(this.state.introModal === 2){
-  //     return this.introModal2();
-  //   }
-  //
-  //   // if(this.state.)
-  // }
 
   render(){
     const empties = this.props.answers.map((scramble, idx) => {
