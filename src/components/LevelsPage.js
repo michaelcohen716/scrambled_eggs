@@ -34,6 +34,10 @@ class LevelsPage extends React.Component {
     if(nextProps.stageNum !== this.props.stageNum){
       this.setState({ stageDropdown: nextProps.stageNum - 1})
     }
+    console.log(nextProps);
+    if(nextProps.activeLevel > 1 || nextProps.activeLevelAttempted){
+      this.setState({ introVisible: false});
+    }
   }
 
   levelFrameworks(){
@@ -291,7 +295,9 @@ const mapStateToProps = state => {
     eggcoin: state.score.userEggcoin,
     stage: state.levels.stage,
     stages: state.levels.stages,
-    stageNum: state.levels.stageNum
+    stageNum: state.levels.stageNum,
+    activeLevel: state.levels.activeLevel,
+    activeLevelAttempted: state.score.activeLevelAttempted
   };
 };
 
