@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
-    "fix_react_xcodeproj": "ruby scripts/sync-build-configs.rb",
-    "postinstall": "npm run fix_react_xcodeproj"
+    "test": "jest"
   },
   "dependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
