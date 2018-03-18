@@ -28,6 +28,7 @@ class LadderGame extends React.Component {
     if(nextProps.shakeItUp != this.props.shakeItUp){
       this.answersArray[this.props.currentWordIndex - 1] = nextProps.activeLetters;
     }
+
   }
 
   render(){
@@ -117,7 +118,9 @@ const mapStateToProps = state => {
     attempts: state.ladder.attempts,
     activeLetters: state.ladder.activeLetters,
     shakeItUp: state.items.itemsToggle.shakeItUp,
-    message: state.ladder.message
+    message: state.ladder.message,
+    activeLevel: state.levels.activeLevel,
+    activeLevelAttempted: state.score.activeLevelAttempted
   };
 };
 

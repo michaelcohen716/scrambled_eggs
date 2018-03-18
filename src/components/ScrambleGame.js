@@ -16,6 +16,12 @@ class ScrambleGame extends React.Component {
     this.introModal = this.introModal.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(next.props.activeLevel === 2 && !nextProps.activeLevelAttempted){
+      this.setState({ introVisible: true});
+    }
+  }
+
   introModal(){
     const styles = {
       topBarHolder: {
@@ -208,7 +214,9 @@ const mapStateToProps = state => {
     inputChanges: state.scramble.inputChanges,
     wordIndex: state.scramble.wordIndex,
     answers: state.scramble.answers,
-    attempts: state.scramble.attempts
+    attempts: state.scramble.attempts,
+    activeLevel: state.levels.activeLevel,
+    activeLevelAttempted: state.score.activeLevelAttempted
   };
 };
 

@@ -12,7 +12,7 @@ class JumbleGame extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      introVisible: true,
+      introVisible: false,
     };
 
   }
@@ -25,6 +25,12 @@ class JumbleGame extends React.Component {
     // else {
     //   this.setState({ introVisible: false});
     // }
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.activeLevel === 1 && !nextProps.activeLevelAttempted){
+      this.setState({ introVisible: true});
+    }
   }
 
   render(){

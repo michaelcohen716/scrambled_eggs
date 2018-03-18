@@ -19,7 +19,7 @@ class LevelsPage extends React.Component {
       stage: this.props.stage,
       stageDropdown: this.props.stageNum - 1,
       dropdownShowing: false,
-      introVisible: true
+      introVisible: false
     };
     this.levels = Object.keys(Levels); //all levels in game
     this.stages = Object.keys(this.props.stages);
@@ -34,9 +34,15 @@ class LevelsPage extends React.Component {
     if(nextProps.stageNum !== this.props.stageNum){
       this.setState({ stageDropdown: nextProps.stageNum - 1})
     }
-    console.log(nextProps);
-    if(nextProps.activeLevel > 1 || nextProps.activeLevelAttempted){
-      this.setState({ introVisible: false});
+
+    if(nextProps.activeLevel === 1 && !nextProps.activeLevelAttempted){
+      this.setState({ introVisible: true});
+    }
+  }
+
+  componentDidMount(){
+    if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
+      this.setState({ introVisible: true});
     }
   }
 
@@ -159,7 +165,6 @@ const styles = {
     borderWidth: 2,
     flex: 1,
     opacity: 0,
-    // backgroundColor: 'silver'
   },
   topRight:{
     flex: 1,
@@ -236,11 +241,7 @@ const styles = {
     position: 'relative'
   },
   stageName: {
-    // height: 30,
-    // width: 30,
     flex: 3,
-    // marginLeft: 13,
-
   },
   contentContainerStyle: {
     flexDirection: 'row',
@@ -283,7 +284,6 @@ const styles = {
   stage: {
     fontSize: 23,
     fontFamily: 'RobotoCondensed-Regular',
-    // marginLeft: 7,
     marginTop: 2,
     color: 'white'
   },
