@@ -22,13 +22,12 @@ class LevelsIntro extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if(nextProps.activeLevel === 1 && !nextProps.activeLevelAttempted){
-      debugger
       this.setState({ introVisible: true});
     }
   }
 
   componentDidMount(){
-    if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted && !this.props.email){
+    if(this.props.nextUnsolvedLevel === 1 && !this.props.activeLevelAttempted && !this.props.email){
       this.setState({ introVisible: true });
     } else if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
 
@@ -286,7 +285,8 @@ class LevelsIntro extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    activeLevel: state.levels.activeLevel,
+    // activeLevel: state.levels.activeLevel,
+    nextUnsolvedLevel: state.levels.nextUnsolvedLevel,
     activeLevelAttempted: state.score.activeLevelAttempted,
     email: state.auth.email
   };
