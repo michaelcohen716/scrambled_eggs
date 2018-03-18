@@ -35,9 +35,7 @@ class LevelsPage extends React.Component {
       this.setState({ stageDropdown: nextProps.stageNum - 1})
     }
 
-    if(nextProps.activeLevel === 1 && !nextProps.activeLevelAttempted){
-      this.setState({ introVisible: true});
-    }
+
   }
 
   componentDidMount(){

@@ -8,7 +8,7 @@ class LevelsIntro extends React.Component {
     super(props);
     this.state = {
       introModal: 1,
-      introVisible: true
+      introVisible: false
     };
     this.advance = this.advance.bind(this);
     this.introModal1 = this.introModal1.bind(this);
@@ -18,6 +18,18 @@ class LevelsIntro extends React.Component {
 
   advance(){
     this.setState({ introModal: this.state.introModal + 1 });
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.activeLevel === 1 && !nextProps.activeLevelAttempted){
+      this.setState({ introVisible: true});
+    }
+  }
+
+  componentDidMount(){
+    if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
+      this.setState({ introVisible: true });
+    }
   }
 
   introModal3(){
@@ -269,4 +281,11 @@ class LevelsIntro extends React.Component {
   }
 }
 
-export default LevelsIntro;
+const mapStateToProps = state => {
+  return {
+    activeLevel: state.levels.activeLevel,
+    activeLevelAttempted: state.score.activeLevelAttempted
+  };
+};
+
+export default connect(mapStateToProps, null)(LevelsIntro);
