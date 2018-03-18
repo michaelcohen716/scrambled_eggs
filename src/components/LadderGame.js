@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import FryingPan from './FryingPan';
 import InfoBar from './InfoBar';
 import LadderHolder from './LadderHolder';
-
+import LadderIntro from './LadderIntro';
 
 class LadderGame extends React.Component {
   constructor(props){
@@ -18,6 +18,9 @@ class LadderGame extends React.Component {
       this.answers[2][0].split("")
     ];
     this.originalActiveLetters = this.props.activeLetters;
+    this.state = {
+      introVisible: false
+    };
   }
 
   componentWillReceiveProps(nextProps){
@@ -51,6 +54,8 @@ class LadderGame extends React.Component {
           <View style={styles.clues}>
 
             {firstHolder}
+
+            {this.state.introVisible ? <LadderIntro /> : null}
 
             <View style={styles.messageBox}>
               <Text style={styles.message}>{this.props.message}</Text>
