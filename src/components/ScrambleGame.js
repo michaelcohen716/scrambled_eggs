@@ -6,42 +6,26 @@ import ClueHolder from './ClueHolder';
 import ScrambleEmptyHolder from './ScrambleEmptyHolder';
 import ScrambleTile from './ScrambleTile';
 import FryingPan from './FryingPan';
+import ScrambleIntro from './ScrambleIntro';
 
 class ScrambleGame extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      introVisible: false
+      introVisible: true
     };
-    this.introModal = this.introModal.bind(this);
   }
 
-  componentWillReceiveProps(nextProps){
-    if(next.props.activeLevel === 2 && !nextProps.activeLevelAttempted){
-      this.setState({ introVisible: true});
+  // componentWillReceiveProps(nextProps){
+  //   if(nextProps.activeLevel === 2 && !nextProps.activeLevelAttempted){
+  //     this.setState({ introVisible: true});
+  //   }
+  // }
+
+  componentDidMount(){
+    if(this.props.activeLevel === 2 && !this.props.activeLevelAttempted){
+      this.setState({ introVisible: true });
     }
-  }
-
-  introModal(){
-    const styles = {
-      topBarHolder: {
-        flex: 1,
-        borderColor: 'yellow',
-        borderWidth: 3
-      }
-    };
-
-    return (
-      <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
-        <View style={{flex: 1, flexDirection: 'column'}}>
-          <View style={styles.topBarHolder}>
-
-          </View>
-          <View style={{flex: 16, backgroundColor: 'blue'}} />
-
-        </View>
-      </Modal>
-    );
   }
 
   render(){
@@ -83,11 +67,11 @@ class ScrambleGame extends React.Component {
         );
       })
     );
-    // {this.state.introVisible ? this.introModal() : null}
 
     return (
       <View style={styles.parent}>
         <InfoBar />
+        {this.state.introVisible ? <ScrambleIntro /> : null}
 
         <View style={styles.clueHolder}>
           <ClueHolder clue={firstClue.clue} key={0} idx={1}/>
