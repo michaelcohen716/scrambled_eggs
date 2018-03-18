@@ -19,7 +19,7 @@ class LadderGame extends React.Component {
     ];
     this.originalActiveLetters = this.props.activeLetters;
     this.state = {
-      introVisible: true
+      introVisible: false
     };
   }
 
@@ -32,6 +32,12 @@ class LadderGame extends React.Component {
       this.answersArray[this.props.currentWordIndex - 1] = nextProps.activeLetters;
     }
 
+  }
+
+  componentDidMount(){
+    if(this.props.activeLevel === 3 && !this.props.activeLevelAttempted){
+      this.setState({ introVisible: true });
+    }
   }
 
   render(){

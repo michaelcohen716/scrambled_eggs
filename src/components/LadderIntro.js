@@ -10,6 +10,7 @@ class LadderIntro extends React.Component {
     };
     this.introModal1 = this.introModal1.bind(this);
     this.introModal2 = this.introModal2.bind(this);
+    this.introModal3 = this.introModal3.bind(this);
     this.advance = this.advance.bind(this);
 
   }
@@ -24,12 +25,79 @@ class LadderIntro extends React.Component {
 
   introModal3(){
     const styles = {
-
+      topFiller: {
+        flex: 15,
+        backgroundColor: 'black',
+        opacity: 0.9
+      },
+      messageHolder: {
+        flex: 4,
+        flexDirection: 'column',
+        backgroundColor: 'black',
+        opacity: 0.9,
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      barHolder: {
+        flex: 10,
+        borderColor: 'yellow',
+        borderWidth: 3,
+        backgroundColor: 'transparent'
+      },
+      smallText: {
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 18,
+        color: 'white',
+        fontWeight: 'bold'
+      },
+      advanceHolder: {
+        flex: 4,
+        backgroundColor: 'black',
+        opacity: 0.9,
+        justifyContent: 'center',
+        alignItems: 'flex-end'
+      },
+      advance: {
+        width: 80,
+        height: 35,
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 4,
+        backgroundColor: 'black',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      advanceText: {
+        color: 'white',
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 18,
+      }
     };
 
     return (
-      <Modal>
+      <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
+        <View style={{flex: 1, flexDirection: 'column'}}>
+          <View style={{flex: 4 }} />
+          <View style={styles.topFiller} />
+          
+          <View style={styles.messageHolder}>
+            <Text style={styles.smallText}>
+              And then find a word one letter shorter
+              <Text style={{fontStyle: 'italic'}}> again </Text>
+            </Text>
+          </View>
 
+          <View style={styles.barHolder} />
+
+          <View style={styles.advanceHolder}>
+            <TouchableOpacity style={styles.advance} onPress={this.advance}>
+              <Text style={styles.advanceText}>Got it</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={{flex: 10, backgroundColor: 'black', opacity: 0.9}} />
+
+        </View>
       </Modal>
     );
   }
@@ -204,6 +272,7 @@ class LadderIntro extends React.Component {
       <View>
         {this.state.introModal === 1 ? this.introModal1() : null}
         {this.state.introModal === 2 ? this.introModal2() : null}
+        {this.state.introModal === 3 ? this.introModal3() : null}
       </View>
     );
   }
