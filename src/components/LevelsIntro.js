@@ -29,10 +29,9 @@ class LevelsIntro extends React.Component {
 
   componentDidMount(){
     if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted && !this.props.email){
-      debugger
       this.setState({ introVisible: true });
     } else if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
-      
+
     }
   }
 

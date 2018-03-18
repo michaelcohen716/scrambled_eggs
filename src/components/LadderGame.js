@@ -19,7 +19,7 @@ class LadderGame extends React.Component {
     ];
     this.originalActiveLetters = this.props.activeLetters;
     this.state = {
-      introVisible: false
+      introVisible: true
     };
   }
 
@@ -50,12 +50,12 @@ class LadderGame extends React.Component {
 
         <InfoBar />
 
+        {this.state.introVisible ? <LadderIntro /> : null}
         <View style={styles.game}>
           <View style={styles.clues}>
 
             {firstHolder}
 
-            {this.state.introVisible ? <LadderIntro /> : null}
 
             <View style={styles.messageBox}>
               <Text style={styles.message}>{this.props.message}</Text>
