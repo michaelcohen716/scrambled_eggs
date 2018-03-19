@@ -26,12 +26,45 @@ class ScrambleIntro extends React.Component {
   introModal2(){
     const styles = {
         topBarHolder: {
-          flex: 14,
+          flex: 15,
           flexDirection: 'column',
           backgroundColor: 'transparent',
           borderColor: 'yellow',
           borderWidth: 1,
-        }
+        },
+        messageHolder: {
+          flex: 3,
+          backgroundColor: 'black',
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        messageText: {
+          fontSize: 19,
+          fontFamily: 'RobotoCondensed-Regular',
+          color: 'white'
+        },
+        advanceHolder: {
+          flex: 3,
+          backgroundColor: 'black',
+          opacity: 0.9,
+          justifyContent: 'center',
+          alignItems: 'flex-end'
+        },
+        advance: {
+          width: 80,
+          height: 35,
+          borderColor: 'white',
+          borderWidth: 2,
+          borderRadius: 4,
+          backgroundColor: 'black',
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        advanceText: {
+          color: 'white',
+          fontFamily: 'RobotoCondensed-Regular',
+          fontSize: 18,
+        },
     };
 
     return (
@@ -40,10 +73,28 @@ class ScrambleIntro extends React.Component {
           <View style={{flex: 4}}/>
           <View style={{flex: 15, backgroundColor: 'black', opacity: 0.9}}/>
 
-          <View style={styles.topBarHolder} >
-
+          <View style={styles.messageHolder}>
+            <Text style={styles.messageText}>
+              Then add a letter...
+            </Text>
           </View>
-          <View style={{flex: 7, backgroundColor: 'black', opacity: 0.9}} />
+
+          <View style={styles.topBarHolder} />
+
+          <View style={styles.messageHolder}>
+            <Text style={styles.messageText}>
+              ...and <Text style={{fontStyle: 'italic'}}> rescramble </Text>
+              to define another word
+            </Text>
+          </View>
+
+          <View style={styles.advanceHolder}>
+            <TouchableOpacity style={styles.advance} onPress={this.advance}>
+              <Text style={styles.advanceText}>Got it</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={{flex: 1, backgroundColor: 'black', opacity: 0.9}} />
         </View>
       </Modal>
     );
@@ -130,7 +181,7 @@ class ScrambleIntro extends React.Component {
             </View>
 
             <View style={styles.bottomHalf}>
-              <View style={{marginRight: 8, marginBottom: 13, flexDirection: 'column'}}>
+              <View style={{marginRight: 8, marginBottom: 14, flexDirection: 'column'}}>
                 <Text style={styles.messageText}>
                   to define a word
                 </Text>
