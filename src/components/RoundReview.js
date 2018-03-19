@@ -60,6 +60,9 @@ class RoundReview extends React.Component {
           <View style={styles.picHolder}>
             <Image source={image} style={styles.image}/>
           </View>
+          <View>
+            <Text style={styles.stageText}>Level {this.props.activeLevel}</Text>
+          </View>
         </View>
 
         <View style={styles.summary}>
