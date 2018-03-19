@@ -35,14 +35,23 @@ class LevelsPage extends React.Component {
       this.setState({ stageDropdown: nextProps.stageNum - 1})
     }
 
-
-  }
-
-  componentDidMount(){
-    if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
-      this.setState({ introVisible: true});
+    if(nextProps.activeLevel === 1 && !nextProps.activeLevelAttempted && this.props.auth){
+      // debugger
+      this.setState({ introVisible: true }, () => {
+        this.setState({ introVisible: false}, () => {
+          this.setState({ introVisible: true });
+        })
+      } );
     }
+
   }
+  //
+  // componentDidMount(){
+  //   if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
+  //     debugger
+  //     this.setState({ introVisible: true});
+  //   }
+  // }
 
   levelFrameworks(){
     let frameworks = [];
@@ -295,7 +304,8 @@ const mapStateToProps = state => {
     stages: state.levels.stages,
     stageNum: state.levels.stageNum,
     activeLevel: state.levels.activeLevel,
-    activeLevelAttempted: state.score.activeLevelAttempted
+    activeLevelAttempted: state.score.activeLevelAttempted,
+    auth: state.auth.email
   };
 };
 
