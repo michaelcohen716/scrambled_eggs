@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { logout } from '../actions';
+import { logout, showGeneralInfo } from '../actions';
 import { Actions } from 'react-native-router-flux';
 import EggcoinMarket from './EggcoinMarket';
 
@@ -31,7 +31,7 @@ class MenuPage extends React.Component {
         {this.state.eggcoinMarket ? <EggcoinMarket /> : null}
 
         <View style={styles.item}>
-          <TouchableOpacity style={styles.optionButton} onPress={() => Actions.extraInfo()}>
+          <TouchableOpacity style={styles.optionButton} onPress={() => Actions.instructions()}>
             <Text style={styles.buttonText}>Instructions</Text>
           </TouchableOpacity>
         </View>
@@ -92,4 +92,4 @@ const styles = {
   }
 };
 
-export default connect(null, { logout })(MenuPage);
+export default connect(null, { logout, showGeneralInfo })(MenuPage);

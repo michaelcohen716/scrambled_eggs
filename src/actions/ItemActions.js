@@ -3,7 +3,8 @@ import {
   MAKE_PURCHASE, SHAKE_IT_UP,
   SHOW_ITEM_DESCRIPTION, SEE_A_LETTER,
   UNLOCK_A_WORD, FIRE_UP,
-  ADD_TIME
+  ADD_TIME,
+  SHOW_GENERAL_INFO //not related to powerups
 } from './types';
 import merge from 'lodash/merge';
 

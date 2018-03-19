@@ -43,6 +43,7 @@ export const SEE_A_LETTER = 'see_a_letter';
 export const UNLOCK_A_WORD = 'unlock_a_word';
 export const FIRE_UP = 'fire_up';
 export const ADD_TIME = 'add_time';
+export const SHOW_GENERAL_INFO = 'show_general_info';
 
 //ladder
 export const START_NEW_LADDER = 'start_new_ladder';

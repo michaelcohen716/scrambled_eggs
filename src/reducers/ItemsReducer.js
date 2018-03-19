@@ -3,7 +3,7 @@ import {
   SHOW_ITEM_DESCRIPTION, SHAKE_IT_UP,
   SEE_A_LETTER, START_NEW_SCRAMBLE,
   FIRE_UP, UNLOCK_A_WORD, ASSIGN_LEVEL,
-  ADD_TIME, END_ROUND
+  ADD_TIME, END_ROUND,
 }
 from '../actions/types';
 import merge from 'lodash/merge';
@@ -17,7 +17,7 @@ const INITIAL_STATE = {
     'addTime': false
   },
   message: '',
-  addTimeToggle: false
+  addTimeToggle: false,
 };
 
 export default(state = INITIAL_STATE, action) => {
@@ -73,13 +73,3 @@ export default(state = INITIAL_STATE, action) => {
 
   }
 };
-
-function deepCopy(o) {
-  let output, v, key;
-  output = Array.isArray(o) ? [] : {};
-  for (key in o) {
-    v = o[key];
-    output[key] = (typeof v === "object") ? deepCopy(v) : v;
-  }
-  return output;
-}
