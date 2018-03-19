@@ -28,7 +28,6 @@ import logger from 'redux-logger';
   // link eggcoin market to app store
   // get to 100 puzzles
   // complete home/menu page
-  // conditional tile rendering second word scramble game
   // invite friends button on round review
 
 class App extends Component {

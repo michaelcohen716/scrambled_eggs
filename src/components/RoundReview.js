@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { textWithoutEncoding } from 'react-native-communications';
 import CommaNumber from 'comma-number';
 import SunnySideUp from '../assets/sunny_side_up.png';
 import HardBoiled from '../assets/hard_boiled.png';
@@ -11,6 +12,10 @@ import Frittata from '../assets/frittata.png';
 class RoundReview extends React.Component {
   proceed(){
     Actions.levels({ type:'reset' });
+  }
+
+  invite(){
+    textWithoutEncoding(null, "Play Scrambled Eggs with me!");
   }
 
   render(){
@@ -84,7 +89,7 @@ class RoundReview extends React.Component {
         </View>
 
         <View style={styles.invite}>
-          <TouchableOpacity style={styles.proceed}>
+          <TouchableOpacity style={styles.proceed} onPress={this.invite}>
             <Text style={styles.buttonText}>Invite friends</Text>
           </TouchableOpacity>
         </View>
