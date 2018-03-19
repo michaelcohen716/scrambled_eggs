@@ -3,32 +3,50 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { logout } from '../actions';
 import { Actions } from 'react-native-router-flux';
+import EggcoinMarket from './EggcoinMarket';
 
 class MenuPage extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      eggcoinMarket: false
+    };
+    this.renderMarket = this.renderMarket.bind(this);
     this.logout = this.logout.bind(this);
   }
-  
+
   logout(){
     this.props.logout();
     Actions.login();
+  }
+
+  renderMarket(){
+    this.setState({ eggcoinMarket: true });
   }
 
   render(){
     return (
       <View style={styles.parent}>
 
+        {this.state.eggcoinMarket ? <EggcoinMarket /> : null}
+
         <View style={styles.item}>
-          <TouchableOpacity style={styles.optionButton}>
+          <TouchableOpacity style={styles.optionButton} onPress={() => Actions.extraInfo()}>
             <Text style={styles.buttonText}>Instructions</Text>
           </TouchableOpacity>
         </View>
 
-        <View style={styles.item}></View>
-        <View style={styles.item}></View>
-        <View style={styles.item}></View>
-        <View style={styles.item}></View>
+        <View style={styles.item}>
+          <TouchableOpacity style={styles.optionButton}>
+            <Text style={styles.buttonText}>About the Developer</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.item}>
+          <TouchableOpacity style={styles.optionButton} onPress={this.renderMarket}>
+            <Text style={styles.buttonText}>Eggcoin Market</Text>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.item}>
           <TouchableOpacity style={styles.optionButton}>
@@ -42,6 +60,8 @@ class MenuPage extends React.Component {
           </TouchableOpacity>
         </View>
 
+        <View style={styles.item}></View>
+        <View style={styles.item}></View>
       </View>
     );
   }
