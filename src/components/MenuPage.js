@@ -1,8 +1,20 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { logout } from '../actions';
+import { Actions } from 'react-native-router-flux';
 
 class MenuPage extends React.Component {
+  constructor(props){
+    super(props);
+    this.logout = this.logout.bind(this);
+  }
+  
+  logout(){
+    this.props.logout();
+    Actions.login();
+  }
+
   render(){
     return (
       <View style={styles.parent}>
@@ -17,9 +29,15 @@ class MenuPage extends React.Component {
         <View style={styles.item}></View>
         <View style={styles.item}></View>
         <View style={styles.item}></View>
-        <View style={styles.item}></View>
+
         <View style={styles.item}>
           <TouchableOpacity style={styles.optionButton}>
+            <Text style={styles.buttonText}>Credits</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.item}>
+          <TouchableOpacity style={styles.optionButton} onPress={this.logout}>
             <Text style={styles.buttonText}>Logout</Text>
           </TouchableOpacity>
         </View>
@@ -54,4 +72,4 @@ const styles = {
   }
 };
 
-export default connect(null, null)(MenuPage);
+export default connect(null, { logout })(MenuPage);

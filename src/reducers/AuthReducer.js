@@ -6,7 +6,8 @@ import {
   LOGIN_USER,
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
-  SIGNUP_USER_FAIL
+  SIGNUP_USER_FAIL,
+  LOGOUT
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -35,6 +36,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, error: 'Email/Password not recognized', password: '', loading: false };
     case SIGNUP_USER_FAIL:
       return { ...state, error: 'Email taken.', password: '', loading: false };
+    case LOGOUT:
+      return {};
     default:
       return state;
   }

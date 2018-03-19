@@ -26,7 +26,6 @@ class ScrambleTile extends React.Component {
     const { letterIndex, usedLetters, answerIndex, wordIndex, pastUsedLetters } = this.props;
 
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
-    console.log(this.props);
 
     if(usedLetters[letterIndex] && answerIndex === 1){
       return (

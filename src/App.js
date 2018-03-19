@@ -28,7 +28,6 @@ import logger from 'redux-logger';
   // link eggcoin market to app store
   // get to 100 puzzles
   // complete home/menu page
-  // invite friends button on round review
 
 class App extends Component {
   constructor(props){
@@ -49,19 +48,6 @@ class App extends Component {
 
     firebase.initializeApp(config);
   }
-
-  // componentWillUnmount() {
-  //   this.authSubscription();
-  // }
-  //
-  // componentDidMount() {
-  //   this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
-  //     this.setState({
-  //       loading: false,
-  //       user,
-  //     });
-  //   });
-  // }
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk, logger));

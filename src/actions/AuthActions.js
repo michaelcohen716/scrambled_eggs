@@ -9,7 +9,8 @@ import {
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
   CREATE_USER,
-  SIGNUP_USER_FAIL
+  SIGNUP_USER_FAIL,
+  LOGOUT
 } from './types';
 
 // user input state change
@@ -122,3 +123,11 @@ const loginUserSuccess = (dispatch, user) => {
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
 };
+
+export const logout = () => {
+  firebase.auth().signOut();
+
+  return {
+    type: LOGOUT
+  }
+}
