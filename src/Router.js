@@ -7,6 +7,7 @@ import RoundReview from './components/RoundReview';
 import AdvanceStage from './components/AdvanceStage';
 import MenuPage from './components/MenuPage';
 import Instructions from './components/Instructions';
+import AboutMe from './components/AboutMe';
 
 const RouterComponent = () => {
   return (
@@ -19,6 +20,7 @@ const RouterComponent = () => {
         <Scene key="advanceStage" component={AdvanceStage} title="Advance Stage" />
         <Scene key="menuPage" component={MenuPage} title="Menu" />
         <Scene key="instructions" component={Instructions} title="Instructions" />
+        <Scene key="aboutMe" component={AboutMe} title="About Me" />
       </Scene>
     </Router>
   );

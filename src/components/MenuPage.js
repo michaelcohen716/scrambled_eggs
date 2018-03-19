@@ -37,7 +37,7 @@ class MenuPage extends React.Component {
         </View>
 
         <View style={styles.item}>
-          <TouchableOpacity style={styles.optionButton}>
+          <TouchableOpacity style={styles.optionButton} onPress={() => Actions.aboutMe()}>
             <Text style={styles.buttonText}>About the Developer</Text>
           </TouchableOpacity>
         </View>
