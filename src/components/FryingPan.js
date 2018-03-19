@@ -134,7 +134,7 @@ var { width } = Dimensions.get('window');
 
 const styles = {
   eggcoinSale: {
-    marginBottom: 10
+    marginBottom: 12
   },
   buyEggcoinButton: {
     borderColor: 'blue',

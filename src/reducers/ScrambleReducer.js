@@ -171,7 +171,7 @@ export default (state = INITIAL_STATE, action) => {
         verifyState.attempts[wordIndex] = [];
       }
 
-      const usedLetters1 = new Array(state.activeLetters.length);
+      const usedLetters1 = new Array(verifyState.activeLetters.length);
       for (var k = 0; k < usedLetters1.length; k++) {
         usedLetters1[k] = false;
       }

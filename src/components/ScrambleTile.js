@@ -26,6 +26,15 @@ class ScrambleTile extends React.Component {
     const { letterIndex, usedLetters, answerIndex, wordIndex, pastUsedLetters } = this.props;
 
     const letter = this.props.letter ? this.props.letter.toUpperCase() : '';
+    console.log(this.props);
+
+    if(usedLetters[letterIndex] && answerIndex === 1){
+      return (
+        <TouchableOpacity style={styles.pressedActive2}>
+          <Text style={styles.pressedActiveText2}>{letter}</Text>
+        </TouchableOpacity>
+      );
+    }
 
     if(usedLetters[letterIndex] && wordIndex === answerIndex){ //used letter, active word
       return (
@@ -119,6 +128,23 @@ const styles = {
     fontSize: 20,
     fontFamily: 'RobotoCondensed-Regular',
     color: 'black'
+  },
+  pressedActive2: {
+    height: 45,
+    width: 45,
+    padding: 2,
+    margin: 4,
+    backgroundColor: 'darkgrey',
+    borderColor: 'white',
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10
+  },
+  pressedActiveText2: {
+    fontSize: 20,
+    fontFamily: 'RobotoCondensed-Regular',
+    color: 'white'
   },
   pressedActive: {
     height: 45,
