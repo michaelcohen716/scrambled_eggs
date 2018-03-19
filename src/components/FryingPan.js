@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, Image, Dimensions, FlatList } from 'react-native';
+import { View, Text, Image, Dimensions,
+  FlatList, TouchableOpacity }
+  from 'react-native';
 import { connect } from 'react-redux';
 import goldCoin from '../assets/goldCoin.png';
 import CommaNumber from 'comma-number';
+import EggcoinMarket from './EggcoinMarket';
 
 import FryingPanItem from './FryingPanItem';
 import binocularsWhite from '../assets/binoculars_white.png';
@@ -53,13 +56,19 @@ class FryingPan extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      marked: null
+      marked: null,
+      eggcoinMarket: false
     };
     this.unmarkOtherItems = this.unmarkOtherItems.bind(this);
+    this.renderMarket = this.renderMarket.bind(this);
   }
 
   unmarkOtherItems(idx){
     this.setState({ marked: idx});
+  }
+
+  renderMarket(){
+    this.setState({ eggcoinMarket: true });
   }
 
   render(){
@@ -87,8 +96,20 @@ class FryingPan extends React.Component {
       />
     );
 
+    const buyEggcoinButton = (
+      this.props.itemMessage === 'Buy Some Eggcoin' ? (
+        <TouchableOpacity style={styles.buyEggcoinButton} onPress={this.renderMarket}>
+          <Text style={[styles.itemMessage, styles.eggcoinSale]}>Buy Eggcoin</Text>
+        </TouchableOpacity>
+      ) : (
+        <Text style={styles.itemMessage}>{this.props.itemMessage}</Text>
+      )
+    );
+
     return (
       <View style={styles.fryingPan}>
+
+        {this.state.eggcoinMarket ? <EggcoinMarket /> : null }
 
         <View style={styles.fryingTopBar}>
           <Text style={styles.fryingPanText}>The Frying Pan</Text>
@@ -101,7 +122,7 @@ class FryingPan extends React.Component {
             </View>
 
             <View style={styles.fryingMessage}>
-              <Text style={styles.itemMessage}>{this.props.itemMessage}</Text>
+              {buyEggcoinButton}
             </View>
         </View>
       </View>
@@ -112,6 +133,21 @@ class FryingPan extends React.Component {
 var { width } = Dimensions.get('window');
 
 const styles = {
+  eggcoinSale: {
+    marginBottom: 10
+  },
+  buyEggcoinButton: {
+    borderColor: 'blue',
+    borderWidth: 2,
+    marginRight: 5,
+    marginLeft: 5,
+    marginTop: 8,
+    marginBottom: 9,
+    borderRadius: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 120
+  },
   fryingMessage: {
     flex: 3,
     justifyContent: 'center',

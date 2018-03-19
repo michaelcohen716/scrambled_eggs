@@ -103,7 +103,6 @@ class FryingPanItem extends React. Component {
         itemsToggle: this.props.itemsToggle,
         eggcoin: this.props.eggcoin
       };
-      console.log(object);
 
       this.props.makePurchase(object);
       this.setState({ touch: 2});
