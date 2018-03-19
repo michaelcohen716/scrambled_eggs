@@ -24,7 +24,29 @@ class ScrambleIntro extends React.Component {
   }
 
   introModal2(){
+    const styles = {
+        topBarHolder: {
+          flex: 14,
+          flexDirection: 'column',
+          backgroundColor: 'transparent',
+          borderColor: 'yellow',
+          borderWidth: 1,
+        }
+    };
 
+    return (
+      <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
+        <View style={{flex: 1, flexDirection: 'column'}}>
+          <View style={{flex: 4}}/>
+          <View style={{flex: 15, backgroundColor: 'black', opacity: 0.9}}/>
+
+          <View style={styles.topBarHolder} >
+
+          </View>
+          <View style={{flex: 7, backgroundColor: 'black', opacity: 0.9}} />
+        </View>
+      </Modal>
+    );
   }
 
   introModal1(){
@@ -33,9 +55,8 @@ class ScrambleIntro extends React.Component {
           flex: 14,
           flexDirection: 'column',
           backgroundColor: 'transparent',
-          // opacity: 0.3,
-          // alignItems: 'center',
-          // justifyContent: 'center'
+          borderColor: 'yellow',
+          borderWidth: 1,
         },
         topHalf: {
           flex: 1,
@@ -74,6 +95,17 @@ class ScrambleIntro extends React.Component {
           color: 'white',
           fontFamily: 'RobotoCondensed-Regular',
           fontSize: 18,
+        },
+        titleHolder: {
+          flex: 3,
+          backgroundColor: 'black',
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        titleText: {
+          fontFamily: 'RobotoCondensed-Regular',
+          fontSize: 22,
+          color: 'white'
         }
     };
 
@@ -81,7 +113,12 @@ class ScrambleIntro extends React.Component {
       <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
         <View style={{flex: 1, flexDirection: 'column'}}>
           <View style={{flex: 4}}/>
-          <View style={{flex: 3, backgroundColor: 'black', opacity: 0.9}}/>
+
+          <View style={styles.titleHolder}>
+              <Text style={styles.titleText}>
+                Try a 'Scramble' puzzle
+              </Text>
+          </View>
 
           <View style={styles.topBarHolder}>
             <View style={styles.topHalf}>
@@ -93,7 +130,7 @@ class ScrambleIntro extends React.Component {
             </View>
 
             <View style={styles.bottomHalf}>
-              <View style={{marginRight: 8, marginBottom: 12, flexDirection: 'column'}}>
+              <View style={{marginRight: 8, marginBottom: 13, flexDirection: 'column'}}>
                 <Text style={styles.messageText}>
                   to define a word
                 </Text>
