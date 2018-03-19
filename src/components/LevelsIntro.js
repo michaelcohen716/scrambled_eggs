@@ -49,10 +49,46 @@ class LevelsIntro extends React.Component {
         opacity: 0.9,
         flex: 6
       },
+      fillerSmall: {
+        backgroundColor: 'black',
+        opacity: 0.9,
+        flex: 4
+      },
       bulletText: {
         color: 'white',
         fontFamily: 'RobotoCondensed-Regular',
         fontSize: 18
+      },
+      advanceHolder: {
+        flex: 2,
+        backgroundColor: 'black',
+        opacity: 0.9,
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      advanceButton: {
+        width: 100,
+        height: 50,
+        borderColor: 'white',
+        borderWidth: 2,
+        backgroundColor: 'black',
+        borderRadius: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      playText: {
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 27,
+        color: 'white'
+      },
+      advanceInner: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 92,
+        height: 44,
+        borderWidth: 2,
+        borderColor: 'blue',
+        borderRadius: 4
       }
     };
 
@@ -61,7 +97,7 @@ class LevelsIntro extends React.Component {
     return (
       <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
         <View style={{flex: 1}}>
-          <View style={styles.filler} />
+          <View style={styles.fillerSmall} />
 
           <View style={styles.messageHolder}>
             <View style={{flexDirection: 'row'}}>
@@ -76,8 +112,16 @@ class LevelsIntro extends React.Component {
 
             <View style={{flexDirection: 'row'}}>
               <Text style={bulletText}>{'\u2022'} </Text>
-              <Text style={bulletText}>Rack up the eggcoin!</Text>
+              <Text style={bulletText}>Rack up eggcoin!</Text>
             </View>
+          </View>
+
+          <View style={styles.advanceHolder}>
+            <TouchableOpacity style={styles.advanceButton} onPress={this.advance}>
+              <View style={styles.advanceInner}>
+                <Text style={styles.playText}>Play</Text>
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.filler} />

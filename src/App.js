@@ -27,7 +27,6 @@ import logger from 'redux-logger';
   // ensure loginform doesn't render on app-open when user signed in
   // link eggcoin market to app store
   // get to 100 puzzles
-  // build instructions
   // complete home/menu page
   // conditional tile rendering second word scramble game
   // invite friends button on round review
