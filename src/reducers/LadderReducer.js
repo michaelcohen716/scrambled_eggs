@@ -87,9 +87,11 @@ export default (state = INITIAL_STATE, action) => {
     case UNLOCK_A_WORD:
       const unlockState = merge({}, state);
       if(action.levelType === "ladder"){
+        debugger
         unlockState.message = "Here's a word";
         let findWord = state.answers[state.wordIndex][0];
         unlockState.answers[state.wordIndex] = true;
+        unlockState.activeLetters = findWord.split("");
 
         const insertWordArray = [];
         findWord = findWord.split("");
@@ -102,7 +104,7 @@ export default (state = INITIAL_STATE, action) => {
         unlockState.wordIndex += 1;
         unlockState.currentWordLength -=1;
       }
-
+      debugger
       return unlockState;
 
     case TAP_LADDER_LETTER:

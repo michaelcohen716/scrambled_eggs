@@ -2,19 +2,19 @@
   "1": {
     "type": "jumble",
     "letters": "edit",
-    "time": 50,
+    "time": 90,
     "stage": "Sunny Side Up",
   },
   "2": {
     "type": "scramble",
     "firstAnswer": "boat",
-    "time": 45,
+    "time": 85,
     "stage": "Sunny Side Up"
   },
   "3": {
     "type": "ladder",
     "firstAnswer": "phone",
-    "time": 50,
+    "time": 90,
     "stage": "Sunny Side Up"
   },
   "4": {
