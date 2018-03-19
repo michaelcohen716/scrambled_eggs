@@ -45,13 +45,6 @@ class LevelsPage extends React.Component {
     }
 
   }
-  //
-  // componentDidMount(){
-  //   if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
-  //     debugger
-  //     this.setState({ introVisible: true});
-  //   }
-  // }
 
   levelFrameworks(){
     let frameworks = [];

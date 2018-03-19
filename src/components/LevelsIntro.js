@@ -14,6 +14,7 @@ class LevelsIntro extends React.Component {
     this.introModal1 = this.introModal1.bind(this);
     this.introModal2 = this.introModal2.bind(this);
     this.introModal3 = this.introModal3.bind(this);
+    this.introModal4 = this.introModal4.bind(this);
   }
 
   advance(){
@@ -32,6 +33,57 @@ class LevelsIntro extends React.Component {
     } else if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
 
     }
+  }
+
+  introModal4(){
+    const styles = {
+      messageHolder: {
+        flex: 3,
+        backgroundColor: 'black',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+      },
+      filler: {
+        backgroundColor: 'black',
+        opacity: 0.9,
+        flex: 6
+      },
+      bulletText: {
+        color: 'white',
+        fontFamily: 'RobotoCondensed-Regular',
+        fontSize: 18
+      }
+    };
+
+    const { bulletText } = styles;
+
+    return (
+      <Modal animationType="slide" transparent={true} visible={this.state.introVisible}>
+        <View style={{flex: 1}}>
+          <View style={styles.filler} />
+
+          <View style={styles.messageHolder}>
+            <View style={{flexDirection: 'row'}}>
+               <Text style={bulletText}>{'\u2022'} </Text>
+               <Text style={bulletText}>Buy power-ups before entering the puzzle</Text>
+            </View>
+
+            <View style={{flexDirection: 'row'}}>
+              <Text style={bulletText}>{'\u2022'} </Text>
+              <Text style={bulletText}>Pay attention to the game clock</Text>
+            </View>
+
+            <View style={{flexDirection: 'row'}}>
+              <Text style={bulletText}>{'\u2022'} </Text>
+              <Text style={bulletText}>Rack up the eggcoin!</Text>
+            </View>
+          </View>
+
+          <View style={styles.filler} />
+        </View>
+      </Modal>
+    );
   }
 
   introModal3(){
@@ -278,6 +330,7 @@ class LevelsIntro extends React.Component {
         {this.state.introModal === 1 ? this.introModal1() : null}
         {this.state.introModal === 2 ? this.introModal2() : null}
         {this.state.introModal === 3 ? this.introModal3() : null}
+        {this.state.introModal === 4 ? this.introModal4() : null}
       </View>
     );
   }
