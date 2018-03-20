@@ -24,16 +24,16 @@ class Credits extends React.Component {
     });
 
     return (
-      <View style={{flex: 1, backgroundColor: 'black'}}>
+      <View style={styles.topTitle}>
         <View style={title}>
-          <Text style={titleText}>Images sourced from the Noun Project</Text>
+          <Text style={titleText}>Artist images sourced from the Noun Project</Text>
         </View>
 
         <View style={bullets}>
           {bulletPoints}
         </View>
 
-        <View style={{flex: 3}} />
+        <View style={{flex: 7}} />
 
       </View>
     );
@@ -41,12 +41,19 @@ class Credits extends React.Component {
 }
 
 const styles = {
+  topTitle: {
+    flex: 1,
+    backgroundColor: 'black',
+    paddingTop: 14
+  },
   title: {
+    paddingLeft: 14,
     flex: 1,
   },
   bulletHolder: {
     marginLeft: 8,
-    marginTop: 5
+    marginTop: 5,
+    flexDirection: 'row'
   },
   titleText: {
     fontFamily: 'RobotoCondensed-Regular',
@@ -54,7 +61,7 @@ const styles = {
     color: 'white'
   },
   bullets: {
-    flex: 3,
+    flex: 4,
     flexDirection: 'column'
   },
   bulletText: {
