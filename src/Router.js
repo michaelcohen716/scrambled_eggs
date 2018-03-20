@@ -8,6 +8,7 @@ import AdvanceStage from './components/AdvanceStage';
 import MenuPage from './components/MenuPage';
 import Instructions from './components/Instructions';
 import AboutMe from './components/AboutMe';
+import Credits from './components/Credits';
 
 const RouterComponent = () => {
   return (
@@ -21,6 +22,7 @@ const RouterComponent = () => {
         <Scene key="menuPage" component={MenuPage} title="Menu" />
         <Scene key="instructions" component={Instructions} title="Instructions" />
         <Scene key="aboutMe" component={AboutMe} title="About Me" />
+        <Scene key="credits" component={Credits} title="Credits" />
       </Scene>
     </Router>
   );

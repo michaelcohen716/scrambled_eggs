@@ -4,15 +4,6 @@ import Hyperlink from 'react-native-hyperlink';
 import MeImage from '../assets/me_image.jpeg';
 
 class AboutMe extends React.Component {
-  constructor(props){
-    super(props);
-    this.linkedin = this.linkedin.bind(this);
-  }
-
-  linkedin(){
-    Linking.openUrl('https://www.linkedin.com/in/michaeljcohen716/');
-  }
-
   render(){
     const { bigText, smallText, top, imageHolder, image, blueText } = styles;
     return (
@@ -24,9 +15,9 @@ class AboutMe extends React.Component {
           <View style={{flex: 1}}>
             <Text style={smallText}>Software Developer living in NYC</Text>
           </View>
-          <View style={{flex: 1}}>
+          <View style={{flex: 1, marginTop: 12}}>
             <Text style={blueText} onPress={ ()=> Linking.openURL('https://www.linkedin.com/in/michaeljcohen716/') } >
-              Check me out online
+              Connect with me
             </Text>
 
           </View>
@@ -68,6 +59,8 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'column',
+    marginTop: 10
   },
   imageHolder: {
     flex: 3,
