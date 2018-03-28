@@ -47,6 +47,12 @@
     "time": 45,
     "stage": "Sunny Side Up"
   },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "realm",
+    "time": 50,
+    "stage": ""
+  },
   "9": {
     "type": "scramble",
     "firstAnswer": "gear",
@@ -82,6 +88,12 @@
     "letters": "acert",
     "time": 75,
     "stage": "Sunny Side Up"
+  },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "strip",
+    "time": 55,
+    "stage": ""
   },
   "15": {
     "type": "ladder",
@@ -132,6 +144,12 @@
     "letters": "aehrt",
     "time": 60,
     "stage": "Over Easy",
+  },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "point",
+    "time": 50,
+    "stage": ""
   },
   "23": {
     "type": "ladder",
@@ -273,6 +291,12 @@
     "time": "75",
     "stage": "Hard Boiled"
   },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "demon",
+    "time": 50,
+    "stage": ""
+  },
   "46": {
     "type": "jumble",
     "letters": "bdegu",
@@ -291,17 +315,35 @@
     "time": 55,
     "stage": "Hard Boiled"
   },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "disown",
+    "time": 60,
+    "stage": ""
+  },
   "49": {
     "type": "jumble",
     "letters": "eghilns",
     "time": 65,
     "stage": "Hard Boiled"
   },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "bright",
+    "time": 55,
+    "stage": ""
+  },
   "50": {
     "type": "jumble",
     "letters": "aceno",
     "time": 55,
     "stage": "Hard Boiled",
+  },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "aspect",
+    "time": 65,
+    "stage": ""
   },
   "51": {
     "type": "scramble",
@@ -314,6 +356,12 @@
     "firstAnswer": "chrome",
     "time": 50,
     "stage": "Hard Boiled"
+  },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "bleach",
+    "time": 60,
+    "stage": ""
   },
   "53": {
     "type": "jumble",
@@ -350,6 +398,12 @@
     "firstAnswer": "rarely",
     "time": 55,
     "stage": "Hard Boiled"
+  },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "partner",
+    "time": 65,
+    "stage": ""
   },
   "59": {
     "type": "jumble",
@@ -395,12 +449,27 @@
     "time": 70,
     "stage": "Frittata",
   },
+  "a": {
+    "type": "scramble",
+    "firstAnswer": "pilfer",
+    "time": 70,
+    "stage": ""
+  },
   "66": {
     "type": "jumble",
     "letters": "aeilnst",
     "time": 85,
     "stage": "Frittata"
   },
+
+
+
+
+
+
+
+
+
 
 
 

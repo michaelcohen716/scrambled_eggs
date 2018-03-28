@@ -509,7 +509,7 @@
 
   "point": {
     "1": {
-      "clue": "A sports game award",
+      "clue": "A game increment",
       "letters": "iycopnto",
       "answer": "point"
     },
@@ -579,21 +579,21 @@
     }
   },
 
-  "bleach": {
+  "realm": {
     "1": {
-      "clue": "To lighten or fade",
-      "letters": "aheelckb",
-      "answer": "bleach"
+      "clue": "Kingdom or domain",
+      "letters": "martlyrep",
+      "answer": "realm"
     },
     "2": {
-      "clue": "Subtract",
-      "article": "an",
-      "letter": "h"
+      "clue": "Add",
+      "article": "a",
+      "letter": "c"
     },
     "3": {
-      "clue": "Thick wire",
-      "letters": "bleac",
-      "answer": "cable"
+      "clue": "More relaxed",
+      "letters": "realmc",
+      "answer": "calmer"
     }
   },
 
