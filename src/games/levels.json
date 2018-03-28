@@ -23,6 +23,12 @@
     "time": 50,
     "stage": "Sunny Side Up"
   },
+  "a": {
+    "type": "jumble",
+    "letters": "dens",
+    "time": 50,
+    "stage": ""
+  },
   "5": {
     "type": "jumble",
     "letters": "eimt",
@@ -34,6 +40,12 @@
     "letters": "adil",
     "time": 45,
     "stage": "Sunny Side Up"
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aegp",
+    "time": 45,
+    "stage": ""
   },
   "7": {
     "type": "scramble",
@@ -53,11 +65,23 @@
     "time": 50,
     "stage": ""
   },
+  "a": {
+    "type": "jumble",
+    "letters": "kins",
+    "time": 50,
+    "stage": ""
+  },
   "9": {
     "type": "scramble",
     "firstAnswer": "gear",
     "time": 45,
     "stage": "Sunny Side Up"
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "hops",
+    "time": 50,
+    "stage": ""
   },
   "10": {
     "type": "ladder",
@@ -107,6 +131,12 @@
     "time": 50,
     "stage": "Sunny Side Up"
   },
+  "a": {
+    "type": "jumble",
+    "letters": "aemn",
+    "time": 55,
+    "stage": ""
+  },
   "17": {
     "type": "scramble",
     "firstAnswer": "false",
@@ -118,6 +148,12 @@
     "letters": "acelst",
     "time": 60,
     "stage": "Sunny Side Up"
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "ahms",
+    "time": 50,
+    "stage": ""
   },
   "19": {
     "type": "ladder",
@@ -163,6 +199,12 @@
     "time": 55,
     "stage": "Over Easy"
   },
+  "a": {
+    "type": "jumble",
+    "letters": "aprt",
+    "time": 60,
+    "stage": ""
+  },
   "25": {
     "type": "jumble",
     "letters": "adegnr",
@@ -193,6 +235,12 @@
     "time": 55,
     "stage": "Over Easy"
   },
+  "a": {
+    "type": "jumble",
+    "letters": "enost",
+    "time": 60,
+    "stage": ""
+  },
   "30": {
     "type": "scramble",
     "firstAnswer": "friends",
@@ -222,6 +270,18 @@
     "firstAnswer": "router",
     "time": 55,
     "stage": "Over Easy"
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aelst",
+    "time": 75,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "eortv",
+    "time": 55,
+    "stage": ""
   },
   "35": {
     "type": "scramble",
@@ -273,6 +333,12 @@
     "time": 55,
     "stage": "Hard Boiled"
   },
+  "a": {
+    "type": "jumble",
+    "letters": "ghirt",
+    "time": 50,
+    "stage": ""
+  },
   "43": {
     "type": "scramble",
     "firstAnswer": "bathe",
@@ -290,6 +356,12 @@
     "letters": "adehrt",
     "time": "75",
     "stage": "Hard Boiled"
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aemrst",
+    "time": 80,
+    "stage": ""
   },
   "a": {
     "type": "scramble",
@@ -363,6 +435,12 @@
     "time": 60,
     "stage": ""
   },
+  "a": {
+    "type": "jumble",
+    "letters": "degins",
+    "time": 75,
+    "stage": ""
+  },
   "53": {
     "type": "jumble",
     "letters": "aelnrt",
@@ -387,6 +465,12 @@
     "time": 60,
     "stage": "Hard Boiled"
   },
+  "a": {
+    "type": "jumble",
+    "letters": "aeimnr",
+    "time": 60,
+    "stage": ""
+  },
   "57": {
     "type": "jumble",
     "letters": "aelpst",
@@ -398,6 +482,12 @@
     "firstAnswer": "rarely",
     "time": 55,
     "stage": "Hard Boiled"
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "adeiln",
+    "time": 65,
+    "stage": ""
   },
   "a": {
     "type": "scramble",
@@ -464,96 +554,66 @@
 
 
 
+
+
+
   "a": {
-    "type": "jumble",
-    "letters": "enost",
-    "time": 60,
+    "type": "ladder",
+    "firstAnswer": "shape",
+    "time": 50,
     "stage": ""
   },
   "a": {
-    "type": "jumble",
-    "letters": "aemrst",
-    "time": 80,
+    "type": "ladder",
+    "firstAnswer": "reduce",
+    "time": 50,
     "stage": ""
   },
   "a": {
-    "type": "jumble",
-    "letters": "aegp",
+    "type": "ladder",
+    "firstAnswer": "shade",
     "time": 45,
     "stage": ""
   },
   "a": {
-    "type": "jumble",
-    "letters": "eortv",
+    "type": "ladder",
+    "firstAnswer": "veneer",
     "time": 55,
     "stage": ""
   },
   "a": {
-    "type": "jumble",
-    "letters": "dens",
+    "type": "ladder",
+    "firstAnswer": "settle",
     "time": 50,
     "stage": ""
   },
   "a": {
-    "type": "jumble",
-    "letters": "hops",
+    "type": "ladder",
+    "firstAnswer": "rating",
     "time": 50,
     "stage": ""
   },
   "a": {
-    "type": "jumble",
-    "letters": "aprt",
-    "time": 60,
+    "type": "ladder",
+    "firstAnswer": "apple",
+    "time": 40,
     "stage": ""
   },
   "a": {
-    "type": "jumble",
-    "letters": "aelst",
-    "time": 75,
-    "stage": ""
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "ghirt",
+    "type": "ladder",
+    "firstAnswer": "thrown",
     "time": 50,
     "stage": ""
   },
-  "a": {
-    "type": "jumble",
-    "letters": "kins",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "degins",
-    "time": 75,
-    "stage": ""
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "ahms",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "adeiln",
-    "time": 65,
-    "stage": ""
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "aemn",
-    "time": 55,
-    "stage": ""
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "aeimnr",
-    "time": 60,
-    "stage": ""
-  },
+
+
+
+
+
+
+
+
+
 
 
 
