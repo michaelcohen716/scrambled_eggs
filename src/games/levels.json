@@ -243,6 +243,68 @@
   },
 
 
+  "41": {
+    "type": "jumble",
+    "letters": "eortv",
+    "time": 50,
+    "stage": "Hard Boiled"
+  },
+  "42": {
+    "type": "scramble",
+    "firstAnswer": "wheat",
+    "time": 45,
+    "stage": "Hard Boiled"
+  },
+  "43": {
+    "type": "ladder",
+    "firstAnswer": "median",
+    "time": 50,
+    "stage": "Hard Boiled"
+  },
+  "44": {
+    "type": "jumble",
+    "letters": "aelst",
+    "time": 60,
+    "stage": "Hard Boiled",
+  },
+  "45": {
+    "type": "jumble",
+    "letters": "adegnr",
+    "time": 65,
+    "stage": "Hard Boiled"
+  },
+  "46": {
+    "type": "scramble",
+    "firstAnswer": "region",
+    "time": 55,
+    "stage": "Hard Boiled"
+  },
+  "47": {
+    "type": "ladder",
+    "firstAnswer": "router",
+    "time": 50,
+    "stage": "Hard Boiled"
+  },
+  "48": {
+    "type": "jumble",
+    "letters": "aceprs",
+    "time": 75,
+    "stage": "Hard Boiled"
+  },
+  "49": {
+    "type": "scramble",
+    "firstAnswer": "mouse",
+    "time": 50,
+    "stage": "Hard Boiled"
+  },
+  "50": {
+    "type": "jumble",
+    "letters": "cdeirt",
+    "time": 70,
+    "stage": "Hard Boiled"
+  },
+
+
   "20": {
     "type": "jumble",
     "letters": "belstu",
@@ -253,30 +315,8 @@
 
 
 
-  "25": {
-    "type": "jumble",
-    "letters": "adegnr",
-    "time": 75,
-    "stage": "Over Easy"
-  },
-  "27": {
-    "type": "scramble",
-    "firstAnswer": "region",
-    "time": 60,
-    "stage": "Over Easy"
-  },
-  "28": {
-    "type": "jumble",
-    "letters": "cdeirt",
-    "time": 70,
-    "stage": "Over Easy"
-  },
-  "29": {
-    "type": "ladder",
-    "firstAnswer": "median",
-    "time": 55,
-    "stage": "Over Easy"
-  },
+
+
   "30": {
     "type": "scramble",
     "firstAnswer": "friends",
@@ -296,43 +336,10 @@
     "stage": "Over Easy"
   },
 
-  "34": {
-    "type": "ladder",
-    "firstAnswer": "router",
-    "time": 55,
-    "stage": "Over Easy"
-  },
 
-  "a": {
-    "type": "jumble",
-    "letters": "eortv",
-    "time": 55,
-    "stage": ""
-  },
-  "35": {
-    "type": "scramble",
-    "firstAnswer": "wheat",
-    "time": 45,
-    "stage": "Over Easy"
-  },
-  "36": {
-    "type": "jumble",
-    "letters": "aceprs",
-    "time": 85,
-    "stage": "Over Easy"
-  },
-  "37": {
-    "type": "jumble",
-    "letters": "aelst",
-    "time": 60,
-    "stage": "Over Easy",
-  },
-  "38": {
-    "type": "scramble",
-    "firstAnswer": "mouse",
-    "time": 50,
-    "stage": "Over Easy"
-  },
+
+
+
   "39": {
     "type": "ladder",
     "firstAnswer": "loaded",
