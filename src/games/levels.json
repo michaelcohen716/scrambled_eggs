@@ -303,89 +303,89 @@
     "time": 70,
     "stage": "Hard Boiled"
   },
-
-
-  "20": {
-    "type": "jumble",
-    "letters": "belstu",
-    "time": 75,
-    "stage": "Sunny Side Up"
-  },
-
-
-
-
-
-
-  "30": {
-    "type": "scramble",
-    "firstAnswer": "friends",
-    "time": 60,
-    "stage": "Over Easy"
-  },
-  "31": {
-    "type": "jumble",
-    "letters": "acenrt",
-    "time": 75,
-    "stage": "Over Easy"
-  },
-  "32": {
+  "51": {
     "type": "ladder",
     "firstAnswer": "regard",
-    "time": 55,
-    "stage": "Over Easy"
+    "time": 50,
+    "stage": "Hard Boiled"
   },
-
-
-
-
-
-  "39": {
+  "52": {
+    "type": "scramble",
+    "firstAnswer": "friends",
+    "time": 55,
+    "stage": "Hard Boiled"
+  },
+  "53": {
+    "type": "jumble",
+    "letters": "belstu",
+    "time": 70,
+    "stage": "Hard Boiled"
+  },
+  "54": {
     "type": "ladder",
     "firstAnswer": "loaded",
-    "time": 60,
-    "stage": "Over Easy"
+    "time": 50,
+    "stage": "Hard Boiled"
   },
-  "18": {
-    "type": "jumble",
-    "letters": "acelst",
-    "time": 60,
-    "stage": "Sunny Side Up"
-  },
-
-  "50": {
-    "type": "jumble",
-    "letters": "aceno",
-    "time": 55,
-    "stage": "Hard Boiled",
-  },
-
-
-
-  "42": {
+  "55": {
     "type": "scramble",
     "firstAnswer": "pride",
-    "time": 55,
+    "time": 50,
     "stage": "Hard Boiled"
   },
-  "a": {
+  "56": {
     "type": "jumble",
     "letters": "ghirt",
-    "time": 50,
-    "stage": ""
-  },
-  "43": {
-    "type": "scramble",
-    "firstAnswer": "bathe",
-    "time": 50,
+    "time": 45,
     "stage": "Hard Boiled"
   },
-  "44": {
+  "57": {
+    "type": "scramble",
+    "firstAnswer": "bathe",
+    "time": 45,
+    "stage": "Hard Boiled"
+  },
+  "58": {
+    "type": "jumble",
+    "letters": "acenrt",
+    "time": 70,
+    "stage": "Hard Boiled"
+  },
+  "59": {
     "type": "ladder",
     "firstAnswer": "stable",
     "time": 55,
     "stage": "Hard Boiled"
   },
+  "60": {
+    "type": "jumble",
+    "letters": "acelst",
+    "time": 60,
+    "stage": "Hard Boiled"
+  },
+
+
+  "61": {
+    "type": "ladder",
+    "firstAnswer": "settle",
+    "time": 50,
+    "stage": "Frittata"
+  },
+  "62": {
+    "type": "jumble",
+    "letters": "aceno",
+    "time": 45,
+    "stage": "Frittata",
+  },
+  "63": {
+    "type": "scramble",
+    "firstAnswer": "demon",
+    "time": 50,
+    "stage": "Frittata"
+  },
+
+
+
   "45": {
     "type": "jumble",
     "letters": "adehrt",
@@ -393,21 +393,9 @@
     "stage": "Hard Boiled"
   },
   "a": {
-    "type": "ladder",
-    "firstAnswer": "settle",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
     "type": "jumble",
     "letters": "aemrst",
     "time": 80,
-    "stage": ""
-  },
-  "a": {
-    "type": "scramble",
-    "firstAnswer": "demon",
-    "time": 50,
     "stage": ""
   },
   "a": {
