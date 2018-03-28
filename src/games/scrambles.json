@@ -551,6 +551,42 @@
     },
     "2": {
       "clue": "Subtract",
+      "article": "a",
+      "letter": "t"
+    },
+    "3": {
+      "clue": "Capacity or room",
+      "letters": "aspec",
+      "answer": "space"
+    }
+  },
+
+  "pilfer": {
+    "1": {
+      "clue": "Petty thieves do this",
+      "letters": "lreilfpewm",
+      "answer": "pilfer"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "o"
+    },
+    "3": {
+      "clue": "A side view",
+      "letters": "pilfero",
+      "answer": "profile"
+    }
+  },
+
+  "bleach": {
+    "1": {
+      "clue": "To lighten or fade",
+      "letters": "aheelckb",
+      "answer": "bleach"
+    },
+    "2": {
+      "clue": "Subtract",
       "article": "an",
       "letter": "h"
     },
