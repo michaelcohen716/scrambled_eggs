@@ -19,7 +19,8 @@ class LevelsPage extends React.Component {
       stage: this.props.stage,
       stageDropdown: this.props.stageNum - 1,
       dropdownShowing: false,
-      introVisible: false
+      introVisible: false,
+      renderModal: true
     };
     this.levels = Object.keys(Levels); //all levels in game
     this.stages = Object.keys(this.props.stages);
@@ -28,6 +29,7 @@ class LevelsPage extends React.Component {
     this.levelFrameworks = this.levelFrameworks.bind(this);
 
     this.tiltTriangle = this.tiltTriangle.bind(this);
+    this.renderModalDropdown = this.renderModalDropdown.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -42,6 +44,13 @@ class LevelsPage extends React.Component {
         })
       } );
     }
+
+    // if(nextProps.stageNum > 1){
+    //   setTimeout(() => {
+    //     this.dropdownSelect(nextProps.stageNum - 1);
+    //
+    //   }, 1);
+    // }
 
   }
 
@@ -63,6 +72,14 @@ class LevelsPage extends React.Component {
     return frameworks;
   }
 
+  componentDidMount(){
+    this.setState({stageDropdown: this.props.stageNum - 1});
+    this.setState({renderModal: false}, () => {
+      console.log("false")
+      this.setState({renderModal: true});
+    })
+  }
+
   dropdownSelect(stageIdx){
     this.setState({ stageDropdown: stageIdx})
   }
@@ -73,11 +90,12 @@ class LevelsPage extends React.Component {
   }
 
   tiltTriangle(){
-    this.setState({ dropdownShowing: !this.state.dropdownShowing})
+    this.setState({ dropdownShowing: !this.state.dropdownShowing});
+    this.setState({ stageDropdown: this.props.stageNum - 1});
   }
 
-  render(){
-    const levels = this.frameworks[this.state.stageDropdown];
+  renderModalDropdown(){
+    const options = ["Sunny Side Up", "Over Easy", "Hard Boiled", "Frittata", "Scrambled"];
 
     const triangle = this.state.dropdownShowing ? (
       <View style={styles.triangleLeft} />
@@ -85,7 +103,25 @@ class LevelsPage extends React.Component {
       <View style={styles.triangle} />
     )
 
-    const options = ["Sunny Side Up", "Over Easy", "Hard Boiled", "Frittata", "Scrambled"];
+    if(this.state.renderModal){
+      return (
+        <View style={styles.dropdownHolder}>
+          <ModalDropdown options={options} defaultIndex={this.state.stageDropdown}
+            onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
+            adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
+            dropdownTextHighlightStyle={styles.highlightStyle} onDropdownWillShow={this.tiltTriangle}
+            onDropdownWillHide={this.tiltTriangle}>
+            {triangle}
+          </ModalDropdown>
+        </View>
+      )
+    } else {
+      return <View></View>
+    }
+  }
+
+  render(){
+    const levels = this.frameworks[this.state.stageDropdown];
 
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
@@ -104,15 +140,8 @@ class LevelsPage extends React.Component {
               </View>
             </View>
 
-            <View style={styles.dropdownHolder}>
-              <ModalDropdown options={options} defaultIndex={this.props.stageNum - 1}
-                onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
-                adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
-                dropdownTextHighlightStyle={styles.highlightStyle} onDropdownWillShow={this.tiltTriangle}
-                onDropdownWillHide={this.tiltTriangle}>
-                {triangle}
-              </ModalDropdown>
-            </View>
+            {this.renderModalDropdown()}
+
           </View>
 
           <View style={styles.topRight}>

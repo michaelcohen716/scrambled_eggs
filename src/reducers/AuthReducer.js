@@ -10,6 +10,7 @@ import {
   LOGOUT
 } from '../actions/types';
 
+
 const INITIAL_STATE = {
   email: '',
   password: '',

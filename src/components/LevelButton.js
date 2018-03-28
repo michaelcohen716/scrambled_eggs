@@ -141,6 +141,8 @@ class LevelButton extends React.Component {
     const onPress = this.onPress.bind(this, num);
     const modal = this.renderModal(num);
 
+    const levelNumStyle = num < 100 ? styles.levelTextBig : styles.levelTextSmall;
+
     const { stages } = this.props;
     // STAGES
     const thisLevelsStage = stages[Levels[num].stage];
@@ -160,7 +162,7 @@ class LevelButton extends React.Component {
         <TouchableOpacity style={styles.lockedLevel} key={num} >
           <View style={styles.innerLocked}>
             <View style={styles.innerInnerLocked}>
-              <Text style={styles.lockedText}>
+              <Text style={[styles.lockedText, levelNumStyle]}>
                 {num}
               </Text>
               {modal}
@@ -176,7 +178,7 @@ class LevelButton extends React.Component {
         <TouchableOpacity onPress={onPress} style={styles.solvedLevel} >
           <View style={styles.innerSolved}>
             <View style={styles.innerInnerSolved}>
-              <Text style={styles.solvedText}>
+              <Text style={[styles.solvedText, levelNumStyle]}>
                 {num}
               </Text>
               {modal}
@@ -191,7 +193,7 @@ class LevelButton extends React.Component {
       <TouchableOpacity key={num} onPress={onPress} style={styles.level}>
         <View style={styles.innerLevel}>
           <View style={styles.innerInnerLevel}>
-            <Text style={styles.levelText}>
+            <Text style={[styles.levelText, levelNumStyle]}>
               {num}
             </Text>
             {modal}
@@ -206,7 +208,12 @@ class LevelButton extends React.Component {
 }
 
 const styles = {
-  //nextUnsolvedLevel
+  levelTextSmall: {
+    fontSize: 32
+  },
+  levelTextBig: {
+    fontSize: 40
+  },
   level: {
     width: 75,
     height: 75,
@@ -237,7 +244,7 @@ const styles = {
     alignItems: 'center',
   },
   levelText: {
-    fontSize: 40,
+    // fontSize: 40,
     color: 'white',
     fontWeight: 'bold',
     fontFamily: 'RobotoCondensed-Regular',
@@ -279,7 +286,7 @@ const styles = {
 
   },
   lockedText: {
-    fontSize: 40,
+    // fontSize: 40,
     color: 'white',
     fontWeight: 'bold',
     fontFamily: 'RobotoCondensed-Regular',
@@ -317,7 +324,7 @@ const styles = {
     alignItems: 'center',
   },
   solvedText: {
-    fontSize: 40,
+    // fontSize: 40,
     color: 'blue',
     fontWeight: 'bold',
     fontFamily: 'RobotoCondensed-Regular',

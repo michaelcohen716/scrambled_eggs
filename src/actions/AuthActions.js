@@ -107,8 +107,6 @@ const loginUserSuccess = (dispatch, user) => {
     const activeLevelAttempted = snapshot.val().activeLevelAttempted;
     const itemsToggle = snapshot.val().itemsToggle;
 
-    Actions.levels({ type: 'reset'});
-
     dispatch({
       type: LOGIN_USER_SUCCESS,
       user,
@@ -117,6 +115,7 @@ const loginUserSuccess = (dispatch, user) => {
       activeLevelAttempted,
       itemsToggle
     })
+    Actions.levels({ type: 'reset'});
   })
 }
 

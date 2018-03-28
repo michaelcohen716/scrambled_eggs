@@ -21,15 +21,6 @@ class LoginForm extends React.Component {
     };
   }
 
-  // componentDidMount(){
-  //   this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
-  //     this.setState({
-  //       loading: false,
-  //       user
-  //     })
-  //   })
-  // }
-
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
