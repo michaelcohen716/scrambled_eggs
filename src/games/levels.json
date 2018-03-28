@@ -464,6 +464,97 @@
 
 
 
+  "a": {
+    "type": "jumble",
+    "letters": "enost",
+    "time": 60,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aemrst",
+    "time": 80,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aegp",
+    "time": 45,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "eortv",
+    "time": 55,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "dens",
+    "time": 50,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "hops",
+    "time": 50,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aprt",
+    "time": 60,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aelst",
+    "time": 75,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "ghirt",
+    "time": 50,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "kins",
+    "time": 50,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "degins",
+    "time": 75,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "ahms",
+    "time": 50,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "adeiln",
+    "time": 65,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aemn",
+    "time": 55,
+    "stage": ""
+  },
+  "a": {
+    "type": "jumble",
+    "letters": "aeimnr",
+    "time": 60,
+    "stage": ""
+  },
+
 
 
 
