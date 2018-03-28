@@ -137,17 +137,25 @@
     "time": 55,
     "stage": ""
   },
+  "a": {
+    "type": "ladder",
+    "firstAnswer": "shade",
+    "time": 45,
+    "stage": ""
+  },
   "17": {
     "type": "scramble",
     "firstAnswer": "false",
     "time": 45,
     "stage": "Sunny Side Up"
   },
-  "18": {
-    "type": "jumble",
-    "letters": "acelst",
-    "time": 60,
-    "stage": "Sunny Side Up"
+
+
+  "a": {
+    "type": "ladder",
+    "firstAnswer": "shape",
+    "time": 50,
+    "stage": ""
   },
   "a": {
     "type": "jumble",
@@ -174,6 +182,12 @@
     "firstAnswer": "party",
     "time": 50,
     "stage": "Over Easy"
+  },
+  "a": {
+    "type": "ladder",
+    "firstAnswer": "apple",
+    "time": 40,
+    "stage": ""
   },
   "22": {
     "type": "jumble",
@@ -313,6 +327,12 @@
     "time": 60,
     "stage": "Over Easy"
   },
+  "18": {
+    "type": "jumble",
+    "letters": "acelst",
+    "time": 60,
+    "stage": "Sunny Side Up"
+  },
   "40": {
     "type": "scramble",
     "firstAnswer": "self",
@@ -358,6 +378,12 @@
     "stage": "Hard Boiled"
   },
   "a": {
+    "type": "ladder",
+    "firstAnswer": "settle",
+    "time": 50,
+    "stage": ""
+  },
+  "a": {
     "type": "jumble",
     "letters": "aemrst",
     "time": 80,
@@ -366,6 +392,12 @@
   "a": {
     "type": "scramble",
     "firstAnswer": "demon",
+    "time": 50,
+    "stage": ""
+  },
+  "a": {
+    "type": "ladder",
+    "firstAnswer": "rating",
     "time": 50,
     "stage": ""
   },
@@ -391,6 +423,12 @@
     "type": "scramble",
     "firstAnswer": "disown",
     "time": 60,
+    "stage": ""
+  },
+  "a": {
+    "type": "ladder",
+    "firstAnswer": "reduce",
+    "time": 50,
     "stage": ""
   },
   "49": {
@@ -439,6 +477,12 @@
     "type": "jumble",
     "letters": "degins",
     "time": 75,
+    "stage": ""
+  },
+  "a": {
+    "type": "ladder",
+    "firstAnswer": "veneer",
+    "time": 55,
     "stage": ""
   },
   "53": {
@@ -501,6 +545,12 @@
     "time": 60,
     "stage": "Hard Boiled"
   },
+  "a": {
+    "type": "ladder",
+    "firstAnswer": "thrown",
+    "time": 50,
+    "stage": ""
+  },
   "60": {
     "type": "scramble",
     "firstAnswer": "scandal",
@@ -557,54 +607,14 @@
 
 
 
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "shape",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "reduce",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "shade",
-    "time": 45,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "veneer",
-    "time": 55,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "settle",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "rating",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "apple",
-    "time": 40,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "thrown",
-    "time": 50,
-    "stage": ""
-  },
+
+
+
+
+
+
+
+
 
 
 
