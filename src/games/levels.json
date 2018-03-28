@@ -491,121 +491,121 @@
     "type": "scramble",
     "firstAnswer": "machine",
     "time": 65,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "82": {
     "type": "jumble",
     "letters": "aeimnr",
     "time": 60,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "83": {
     "type": "ladder",
     "firstAnswer": "rarely",
     "time": 45,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "84": {
     "type": "scramble",
     "firstAnswer": "praise",
     "time": 60,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "85": {
     "type": "jumble",
     "letters": "aelpst",
     "time": 70,
-    "stage": "Scrambled Eggs",
+    "stage": "Scrambled",
   },
   "86": {
     "type": "scramble",
     "firstAnswer": "partner",
     "time": 55,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "87": {
     "type": "jumble",
     "letters": "adeiln",
     "time": 60,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "88": {
     "type": "ladder",
     "firstAnswer": "thrown",
     "time": 45,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "89": {
     "type": "scramble",
     "firstAnswer": "tender",
     "time": 45,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "90": {
     "type": "jumble",
     "letters": "efghirt",
     "time": 55,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "91": {
     "type": "ladder",
     "firstAnswer": "system",
     "time": 40,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "92": {
     "type": "jumble",
     "letters": "ceilnst",
     "time": 60,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "93": {
     "type": "jumble",
     "letters": "adeprs",
     "time": 70,
-    "stage": "Scrambled Eggs",
+    "stage": "Scrambled",
   },
   "94": {
     "type": "scramble",
     "firstAnswer": "pilfer",
     "time": 50,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "95": {
     "type": "ladder",
     "firstAnswer": "process",
     "time": 45,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "96": {
     "type": "scramble",
     "firstAnswer": "syringe",
     "time": 60,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "97": {
     "type": "jumble",
     "letters": "eilnst",
     "time": 65,
-    "stage": "Scrambled Eggs",
+    "stage": "Scrambled",
   },
   "98": {
     "type": "ladder",
     "firstAnswer": "measure",
     "time": 50,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "99": {
     "type": "scramble",
     "firstAnswer": "scandal",
     "time": 50,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
   "100": {
     "type": "jumble",
     "letters": "aeilnst",
     "time": 65,
-    "stage": "Scrambled Eggs"
+    "stage": "Scrambled"
   },
 
 

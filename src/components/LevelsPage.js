@@ -36,7 +36,6 @@ class LevelsPage extends React.Component {
     }
 
     if(nextProps.activeLevel === 1 && !nextProps.activeLevelAttempted && this.props.auth){
-      // debugger
       this.setState({ introVisible: true }, () => {
         this.setState({ introVisible: false}, () => {
           this.setState({ introVisible: true });
@@ -86,7 +85,7 @@ class LevelsPage extends React.Component {
       <View style={styles.triangle} />
     )
 
-    const options = ["Sunny Side Up", "Over Easy", "Hard Boiled", "Frittata", "Scrambled Eggs"];
+    const options = ["Sunny Side Up", "Over Easy", "Hard Boiled", "Frittata", "Scrambled"];
 
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
@@ -213,7 +212,7 @@ const styles = {
     color: 'white'
   },
   dropdownStyle: {
-    height: 180,
+    height: 226,
     marginRight: 16,
     elevation: 4,
     borderColor: 'white',

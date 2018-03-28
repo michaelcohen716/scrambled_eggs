@@ -11,7 +11,7 @@ var STAGES = {
   "Over Easy": 2,
   "Hard Boiled": 3,
   "Frittata": 4,
-  "Scrambled Eggs": 5
+  "Scrambled": 5
 };
 
 const INITIAL_STATE = {

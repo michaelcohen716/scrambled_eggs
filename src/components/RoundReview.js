@@ -8,6 +8,7 @@ import SunnySideUp from '../assets/sunny_side_up.png';
 import HardBoiled from '../assets/hard_boiled.png';
 import OverEasy from '../assets/over_easy.png';
 import Frittata from '../assets/frittata.png';
+import Scrambled from '../assets/scrambled_egg2.png';
 
 class RoundReview extends React.Component {
   proceed(){
@@ -54,6 +55,8 @@ class RoundReview extends React.Component {
       image = OverEasy;
     } else if(activeLevel < 81){
       image = Frittata;
+    } else if(activeLevel < 101){
+      image = Scrambled;
     }
 
     return (
