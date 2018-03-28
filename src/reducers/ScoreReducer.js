@@ -26,10 +26,10 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case PURCHASE_EGGCOIN:
-      const purchState = merge({}, state);
-      purchState.userEggcoin += action.eggcoinPurchase;
-      return purchState;
-      
+      const purchaseState = merge({}, state);
+      purchaseState.userEggcoin += action.eggcoinPurchase;
+      return purchaseState;
+
     case PAUSE_TIMER:
       const pauseState = merge({}, state);
       pauseState.timerActive = false;

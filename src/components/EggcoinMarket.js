@@ -6,6 +6,7 @@ import { View, Text, TouchableOpacity,
 import goldCoin from '../assets/goldCoin.png';
 import { purchaseEggcoin } from '../actions';
 import { NativeModules } from 'react-native';
+import CommaNumber from 'comma-number';
 const { InAppUtils } = NativeModules;
 
 
@@ -48,7 +49,7 @@ class EggcoinMarket extends React.Component {
   }
 
   render(){
-
+    const eggcoinBalance = CommaNumber(this.props.currentEggcoin);
     return (
       <Modal animationType="slide" transparent={true}
         visible={this.state.modalVisible}>
@@ -58,6 +59,9 @@ class EggcoinMarket extends React.Component {
           </TouchableOpacity>
 
           <View style={styles.contentHolder}>
+            <View style={styles.eggcoinBar}>
+              <Text style={styles.barText}>Eggcoin balance: {eggcoinBalance}</Text>
+            </View>
 
             <View style={styles.dealHolder}>
               <View style={styles.eggcoinPrice}>
@@ -111,6 +115,15 @@ class EggcoinMarket extends React.Component {
 var { width } = Dimensions;
 
 const styles = {
+  eggcoinBar: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  barText: {
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 20,
+    color: 'white'
+  },
   eggcoinNumber: {
     fontFamily: 'RobotoCondensed-Regular',
     fontSize: 28,
@@ -150,7 +163,7 @@ const styles = {
     borderRadius: 4
   },
   dealHolder: {
-    flex: 1,
+    flex: 3,
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderColor: 'white',
@@ -181,4 +194,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(EggcoinMarket);
+export default connect(mapStateToProps, { purchaseEggcoin })(EggcoinMarket);
