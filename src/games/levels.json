@@ -461,136 +461,151 @@
     "time": 45,
     "stage": "Frittata",
   },
-
-
-
-  "a": {
+  "77": {
     "type": "scramble",
     "firstAnswer": "aspect",
-    "time": 65,
-    "stage": ""
-  },
-  "a": {
-    "type": "scramble",
-    "firstAnswer": "bleach",
     "time": 60,
-    "stage": ""
+    "stage": "Frittata"
   },
-  "53": {
+  "78": {
     "type": "jumble",
     "letters": "aelnrt",
     "time": 55,
-    "stage": "Hard Boiled"
+    "stage": "Frittata"
   },
-  "a": {
+  "79": {
     "type": "ladder",
     "firstAnswer": "veneer",
-    "time": 55,
-    "stage": ""
+    "time": 50,
+    "stage": "Frittata"
   },
-  "55": {
+  "80": {
+    "type": "scramble",
+    "firstAnswer": "bleach",
+    "time": 55,
+    "stage": "Frittata"
+  },
+
+
+  "81": {
     "type": "scramble",
     "firstAnswer": "machine",
     "time": 65,
-    "stage": "Hard Boiled"
+    "stage": "Scrambled Eggs"
   },
-  "56": {
-    "type": "scramble",
-    "firstAnswer": "praise",
-    "time": 60,
-    "stage": "Hard Boiled"
-  },
-  "a": {
+  "82": {
     "type": "jumble",
     "letters": "aeimnr",
     "time": 60,
-    "stage": ""
+    "stage": "Scrambled Eggs"
   },
-  "57": {
-    "type": "jumble",
-    "letters": "aelpst",
-    "time": 85,
-    "stage": "Hard Boiled",
-  },
-  "58": {
+  "83": {
     "type": "ladder",
     "firstAnswer": "rarely",
-    "time": 55,
-    "stage": "Hard Boiled"
+    "time": 45,
+    "stage": "Scrambled Eggs"
   },
-  "a": {
+  "84": {
+    "type": "scramble",
+    "firstAnswer": "praise",
+    "time": 60,
+    "stage": "Scrambled Eggs"
+  },
+  "85": {
     "type": "jumble",
-    "letters": "adeiln",
-    "time": 65,
-    "stage": ""
+    "letters": "aelpst",
+    "time": 70,
+    "stage": "Scrambled Eggs",
   },
-  "a": {
+  "86": {
     "type": "scramble",
     "firstAnswer": "partner",
-    "time": 65,
-    "stage": ""
+    "time": 55,
+    "stage": "Scrambled Eggs"
   },
-  "59": {
+  "87": {
     "type": "jumble",
-    "letters": "efghirt",
+    "letters": "adeiln",
     "time": 60,
-    "stage": "Hard Boiled"
+    "stage": "Scrambled Eggs"
   },
-  "a": {
+  "88": {
     "type": "ladder",
     "firstAnswer": "thrown",
-    "time": 50,
-    "stage": ""
+    "time": 45,
+    "stage": "Scrambled Eggs"
   },
-  "60": {
-    "type": "scramble",
-    "firstAnswer": "scandal",
-    "time": 60,
-    "stage": "Hard Boiled"
-  },
-
-
-  "61": {
-    "type": "jumble",
-    "letters": "ceilnst",
-    "time": 75,
-    "stage": "Frittata"
-  },
-  "62": {
+  "89": {
     "type": "scramble",
     "firstAnswer": "tender",
     "time": 45,
-    "stage": "Frittata"
+    "stage": "Scrambled Eggs"
   },
-  "63": {
+  "90": {
+    "type": "jumble",
+    "letters": "efghirt",
+    "time": 55,
+    "stage": "Scrambled Eggs"
+  },
+  "91": {
+    "type": "ladder",
+    "firstAnswer": "system",
+    "time": 40,
+    "stage": "Scrambled Eggs"
+  },
+  "92": {
+    "type": "jumble",
+    "letters": "ceilnst",
+    "time": 60,
+    "stage": "Scrambled Eggs"
+  },
+  "93": {
     "type": "jumble",
     "letters": "adeprs",
     "time": 70,
-    "stage": "Frittata",
+    "stage": "Scrambled Eggs",
   },
-  "64": {
+  "94": {
+    "type": "scramble",
+    "firstAnswer": "pilfer",
+    "time": 50,
+    "stage": "Scrambled Eggs"
+  },
+  "95": {
+    "type": "ladder",
+    "firstAnswer": "process",
+    "time": 45,
+    "stage": "Scrambled Eggs"
+  },
+  "96": {
     "type": "scramble",
     "firstAnswer": "syringe",
     "time": 60,
-    "stage": "Frittata"
+    "stage": "Scrambled Eggs"
   },
-  "65": {
+  "97": {
     "type": "jumble",
     "letters": "eilnst",
-    "time": 70,
-    "stage": "Frittata",
+    "time": 65,
+    "stage": "Scrambled Eggs",
   },
-  "a": {
+  "98": {
+    "type": "ladder",
+    "firstAnswer": "measure",
+    "time": 50,
+    "stage": "Scrambled Eggs"
+  },
+  "99": {
     "type": "scramble",
-    "firstAnswer": "pilfer",
-    "time": 70,
-    "stage": ""
+    "firstAnswer": "scandal",
+    "time": 50,
+    "stage": "Scrambled Eggs"
   },
-  "66": {
+  "100": {
     "type": "jumble",
     "letters": "aeilnst",
-    "time": 85,
-    "stage": "Frittata"
+    "time": 65,
+    "stage": "Scrambled Eggs"
   },
 
 

@@ -49,6 +49,13 @@
 
   "apple": [["apple"], ["pale", "leap", "plea", "peal"], ["pea", "lap", "pal", "ape", "ale", "pep", "app"]],
 
-  "thrown": [["thrown"], ["worth", "throw", "north", "thorn"], ["horn", "torn", "worn", "wont", "town"]]
+  "thrown": [["thrown"], ["worth", "throw", "north", "thorn"], ["horn", "torn", "worn", "wont", "town"]],
+
+  "measure": [["measure"], ["resume", "amuser", "seamer"], ["amuse", "easer", "reuse", "serum", "smear", "ureas"]],
+
+  "system": [["system"], ["messy", "stems"], ["mets", "stem", "sets", "stye"]],
+
+  "process": [["process", "corpses"], ["corpse", "posers", "spores", "scopes", "proses", "scores"],
+    ["copes", "corps", "cress", "posse", "scope", "score", "cores", "sores", "spore", "poses", "crops", "press", "prose"]]
 
 }

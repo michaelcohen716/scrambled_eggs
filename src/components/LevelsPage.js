@@ -86,7 +86,7 @@ class LevelsPage extends React.Component {
       <View style={styles.triangle} />
     )
 
-    const options = ["Sunny Side Up", "Over Easy", "Hard Boiled", "Frittata"];
+    const options = ["Sunny Side Up", "Over Easy", "Hard Boiled", "Frittata", "Scrambled Eggs"];
 
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
