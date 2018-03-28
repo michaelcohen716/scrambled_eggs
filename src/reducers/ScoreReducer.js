@@ -7,7 +7,8 @@ import {
   START_NEW_WORD, RECORD_SCORE,
   START_NEW_SCRAMBLE, SPEND_EGGCOIN,
   MAKE_PURCHASE, FIRE_UP,
-  PAUSE_TIMER, UNPAUSE_TIMER
+  PAUSE_TIMER, UNPAUSE_TIMER,
+  PURCHASE_EGGCOIN
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -16,7 +17,7 @@ const INITIAL_STATE = {
   eggcoinCost: 0,
   scoreMultiplier: 100,
   activeLevelAttempted: false,
-  unattemptedBaseScore: 5, //actions/reducers don't change these
+  unattemptedBaseScore: 4, //actions/reducers don't change these
   attemptedBaseScore: 1, //actions/reducers don't change these
   fireUpToggle: false,
   timerActive: true
@@ -24,6 +25,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    case PURCHASE_EGGCOIN:
+      const purchState = merge({}, state);
+      purchState.userEggcoin += action.eggcoinPurchase;
+      return purchState;
+      
     case PAUSE_TIMER:
       const pauseState = merge({}, state);
       pauseState.timerActive = false;

@@ -29,6 +29,7 @@ export const UNPAUSE_TIMER = 'unpause_timer';
 // levels
 export const SPEND_EGGCOIN = 'spend_eggcoin';
 export const ADVANCE_STAGE = 'advance_stage';
+export const PURCHASE_EGGCOIN = 'purchase_eggcoin';
 
 //scramble
 export const START_NEW_SCRAMBLE = 'start_new_scramble';

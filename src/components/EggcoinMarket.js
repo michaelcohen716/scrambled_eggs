@@ -4,17 +4,10 @@ import { View, Text, TouchableOpacity,
         Image, Modal, Dimensions, TouchableWithoutFeedback
 } from 'react-native';
 import goldCoin from '../assets/goldCoin.png';
+import { purchaseEggcoin } from '../actions';
+import { NativeModules } from 'react-native';
+const { InAppUtils } = NativeModules;
 
-// import { NativeModules } from 'react-native';
-// var { InAppUtils } = NativeModules;
-// var products = [
-//    'com.scrambledeggs.scrambledeggs.eggcoin10000',
-//    'com.scrambledeggs.scrambledeggs.eggcoin20000',
-//    'com.scrambledeggs.scrambledeggs.eggcoin30000',
-// ];
-// InAppUtils.loadProducts(products, (error, products) => {
-//    //update store here.
-// });
 
 class EggcoinMarket extends React.Component {
   constructor(props){
@@ -27,21 +20,31 @@ class EggcoinMarket extends React.Component {
 
   buyEggcoin(eggcoin, price){
 
-
-    InAppUtils.canMakePayments((canMakePayments) => {
-      if(!canMakePayments) {
-        Alert.alert('Not Allowed', 'This device is not allowed to make purchases. Please check restrictions on device');
-      }
-    });
-
-    var productIdentifier = 'com.xyz.abc';
-      InAppUtils.purchaseProduct(productIdentifier, (error, response) => {
-        // NOTE for v3.0: User can cancel the payment which will be available as error object here.
-      if(response && response.productIdentifier) {
-        Alert.alert('Purchase Successful', 'Your Transaction ID is ' + response.transactionIdentifier);
-      //unlock store here.
-      }
-    });
+    // var products = [
+    //    'com.scrambledeggs.scrambledeggs.eggcoin',
+    //    'com.scrambledeggs.scrambledeggs.eggcoin20000',
+    //    'com.scrambledeggs.scrambledeggs.eggcoin30000',
+    // ];
+    // InAppUtils.loadProducts(products, (error, products) => {
+    //
+    //    //update store here.
+    // });
+    //
+    // InAppUtils.canMakePayments((canMakePayments) => {
+    //   if(!canMakePayments) {
+    //     Alert.alert('Not Allowed', 'This device is not allowed to make purchases. Please check restrictions on device');
+    //   }
+    // });
+    //
+    // var productIdentifier = 'com.xyz.abc';
+    //   InAppUtils.purchaseProduct(productIdentifier, (error, response) => {
+    //     // NOTE for v3.0: User can cancel the payment which will be available as error object here.
+    //   if(response && response.productIdentifier) {
+    //     Alert.alert('Purchase Successful', 'Your Transaction ID is ' + response.transactionIdentifier);
+    //   //unlock store here.
+    //   }
+    // });
+    this.props.purchaseEggcoin(eggcoin, this.props.currentEggcoin);
   }
 
   render(){
@@ -172,4 +175,10 @@ const styles = {
   }
 };
 
-export default connect(null, null)(EggcoinMarket);
+const mapStateToProps = state => {
+  return {
+    currentEggcoin: state.score.userEggcoin
+  };
+};
+
+export default connect(mapStateToProps, null)(EggcoinMarket);

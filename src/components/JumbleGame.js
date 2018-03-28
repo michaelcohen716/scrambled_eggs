@@ -19,13 +19,9 @@ class JumbleGame extends React.Component {
 
   componentDidMount(){
     if(this.props.activeLevel === 1 && !this.props.activeLevelAttempted){
-      this.props.pauseTimer();
-      // debugger
       this.setState({ introVisible: true});
     }
-    // else {
-    //   this.setState({ introVisible: false});
-    // }
+
   }
 
   componentWillReceiveProps(nextProps){
