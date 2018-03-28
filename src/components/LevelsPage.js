@@ -20,7 +20,6 @@ class LevelsPage extends React.Component {
       stageDropdown: this.props.stageNum - 1,
       dropdownShowing: false,
       introVisible: false,
-      renderModal: true
     };
     this.levels = Object.keys(Levels); //all levels in game
     this.stages = Object.keys(this.props.stages);
@@ -44,14 +43,6 @@ class LevelsPage extends React.Component {
         })
       } );
     }
-
-    // if(nextProps.stageNum > 1){
-    //   setTimeout(() => {
-    //     this.dropdownSelect(nextProps.stageNum - 1);
-    //
-    //   }, 1);
-    // }
-
   }
 
   levelFrameworks(){
@@ -74,10 +65,6 @@ class LevelsPage extends React.Component {
 
   componentDidMount(){
     this.setState({stageDropdown: this.props.stageNum - 1});
-    this.setState({renderModal: false}, () => {
-      console.log("false")
-      this.setState({renderModal: true});
-    })
   }
 
   dropdownSelect(stageIdx){
@@ -91,7 +78,6 @@ class LevelsPage extends React.Component {
 
   tiltTriangle(){
     this.setState({ dropdownShowing: !this.state.dropdownShowing});
-    this.setState({ stageDropdown: this.props.stageNum - 1});
   }
 
   renderModalDropdown(){
@@ -103,21 +89,17 @@ class LevelsPage extends React.Component {
       <View style={styles.triangle} />
     )
 
-    if(this.state.renderModal){
-      return (
-        <View style={styles.dropdownHolder}>
-          <ModalDropdown options={options} defaultIndex={this.state.stageDropdown}
-            onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
-            adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
-            dropdownTextHighlightStyle={styles.highlightStyle} onDropdownWillShow={this.tiltTriangle}
-            onDropdownWillHide={this.tiltTriangle}>
-            {triangle}
-          </ModalDropdown>
-        </View>
-      )
-    } else {
-      return <View></View>
-    }
+    return (
+      <View style={styles.dropdownHolder}>
+        <ModalDropdown options={options} defaultIndex={this.state.stageDropdown}
+          onSelect={this.dropdownSelect.bind(this)} dropdownStyle={styles.dropdownStyle}
+          adjustFrame={style => this.adjustFrame(style)} animated={true} dropdownTextStyle={styles.button}
+          dropdownTextHighlightStyle={styles.highlightStyle} onDropdownWillShow={this.tiltTriangle}
+          onDropdownWillHide={this.tiltTriangle}>
+          {triangle}
+        </ModalDropdown>
+      </View>
+    )
   }
 
   render(){

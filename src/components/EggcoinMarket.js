@@ -1,51 +1,75 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity,
-        Image, Modal, Dimensions, TouchableWithoutFeedback
+        Image, Modal, Dimensions, TouchableWithoutFeedback,
+        Platform
 } from 'react-native';
+import * as RNIap from 'react-native-iap';
 import goldCoin from '../assets/goldCoin.png';
 import { purchaseEggcoin } from '../actions';
-import { NativeModules } from 'react-native';
+// import { NativeModules } from 'react-native';
 import CommaNumber from 'comma-number';
-const { InAppUtils } = NativeModules;
-
+// const { InAppUtils } = NativeModules;
+const itemSkus = Platform.select({
+  ios: [
+    'com.scrambledeggs.scrambledeggs.eggcoin',
+    'com.scrambledeggs.scrambledeggs.eggcoin20000',
+    'com.scrambledeggs.scrambledeggs.eggcoin30000',
+  ]
+});
 
 class EggcoinMarket extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      modalVisible: this.props.visible
+      modalVisible: this.props.visible,
+      productList: [],
+      receipt: '',
+      availableItemsMessage: ''
     };
     this.buyEggcoin = this.buyEggcoin.bind(this);
+    this.buyItem = this.buyItem.bind(this);
   }
 
-  buyEggcoin(eggcoin, price){
+  async componentDidMount(){
+    try {
+      await RNIap.prepare();
+      const products = await RNIap.getProducts(itemSkus);
+      console.log('Products', products);
+      this.setState({ productList: products });
+    } catch (err) {
+      console.warn(err.code, err.message);
+    }
+  }
 
-    // var products = [
-    //    'com.scrambledeggs.scrambledeggs.eggcoin',
-    //    'com.scrambledeggs.scrambledeggs.eggcoin20000',
-    //    'com.scrambledeggs.scrambledeggs.eggcoin30000',
-    // ];
-    // InAppUtils.loadProducts(products, (error, products) => {
-    //
-    //    //update store here.
-    // });
-    //
-    // InAppUtils.canMakePayments((canMakePayments) => {
-    //   if(!canMakePayments) {
-    //     Alert.alert('Not Allowed', 'This device is not allowed to make purchases. Please check restrictions on device');
-    //   }
-    // });
-    //
-    // var productIdentifier = 'com.xyz.abc';
-    //   InAppUtils.purchaseProduct(productIdentifier, (error, response) => {
-    //     // NOTE for v3.0: User can cancel the payment which will be available as error object here.
-    //   if(response && response.productIdentifier) {
-    //     Alert.alert('Purchase Successful', 'Your Transaction ID is ' + response.transactionIdentifier);
-    //   //unlock store here.
-    //   }
-    // });
+
+
+  buyEggcoin(eggcoin, price){
+    let eggcoinSKU;
+    if(eggcoin === 10000){
+      eggcoinSKU = 'com.scrambledeggs.scrambledeggs.eggcoin';
+    } else if(eggcoin === 20000){
+      eggcoinSKU = 'com.scrambledeggs.scrambledeggs.eggcoin20000';
+    } else if(eggcoin === 30000){
+      eggcoinSKU = 'com.scrambledeggs.scrambledeggs.eggcoin30000';
+    }
+
+
+    this.buyItem(eggcoinSKU);
+
     this.props.purchaseEggcoin(eggcoin, this.props.currentEggcoin);
+  }
+
+  async buyItem(sku){
+    try {
+      const purchase = await RNIap.buyProduct(sku);
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  async appStorePurchase(sku){
+    RNIap.buyProduct(sku);
   }
 
   render(){
