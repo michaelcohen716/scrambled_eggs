@@ -60,8 +60,8 @@ class MenuPage extends React.Component {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.item}></View>
-        <View style={styles.item}></View>
+        <View style={styles.itemEmpty}></View>
+        <View style={styles.itemEmpty}></View>
       </View>
     );
   }
@@ -89,6 +89,10 @@ const styles = {
     margin: 15,
     borderColor: 'white',
     borderWidth: 2
+  },
+  itemEmpty: {
+    flex: 1,
+    margin: 15,
   }
 };
 

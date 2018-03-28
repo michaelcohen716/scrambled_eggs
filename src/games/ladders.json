@@ -32,6 +32,23 @@
     "tame", "meat", "teas", "seat", "sate", "rate", "tear", "arts", "tars", "star"]],
 
   "silver": [["silver", "sliver", "livers"], ["liver", "rives", "riles", "lives", "evils"],
-    ["live", "evil", "vile", "isle", "lies", "rile", "sire", "rive", "veil"]]
+    ["live", "evil", "vile", "isle", "lies", "rile", "sire", "rive", "veil"]],
+
+
+  "shape": [["shape", "heaps"], ["heap", "peas", "apes"], ["pea", "ape", "sea", "ash", "has", "sap", "asp"]],
+
+  "reduce": [["reduce"], ["cured", "crude", "creed"], ["cure", "crud", "rude", "reed", "deer", "curd"]],
+
+  "shade": [["shade"], ["dash", "shed"], ["ash", "has", "had", "she"]],
+
+  "veneer": [["veneer"], ["never"], ["ever", "even", "veer"]],
+
+  "settle": [["settle"], ["steel"], ["tees", "eels", "lest", "lets"]],
+
+  "rating": [["rating", "gratin"], ["grain", "train", "giant"], ["gain", "rain", "grin", "ring", "grit", "gait", "gnat", "tang"]],
+
+  "apple": [["apple"], ["pale", "leap", "plea", "peal"], ["pea", "lap", "pal", "ape", "ale", "pep", "app"]],
+
+  "thrown": [["thrown"], ["worth", "throw", "north", "thorn"], ["horn", "torn", "worn", "wont", "town"]]
 
 }

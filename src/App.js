@@ -27,7 +27,6 @@ import logger from 'redux-logger';
   // ensure loginform doesn't render on app-open when user signed in
   // link eggcoin market to app store
   // get to 100 puzzles
-  // complete home/menu page
 
 class App extends Component {
   constructor(props){

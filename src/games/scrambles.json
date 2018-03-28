@@ -400,7 +400,7 @@
   "hearts": {
     "1": {
       "clue": "Multiple critical organs",
-      "letters": "erhtas",
+      "letters": "emnprhtas",
       "answer": "hearts"
     },
     "2": {
@@ -412,6 +412,152 @@
       "clue": "Rubbish",
       "letters": "harts",
       "answer": "trash"
+    }
+  },
+
+
+
+  "demon": {
+    "1": {
+      "clue": "A devil-like figure",
+      "letters": "odrnzemn",
+      "answer": "demon"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "m"
+    },
+    "3": {
+      "clue": "A meeting point",
+      "letters": "deon",
+      "answer": "node"
+    }
+  },
+
+  "bright": {
+    "1": {
+      "clue": "Shining or beaming",
+      "letters": "ahrwtvigb",
+      "answer": "bright"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "a",
+      "letter": "g"
+    },
+    "3": {
+      "clue": "Beginning of life",
+      "letters": "briht",
+      "answer": "birth"
+    }
+  },
+
+  "disown": {
+    "1": {
+      "clue": "Renounce or refuse",
+      "letters": "snowlmoiid",
+      "answer": "disown"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "o"
+    },
+    "3": {
+      "clue": "Comes with a storm",
+      "letters": "diswn",
+      "answer": "winds"
+    }
+  },
+
+  "strip": {
+    "1": {
+      "clue": "To take off or take away",
+      "letters": "ireastpp",
+      "answer": "strip"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "a",
+      "letter": "c"
+    },
+    "3": {
+      "clue": "Written performance",
+      "letters": "stripc",
+      "answer": "script"
+    }
+  },
+
+  "partner": {
+    "1": {
+      "clue": "A peer in an endeavor",
+      "letters": "rrquiptane",
+      "answer": "partner"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "r"
+    },
+    "3": {
+      "clue": "Progenitor",
+      "letters": "partne",
+      "answer": "parent"
+    }
+  },
+
+  "point": {
+    "1": {
+      "clue": "A sports game award",
+      "letters": "iycopnto",
+      "answer": "point"
+    },
+    "2": {
+      "clue": "Add",
+      "article": "an",
+      "letter": "o"
+    },
+    "3": {
+      "clue": "A strange concoction",
+      "letters": "pointo",
+      "answer": "potion"
+    }
+  },
+
+  "bleach": {
+    "1": {
+      "clue": "To lighten or fade",
+      "letters": "aheelckb",
+      "answer": "bleach"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "h"
+    },
+    "3": {
+      "clue": "Thick wire",
+      "letters": "bleac",
+      "answer": "cable"
+    }
+  },
+
+  "aspect": {
+    "1": {
+      "clue": "A particular part",
+      "letters": "ibpctceas",
+      "answer": "aspect"
+    },
+    "2": {
+      "clue": "Subtract",
+      "article": "an",
+      "letter": "h"
+    },
+    "3": {
+      "clue": "Thick wire",
+      "letters": "bleac",
+      "answer": "cable"
     }
   },
 
