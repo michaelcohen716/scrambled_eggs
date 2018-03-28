@@ -383,69 +383,86 @@
     "time": 50,
     "stage": "Frittata"
   },
-
-
-
-  "45": {
-    "type": "jumble",
-    "letters": "adehrt",
-    "time": "75",
-    "stage": "Hard Boiled"
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "aemrst",
-    "time": 80,
-    "stage": ""
-  },
-  "a": {
+  "64": {
     "type": "ladder",
     "firstAnswer": "rating",
-    "time": 50,
-    "stage": ""
+    "time": 45,
+    "stage": "Frittata"
   },
-  "46": {
+  "65": {
+    "type": "jumble",
+    "letters": "adehrt",
+    "time": "70",
+    "stage": "Frittata"
+  },
+  "66": {
     "type": "jumble",
     "letters": "bdegu",
-    "time": 65,
-    "stage": "Hard Boiled"
+    "time": 50,
+    "stage": "Frittata"
   },
-  "47": {
+  "67": {
     "type": "scramble",
     "firstAnswer": "search",
-    "time": 60,
-    "stage": "Hard Boiled"
+    "time": 55,
+    "stage": "Frittata"
   },
-  "48": {
+  "68": {
     "type": "ladder",
     "firstAnswer": "master",
-    "time": 55,
-    "stage": "Hard Boiled"
-  },
-  "a": {
-    "type": "scramble",
-    "firstAnswer": "disown",
-    "time": 60,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "reduce",
     "time": 50,
-    "stage": ""
+    "stage": "Frittata"
   },
-  "49": {
+  "69": {
     "type": "jumble",
     "letters": "eghilns",
     "time": 65,
-    "stage": "Hard Boiled"
+    "stage": "Frittata"
   },
-  "a": {
+  "70": {
+    "type": "scramble",
+    "firstAnswer": "disown",
+    "time": 50,
+    "stage": "Frittata"
+  },
+  "71": {
     "type": "scramble",
     "firstAnswer": "bright",
     "time": 55,
-    "stage": ""
+    "stage": "Frittata"
   },
+  "72": {
+    "type": "ladder",
+    "firstAnswer": "reduce",
+    "time": 45,
+    "stage": "Frittata"
+  },
+  "73": {
+    "type": "jumble",
+    "letters": "degins",
+    "time": 70,
+    "stage": "Frittata"
+  },
+  "74": {
+    "type": "scramble",
+    "firstAnswer": "waters",
+    "time": 65,
+    "stage": "Frittata"
+  },
+  "75": {
+    "type": "ladder",
+    "firstAnswer": "chrome",
+    "time": 55,
+    "stage": "Frittata"
+  },
+  "76": {
+    "type": "jumble",
+    "letters": "adinr",
+    "time": 45,
+    "stage": "Frittata",
+  },
+
+
 
   "a": {
     "type": "scramble",
@@ -453,34 +470,10 @@
     "time": 65,
     "stage": ""
   },
-  "51": {
-    "type": "scramble",
-    "firstAnswer": "waters",
-    "time": 65,
-    "stage": "Hard Boiled"
-  },
-  "52": {
-    "type": "ladder",
-    "firstAnswer": "chrome",
-    "time": 50,
-    "stage": "Hard Boiled"
-  },
   "a": {
     "type": "scramble",
     "firstAnswer": "bleach",
     "time": 60,
-    "stage": ""
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "degins",
-    "time": 75,
-    "stage": ""
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "veneer",
-    "time": 55,
     "stage": ""
   },
   "53": {
@@ -489,11 +482,11 @@
     "time": 55,
     "stage": "Hard Boiled"
   },
-  "54": {
-    "type": "jumble",
-    "letters": "adinr",
-    "time": 45,
-    "stage": "Hard Boiled",
+  "a": {
+    "type": "ladder",
+    "firstAnswer": "veneer",
+    "time": 55,
+    "stage": ""
   },
   "55": {
     "type": "scramble",
