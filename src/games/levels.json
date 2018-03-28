@@ -18,157 +18,231 @@
     "stage": "Sunny Side Up"
   },
   "4": {
+    "type": "jumble",
+    "letters": "dens",
+    "time": 50,
+    "stage": "Sunny Side Up"
+  },
+  "5": {
     "type": "ladder",
     "firstAnswer": "taint",
     "time": 50,
     "stage": "Sunny Side Up"
   },
-  "a": {
-    "type": "jumble",
-    "letters": "dens",
-    "time": 50,
-    "stage": ""
-  },
-  "5": {
+  "6": {
     "type": "jumble",
     "letters": "eimt",
     "time": 55,
     "stage": "Sunny Side Up"
   },
-  "6": {
-    "type": "jumble",
-    "letters": "adil",
-    "time": 45,
-    "stage": "Sunny Side Up"
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "aegp",
-    "time": 45,
-    "stage": ""
-  },
   "7": {
-    "type": "scramble",
-    "firstAnswer": "green",
-    "time": 55,
-    "stage": "Sunny Side Up"
-  },
-  "8": {
-    "type": "jumble",
-    "letters": "eilv",
-    "time": 45,
-    "stage": "Sunny Side Up"
-  },
-  "a": {
-    "type": "scramble",
-    "firstAnswer": "realm",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "kins",
-    "time": 50,
-    "stage": ""
-  },
-  "9": {
     "type": "scramble",
     "firstAnswer": "gear",
     "time": 45,
     "stage": "Sunny Side Up"
   },
-  "a": {
+  "8": {
     "type": "jumble",
-    "letters": "hops",
-    "time": 50,
-    "stage": ""
+    "letters": "adil",
+    "time": 45,
+    "stage": "Sunny Side Up"
+  },
+  "9": {
+    "type": "jumble",
+    "letters": "aegp",
+    "time": 45,
+    "stage": "Sunny Side Up"
   },
   "10": {
-    "type": "ladder",
-    "firstAnswer": "source",
-    "time": 55,
+    "type": "scramble",
+    "firstAnswer": "realm",
+    "time": 50,
     "stage": "Sunny Side Up"
   },
   "11": {
-    "type": "scramble",
-    "firstAnswer": "harden",
-    "time": 50,
+    "type": "jumble",
+    "letters": "eilv",
+    "time": 45,
     "stage": "Sunny Side Up"
   },
   "12": {
-    "type": "jumble",
-    "letters": "aeglr",
-    "time": 70,
+    "type": "ladder",
+    "firstAnswer": "shade",
+    "time": 45,
     "stage": "Sunny Side Up"
   },
   "13": {
-    "type": "scramble",
-    "firstAnswer": "titan",
+    "type": "jumble",
+    "letters": "kins",
     "time": 50,
     "stage": "Sunny Side Up"
   },
   "14": {
-    "type": "jumble",
-    "letters": "acert",
-    "time": 75,
-    "stage": "Sunny Side Up"
-  },
-  "a": {
-    "type": "scramble",
-    "firstAnswer": "strip",
-    "time": 55,
-    "stage": ""
-  },
-  "15": {
-    "type": "ladder",
-    "firstAnswer": "secret",
-    "time": 55,
-    "stage": "Sunny Side Up"
-  },
-  "16": {
     "type": "scramble",
     "firstAnswer": "cape",
     "time": 50,
     "stage": "Sunny Side Up"
   },
-  "a": {
+  "15": {
     "type": "jumble",
-    "letters": "aemn",
-    "time": 55,
-    "stage": ""
+    "letters": "hops",
+    "time": 50,
+    "stage": "Sunny Side Up"
   },
-  "a": {
+  "16": {
     "type": "ladder",
-    "firstAnswer": "shade",
-    "time": 45,
-    "stage": ""
+    "firstAnswer": "source",
+    "time": 55,
+    "stage": "Sunny Side Up"
   },
   "17": {
     "type": "scramble",
-    "firstAnswer": "false",
+    "firstAnswer": "titan",
     "time": 45,
     "stage": "Sunny Side Up"
   },
-
-
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "shape",
-    "time": 50,
-    "stage": ""
-  },
-  "a": {
+  "18": {
     "type": "jumble",
-    "letters": "ahms",
-    "time": 50,
-    "stage": ""
+    "letters": "aeglr",
+    "time": 70,
+    "stage": "Sunny Side Up"
   },
   "19": {
-    "type": "ladder",
-    "firstAnswer": "silver",
+    "type": "jumble",
+    "letters": "acert",
+    "time": 75,
+    "stage": "Sunny Side Up"
+  },
+  "20": {
+    "type": "scramble",
+    "firstAnswer": "strip",
     "time": 50,
     "stage": "Sunny Side Up"
   },
+
+
+  "21": {
+    "type": "jumble",
+    "letters": "aemn",
+    "time": 55,
+    "stage": "Over Easy"
+  },
+  "22": {
+    "type": "scramble",
+    "firstAnswer": "harden",
+    "time": 45,
+    "stage": "Over Easy"
+  },
+  "23": {
+    "type": "ladder",
+    "firstAnswer": "secret",
+    "time": 55,
+    "stage": "Over Easy"
+  },
+  "24": {
+    "type": "scramble",
+    "firstAnswer": "false",
+    "time": 40,
+    "stage": "Over Easy"
+  },
+  "25": {
+    "type": "jumble",
+    "letters": "ahms",
+    "time": 45,
+    "stage": "Over Easy"
+  },
+  "26": {
+    "type": "ladder",
+    "firstAnswer": "shape",
+    "time": 50,
+    "stage": "Over Easy"
+  },
+  "27": {
+    "type": "scramble",
+    "firstAnswer": "party",
+    "time": 50,
+    "stage": "Over Easy"
+  },
+  "28": {
+    "type": "jumble",
+    "letters": "aehrt",
+    "time": 60,
+    "stage": "Over Easy",
+  },
+  "29": {
+    "type": "ladder",
+    "firstAnswer": "apple",
+    "time": 40,
+    "stage": "Over Easy"
+  },
+  "30": {
+    "type": "jumble",
+    "letters": "enost",
+    "time": 55,
+    "stage": "Over Easy"
+  },
+  "31": {
+    "type": "scramble",
+    "firstAnswer": "point",
+    "time": 50,
+    "stage": "Over Easy"
+  },
+  "32": {
+    "type": "jumble",
+    "letters": "eerst",
+    "time": 55,
+    "stage": "Over Easy",
+  },
+  "33": {
+    "type": "ladder",
+    "firstAnswer": "silver",
+    "time": 50,
+    "stage": "Over Easy"
+  },
+  "34": {
+    "type": "scramble",
+    "firstAnswer": "hearts",
+    "time": 50,
+    "stage": "Over Easy"
+  },
+  "35": {
+    "type": "jumble",
+    "letters": "aprt",
+    "time": 50,
+    "stage": "Over Easy"
+  },
+  "36": {
+    "type": "jumble",
+    "letters": "eimrt",
+    "time": 45,
+    "stage": "Over Easy"
+  },
+  "37": {
+    "type": "scramble",
+    "firstAnswer": "self",
+    "time": 45,
+    "stage": "Over Easy"
+  },
+  "38": {
+    "type": "jumble",
+    "letters": "opst",
+    "time": 55,
+    "stage": "Over Easy",
+  },
+  "39": {
+    "type": "ladder",
+    "firstAnswer": "second",
+    "time": 50,
+    "stage": "Over Easy"
+  },
+  "40": {
+    "type": "scramble",
+    "firstAnswer": "green",
+    "time": 55,
+    "stage": "Over Easy"
+  },
+
+
   "20": {
     "type": "jumble",
     "letters": "belstu",
@@ -177,59 +251,13 @@
   },
 
 
-  "21": {
-    "type": "scramble",
-    "firstAnswer": "party",
-    "time": 50,
-    "stage": "Over Easy"
-  },
-  "a": {
-    "type": "ladder",
-    "firstAnswer": "apple",
-    "time": 40,
-    "stage": ""
-  },
-  "22": {
-    "type": "jumble",
-    "letters": "aehrt",
-    "time": 60,
-    "stage": "Over Easy",
-  },
-  "a": {
-    "type": "scramble",
-    "firstAnswer": "point",
-    "time": 50,
-    "stage": ""
-  },
-  "23": {
-    "type": "ladder",
-    "firstAnswer": "second",
-    "time": 55,
-    "stage": "Over Easy"
-  },
-  "24": {
-    "type": "scramble",
-    "firstAnswer": "hearts",
-    "time": 55,
-    "stage": "Over Easy"
-  },
-  "a": {
-    "type": "jumble",
-    "letters": "aprt",
-    "time": 60,
-    "stage": ""
-  },
+
+
   "25": {
     "type": "jumble",
     "letters": "adegnr",
     "time": 75,
     "stage": "Over Easy"
-  },
-  "26": {
-    "type": "jumble",
-    "letters": "eerst",
-    "time": 45,
-    "stage": "Over Easy",
   },
   "27": {
     "type": "scramble",
@@ -249,12 +277,6 @@
     "time": 55,
     "stage": "Over Easy"
   },
-  "a": {
-    "type": "jumble",
-    "letters": "enost",
-    "time": 60,
-    "stage": ""
-  },
   "30": {
     "type": "scramble",
     "firstAnswer": "friends",
@@ -273,24 +295,14 @@
     "time": 55,
     "stage": "Over Easy"
   },
-  "33": {
-    "type": "jumble",
-    "letters": "eimrt",
-    "time": 45,
-    "stage": "Over Easy"
-  },
+
   "34": {
     "type": "ladder",
     "firstAnswer": "router",
     "time": 55,
     "stage": "Over Easy"
   },
-  "a": {
-    "type": "jumble",
-    "letters": "aelst",
-    "time": 75,
-    "stage": ""
-  },
+
   "a": {
     "type": "jumble",
     "letters": "eortv",
@@ -333,20 +345,16 @@
     "time": 60,
     "stage": "Sunny Side Up"
   },
-  "40": {
-    "type": "scramble",
-    "firstAnswer": "self",
-    "time": 55,
-    "stage": "Over Easy"
-  },
 
-
-  "41": {
+  "50": {
     "type": "jumble",
-    "letters": "opst",
-    "time": 75,
+    "letters": "aceno",
+    "time": 55,
     "stage": "Hard Boiled",
   },
+
+
+
   "42": {
     "type": "scramble",
     "firstAnswer": "pride",
@@ -443,12 +451,7 @@
     "time": 55,
     "stage": ""
   },
-  "50": {
-    "type": "jumble",
-    "letters": "aceno",
-    "time": 55,
-    "stage": "Hard Boiled",
-  },
+
   "a": {
     "type": "scramble",
     "firstAnswer": "aspect",
