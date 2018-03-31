@@ -21,10 +21,10 @@
 
   "second": [["second"], ["nodes", "scone", "cones"], ["dose", "once", "cone", "node", "nose"]],
 
-  "regard": [["regard", "grader"], ["grade", "raged", "drear"], ["dear", "read", "dare", "gear", "rage"]],
+  "regard": [["regard", "grader"], ["grade", "raged","rager", "drear"], ["dear", "read", "dare", "gear", "rage", "aged"]],
 
   "stable": [["stable", "tables", "bleats", "ablest"], ["table", "bleat", "baste", "beats", "tales", "teals",
-    "slate", "blase"], ["teal", "late", "sale", "teas", "sate", "seat", "late", "ales", "lest", "eats",
+    "slate", "blase"], ["teal", "late", "sale", "teas","able","bale","belt", "sate", "seat", "late", "ales", "lest", "eats",
     "bets", "best", "tale", "seal"]],
 
   "master": [["master", "stream", "tamers"], ["mates", "tames", "tamer", "rates", "stare", "tears",

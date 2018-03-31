@@ -4795,6 +4795,10 @@ react-native-animatable@^1.2.4:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-clean-project@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-clean-project/-/react-native-clean-project-1.0.7.tgz#3e500696142770f5b8e2da71a3e23e29b0ab7706"
+
 react-native-communications@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-communications/-/react-native-communications-2.2.1.tgz#7883b56b20a002eeb790c113f8616ea8692ca795"
