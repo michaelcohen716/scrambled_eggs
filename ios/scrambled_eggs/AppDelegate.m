@@ -18,7 +18,7 @@
 {
   NSURL *jsCodeLocation;
   /**
-   *  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+   *
    * All rights reserved.
    *
    * This source code is licensed under the BSD-style license found in the
@@ -26,8 +26,7 @@
    * of patent rights can be found in the PATENTS file in the same directory.
    */
 
-  
-  jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
