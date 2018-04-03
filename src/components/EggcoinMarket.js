@@ -7,9 +7,7 @@ import { View, Text, TouchableOpacity,
 import * as RNIap from 'react-native-iap';
 import goldCoin from '../assets/goldCoin.png';
 import { purchaseEggcoin } from '../actions';
-// import { NativeModules } from 'react-native';
 import CommaNumber from 'comma-number';
-// const { InAppUtils } = NativeModules;
 const itemSkus = Platform.select({
   ios: [
     'com.scrambledeggs.scrambledeggs.eggcoin',

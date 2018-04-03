@@ -21,13 +21,6 @@ class Timer extends React.Component {
       // this.props.reduceScoreMultiplier(-(100 / this.initialTime * 20)); //add back score potential
       this.setState({seconds: this.state.seconds + 20});
     }
-
-    // if(nextProps.timerActive === false){
-    //   this.setState({ timerActive: false});
-    // }
-    // if(nextProps.timerActive === true){
-    //   this.setState({ timerActive: true});
-    // }
   }
 
   componentDidMount(){
