@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Platform, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 import {
@@ -19,6 +19,7 @@ class LoginForm extends React.Component {
       loading: true,
       user: null
     };
+    this.renderIpad = this.renderIpad.bind(this);
   }
 
   onEmailChange(text) {
@@ -62,14 +63,63 @@ class LoginForm extends React.Component {
     );
   }
 
-  render() {
+  renderIpad(){
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
         <View style={{flex: 2}}>
           <Logo />
         </View>
         <View style={{flex: 2}}>
-          <Card>
+          <Card style={{flex: 1}}>
+            <CardSection>
+              <Input
+                label="Email"
+                placeholder="email@gmail.com"
+                onChangeText={this.onEmailChange.bind(this)}
+                value={this.props.email}
+                />
+            </CardSection>
+
+            <CardSection>
+              <Input
+                secureTextEntry
+                label="Password"
+                placeholder="password"
+                onChangeText={this.onPasswordChange.bind(this)}
+                value={this.props.password}
+                />
+            </CardSection>
+
+            <Text style={styles.errorTextStyle}>
+              {this.props.error}
+            </Text>
+
+            {this.renderAuthButtons()}
+
+          </Card>
+        </View>
+
+        <View style={{flex: 1}} />
+
+      </View>
+    )
+  }
+
+  render() {
+    const { height, width } = Dimensions.get('window');
+    const deviceType = (height / width) > 1.6 ? 'phone' : 'tablet';
+
+    if(deviceType === 'tablet'){
+      return this.renderIpad();
+    }
+
+    return (
+      <View style={{flex: 1, flexDirection: 'column'}}>
+        <View style={{flex: 2}}>
+          <Logo />
+        </View>
+        <View style={{flex: 2}}>
+          <Card style={{flex: 1}}>
             <CardSection>
               <Input
                 label="Email"

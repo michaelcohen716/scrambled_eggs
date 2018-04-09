@@ -103,6 +103,10 @@ class LevelsPage extends React.Component {
   }
 
   render(){
+    const { height, width } = Dimensions.get('window');
+    const deviceType = (height / width) > 1.6 ? 'phone' : 'tablet';
+
+
     const levels = this.frameworks[this.state.stageDropdown];
 
     return (
