@@ -136,7 +136,75 @@ class LevelButton extends React.Component {
     );
   }
 
+  renderIpad(num, onPress, modal, thisLevelsStage){
+    const padStyles = {
+      lockedLevel: {
+        width: 45,
+        height: 45,
+        backgroundColor: 'red',
+        borderColor: 'white',
+        borderWidth: 2.5,
+        margin: 8,
+        borderRadius: 3,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      solvedLevel: {
+        width: 45,
+        height: 45,
+        backgroundColor: 'white',
+        borderColor: 'blue',
+        borderWidth: 2.5,
+        margin: 8,
+        borderRadius: 3,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      text: {
+        // fontSize: 40,
+        color: 'blue',
+        fontWeight: 'bold',
+        fontFamily: 'RobotoCondensed-Regular',
+      },
+    }
+
+    if(this.props.stageNum < thisLevelsStage){
+      return (
+        <TouchableOpacity style={padStyles.lockedLevel}>
+          {modal}
+        </TouchableOpacity>
+      );
+    }
+
+    if(num < this.props.nextUnsolvedLevel){ //solved level
+      return (
+        <TouchableOpacity onPress={onPress} style={styles.solvedLevel} >
+          <View>
+            <Text style={padStyles.text}>
+              {num}
+            </Text>
+          </View>
+          {modal}
+        </TouchableOpacity>
+      );
+    }
+
+    return ( //nextUnsolvedLevel
+      <TouchableOpacity key={num} onPress={onPress} style={padStyles.solvedLevel}>
+        <View>
+          <Text style={padStyles.text}>
+            {num}
+          </Text>
+        </View>
+            {modal}
+      </TouchableOpacity>
+    );
+  }
+
   render(){
+    const { height, width } = Dimensions.get('window');
+    const deviceType = (height / width) > 1.6 ? 'phone' : 'tablet';
+
     const num = this.props.num;
     const onPress = this.onPress.bind(this, num);
     const modal = this.renderModal(num);
@@ -147,6 +215,10 @@ class LevelButton extends React.Component {
     // STAGES
     const thisLevelsStage = stages[Levels[num].stage];
     // numeric value of stage
+
+    if(deviceType === 'tablet'){
+      return this.renderIpad(num, onPress, modal, thisLevelsStage);
+    }
 
     if(this.props.stageNum < thisLevelsStage){
       return (

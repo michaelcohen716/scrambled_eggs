@@ -1,5 +1,6 @@
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
+import { Dimensions } from 'react-native';
 import LoginForm from './components/LoginForm';
 import Game from './components/Game';
 import LevelsPage from './components/LevelsPage';
@@ -10,12 +11,21 @@ import Instructions from './components/Instructions';
 import AboutMe from './components/AboutMe';
 import Credits from './components/Credits';
 
+const { height, width } = Dimensions.get('window');
+const deviceType = (height / width) > 1.6 ? 'phone' : 'tablet';
+let navHeight;
+if(deviceType === 'phone'){
+  navHeight = 45;
+} else {
+  navHeight = 20;
+}
+
 const RouterComponent = () => {
   return (
-    <Router>
+    <Router navigationBarStyle={{height: navHeight }}>
       <Scene key="root" tabs={false}>
-        <Scene initial key="login" component={LoginForm} title="" />
-        <Scene key="levels" component={LevelsPage} title="Levels" />
+        <Scene key="login" component={LoginForm} title="" />
+        <Scene initial key="levels" component={LevelsPage} title="Levels" />
         <Scene key="game" component={Game} title="Game On" />
         <Scene key="roundReview" component={RoundReview} title="Round Review" />
         <Scene key="advanceStage" component={AdvanceStage} title="Advance Stage" />

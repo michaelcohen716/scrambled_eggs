@@ -102,12 +102,75 @@ class LevelsPage extends React.Component {
     )
   }
 
+  renderIpad(levels){
+    const padStyles = {
+      info: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        height: 10,
+        backgroundColor: 'black',
+        borderBottomWidth: 2,
+        borderColor: 'white'
+      }
+    }
+
+    return (
+      <View style={styles.parent} animationOut={'fadeOut'}>
+
+        <View style={styles.info}>
+
+          {this.state.introVisible ? <LevelsIntro /> : null}
+
+          <View style={styles.topLeft}>
+
+            <View style={styles.stageName}>
+              <View style={styles.stageSpot}>
+                <Text style={styles.stage}>
+                  {this.stages[this.state.stageDropdown]}
+                </Text>
+              </View>
+            </View>
+
+            {this.renderModalDropdown()}
+
+          </View>
+
+          <View style={styles.topRight}>
+            <View style={{flex: 2}}>
+            </View>
+
+            <View style={styles.buttonHolder}>
+              <TouchableWithoutFeedback  style={styles.houseButton} onPress={() => Actions.menuPage()}>
+                <Image source={houseLogo} style={styles.houseLogo} />
+              </TouchableWithoutFeedback>
+            </View>
+          </View>
+
+        </View>
+
+        <View style={styles.levels}>
+          <ScrollView horizontal={false} contentContainerStyle={styles.contentContainerStyle} >
+            {levels}
+          </ScrollView>
+        </View>
+
+
+        <FryingPan />
+
+      </View>
+    )
+  }
+
   render(){
     const { height, width } = Dimensions.get('window');
     const deviceType = (height / width) > 1.6 ? 'phone' : 'tablet';
 
 
     const levels = this.frameworks[this.state.stageDropdown];
+
+    if(deviceType === 'tablet'){
+      return this.renderIpad(levels);
+    }
 
     return (
       <View style={styles.parent} animationOut={'fadeOut'}>
